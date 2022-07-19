@@ -1,0 +1,320 @@
+<html>
+
+<head>
+
+<title>Tema 9 - Diseño y explotación de BD con ASP</title>
+</head>
+
+<body>
+<b><font FACE="Arial" SIZE="5" COLOR="#ffff00">
+
+<p></font><font color="#FF0000" face="Arial" size="5">Tema 9 - Diseño de bases de datos y
+explotación con ASP</font><font FACE="Arial" SIZE="5"></p>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objetivos</p>
+
+<blockquote>
+  </font></b><p><font face="Arial" color="#000000">Comprender el uso de los objetos ADO.</font></p>
+  <p><font face="Arial" color="#000000">Crear una conexión con Base de Datos en ASP.</font></p>
+  <p><font face="Arial" color="#000000">Ejecutar instrucciones SQL vía ASP.</font></p>
+  <p><font face="Arial" color="#000000">Comprender las instrucciones básicas de SQL.</font></p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>&nbsp;</p>
+
+<p>Objetos ADO (Advanced Data Objects)</p>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  </font></b></font><p><font FACE="Arial" SIZE="3" COLOR="#000000">Dentro de los objetos
+  ActiveX Server Components que se instalan junto con el IIS, pero no forman parte
+  propiamente del servidor Web (es decir, no son objetos intrínsecos), se encuentran los
+  objetos de ADO.</font></p>
+  <font COLOR="#000000" SIZE="3"><p></font><font FACE="Arial" SIZE="3" COLOR="#000000">Estos
+  objetos permiten hacer uso de las características de ODBC para acceso a datos. Cabe
+  mencionar que ODBC es una interfase estándar para el desarrollo de sistemas
+  cliente/servidor, cuyo objetivo es aislar mediante &quot;<em>drivers</em>&quot; las
+  particularidades de una base de datos específica (ej. Oracle, SQL Server, Access) y
+  proporcionar una interfase genérica de consulta y actualización a las mismas.</font><font COLOR="#000000" SIZE="3"></p>
+  <p></font><font FACE="Arial" SIZE="3" COLOR="#000000">De modo que al crear un objeto ADO,
+  contaremos con acceso a métodos y funciones para utilizar los orígenes de datos (DSN) de
+  ODBC, que respectivamente estarán asociados a determinadas bases de datos o inclusive a
+  archivos en formatos tales como Dbase o Excel.</font><font COLOR="#000000" SIZE="3"></p>
+  <p></font><font FACE="Arial" SIZE="3" COLOR="#000000">Existen dos objetos básicos en la
+  interfase ADODB con la que contamos en el lado del servidor: el objeto <em>Connection</em>,
+  que se encarga de conectarse a un DSN y a través de este, enviar comandos a la base de
+  datos (generalmente, SQL), y en contraparte, recibir resultados de los comandos; y el
+  objeto <em>Recordset</em>, que precisamente es un arreglo dinámico que se usa para
+  almacenar los resultados de un comando de bases de datos, y permite navegar por estos
+  resultados en forma similar a un archivo formado por registros.</font><font COLOR="#000000" SIZE="3"></p>
+  <p>&nbsp;</p>
+</blockquote>
+</font><b><font SIZE="5" COLOR="#006600">
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Creación de una conexión</p>
+
+<blockquote>
+  </font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000"><p></b>Para crear cualquier objeto
+  ADO utilizaremos el objeto Server, a través del método CreateObject; ya que estos
+  objetos son objetos COM externos al servidor Web.</p>
+  <p>De este modo, para crear una conexión, utilizamos una línea como la siguiente:</p>
+  <blockquote>
+    <p><em>Set Conn=Server.CreateObject(&quot;ADODB.Connection&quot;)</em></p>
+  </blockquote>
+  <p>A partir de este momento, podemos utilizar al objeto <em>Conn </em>para hacer
+  operaciones sobre el mismo, principalmente abrir una base de datos y posteriormente hacer
+  consultas.</p>
+  <p>La duración (<em>scope</em>) de esta conexión es la de una variable local, por lo que
+  al terminar el script ASP actual, desaparece y ya no puede ser referenciado. Si se
+  requiere utilizarlo en otro ASP, hay que crear un nuevo. Una ventaja de esta desaparición
+  es que se libera la memoria ocupada por el objeto y se cierran automáticamente las
+  conexiones.</p>
+  <p>Una vez creado el objeto Conexión, para utilizarlo tenemos que indicarle que abra un
+  origen de datos ODBC (DSN). Esto se hace mediante el método Open:</p>
+  <blockquote>
+    <p><em>Conn.Open &quot;Nombre&quot;, &quot;Usuario&quot;, &quot;Password&quot;, ...</em></p>
+  </blockquote>
+  <b>
+</blockquote>
+
+<blockquote>
+  <p></b>&nbsp;</p>
+  <p>En forma simétrica, al terminar de usarla conviene liberar una conexión mediante el
+  método Close:</p>
+  <blockquote>
+    <p><em>Conn.Close</em><b></p>
+    <p>&nbsp;</p>
+  </blockquote>
+</blockquote>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Ejecución de SQL</p>
+</font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+
+<blockquote>
+  <p></b>Una vez creada y abierta una conexión, podemos hacer uso de instrucciones SQL,
+  mediante el método Execute. Este tiene varias formas de utilizarse; sin embargo, la más
+  sencilla consiste en crear un objeto (tipo ADODB.Recordset) como salida de la invocación
+  a Execute:</p>
+  <blockquote>
+    <p><em>Set Resultado= Conn.Execute( CadenaSQL )</em></p>
+  </blockquote>
+  <p>Donde CadenaSQL es un comando de SQL que permite hacer una búsqueda, alta, baja o
+  modificación a los datos.</p>
+  <p>El resultado, siendo un Recordset, se entrega en forma de un &quot;arreglo&quot;
+  dinámico de registros, donde podemos navegar registro por registro y detectar el fin del
+  Recordset.</p>
+  <p>Cuando hacemos una instrucción SQL que no regresa resultados, es posible invocar
+  Conn.Execute como subrutina y no función; ejemplo:</p>
+  <b>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p></b><em>Conn.Execute &quot;insert into Prueba values (1,2,3)&quot;</em></p>
+  </blockquote>
+  <b><p></b>Cuando es una consulta y por tanto regresa resultados, se utilizan los métodos
+  MoveNext y EOF del objeto Recordset para controlar el seguimiento; y se hace referencia a
+  los campos en forma similar a las variables de sesión y aplicación: por su nombre como
+  un índice dentro del objeto Recordset; ejemplo:<b></p>
+  <blockquote>
+    <p></b><em>' Hacer la consulta</em><b></p>
+    <p></b><em>Set Resultado= Conn.Execute( &quot;select matricula, nombre from alumnos&quot;
+    )</em></p>
+    <p><em>' Verificar si se obtuvieron resultados</em></p>
+    <p><em>if Resultado.EOF then ' Si &quot;fin de Recordset&quot;</em></p>
+    <blockquote>
+      <p><em>Response.Write &quot;No hay alumnos en la base de datos&quot;</em></p>
+    </blockquote>
+    <p><em>else</em></p>
+    <blockquote>
+      <p><em>do while not Resultado.EOF ' Mientras no se el fin del Recordset</em></p>
+      <blockquote>
+        <p><em>' Mostrar los datos del registro actual</em></p>
+        <p><em>Response.Write &quot;Matrícula: &quot; &amp; Resultado(&quot;Matricula&quot;)</em></p>
+        <p><em>Response.Write &quot;Nombre: &quot; &amp; Resultado(&quot;Nombre&quot;)</em></p>
+        <p><em>' y avanza al registro siguiente</em></p>
+        <p><em>Resultado.MoveNext</em></p>
+      </blockquote>
+      <p><em>loop</em></p>
+    </blockquote>
+    <p><em>end if</em><b></p>
+  </blockquote>
+</blockquote>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Sintaxis e instrucciones de SQL</p>
+
+<blockquote>
+  </font></b><p><font face="Arial" color="#000000" size="3">SQL es un lenguaje especializado
+  para consultas a bases de datos, y es el de mayor difusión por su simplicidad. No es
+  sensitivo a mayúsculas y minùsculas; y existen diversas variedades de acuerdo al sistema
+  administrador de bases de datos que utilicemos.</font></p>
+  <p><font face="Arial" color="#000000" size="3">Existen cuatro instrucciones básicas en
+  SQL; de cada una de ellas, se exploran sus variantes sencillas más comunes.</font><ul>
+    <li><font face="Arial" color="#000000" size="3">Para consultar registros: Select</font></li>
+  </ul>
+  <p><font face="Arial" color="#000000" size="3">Select permite obtener una proyección, es
+  decir, un listado de registros con las columnas (campos) que se indiquen, considerando
+  solamente los registros que cumplan ciertas condiciones. Existen algunas variantes
+  básicas:</font></p>
+  <p>&nbsp;<ol>
+    <li><font face="Arial" color="#000000" size="3">Mostrar todos los registros de una tabla,
+      con todos sus campos:<br>
+      <br>
+      <em>select * from [Tabla]</em><br>
+      <br>
+      Donde [Tabla] es sustituida por el nombre del objeto en la base de datos que se desea
+      tomar.<br>
+      </font></li>
+    <li><font face="Arial" color="#000000" size="3">Mostrar todos los registros de una tabla,
+      pero sólo algunos campos:<br>
+      <em><br>
+      select [ListaCampos] from [Tabla]</em><br>
+      <br>
+      Donde [ListaCampos] es sustituida por una lista con los nombres de los campos deseados,
+      separados por comas; y [Tabla] es sustituida por el nombre del objeto en la base de datos
+      que se desea tomar. Por ejemplo:<br>
+      <br>
+      <em>select Matricula, Nombre from Alumnos</em></font></li>
+    <li><font face="Arial" color="#000000" size="3">Mostrar sólo los registros de una tabla que
+      cumplan algún criterio:<br>
+      <em><br>
+      select [*/ListaCampos] from [Tabla]</em> where <em>[Condicion]</em> <br>
+      <br>
+      Donde [*/ListaCampos] es sustituida por asterisco, si se desean todos los campos; o por
+      una lista con los nombres de los campos deseados, separados por comas; [Tabla] es
+      sustituida por el nombre del objeto en la base de datos que se desea tomar; y [Condicion]
+      es sustituida por una expresión evaluable, la cual generalmente hace referencia a los
+      campos. Por ejemplo, si queremos sacar no a todos los alumnos sino solamente a los que
+      enviaremos a ceremonia de Excelencia:<br>
+      <br>
+      <em>select Matricula, Nombre from Alumnos where Promedio&gt;=95</em></font></li>
+  </ol>
+  <p>&nbsp;<ul>
+    <li><font face="Arial" color="#000000" size="3">Para dar de alta uno o varios registros:
+      Insert</font></li>
+  </ul>
+  <p><font face="Arial" color="#000000" size="3">Insert permite agregar registros a una
+  tabla, generalmente uno por uno aunque más adelante veremos formas de adicionar muchos
+  registros de una sola vez.</font></p>
+  <blockquote>
+    <ol>
+      <li><font face="Arial" color="#000000" size="3">Insertar un registro en una tabla,
+        especificando todos los campos disponibles:<br>
+        <em><br>
+        insert into [Tabla]</em> values ( <em>[ListaValores]</em>&nbsp; )<br>
+        <br>
+        Donde [Tabla] es sustituida por el nombre del objeto en la base de datos donde se desea
+        dar de alta el registro; y [ListaValores] es sustituida por los valores de los campos,
+        separados por comas. Por ejemplo, si los únicos campos en la tabla de Alumnos fueran
+        Matricula, Nombre y Promedio, respectivamente de tipo entero, cadena y entero:<br>
+        <br>
+        <em>insert into Alumnos values (123456, 'Bruno', 70)<br>
+        </em></font></li>
+      <li><font face="Arial" color="#000000" size="3">Insertar un registro en una tabla,
+        especificando algunos campos y dejando que el sistema de bases de datos llene los otros
+        con valores por defecto (si :<br>
+        <em><br>
+        insert into [Tabla]</em> (<em>[ListaCampos]</em>) values ( <em>[ListaValores]</em>&nbsp; )<br>
+        <br>
+        Donde [Tabla] es sustituida por el nombre del objeto en la base de datos donde se desea
+        dar de alta el registro; [ListaCampos] es sustituida por una lista con los nombres de los
+        campos deseados, separados por comas; y [ListaValores] es sustituida por los valores de
+        los campos, separados por comas. Por ejemplo, si los campos en la tabla de Alumnos fueran
+        Matricula, Nombre y Promedio, y aún no conocemos el promedio, por lo que dejaremos el
+        valor por defecto (probablemente NULL):<br>
+        <br>
+        <em>insert into Alumnos (Matricula, Nombre) values (123456, 'Bruno')</em></font></li>
+    </ol>
+  </blockquote>
+  <ul>
+    <li><font face="Arial" color="#000000" size="3">Para dar de baja uno o varios registros:
+      Delete</font></li>
+  </ul>
+  <p><font face="Arial" color="#000000" size="3">Delete permite eliminar registros de una
+  tabla, generalmente filtrando mediante algún criterio.</font></p>
+  <blockquote>
+    <ol>
+      <li><font face="Arial" color="#000000" size="3">Borrar todos los registros de una tabla:<br>
+        <em><br>
+        delete from [Tabla]</em><br>
+        <br>
+        Donde [Tabla] es sustituida por el nombre del objeto en la base de datos del que se desean
+        borrar todos los registros.<em><br>
+        </em></font></li>
+      <li><font face="Arial" color="#000000" size="3">Borrar los registros de una tabla que
+        cumplan cierta condición:<br>
+        <em><br>
+        delete from [Tabla] where [Condicion] </em><br>
+        <br>
+        Donde [Tabla] es sustituida por el nombre del objeto en la base de datos del que se desean
+        borrar los registros, y [Condicion] es sustituida por una expresión evaluable, la cual
+        generalmente hace referencia a los campos. Por ejemplo, si queremos borrar a los alumnos
+        que hayan tenido un promedio reprobatorio:<br>
+        <br>
+        <em>delete from Alumnos where Promedio&lt;70</em>.</font></li>
+    </ol>
+  </blockquote>
+  <ul>
+    <li><font face="Arial" color="#000000" size="3">Para modificar uno o varios registros:
+      Update</font></li>
+  </ul>
+  <p><font face="Arial" color="#000000" size="3">Update permite actualizar uno o muchos
+  registros de una tabla, campo por campo.</font></p>
+  <blockquote>
+    <ol>
+      <li><font face="Arial" color="#000000" size="3">Actualizar un campo de todos los registros
+        de una tabla:<br>
+        <em><br>
+        update [Tabla]</em> set <em>[Campo]</em> = <em>[Valor]</em> <br>
+        <br>
+        Donde [Tabla] es sustituida por el nombre del objeto en la base de datos que contiene los
+        registros para actualizar; [Campo] por el nombre del campo que vamos a actualizar; y [Valor],
+        será el que vamos a poner.<em> </em>Por ejemplo, si vamos a limpiar el promedio de los
+        alumnos colocándolo en nulo:<br>
+        <em><br>
+        update Alumnos set Promedio = NULL<br>
+        </em></font></li>
+      <li><font face="Arial" color="#000000" size="3">Actualizar un campo para ciertos registros
+        de una tabla<em> where [Condicion</em>:<br>
+        <em><br>
+        update [Tabla]</em> set <em>[Campo]</em> = <em>[Valor]</em> <br>
+        <br>
+        Donde [Tabla] es sustituida por el nombre del objeto en la base de datos que contiene los
+        registros para actualizar; [Campo] por el nombre del campo que vamos a actualizar; [Valor],
+        será el que vamos a poner; y [Condicion] es sustituida por una expresión evaluable, la
+        cual generalmente hace referencia a los campos.<em> </em>Por ejemplo, si vamos a hacer
+        campana con el promedio de todos los alumnos, y todos aquellos que tengan menos de 50 les
+        pondremos 50, sería de la siguiente forma:<br>
+        <em><br>
+        update Alumnos set Promedio = 50 where Promedio&lt;50<br>
+        </em></font></li>
+    </ol>
+  </blockquote>
+</blockquote>
+
+<p><font FACE="Arial" SIZE="5" COLOR="#006600"><b>Casos comunes y ejemplo</b></font></p>
+
+<blockquote>
+  <ul>
+    <li><font face="Arial" color="#000000" size="3">Ejemplo de catálogo visto en clase</font></li>
+  </ul>
+  <p>&nbsp;</p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>Bibliografía y Referencias</p>
+</b></font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+
+<blockquote>
+  <p>Libro de Texto: Programming Active Server Pages</font><font face="Arial" color="#000000" size="3">, Capítulo , pp. .</p>
+  <blockquote>
+    </font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000"><font FACE="Arial" COLOR="#000000" SIZE="2"><p></font>Microsoft Press/McGraw Hill<font FACE="Arial" COLOR="#000000" SIZE="2"></p>
+    <p></font>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</font>
+</body>
+</html>

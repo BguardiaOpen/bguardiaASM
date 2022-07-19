@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title> Manejo básico de Video</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema &nbsp;#11 </h1>
+
+<h1 align="center">Manejo básico de Video usando BIOS </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase10.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase12.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Conocer los servicios de BIOS que nos permiten manejar
+        texto con control de cursor y colores, así como los
+        modos gráficos y&nbsp;pintar pixels en ellos. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<p>PRINCIPALES SERVICIOS DE LA INTERRUPCIÓN 10h </p>
+
+<ul>
+    <li><a href="#Modo">Ajuste del modo de video</a> </li>
+    <li><a href="#scroll">Limpiar pantalla</a> </li>
+    <li><a href="#Activa">Ajuste de la página activa de video</a>
+    </li>
+    <li><a href="#Texto">Manejo de texto</a> <ul>
+            <li><a href="#Cursor">Ajuste del cursor</a> </li>
+            <li><a href="#gotoxy">Posicionamiento del cursor</a> </li>
+            <li><a href="#wherexy">Obtener la configuración del
+                cursor</a> </li>
+            <li><a href="#scroll">Desplazar una ventana, hacia
+                arriba</a> </li>
+            <li><a href="#scroll">Desplazar una ventana, hacia
+                abajo</a> </li>
+            <li><a href="#getchar">Obtener un caracter de la
+                pantalla</a> </li>
+            <li><a href="#putchar">Colocar un caracter en la
+                pantalla</a> </li>
+        </ul>
+    </li>
+    <li><a href="#Graficas">Manejo de gráficos</a> <ul>
+            <li><a href="#getpixel">Obtener un pixel de la
+                pantalla</a> </li>
+            <li><a href="#putpixel">Colocar un pixel en la
+                pantalla</a> </li>
+        </ul>
+    </li>
+</ul>
+
+<hr size="20">
+
+<h2><a name="Modo">Servicio 00h: Ajustar el modo de video</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>AL = Modo de video deseado. </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función cambia el modo en que opera la tarjeta
+controladora de video. En particular, permite conmutar los modos
+de texto y gráficos. Los principales modos que se pueden manejar
+son, entre otros: </p>
+
+<ul>
+    <li>01h = Texto, 40x25 caracteres, 16 colores, 8 páginas. </li>
+    <li>03h = Texto, 80x25 caracteres, 16 colores, 4 páginas. </li>
+    <li>0Dh = Gráfico EGA/VGA, 320x200 pixels, 16 colores, 8
+        páginas. </li>
+    <li>10h = Gráfico EGA/VGA, 640x350 pixels, 16 colores, 2
+        páginas. </li>
+    <li>12h = Gráfico VGA, 640x480 pixels, 16 colores, 1
+        página. </li>
+    <li>13h = Gráfico MCGA/VGA, 320x200 pixels, 256 colores, 4
+        páginas. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Activa">Servicio 05h: Cambia la página activa de
+video</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>AL = Número de <a href="#Pagina">página </a>deseada </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función cambia la página activa. En un modo de páginas
+múltiples, se deja de proyectar la información de la zona
+actual de memoria, y a partir del próximo barrido el monitor
+representará la información de la página indicada. </p>
+
+<p>El rango de AL debe ir entre 0 y el número de páginas que
+soporte el modo actual de video, menos uno. </p>
+
+<p>. </p>
+
+<hr size="20">
+
+<h2><a name="Texto">Servicios para manejo de texto</a> </h2>
+
+<hr size="10">
+
+<h2><a name="Cursor">Servicio 01h: Ajustar el tipo o tamaño del
+cursor</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>CH = Línea superior de examinación del cursor </li>
+    <li>CL = Línea inferior de examinación del cursor </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función ajusta el tipo de cursor que yo deseo usar. Por
+ejemplo, un cursor completamente lleno (cursor de cuadro), se
+puede programar al llamar a este servicio con CH=0 y CL=7; un
+cursor normal se programa con CH=6, CL=7; un cursor de tamaño
+mínimo, hasta abajo, con CH=CL=7; un cursor que tiene una barra
+hasta abajo y una hasta arriba, con CH=7 y CL=0; e inclusive un
+cursor invisible. </p>
+
+<hr size="10">
+
+<h2><a name="gotoxy">Servicio 02h: Posiciona el cursor dentro de
+la pantalla</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>BH = Número de <a href="#Pagina">página </a>(recuerden,
+        hay un cursor para cada página) </li>
+    <li>DH = Renglón donde posicionarse (0-24, normalmente) </li>
+    <li>DL = Columna donde posicionarse (0-39 o 0-79,
+        normalmente) </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función coloca el cursor en la posición especificada.
+Equivale a que hicieramos un gotoxy(DL, DH), en C o Pascal. </p>
+
+<hr size="10">
+
+<h2><a name="wherexy">Servicio 03h: Obtiene la configuración del
+cursor</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>BH = Número de página (recuerden, hay un cursor para
+        cada página) </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>CH = Línea superior de examinación del cursor </li>
+    <li>CL = Línea inferior de examinación del cursor </li>
+    <li>DH = Renglón donde se encuentra el cursor (0-24,
+        normalmente) </li>
+    <li>DL = Columna donde se encuentra el cursor (0-39 o 0-79,
+        normalmente) </li>
+</ul>
+
+<p>Esta función complementa las dos anteriores, permitiéndonos
+conocer que forma tiene el cursor, y donde está posicionado. </p>
+
+<hr size="10">
+
+<h2><a name="scroll">Servicio 06h: Desplaza una ventana hacia
+arriba</a> </h2>
+
+<p><a name="scroll">Servicio 07h: Desplaza una ventana hacia
+abajo</a> </p>
+
+<p><strong>Ambos servicios permiten el borrado de pantalla.</strong>
+</p>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>AL = Número de renglones que se desea desplazar. <strong>Si
+        AL=0, se limpia la ventana especificada.</strong> </li>
+    <li>BH = <a href="#Atributo">Atributo </a>de color de línea
+        en blanco </li>
+    <li>CH = Renglón superior (coordenada Y de la esquina
+        superior izquierda de la ventana que se desea desplazar) </li>
+    <li>CL = Columna superior (coordenada X de la esquina
+        superior izquierda de la ventana que se desea desplazar) </li>
+    <li>DH = Renglón inferior (coordenada Y de la esquina
+        inferior derecha de la ventana que se desea desplazar) </li>
+    <li>DL = Columna inferior (coordenada X de la esquina
+        inferior derecha de la ventana que se desea desplazar) </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función nos permite mover la información de la pantalla
+hacia arriba o hacia abajo, según el servicio que se use,
+rellenando el espacio desplazado por renglones en blanco, con el
+atributo de color indicado en BH. </p>
+
+<p>Un ejemplo de la aplicación de esto se encuentra en los
+procesadores de palabra, que mueven la información hacia arriba
+o hacia abajo cuando con el cursor nos desplazamos
+&quot;fuera&quot; de la página actual. </p>
+
+<p>Como no tiene sentido desplazar 0 renglones, se ha reservado
+ese caso para definir la limpieza de la ventana; si AL=0, la
+región de la pantalla que se indica es rellenada con espacios,
+que toman el color indicado por el atributo. </p>
+
+<p>Ambos servicios operan exclusivamente sobre la página activa
+de video. </p>
+
+<hr size="10">
+
+<h2><a name="getchar">Servicio 08h: Toma un caracter y su
+atributo, de la posicion actual del cursor en pantalla</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>BH = Número de <a href="#Pagina">página </a>(recuerden,
+        hay un cursor para cada página) </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>AH = <a href="#Atributo">Atributo </a>de color del
+        caracter bajo el cursor. </li>
+    <li>AL = Código de pantalla del caracter bajo el cursor.
+        (ASCII extendido) </li>
+</ul>
+
+<p>Esta función consulta el código del caracter y su color, en
+la posición actual del cursor en la página especificada. </p>
+
+<p>Nos permite averigüar el contenido de la pantalla,
+posiblemente antes de modificarla. </p>
+
+<hr size="10">
+
+<h2><a name="putchar">Servicio 09h: Coloca un caracter y su
+atributo, en la posicion actual del cursor en pantalla</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>BH = Número de <a href="#Pagina">página </a>(recuerden,
+        hay un cursor para cada página) </li>
+    <li>BL = <a href="#Atributo">Atributo </a>de color para el
+        caracter </li>
+    <li>AL = Código de pantalla del caracter </li>
+    <li>CX = Contador de repetición, que nos permite colocar el
+        mismo caracter en varias localidades consecutivas de la
+        pantalla, de izquierda a derecha y de arriba hacia abajo.
+    </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función pinta el caracter indicado, con el atributo
+indicado, en la posición actual del cursor en la página
+especificada de pantalla. </p>
+
+<hr size="20">
+
+<h2><a name="Graficas">Servicios para manejo de gráficos</a> </h2>
+
+<hr size="10">
+
+<h2><a name="getpixel">Servicio 0Dh: Toma el color de un pixel,
+de la posicion indicada en pantalla</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>BH = Número de <a href="#Pagina">página </a></li>
+    <li>CX = Columna (coordenada X, en pixels) del punto a
+        consultar </li>
+    <li>DX = Renglón (coordenada Y, en pixels) del punto a
+        consultar </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>AL = Color del pixel en la posición indicada </li>
+</ul>
+
+<p>Esta función consulta el color del pixel indicado, en modo
+gráfico. </p>
+
+<p>Nos permite averigüar el contenido de la pantalla de
+gráficos, posiblemente antes de modificarla. </p>
+
+<hr size="10">
+
+<h2><a name="putpixel">Servicio 0Ch: Coloca un pixel en la
+posición indicada en pantalla</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>BH = Número de <a href="#Pagina">página </a></li>
+    <li>CX = Columna (coordenada X, en pixels) del punto a
+        consultar </li>
+    <li>DX = Renglón (coordenada Y, en pixels) del punto a
+        consultar </li>
+    <li>AL = Color del pixel en la posición indicada </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Nada </li>
+</ul>
+
+<p>Esta función pinta un pixel, con el color indicado en la
+posición indicada. Es la única primitiva de dibujo que nos da
+el BIOS, y sobre ella se pueden construir funciones para trazado
+de líneas, círculos, etcétera. </p>
+
+<p>Equivale a funciones de librería de Pascal y C, como dot(CX,
+DX, AL) </p>
+
+<hr>
+
+<h2 align="center">Glosario </h2>
+
+<ul>
+    <li><a name="Atributo">Atributo de pantalla:</a> Es la
+        combinación de colores que corresponde a un caracter. Se
+        codifica en 8 bits: <ul>
+            <li>1 bit (el más significativo) para controlar el
+                parpadeo. </li>
+            <li>3 bits (del bit 6 al 4) para controlar el color
+                de fondo. <ul>
+                    <li>Bit 6: Rojo </li>
+                    <li>Bit 5: Verde </li>
+                    <li>Bit 4: Azul </li>
+                </ul>
+            </li>
+            <li>4 bits (los menos significativo) para controlar
+                el color del caracter. <ul>
+                    <li>Bit 3: Intenso </li>
+                    <li>Bit 2: Rojo </li>
+                    <li>Bit 1: Verde </li>
+                    <li>Bit 0: Azul </li>
+                </ul>
+            </li>
+        </ul>
+        <p>Por ejemplo, el atributo 1Fh (0 001 1111 en binario)
+        indica un caracter de color blanco intenso, sobre fondo
+        azul, que no parpadea. </p>
+        <p>Otro ejemplo: el atributo 87h (1 000 0111 en binario)
+        indica un caracter de color blanco mate o gris claro,
+        sobre fondo negro, que parpadea. </p>
+        <hr size="10">
+    </li>
+    <li><a name="Pagina">Página de video:</a> Para evitar el
+        parpadeo en el video, los controladores modernos cuentan
+        con la capacidad de manejar varias zonas de memoria que
+        contienen la información necesaria para representar la
+        pantalla. Sólo una de ellas es la que consulta el
+        controlador, en el momento que el monitor le pide la
+        información para presentarla en el barrido. <p>De esta
+        manera, se puede realizar un dibujo complejo en una
+        página de video que no se esté visualizando, es decir
+        que no sea la página activa; y una vez que se ha
+        terminado de dibujar, en un instante se puede cambiar la
+        página activa a la que acabamos de dibujar. Con ello, se
+        garantiza una presentación coherente de
+        &quot;cuadros&quot; al usuario: en un momento ve la
+        pantalla 1, y en otro momento la pantalla 2, pero no
+        ocurre el &quot;flickering&quot;, que consiste en los
+        casos en que hay un pequeño instante, en el cual el
+        monitor refleja parte de la información de la pantalla 1
+        y parte de información de la pantalla 2. </p>
+    </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<p>Capítulo15, libro de texto. </p>
+
+<p>Manuales de interrupciones, por ejemplo el apéndice C del
+libro de texto. </p>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por
+Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
+<em>Última actualización: Do 16-Feb-97</em> </p>
+</body>
+</html>

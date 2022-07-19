@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Animación &quot;Eclipses&quot;</title>
+</head>
+
+<body background="../../../images/fondo-uv.gif" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF">
+
+<h2 align="center">Animación &quot;Eclipses&quot;</h2>
+
+<h3><img src="../../../images/waveline.gif" alt="Línea de Separación" width="756" height="16"><br>
+</h3>
+
+<p>Este proyecto se basa en mi proyecto final de Gráficos
+Computacionales, allá por Diciembre de 1992. Se hizo un programa
+que generaba una escena basado en las coordenadas estimadas para
+cada uno de los 3 cuerpos, el cual utiliza el algoritmo de
+Ray-Tracing para calcular la iluminación de los cuerpos. Se
+ejecutó ese programa pasándole como parámetros las coordenadas
+en 360 posiciones (360 ° alrededor), con lo que se generaron 360
+archivos BMP. </p>
+
+<p>Posteriormente, se trabajó en un programa que utiliza un
+algoritmo sencillo de compresión RLE y Diferencial, similar al
+formato FLIC, con el cual se generó el archivo .CMP que se
+muestra; y finalmente, en el programa capaz de desplegarlo en
+pantalla eficientemente. Todo esto fue hecho en C; en el semestre
+9401 convertí el programa de desplegado a Ensamblador,
+optimizando enormemente su velocidad.</p>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><a href="proyecta.asm">Programa Fuente (Ensamblador)</a>
+        </td>
+    </tr>
+    <tr>
+        <td><a href="proyecta.c">Programa Fuente (C)</a></td>
+    </tr>
+    <tr>
+        <td><a href="eclipses.cmp">Archivo con animación
+        comprimida</a></td>
+    </tr>
+    <tr>
+        <td><a href="makefile">Archivo makefile para construirlo</a></td>
+    </tr>
+</table>
+</body>
+</html>

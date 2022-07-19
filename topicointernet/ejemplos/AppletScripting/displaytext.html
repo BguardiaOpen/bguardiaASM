@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Display Text</title>
+</head>
+
+<script language="VBScript">
+<!--
+
+' Handle the click event for the Set button
+sub Set_OnClick
+	' Call the applet setText method, 
+	' with the value in the Phrase <input> box
+	document.TextDisplay.setText Phrase.value
+end sub
+
+' Handle the click event for the Reset button
+sub Reset_OnClick
+	' Call the applet resetText method
+	document.TextDisplay.resetText
+end sub
+
+-->
+</script>
+
+<body>
+
+<applet code="displaytext.class" id="TextDisplay" width="600" height="120" codebase="../appletscripting/">
+    <param name="initialValue" value="Hello World">
+</applet>
+<p>
+
+<input name="Phrase" value="Some new text">
+<input type="button" name="Set" value="Set Display Text">
+<input type="button" name="Reset" value="Reset to Initial Values">
+
+<hr>
+
+<h3>Description</h3>
+
+This is a simple HTML page that demonstrates the use of 
+Microsoft<sup>®</sup> Visual Basic<sup>&#153;</sup> Scripting 
+Edition (VBScript) to control a Java<sup>&#153;</sup> applet.  
+If you look at the HTML source for this page, you will find the 
+VBScript code between the <b>&lt;script&gt;</b> and 
+<b>&lt;/script&gt;</b> tags.  These VBScript functions respond 
+to the user clicking the HTML buttons on this page.
+<p>
+
+<h3>Notes about the VBScript</h3>
+
+<b>document.TextDisplay</b> refers to the applet.  If you 
+change the <b>id</b> attribute in the <b>&lt;applet&gt;</b> 
+tag to <b>JavaApplet</b>, you will have to modify the reference 
+to the applet to <b>document.JavaApplet</b>.
+<p>
+
+The <b>name</b> attribute in the <b>&lt;input&gt;</b> tag gives a way to
+refer to the buttons and the text area in VBScript.
+<p>
+
+The VBScript code calls two methods exposed by the applet: 
+<b>setText</b> and <b>resetText</b>.  These are public methods of the 
+applet. They are declared at
+the bottom of the Java source code file.
+<p>
+
+<hr>
+
+<a href="../appletscripting/displaytext.java">The source.</a>
+
+</body>
+</html>

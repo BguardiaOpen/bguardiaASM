@@ -1,0 +1,216 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Tema 13 - Java</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<p><font color="#ff0000" size="5" face="Arial"><b>Tema 13 - Java</b></font></p>
+
+<p>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Objetivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Comprender el papel del lenguaje Java y las tecnologías 
+    derivadas del mismo.</font></p>
+    <ul>
+        <li><font color="#000000" face="Arial">Applets</font>
+        <li><font color="#000000" face="Arial">Servlets</font>
+        <li><font color="#000000" face="Arial">Aspectos de seguridad</font></li>
+    </ul>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Características generales de Java 
+(Repaso)</b></font></p>
+<blockquote>
+    <p><font color="#000000" face="Arial,Helv" size="3">Java es un lenguaje con mucha base en C y C++, pero 
+    totalmente orientado a objetos. A diferencia de C++, todo en Java es un 
+    objeto. Esto hace el lenguaje más sencillo, en particular, el uso de 
+    apuntadores se abstrae lo que simplifica hasta cierto punto la 
+    programación. Sin embargo, no es un lenguaje trivial para programar, 
+    es más complejo que Basic.</font></p>
+    <p><font color="#000000" face="Arial,Helv" size="3"></font><font face="Arial">Otra 
+    característica importante de la mayoría de las 
+    implementaciones y la definición del estándar de Java, es que 
+    no es ni interpretado ni compilado, sino trabaja en un esquema intermedio 
+    llamado &quot;máquina virtual&quot;. En este esquema, el 
+    código Java se compila a un código máquina definido 
+    específicamente para adaptarse a Java, pero que no es igual al 
+    código máquina del procesador donde se ejecutará; por 
+    lo que se requiere un software adicional, llamado &quot;máquina 
+    virtual&quot;, el cual traduce del código máquina virtual Java 
+    al código máquina nativo de la computadora donde se ejecute. 
+    </font></p>
+    <p><font face="Arial">Respecto a los 
+    lenguajes compilados a código nativo, esto da como ventaja la 
+    portabilidad a nivel binario y no sólo de código fuente, es 
+    decir, si creo una aplicación Java en la máquina virtual en 
+    una PC con Windows 95, se ejecutará igualmente en Sun, Macintosh, o 
+    cualquier otra plataforma donde se soporte la Java VM. </font></p>
+    <p><font face="Arial">Respecto a los 
+    lenguajes interpretados, Java resulta más eficiente, se ejecuta 
+    más rápido al no requerir los procesos de análisis 
+    sintáctico y gramatical, sino solamente la traducción directa 
+    de los códigos máquina Java a máquina 
+nativa.</font></p>
+    <p><font face="Arial"></font><font face="Arial">Como contraparte, requiere una 
+    compilación compleja y es más lento que código 
+    nativo.</font></p></blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Applets</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Concepto:</font></strong></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Son módulos o clases escritas en Java, 
+    restringidos a ejecutarse dentro de un navegador.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Características:</font></strong></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv">Muy limitados: no tienen acceso a archivos, muchas 
+        veces no pueden comunicarse a otro servidor salvo del que se bajaron, 
+        sólo pueden presentar información dentro de la ventana 
+        especificada en el navegador.</font>
+        <li><font color="#000000" size="3" face="Arial,Helv">Muy seguros: difícilmente pueden causar 
+        daños a la máquina cliente o acceder a información 
+        indebida, si bien los errores en la implementación de las VM 
+        pueden permitir algunos accesos.</font>
+        <li><font color="#000000" size="3" face="Arial,Helv">Se &amp;ldquo;bajan&amp;rdquo; del servidor, en forma 
+        inteligente (sólo si han cambiado desde la última vez que 
+        se accesaron), usando el protocolo estándar de HTTP.</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Aplicaciones: 
+    </strong></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Los applets de Java pueden usarse para ejecutar 
+    código complejo dentro de un navegador; tienen acceso a diversos 
+    recursos, sin embargo limitados por seguridad. Entre los usos comunes de los 
+    applets podemos encontrar:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Gráficas</font>
+        <li><font face="Arial"></font><font face="Arial">Interfases 
+        complejas</font>
+        <li><font face="Arial">Envío y recepción de información compleja: 
+        encripción, análisis o conversión de la 
+        información.</font>
+        <li><font face="Arial"></font><font face="Arial">Sistemas completos 
+        que viven en un navegador, ej. juegos.</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Ventajas</font><font color="#000000" size="3" face="Arial,Helv">:</font></strong></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv">Son más rápidos y compactos que los 
+        scripts del lado del cliente.</font>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">El 
+        código no es directamente visible en el navegador, si bien 
+        existen herramientas para &quot;descompilar&quot; Java.</font>
+        <li><font face="Arial"></font><font face="Arial">Son más 
+        seguros que los ActiveX, al no poder tomar cualquier acción 
+        arbitraria sobre la máquina del cliente.</font></li></ul>
+    <p>&nbsp;
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Desventajas:</font></strong></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv">Pueden requerir bastante tiempo para bajarse, sobre 
+        todo la primera vez.</font>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Son 
+        más difíciles de depurar.</font>
+        <li><font face="Arial"></font><font face="Arial">Se requiere un 
+        servidor Web para probarlos, a diferencia de HTML y scripts que se 
+        pueden probar trabajando sobre archivos locales.</font>
+        <li><font face="Arial"></font><font face="Arial">La 
+        programación Java es compleja, sin llegar al nivel de C; sin 
+        embargo, tiene bastantes trucos. Un diseñador aprende JavaScript 
+        o VBScript con facilidad, mientras que Java le resulta complejo; 
+        simplemente, son herramientas más sencillas y por tanto, 
+        más productivas en términos del tiempo de 
+        programación.</font>
+        <li><font face="Arial"></font><font face="Arial">No son tan poderosos 
+        como los controles ActiveX, resultan limitados en comparación con 
+        ellos.</font></li></ul>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Servlets</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Concepto:</strong></font></p><font color="#000000" size="3" face="Arial,Helv">
+    <p><font color="#000000" size="3" face="Arial,Helv">Son módulos o clases escritas en Java, 
+    restringidos a ejecutarse en el contexto del servidor Web.</font></p>
+    <p><strong>Aplicaciones:</strong></p></font>
+    <p><font face="Arial">Al igual que 
+    ASP, son una tecnología diseñada para producir documentos 
+    visibles en un navegador (primordialmente HTML y Java Script), utilizando 
+    los recursos del servidor en respuesta a solicitudes de HTTP. </font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Ventajas:</font></strong></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Es una 
+        tecnología soportada en diversas plataformas de servidores Web, 
+        estándar e independiente del fabricante</font>
+        <li><font face="Arial">Es 
+        más rápida en su ejecución en relación a 
+        tecnologías interpretadas como ASP o Cold Fusion</font>
+        <li><font face="Arial"></font><font face="Arial">El código 
+        está totalmente oculto del cliente, a diferencia de las 
+        tecnologías de scripts clientes o HTML.</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv"><strong>Desventajas:</font></strong></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">No es 
+        tan rápida como tecnologías nativas, tales como ISAPI, 
+        NSAPI ; por ello, también es menor su escalabilidad para dar 
+        soporte a grandes cantidades de usuarios concurrentes.</font>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">El 
+        soporte universal le proporciona funcionalidad limitada con respecto a 
+        explotar al máximo los recursos del sistema operativo o 
+        plataforma; cuando se aumenta una plataforma de servlets con las clases 
+        nativas que lo permiten, se pierde a cambio portabilidad.</font>
+        <li><font face="Arial">La 
+        programación Java es compleja, sin llegar al nivel de C; sin 
+        embargo, tiene bastantes trucos. Por ello, es más productivo (en 
+        términos de tiempo para el desarrollador) usar lenguajes de 
+        Scripts en el lado del servidor como ASP.</font></li></ul>
+</blockquote><font color="#006600" size="5" face="Arial"><b>
+<p><font color="#006600" face="Arial" size="5"><b>Ejemplos simples</b></font></p>
+<blockquote>
+    <p><font color="#000000" face="Arial,Helv" size="3"><strong>Applets:</strong></font></p></b><font color="#000000" face="Arial,Helv" size="3">
+    <p><font color="#000000" face="Arial,Helv" size="3">Un ejemplo con todo y el código, de un applet 
+    que muestra una <a href="../ejemplos/JavaPieCharts/PieCharts.html">gráfica de pie</a>.</font></p>
+    <p>Un ejemplo de applet simple que es controlado por <a href="http://laptop_toshiba/clases/topicointernet/ejemplos/AppletScripting/displaytext.html">VBScript</a>. o por <a href="http://laptop_toshiba/clases/topicointernet/ejemplos/AppletScripting/displaytextJS.html">Java Script</a>.</p></font></blockquote><b>
+<p>Bibliografía y Referencias</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Libro de Texto: Programming Active Server 
+    Pages</font><font color="#000000" size="3" face="Arial">, 
+    Capítulo , pp. .</font></p>
+    <blockquote>
+        <p><font color="#000000" size="3" face="Arial,Helv">Microsoft Press/McGraw Hill</font></p>
+    </blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Libros de apoyo </font></p>
+    <blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv"> </font><font face="Arial">El 
+        lenguaje de programación Java</font></p>
+    <p><font face="Arial">Cree sus 
+        applets para Web con Java</font></p>
+    <p><font face="Arial">Aprendiendo Java en 21 días</font></p>
+    <p><font face="Arial">Aprendiendo Visual J++ en 21 días</font></p></blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Sitios Web: </font></p>
+    <blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv"> </font><font face="Arial"><a href="http://www.javasoft.com">http://www.javasoft.com</a> - Sitio oficial para 
+        información sobre Java</font></p>
+    <p><font face="Arial"></font><a href="http://www.javasoft.com/applets/index.html"><font face="Arial">http://www.javasoft.com/applets/index.html</a> - Sitio con 
+        Recursos de Applets</font></p>
+    <p><font face="Arial"></font><a href="http://jserv.java.sun.com/products/java-server/documentation/webserver1.1/servlets/servlet_tutorial.html"><font face="Arial">http://jserv.java.sun.com/products/java-server/documentation/webserver1.1/servlets/servlet_tutorial.html</a> 
+        - Sitio con un tutorial básico de Servlets</font></p>
+    <p><font face="Arial"><a href="http://www.gamelan.com">http://www.gamelan.com</a> - Sitio con gran cantidad de recursos 
+        para Java</font></p>
+    <p><font face="Arial"></font><font face="Arial"><a href="http://www.eckelobjects.com">http://www.eckelobjects.com</a> - 
+        Sitio del autor (Bruce Eckel) de un excelente libro sobre 
+        Java.</font></p></blockquote>
+    <p>&nbsp;</p>
+    <blockquote>
+        <blockquote>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+</body>
+</html>

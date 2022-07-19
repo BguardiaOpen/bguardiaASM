@@ -1,0 +1,787 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Proyecto 3: Sistema de Información en Internet</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<h1>Desarrollo en Internet</h1>
+
+<h1>Proyecto 3: Sistema de Información en 
+Internet.</h1>
+
+<h3>Equipos de 4 personas.</h3>
+<P>Entrega: 31 de octubre del 2000</P>
+<P>El objetivo del proyecto será proporcionar al usuario un conjunto de 
+servicios a través de formas interactivas e información situada en una base de 
+datos.</P>
+
+<p>Entre las opciones de proyecto, que se sortearán o 
+asignarán entre los equipos durante la clase, se tendrán las 
+siguientes: </p>
+
+<ul>
+    <li><A href="#impuestos">Sistema de 
+    cálculo de impuestos por Internet</A>.</li>
+</ul>
+
+<ul>
+    <li><A href="#futbol">Sistema de 
+    estadísticas de futbol.</A></li>
+</ul>
+
+<ul>
+    <li><A href="#inventario">Control de 
+    inventarios en sucursales.</A></li>
+</ul>
+
+<ul>
+    <li><A href="#cines">Sistema de 
+    boletos para multicines.</A></li>
+</ul>
+<p>            
+         
+     &nbsp;</p>
+
+<h3><a name="impuestos"><em>Sistema de cálculo de impuestos por Internet</em></a></h3>
+
+<p>Este sistema contará con los módulos que 
+permitirán llenar y calcular los impuestos para honorarios: </p>
+
+<ul>
+    <li>Actualizar la tabla de impuestos para el trimestre 
+    actual.
+    <li>Llenar los ingresos en el trimestre.
+    <li>Llenar las deducciones en el trimestre (sólo 
+    las sencillas)
+    <li>Calcular los impuestos de base a pagar.</li>
+</ul>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Usuarios</strong>"</th>
+    </tr>
+    <tr>
+        <th align="left" width="33%">Nombre del campo</th>
+        <th align="left" width="33%">Tipo</th>
+        <th align="left" width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td width="33%">RFC</td>
+        <td width="33%">Texto</td>
+        <td width="34%">RFC único del usuario (13 
+            Caracteres)</td>
+    </tr>
+    <tr>
+        <td width="33%">CURP</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Clave única del registro de 
+            población (puede estar vacía todavía)</td>
+    </tr>
+    <tr>
+        <td width="33%">Nombre</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Nombre del usuario para sus 
+            declaraciones</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Impuesto</strong>"</th>
+    </tr>
+    <tr>
+        <th align="left" width="33%">Nombre del campo</th>
+        <th align="left" width="33%">Tipo</th>
+        <th align="left" width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td width="33%">Trimestre</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número de trimestre del 
+            año (1-4)</td>
+    </tr>
+    <tr>
+        <td width="33%">Periodo</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Año</td>
+    </tr>
+    <tr>
+        <td width="33%">Minimo</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Ingresos mínimos para que 
+            aplique este impuesto</td>
+    </tr>
+    <tr>
+        <td width="33%">Maximo</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Ingresos máximos para que 
+            aplique el impuesto</td>
+    </tr>
+    <tr>
+        <td width="33%">CuotaFija</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Base del impuesto sobre la renta</td>
+    </tr>
+    <tr>
+        <td width="33%">TasaExcedente</td>
+        <td width="33%">Real</td>
+        <td width="34%">Porcentaje (0-100%) que se aplica 
+            sobre el excedente.</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Subsidio</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td width="33%">Trimestre</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número de trimestre del 
+            año (1-4)</td>
+    </tr>
+    <tr>
+        <td width="33%">Periodo</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Año</td>
+    </tr>
+    <tr>
+        <td width="33%">Minimo</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Ingresos mínimos para que 
+            aplique este impuesto</td>
+    </tr>
+    <tr>
+        <td width="33%">Maximo</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Ingresos máximos para que 
+            aplique el impuesto</td>
+    </tr>
+    <tr>
+        <td width="33%">CuotaFija</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Base del subsidio</td>
+    </tr>
+    <tr>
+        <td width="33%">TasaSubsidio</td>
+        <td width="33%">Real</td>
+        <td width="34%">Porcentaje (0-100%) de subsidio 
+            que se aplica sobre el impuesto 
+marginal.</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Ingresos</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>RFC</td>
+        <td>Texto</td>
+        <td>RFC del usuario al que pertenece el 
+ingreso</td>
+    </tr>
+    <tr>
+        <td width="33%">Trimestre</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número de trimestre del 
+            año (1-4)</td>
+    </tr>
+    <tr>
+        <td width="33%">Periodo</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Año</td>
+    </tr>
+    <tr>
+        <td>Fecha</td>
+        <td>Fecha/Hora</td>
+        <td>Fecha del ingreso</td>
+    </tr>
+    <tr>
+        <td width="33%">Ingreso</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Cantidad base de honorarios 
+            ganados</td>
+    </tr>
+    <tr>
+        <td>IVA</td>
+        <td>Moneda</td>
+        <td>IVA Ganado por los honorarios (por defecto 
+            15%)</td>
+    </tr>
+    <tr>
+        <td>ISRRetenido</td>
+        <td>Moneda</td>
+        <td>ISR Retenido por los honorarios (por defecto 
+            10%)</td>
+    </tr>
+    <tr>
+        <td>IVARetenido</td>
+        <td>Moneda</td>
+        <td>IVA Retenido por los honorarios (por defecto 
+            10%)</td>
+    </tr>
+    <tr>
+        <td width="33%">Concepto</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Descripción del concepto de 
+            los ingresos</td>
+    </tr>
+    <tr>
+        <td>RecibiDe</td>
+        <td>Texto</td>
+        <td>Razón social del cliente o 
+            patrón que paga los honorarios</td>
+    </tr>
+    <tr>
+        <td width="33%">NumeroRecibo</td>
+        <td width="33%">Entero</td>
+        <td width="34%">Número del recibo de 
+            honorarios</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Egresos</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>RFC</td>
+        <td>Texto</td>
+        <td>RFC del usuario al que pertenece el egreso</td>
+    </tr>
+    <tr>
+        <td width="33%">Trimestre</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número de trimestre del 
+            año (1-4)</td>
+    </tr>
+    <tr>
+        <td width="33%">Periodo</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Año</td>
+    </tr>
+    <tr>
+        <td>Fecha</td>
+        <td>Fecha/Hora</td>
+        <td>Fecha en que se efectúa el egreso</td>
+    </tr>
+    <tr>
+        <td width="33%">Egreso</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Cantidad gastada en 
+            términos deducibles</td>
+    </tr>
+    <tr>
+        <td width="33%">Concepto</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Descripción del concepto de 
+            los egresos</td>
+    </tr>
+    <tr>
+        <td>RecibiDe</td>
+        <td>Texto</td>
+        <td>Razón social del proveedor al que se 
+            aplica el egreso</td>
+    </tr>
+</table>
+</center></div>
+
+<p>El cálculo del impuesto, en este caso, 
+requerirá los siguientes pasos:</p>
+
+<ul>
+    <li>El usuario se registra en el sistema.
+    <li>El usuario llena sus ingresos para un trimestre.
+    <li>El usuario llena sus egresos deducibles (se aceptan 
+    muy pocos...)
+    <li>El sistema calcula la suma de los ingresos del 
+    trimestre.
+    <li>El sistema calcula la suma de los egresos del 
+    trimestre.
+    <li>Se calcula la base gravable (ingresos - egresos)
+    <li>Se busca en la tabla de Impuesto a qué rango 
+    pertenece de la base gravable, obteniendo de ella la Cuota Fija para el 
+    impuesto sobre la renta.
+    <li>Se calcula el Excedente, de acuerdo al rango al que 
+    pertenece, como la Base Gravable - el mínimo del rango al que 
+    pertenece.
+    <li>Se aplica el Porcentaje sobre el Excedente para 
+    calcular el "Impuesto Marginal".
+    <li>Del mismo modo se calcula la Cuota Fija de Subsidio.
+    <li>Se encuentra el Porcentaje de Subsidio Marginal y se 
+    aplica sobre el Impuesto Marginal.
+    <li>El ISR final es igual a: Cuota Fija ISR + Impuesto 
+    Marginal - Cuota Fija Subsidio - Subsidio Marginal
+    <li>El ISR a pagar es igual al ISR final - el total del 
+    ISR retenido
+    <li>El IVA a pagar es igual al total de IVA pagado - el 
+    total de IVA Retenido
+    <li>Se presentan todos los datos calculados (para llenar 
+    la declaración)</li>
+</ul>
+
+<h3><a name="futbol"><em>Sistema de estadísticas de futbol</em></a></h3>
+
+<p>Este sistema contará con los módulos que 
+permitirán llenar y calcular las estadísticas de un torneo de 
+futbol soccer:</p>
+
+<ul>
+    <li>Llenar y actualizar información de equipos.
+    <li>Registrar calendario de encuentros (fecha por fecha)
+    <li>Registrar resultados de los partidos: marcador y 
+    anotadores de los goles.
+    <li>Presentar estadísticas (tabla general y por 
+    grupos)</li>
+</ul>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Equipos</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>Nombre</td>
+        <td>Texto</td>
+        <td>Nombre o apodo del Equipo</td>
+    </tr>
+    <tr>
+        <td width="33%">Ciudad</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Ciudad en la que juega</td>
+    </tr>
+    <tr>
+        <td>Grupo</td>
+        <td>Entero</td>
+        <td>Grupo al que pertenece (1-4)</td>
+    </tr>
+    <tr>
+        <td>Logotipo</td>
+        <td>Texto</td>
+        <td>Nombre del archivo de imagen (.GIF o .JPG) 
+            para hacer referencia</td>
+    </tr>
+    <tr>
+        <td>PartidosGanados</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>PartidosPerdidos</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>PartidosEmpatados</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>GolesFavor</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>GolesContra</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Puntos</td>
+        <td>Entero</td>
+        <td>3 por partido ganado y 1 por cada 
+    empatado</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Goleadores</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>Nombre</td>
+        <td>Texto</td>
+        <td>Nombre del jugador</td>
+    </tr>
+    <tr>
+        <td width="33%">Equipo</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Equipo en que juega</td>
+    </tr>
+    <tr>
+        <td>NumeroGoles</td>
+        <td>Entero</td>
+        <td>Goles que lleva en el torneo</td>
+    </tr>
+    <tr>
+        <td>NumeroAutogoles</td>
+        <td>Entero</td>
+        <td>Autogoles que lleva en el 
+torneo</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Resultados</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>Local</td>
+        <td>Texto</td>
+        <td>Equipo local</td>
+    </tr>
+    <tr>
+        <td width="33%">Visitante</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Equipo visitante</td>
+    </tr>
+    <tr>
+        <td>GolesLocal</td>
+        <td>Entero</td>
+        <td>Goles del equipo local</td>
+    </tr>
+    <tr>
+        <td>GolesVisitantes</td>
+        <td>Entero</td>
+        <td>Goles del equipo 
+visitante</td>
+    </tr>
+</table>
+</center></div>
+
+<h3><a name="inventario"><em>Control de inventario en sucursales</em></a></h3>
+
+<p>Este sistema contará con los módulos que 
+permitirán llevar el inventario en una serie de sucursales para una 
+empresa.</p>
+
+<ul>
+    <li>Registrar el catálogo de productos.
+    <li>Llevar el catálogo de sucursales.
+    <li>Registrar ventas y reducciones de inventario de una 
+    sucursal.
+    <li>Registrar adquisiciones y subida en inventario a una 
+    sucursal.</li>
+</ul>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Productos</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>ClaveProducto</td>
+        <td>Texto</td>
+        <td>Llave única (código de barras 
+            o similar)</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreProducto</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Descripción del producto</td>
+    </tr>
+    <tr>
+        <td>UnidadProducto</td>
+        <td>Texto</td>
+        <td>En qué se vende (kg, cajas, litros, 
+            etc.)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Sucursales</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>IDSucursal</td>
+        <td>Autonumérico</td>
+        <td>Consecutivo para indicar el número de 
+            sucursal</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreSucursal</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Nombre por el que se conoce la 
+            sucursal</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Inventario</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>ClaveProducto</td>
+        <td>Texto</td>
+        <td>Llave única (código de barras 
+            o similar)</td>
+    </tr>
+    <tr>
+        <td width="33%">IDSucursal</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Descripción del producto</td>
+    </tr>
+    <tr>
+        <td>Cantidad</td>
+        <td>Entero largo</td>
+        <td>Cuánto hay del producto en la 
+            sucursal</td>
+    </tr>
+</table>
+</center></div>
+
+<h3><a name="cines"><em>Sistema de boletos para Multicines</em></a></h3>
+
+<p>Este sistema contará con los módulos que 
+permitirán llevar en forma básica la venta por Internet de boletos 
+ </p>
+
+<ul>
+    <li>Catálogo de cines y salas.
+    <li>Registro de película que se exhibe en cada 
+    sala.
+    <li>Registro de horarios para una película.
+    <li>Módulo de venta de boletos con registro de 
+    entradas, avisando disponibilidad.</li>
+</ul>
+
+<p>Se llevará hasta una semana de 
+anticipación.</p>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Salas</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>NombreCine</td>
+        <td>Texto</td>
+        <td>Nombre del cine</td>
+    </tr>
+    <tr>
+        <td width="33%">Direccion</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Dirección donde está 
+            ubicado</td>
+    </tr>
+    <tr>
+        <td>NumeroSala</td>
+        <td>Entero</td>
+        <td>Número único de la sala dentro 
+            del cine</td>
+    </tr>
+    <tr>
+        <td>CapacidadSala</td>
+        <td>Entero</td>
+        <td>Número de butacas en la 
+    sala</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Peliculas</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>NombrePelicula</td>
+        <td>Texto</td>
+        <td>Nombre del cine</td>
+    </tr>
+    <tr>
+        <td width="33%">Clasificacion</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Letra A (todo público), B 
+            (adolescentes y adultos) o C (sólo 
+adultos)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>HorariosSalas</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>NombreCine</td>
+        <td>Texto</td>
+        <td>Nombre del cine</td>
+    </tr>
+    <tr>
+        <td>NumeroSala</td>
+        <td>Entero</td>
+        <td>Número único de la sala dentro 
+            del cine</td>
+    </tr>
+    <tr>
+        <td>NombrePelicula</td>
+        <td>Texto</td>
+        <td>Película que se exhibe</td>
+    </tr>
+    <tr>
+        <td>HorarioSala</td>
+        <td>Entero</td>
+        <td>Horario en formato militar (ej 900, 1800, 
+            2135)</td>
+    </tr>
+    <tr>
+        <td>DiaHorario</td>
+        <td>Entero</td>
+        <td>Valor 1-7 (Lunes a domingo), se refiere a la 
+            semana a partir del día de hoy, inclusive</td>
+    </tr>
+    <tr>
+        <td>Disponibilidad</td>
+        <td>Entero</td>
+        <td>Número de butacas sin 
+    vender</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong>Ventas</strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>NombrePelicula</td>
+        <td>Texto</td>
+        <td>Nombre de la película</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreCine</td>
+        <td width="33%">Texto</td>
+        <td width="34%">Nombre del cine</td>
+    </tr>
+    <tr>
+        <td>NumeroSala</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>HorarioSala</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>DiaHorario</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>NombreComprador</td>
+        <td>Texto</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>NumeroBoletos</td>
+        <td>Entero</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</center></div>
+</body>
+</html>

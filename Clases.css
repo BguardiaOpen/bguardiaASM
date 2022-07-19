@@ -1,0 +1,29 @@
+BODY
+{
+    BACKGROUND-COLOR: white;
+    COLOR: black;
+    FONT-FAMILY: Arial, Helv, Verdana;
+    FONT-SIZE: 12pt;
+}
+A
+{
+color: #000080; 
+text-decoration: none
+}
+A:active { color: #008000}
+A:hover { color: #008000 }
+A:visited { color: #004000}
+submit
+{
+    BORDER-RIGHT: #6060c0 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #6060c0 1px solid;
+    PADDING-LEFT: 2px;
+    PADDING-BOTTOM: 2px;
+    MARGIN: 2px;
+    BORDER-LEFT: #6060c0 1px solid;
+    COLOR: navy;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: #6060c0 1px solid;
+    BACKGROUND-COLOR: #f0f8ff
+}

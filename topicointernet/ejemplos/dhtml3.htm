@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<script>
+<!--
+
+function HazGrafica() {
+	Texto='<p>C1: ';
+	
+	C1=FormaGrafica.C1.value;
+	for (i = 1; i<=C1; i++)
+		Texto=Texto + '-';
+	Texto = Texto + '</p>'
+	Texto = Texto + '<p>C2: ';
+	C1=FormaGrafica.C2.value;
+	for (i = 1; i<=C1; i++)
+		Texto=Texto + '-';
+	Texto = Texto + '</p>'
+	Texto = Texto + '<p>C3: ';
+	C1=FormaGrafica.C3.value;
+	for (i = 1; i<=C1; i++)
+		Texto=Texto + '-';
+	Texto = Texto + '</p>'
+	Texto = Texto + '<p>C4: ';
+	C1=FormaGrafica.C4.value;
+	for (i = 1; i<=C1; i++)
+		Texto=Texto + '-';
+	Texto = Texto + '</p>'
+	
+	Grafica.innerHTML = Texto;
+	return false;
+}
+
+// -->
+</script>
+
+<P>Mostrar una gr&aacute;fica din&aacute;micamente del lado 
+del cliente:</P>
+
+<P>&nbsp;</P>
+<table>
+<tr><td>
+<form name="FormaGrafica" onsubmit="return HazGrafica();">
+<p>
+Candidato 1: <input type="text" name="C1">
+</p>
+<p>
+Candidato 2: <input type="text" name="C2">
+</p>
+<p>
+Candidato 3 <input type="text" name="C3">
+</p>
+<p>
+Candidato 4 <input type="text" name="C4">
+</p>
+<p>
+<input type="submit" Value="Grafica">
+</p>
+</td>
+<td>
+<div id="Grafica">
+</div>
+</td>
+</tr>
+</table>
+</form>
+
+</BODY>
+</HTML>

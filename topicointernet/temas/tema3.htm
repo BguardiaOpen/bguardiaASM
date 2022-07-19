@@ -1,0 +1,466 @@
+<html>
+
+<head>
+
+<title>Tema 3- Diseño de páginas dinámicas con JavaScript</title>
+</head>
+
+<body>
+<b><font FACE="Arial" SIZE="5" COLOR="#ffff00">
+
+<p></font></b><img SRC="../../images/luces.gif" HEIGHT="40" WIDTH="671"> <br>
+<b><font color="#FF0000" face="Arial" size="4">Tema 3 - Diseño de páginas dinámicas del
+lado del cliente</font><font FACE="Arial" size="4"> 
+
+<ul>
+  <li><h4></font><font face="Arial" color="#FF0000" size="1">Introducción a Java Script</font><font FACE="Arial" SIZE="5"></h4>
+  </li>
+</ul>
+
+<p></font><font FACE="Arial" COLOR="#006600" size="4">Objetivos</p>
+
+<blockquote>
+  </font></b><font face="Arial" color="#000000"><p><small>Introducir al alumno en el uso de
+  Java Script para reforzar la interactividad y capacidades de páginas HTML.</small></p>
+  <p><small>Conocer y entender el funcionamiento de los scripts del lado del cliente.</small></font><i></p>
+  </i>
+</blockquote>
+<b><font FACE="Arial" SIZE="5" COLOR="#006600">
+
+<p></font><font FACE="Arial" COLOR="#006600" size="4">Descripción de Java Script</p>
+
+<blockquote>
+  </font></b><p><small><font face="Arial" color="#000000"><a href="http://www.netscape.com">Netscape</a>,
+  como parte de la evolución del estándar HTML, propuso utilizar un subconjunto de la
+  sintaxis del lenguaje Java para controlar las propiedades del documento HTML; de este
+  modo, creo un intérprete que permite ejecutar pequeños pedazos de código al tiempo que
+  se está cargando una página HTML o se interactúa sobre ella. Originalmente llamado
+  &quot;LiveScript&quot;, por su parecido a Java (en la sintaxis solamente) finalmente se
+  conoce como Java Script, y ha sido aceptado por distintos navegadores, si bien cada uno
+  cuenta con distintas funciones de librería, por lo que es complejo lograr la
+  compatibilidad entre los mismos.</font></small></p>
+  <p><small><font face="Arial" color="#000000">De modo similar a Visual Basic versiones 4 y
+  5, es un lenguaje orientado a eventos con soporte a objetos ya definidos; sin embargo, no
+  es orientado a objetos al no soportar dos de los tres principios básicos: herencia y
+  polimorfismo (solamente soporta encapsulación).</font></small></p>
+  <p><small><font face="Arial" color="#000000">Al ser orientado a eventos, generalmente el
+  código Java Script se ejecutará en respuesta a eventos que suceden con la página, tales
+  como el movimiento del ratón, presionar un botón en una forma, la carga de la página en
+  el navegador, etcétera.</font></small></p>
+  <p><small><font face="Arial" color="#000000">Para estudiar Java Script, necesitaremos
+  examinar tres partes:</font></small><ul>
+    <li><small><font face="Arial" color="#000000">En qué contexto funciona.</font></small></li>
+    <li><small><font face="Arial" color="#000000">La sintaxis.</font></small></li>
+    <li><small><font face="Arial" color="#000000">El modelo de objetos.</font></small></li>
+    <li><small><font face="Arial" color="#000000">Los eventos disponibles.</font></small></li>
+    <li><small><font face="Arial" color="#000000">Cuándo es momento de usarlo.</font></small></li>
+  </ul>
+</blockquote>
+
+<p><b><font FACE="Arial" SIZE="5" COLOR="#006600">&nbsp;</p>
+
+<p></font><font FACE="Arial" COLOR="#006600" size="4">Contexto de funcionamiento de Java
+Script</p>
+
+<blockquote>
+  </font></b><font face="Arial" color="#000000"><p><small>El concepto más importante y a
+  veces confuso para manejar Java Script, es comprender que la ejecución de un script
+  ocurre completamente en el lado del cliente; es decir, que el navegador hace las veces de
+  intérprete y la ejecución se realiza en la computadora cliente, de modo que no se cuenta
+  con acceso a los recursos del servidor, y solamente a un conjunto limitado de recursos del
+  cliente.</small></p>
+  </font><p><font face="Arial" color="#000000"><small>-&nbsp;&nbsp;&nbsp; Gráfica pendiente
+  &nbsp;&nbsp;&nbsp; -</small></font></p>
+</blockquote>
+
+<p><b><font FACE="Arial" SIZE="5" COLOR="#006600">&nbsp;</p>
+
+<p></font><font FACE="Arial" COLOR="#006600" size="4">Sintaxis</font><font FACE="Arial" SIZE="5" COLOR="#006600"></p>
+
+<blockquote>
+  </font></b><font face="Arial" color="#000000"><p><small>Java Script, como cualquier otro
+  lenguaje de guiones (<em>scripting</em>) soportado por un navegador, se incluye dentro del
+  código HTML dentro del tag SCRIPT; un ejemplo será el siguiente:</small></p>
+  <blockquote>
+    <font size="1"><p>&lt;script language=&quot;JavaScript&quot;&gt;</p>
+    <p>document.write (&quot;&lt;H3&gt;Hola mundo&lt;/H3&gt;&quot;);</p>
+    <p>&lt;/script&gt;</p>
+  </blockquote>
+  </font><p><small>Un truco básico, importante para que no se muestre el código Java
+  Script en navegadores que no soporten el lenguaje, es ponerlo entre comentarios HTML. De
+  este modo, solamente un navegador que distinga scripts los tomará en cuenta. El ejemplo
+  anterior quedaría de este modo:</small></p>
+  <blockquote>
+    <font size="1"><p>&lt;script language=&quot;JavaScript&quot;&gt;</p>
+    <p>&lt;!-- Inicia el comentario</p>
+    <p>document.write (&quot;&lt;H3&gt;Hola mundo&lt;/H3&gt;&quot;);</p>
+    <p>// aquí se pone doble slash para que esto sea un comentario de Java Script --&gt;</p>
+    <p>&lt;/script&gt;</font><font FACE="Arial" SIZE="2" COLOR="#000000"></p>
+    </font>
+  </blockquote>
+  <p><small>Cabe aclarar que en un caso como el anterior, el código Java Script se ejecuta
+  al momento en que se carga la parte de la página en que está contenido. Por lo que el
+  resultado de este código se insertará después del HTML que precede al script, y antes
+  del HTML que le sigue. </small></p>
+  <p><small>La sintaxis de instrucciones de Java Script es muy similar a la de C o C++; se
+  basa en llamar funciones, las cuales van seguidas de paréntesis y en caso de tener
+  parámetros, estos se colocan entre los paréntesis; y se separa caa instrucción por
+  puntos y comas. Dado que es un lenguaje basado en objetos, muchas veces las funciones
+  pertenecen a un objeto, por lo cual hacemos referencia al objeto y después, con un punto
+  como separación, a la función o método dentro del objeto. En el ejemplo anterior,
+  estamos usando del objeto <em>document</em>, que naturalmente se refiere al documento HTML
+  que se está bajando, el método &quot;<em>write</em>&quot;, cuya función es escribir una
+  cadena en el documento. </small></p>
+  <p><small>Lo interesante de Java Script es que no tiene que ser una cadena fija, como en
+  el ejemplo anterior, sino que puede ser variable y generada por un algoritmo en el
+  programa. Antes de ver un ejemplo, mencionaremos algunos métodos más:</small><ul>
+    <li><small>document.writeln (<em>mensaje</em>) - Genera una salida al documento, se le pasa
+      como parámetro una cadena; la diferencia que tiene con document.write es que genera un
+      salto de línea al final.</small></li>
+    <li><small>alert&nbsp; (<em>mensaje</em>)&nbsp; - Genera un cuadro de diálogo para
+      confirmación, separado de la página HTML. Por defecto, solamente muestra un botón de
+      OK.</small></li>
+    <li><small>prompt (<em>mensaje</em>, <em>valordefecto</em>)&nbsp; - Genera un cuadro de
+      diálogo para captura, separado de la página HTML. Por defecto, muestra el mensaje, un
+      espacio para escribir (que muestra al inicio el valor por defecto), un botón de OK y uno
+      de Cancel.</small></li>
+    <li><small>var <em>Identificador[=valorinicial o expresión] - </em>Permite declarar la
+      existencia de una variable; el tipo se detecta en forma automática de acuerdo al
+      contexto. Opcionalmente, puede inicializarse, dándole una cadena o un número como valor,
+      o bien a través de una función, como en el siguiente ejemplo..</small></li>
+    <li><small>// y /* ... */ - al igual que en C++, permiten colocar comentarios dentro del
+      código Java Script.</small></li>
+    <li><small>Al igual que en C y C++, se pueden agrupar los comandos en bloques mediante el
+      uso de los corchetes { }</small></li>
+    <li><small>El lenguaje Java Script es sensitivo a mayúsculas y minúsculas, al igual que C
+      o C++; por ejemplo, es diferente el significado de <em>document.writeln </em>y <em>Document.WriteLn</em></small></li>
+  </ul>
+  <blockquote>
+    </font><font size="1" face="Arial" color="#000000"><p></font><font size="1"><font color="#000000"><font face="Arial">El siguiente ejemplo puedes checarlo <a href="../Ejemplos/js1.htm">aquí</a>.</font></font><font face="Arial" color="#000000"></p>
+    <hr>
+    <p></font></font><font size="1" face="Arial" color="#000000">&lt;html&gt;</p>
+    <p>&lt;head&gt;&lt;title&gt;Ejemplo de Java Script&lt;/title&gt;</p>
+    <p>&lt;/head&gt;</p>
+    <p>&lt;script language=&quot;JavaScript&quot;&gt;</p>
+    <p>&lt;!-- Inicia el comentario para que no se vea el código en navegadores que no
+    soporten Java Script.</p>
+    <p>var Nombre=prompt(&quot;Bienvenido a nuestra página. ¿Cómo te llamas?&quot;,
+    &quot;&quot;);</p>
+    <p>// aquí se pone doble slash para que esto sea un comentario de Java Script --&gt;</p>
+    <p>&lt;/script&gt;<font FACE="Arial" SIZE="2" COLOR="#000000"></p>
+    </font><p>&lt;body background=&quot;#FFFFF&quot;&gt;</p>
+    <p>&lt;script language=&quot;JavaScript&quot;&gt;</p>
+    <p>&lt;!-- Inicia el comentario</p>
+    <p>document.write (&quot;&lt;H3&gt;¡Hola, &quot;);</p>
+    <p>document.write (Nombre);</p>
+    <p>document.write (&quot;!&lt;/H3&gt;&quot;);</p>
+    <p>// aquí se pone doble slash para que esto sea un comentario de Java Script --&gt;</p>
+    <p>&lt;/script&gt;</font><font FACE="Arial" SIZE="2" COLOR="#000000"></p>
+    </font><p><font size="1" face="Arial" color="#000000">&lt;/body&gt;&lt;/html&gt;</font></p>
+    <hr>
+  </blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><strong><font FACE="Arial" COLOR="#006600" size="4">Operadores</font></strong></p>
+
+<blockquote>
+  <p><font face="Arial" color="#000000" size="3">JavaScript permite utilizar casi todos los
+  operadores que se soportan en C y C++, con el mismo significado, incluyendo los
+  siguientes:</font><b><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <div align="center"><center><table border="1" cellpadding="2" width="100%">
+    <tr>
+      <td width="20%">= </td>
+      <td width="20%">+=</td>
+      <td width="20%">-=</td>
+      <td width="20%">*=</td>
+      <td width="20%">/=</td>
+    </tr>
+    <tr>
+      <td width="20%">%=</td>
+      <td width="20%">+</td>
+      <td width="20%">-</td>
+      <td width="20%">*</td>
+      <td width="20%">/</td>
+    </tr>
+    <tr>
+      <td width="20%">%</td>
+      <td width="20%">++</td>
+      <td width="20%">--</td>
+      <td width="20%">&amp;&amp;</td>
+      <td width="20%">||</td>
+    </tr>
+    <tr>
+      <td width="20%">!</td>
+      <td width="20%">==</td>
+      <td width="20%">!=</td>
+      <td width="20%">&gt;</td>
+      <td width="20%">&lt;</td>
+    </tr>
+    <tr>
+      <td width="20%">&gt;=</td>
+      <td width="20%">&lt;=</td>
+      <td width="20%">? ... :</td>
+      <td width="20%">(</td>
+      <td width="20%">)</td>
+    </tr>
+  </table>
+  </center></div><p></font></b><font face="Arial" color="#000000" size="3">Entre los
+  operadores con un significado adicional, se encuentra la capacidad de manejar cadenas
+  utilizando el signo de + como función de concatenación, tal como ocurre en Basic. La
+  precedencia de los operadores es similar a C.</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><font face="Arial" color="#000000" size="3">Para operaciones avanzadas, se tiene
+  el objeto Math, que cuenta con distintos métodos correspondientes a funciones
+  mátemáticas,incluyendo:</font><font FACE="Arial" COLOR="#006600" SIZE="5"><ul>
+    <li><font face="Arial" color="#000000" size="3">abs, acos, asin, atan, ceil, cos, exp,
+      floor, log, max, min, pow, random, round, sin, sqrt y tan.</font></li>
+  </ul>
+  <p></font><font face="Arial" color="#000000" size="3">Para un ejemplo del uso de
+  operadores, chequen el código fuente (View Source) de la <a href="../Ejemplos/js2.htm">siguiente
+  página</a>.</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p><b>&nbsp;</p>
+</blockquote>
+
+<p></font><font FACE="Arial" COLOR="#006600" size="4">Funciones</p>
+
+<blockquote>
+  </font><font FACE="Arial" COLOR="#006600" SIZE="5"><p></font></b><font face="Arial" color="#000000" size="3">Al igual que en C y C++, es posible (y recomendable) declarar
+  funciones que agrupan una serie de instrucciones bajo una sola llamada, pueden recibir
+  parámetros y regresar un resultado. Esto es especialmente conveniente si existen un
+  proceso que deberá ejecutarse sucesivamente. Un ejemplo:</font></p>
+  <blockquote>
+    <blockquote>
+      <hr>
+      <font size="1" face="Arial" color="#000000"><p><em>&lt;script
+      language=&quot;JavaScript&quot;&gt;</em></p>
+      <p><em>&lt;!-- Inicia el comentario para que no se vea el código en navegadores que no
+      soporten Java Script.</em></p>
+      <p><em>function cubo(numero) {</em></p>
+      <p><em>&nbsp;&nbsp;&nbsp; var cubo= numero * numero * numero;</em></p>
+      <p><em>return cubo;</em></p>
+      <p><em>}</em></p>
+      </font><font FACE="Arial" COLOR="#006600" SIZE="5"><hr>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <b><p></b></font><font face="Arial" color="#000000" size="3">Una importante ventaja de las
+  funciones es que no se ejecutan en el momento de cargarse, sino hasta que se carga el
+  código que las llama. Por ello, se recomienda que toda función se defina en el
+  encabezado, para que se cargue antes del resto de la página y así cuando se desee usarla
+  ya esté preparada.</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><font face="Arial" color="#000000" size="3">Un ejemplo avanzado de funciones es
+  la construcción de un calendario de acuerdo a la hora del día; una versión que está
+  disponible en el Web puede verse en <a href="http://www.best.com/~nesssus/js-today.htm">http://www.best.com/~nesssus/js-today.htm</a>.</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><font face="Arial" color="#000000" size="3">Una versión simplificada y
+  comentada para esta clase se encuentra en <a href="../Ejemplos/js3.htm">esta liga</a>.</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+</blockquote>
+
+<p></font><font FACE="Arial" COLOR="#006600" size="4"><strong>Modelo de objetos</strong></p>
+
+<blockquote>
+  </font><font face="Arial" color="#000000"><p>Los objetos principales en JavaScript pueden
+  dividirse en dos: aquellos de uso general, y aquellos que son proporcionados por el
+  navegador.</font></p>
+  <font face="Arial" color="#000000"><p>Los objetos de uso general más importantes con los
+  que contamos son:</p>
+  <blockquote>
+    <p>Array</p>
+    <p>String</p>
+    <p>Math</p>
+    <p>Date</p>
+  </blockquote>
+  <p>Los objetos que permiten el manejo del navegador, incluyen la siguiente jerarquía:</p>
+  <blockquote>
+    <p>window</p>
+    <blockquote>
+      <p>location</p>
+      <p>history</p>
+      <p>document</p>
+      <blockquote>
+        <p>forms</p>
+        <p>anchors</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <p>Ya se han indicado los métodos principales del objeto Math, y hemos trabajado con el
+  objeto document. Se mencionan a continuación algunos de los principales métodos de otros
+  objetos:</p>
+  </font><div align="center"><center><table border="1" cellpadding="2" width="100%">
+    <tr>
+      <td width="50%">window.open(URL, NombreVentana, [<b>&quot;</b>[<b>toolbar=</b><i>bool</i>]
+      [<b>,</b> <b>location=</b><i>bool</i>][<b>,</b> <b>directories=</b><i>bool</i>][<b>,</b> <b>status=</b><i>bool</i>][<b>,</b>
+      <b>menubar=</b><i>bool</i>][<b>,</b> <b>scrollbars=</b><i>bool</i>][<b>,</b> <b>resizeable=</b><i>bool</i>][<b>,</b>
+      <b>width=</b><i>pixels</i>][<b>,</b> <b>height=</b><i>pixels</i>][<b>,</b> <b>top=</b><i>pixels</i>][<b>,</b>
+      <b>left=</b><i>pixels</i>]<b>&quot;</b>);</td>
+      <td width="50%">Abre una nueva ventana del navegador, cuenta con opciones para indicar el
+      tamaño y posición de la ventana, indicando si se mostrarán la barra de herramientas,
+      barras de desplazamiento, etcétera.</td>
+    </tr>
+    <tr>
+      <td width="50%"><em>object.</em>blur()</td>
+      <td width="50%">Respecto a un objeto, elemento de una forma, forza salir de foco. Útil
+      para campos que no deben permitir la captura.</td>
+    </tr>
+    <tr>
+      <td width="50%"><em>object.</em>focus()</td>
+      <td width="50%">Respecto a un objeto, elemento de una forma, forza que el campo tome el
+      foco. Útil para validar.</td>
+    </tr>
+    <tr>
+      <td width="50%"><em>object.</em>click()</td>
+      <td width="50%">En los objetos que lo permiten, simula el Click sobre el objeto.</td>
+    </tr>
+    <tr>
+      <td width="50%"><em>forma.</em>submit()</td>
+      <td width="50%">Forza el envío de una forma para su procesamiento.</td>
+    </tr>
+  </table>
+  </center></div>
+</blockquote>
+
+<p><font FACE="Arial" COLOR="#006600" SIZE="5"><b>&nbsp;</p>
+
+<p>Asociación de eventos a funciones</p>
+
+<p></b></font><font face="Arial" color="#000000" size="3">El llamado a funciones de Java
+Script no solamente se puede hacer al cargar código Java Script dentro de la página;
+también pueden conectarse a eventos en la página.</p>
+
+<p>Para darnos una idea del funcionamiento de este concepto, los principales eventos
+disponibles en una página son:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+  <tr>
+    <td width="50%">Evento</td>
+    <td width="50%">Tag al que está asociado</td>
+    <td width="50%">Significado</td>
+  </tr>
+  <tr>
+    <td width="50%">onLoad</td>
+    <td width="50%">BODY</td>
+    <td width="50%">Cuando se termina de cargar la página y sus imágenes u otros archivos
+    asociados</td>
+  </tr>
+  <tr>
+    <td width="50%">onUnload</td>
+    <td width="50%">BODY</td>
+    <td width="50%">Cuando se navega a otra página, saliendo de la misma.</td>
+  </tr>
+  <tr>
+    <td width="50%">onBlur</td>
+    <td width="50%">INPUT (TODOS), SELECT, TEXTAREA</td>
+    <td width="50%">Cuando el elemento correspondiente pierde el foco (por ejemplo, cuando se
+    captura algo en un campo y posteriormente se cambia de campo)</td>
+  </tr>
+  <tr>
+    <td width="50%">onChange</td>
+    <td width="50%">INPUT (TODOS), SELECT, TEXTAREA</td>
+    <td width="50%">Cuando se cambia el valor del elemento correspondiente. Por ejemplo, al
+    capturar.</td>
+  </tr>
+  <tr>
+    <td width="50%">onSubmit</td>
+    <td width="50%">FORM</td>
+    <td width="50%">Cuando se aprieta un botón SUBMIT (enviar) de una forma. Es el más usado
+    para validar el contenido de la forma.</td>
+  </tr>
+  <tr>
+    <td width="50%">onFocus</td>
+    <td width="50%">INPUT (TODOS), SELECT, TEXTAREA</td>
+    <td width="50%">Cuando el elemento correspondiente toma el foco (por ejemplo, cuando se
+    captura algo en otro campo y posteriormente se cambia al campo correspondiente)</td>
+  </tr>
+  <tr>
+    <td width="50%">onMouseOver</td>
+    <td width="50%">A, IMG</td>
+    <td width="50%">Cuando el ratón se coloca sobre la liga, aún sin apretar el botón.</td>
+  </tr>
+  <tr>
+    <td width="50%">onSelect</td>
+    <td width="50%">INPUT (TEXT,PASSWORD), TEXTAREA</td>
+    <td width="50%">Cuando se selecciona texto dentro del campo.</td>
+  </tr>
+  <tr>
+    <td width="50%">onClick</td>
+    <td width="50%">INPUT (RADIO, CHECKBOX, BUTTON, SUBMIT, RESET)</td>
+    <td width="50%">Cuando se presiona el botón del ratón sobre el campo (o se teclea
+    espacio cuando tiene foco el campo)</td>
+  </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p>Para relacionar un evento a una función, se realiza con la sintaxis siguiente:</font><b><font face="Arial" color="#000000" SIZE="5"></p>
+</font>
+
+<blockquote>
+  <p></b><em><font face="Arial" color="#000000" size="3">&lt;TAG
+  onevento=&quot;funcion&quot;&gt;</font></em></p>
+</blockquote>
+
+<p><font face="Arial" color="#000000" size="3">Por ejemplo, para llamar a la función
+Saludar (que debería definirse previamente, en el encabezado de la página) cuando se
+termina de cargar una página, el tag correspondiente sería:</font></p>
+
+<blockquote>
+  <p><font face="Arial" color="#000000" size="3"><em>&lt;BODY
+  onload=&quot;Saludar();&quot;&gt;</em></font></p>
+</blockquote>
+
+<p><font face="Arial" color="#000000" size="3">En <a href="../Ejemplos/js4.htm">el ejemplo
+anexo</a>, se tiene una página que contiene una forma, la cual es validada utilizando los
+eventos anteriores.</font></p>
+
+<p><b>&nbsp;</p>
+<font FACE="Arial" COLOR="#006600" SIZE="5"><b>
+
+<p>Cuándo usarlo</p>
+
+<blockquote>
+  </b><p></font></b><font FACE="Arial" COLOR="#000000" size="4">Los principales usos
+  &quot;clásicos&quot; de Java Script incluyen:</font><font FACE="Arial" COLOR="#006600" size="4"><ul>
+    <li></font><font FACE="Arial" size="4"><font color="#000000">Validación de formas.</font></li>
+    <li><font color="#000000">Efectos visuales, principalmente como respuesta a eventos del
+      ratón.</font></li>
+    <li><font color="#000000">Control de applets Java (tema futuro) y objetos ActiveX (otro tema
+      futuro).</font></li>
+  </ul>
+  <p><font color="#000000">En general, podemos usarlo para enriquecer la interfase con el
+  usuario del lado del cliente, descargando parte del procesamiento que haría el servidor.
+  De cualquier modo, es altamente recomendable siempre considerar pruebas en distintos
+  navegadores y aún en distintas versiones del mismo navegador, tanto como con los scripts
+  deshabilitados. </font></font><b><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+</blockquote>
+<b>
+
+<p>Bibliografía y Referencias</p>
+
+<blockquote>
+  </b><p></font><font FACE="Arial" COLOR="#000000" SIZE="5">Aprendiendo Java Script en una
+  Semana</p>
+  <blockquote>
+    </font><font face="Arial" color="#000000" size="2"><p>SAMS/Prentice Hall Hispanoamericana</p>
+    <p>Arman Danesh</p>
+    </font><font FACE="Arial" COLOR="#000000" SIZE="5">
+  </blockquote>
+  <p></font></b><a href="http://home.netscape.com/eng/mozilla/Gold/handbook/javascript/index.html"><font face="Arial" size="4" color="#000000">http://home.netscape.com/eng/mozilla/Gold/handbook/javascript/index.html</font></a><b><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><a href="http://www.gamelan.com"><font face="Arial" size="4" color="#000000">http://www.gamelan.com</font></a><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><a href="http://ourworld.compuserve.com/homepages/vood/script.htm"><font face="Arial" size="4" color="#000000">http://ourworld.compuserve.com/homepages/vood/script.htm</font></a><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><a href="http://www.c2.org/~andreww/javascript/"><font face="Arial" size="4" color="#000000">http://www.c2.org/~andreww/javascript/</font></a><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><a href="http://developer.netscape.com"><font face="Arial" size="4" color="#000000">http://developer.netscape.com</font></a><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p><a href="http://www.developer.com/reference/r_library.html"><font face="Arial" size="4" color="#000000">http://www.developer.com/reference/r_library.html</font></a></p>
+</blockquote>
+</font></b>
+
+<p><font size="+2" color="#006600" face="Arial"><b>Créditos</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>Página por <a href="mailto:bguardia@sinergia-web.com.mx">Bruno Guardia</a>.</b></font></p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Macros y directivas condicionales</title>
+<!-- Created by GNNpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #23 </h1>
+
+<h1 align="center">Uso avanzado de macros y directivas condicionales </h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase22.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv14.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 14</a></td>
+    <td><p align="center"><a href="../Temas/clase24.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer las directivas de ensamblado condicional. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h3>REPT </h3>
+
+<p>Bloques repetitivos </p>
+
+<p>Permite repetir un código determinado, tantas veces como se desee </p>
+
+<h5>Sintaxis: </h5>
+
+<p><code>REPT &lt;n&gt;</code> </p>
+
+<p><code>...</code> </p>
+
+<p><code>ENDM</code> </p>
+
+<p>Ejemplo: </p>
+
+<p><code>Valor = 0 ; Variable de ensamblador</code> </p>
+
+<p><code>REPT 10</code> </p>
+
+<p><code>DW Valor</code> </p>
+
+<p><code>Valor = Valor + 1</code> </p>
+
+<p><code>ENDM</code> </p>
+
+<h3>Uso de parámetros en macros </h3>
+
+<p>Los macros pueden ser adaptativos; por ejemplo: </p>
+
+<p><code>Potencia2 MACRO Registro, Valor</code> </p>
+
+<p><code>REPT Valor</code> </p>
+
+<p><code>SHL Registro, 1</code> </p>
+
+<h5>Uso: </h5>
+
+<p><code>Potencia2 CX, 4</code> </p>
+
+<p>Se convierte en: </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<h3>Directivas condicionales </h3>
+
+<p>Base del poder de las macros </p>
+
+<h3>IF </h3>
+
+<ul>
+  <li>Permite una evaluación al momento de ensamblar </li>
+  <li>Usado principalmente para que el código de una macro se adapte a los operandos,
+    ejemplo: </li>
+</ul>
+
+<p><code>IF Variable</code> </p>
+
+<p><code>...</code> </p>
+
+<p><code>ELSE</code> </p>
+
+<p><code>...</code> </p>
+
+<p><code>ENDIF</code> </p>
+
+<h3>Otras condicionales </h3>
+
+<h3>IFE </h3>
+
+<ul>
+  <li>Misma sintaxis que IF </li>
+  <li>Actúa cuando la condición o variable toma un valor de 0 </li>
+</ul>
+
+<h3>IFDEF/IFNDEF </h3>
+
+<ul>
+  <li>Actúan si un símbolo está o no definido </li>
+  <li>Similares a #ifdef y #ifndef del preprocesador de &quot;C&quot; </li>
+  <li>Se puede definir el símbolo dentro del programa fuente, o mediante la línea de
+    comandos: </li>
+  <li>Ejemplo: TASM /dDEBUG hola </li>
+  <li>En este caso, DEBUG queda definido y eso permite tener versiones ligeramente distintas
+    de un programa </li>
+</ul>
+
+<h3>Evaluación de parámetros de macros </h3>
+
+<h3>IFB: IF Blank </h3>
+
+<p>Permite tomar una acción apropiada cuando determinado parámetro no se define </p>
+
+<h5>Sintaxis: </h5>
+
+<p>IFB &lt;parametro de macro&gt; </p>
+
+<p>Su acción es evaluar si el parámetro se define o no; si no se define, se ensamblará
+el código que le sigue a la directiva IFB </p>
+
+<h3>IFNB: IF Not Blank </h3>
+
+<p>Su función es inversa a IFB </p>
+
+<h3>Parámetros </h3>
+
+<p>Evaluación por su nombre y no valor </p>
+
+<h3>IFIDN: IF IDeNtical </h3>
+
+<p>Permite comparar un nombre con un parámetro </p>
+
+<h5>Sintaxis: </h5>
+
+<p>IFIDN &lt;nombre&gt;, &lt;parámetro&gt; </p>
+
+<p>Ej.: </p>
+
+<p><code>IFIDN &lt;AL&gt;, &lt;Parametro1&gt;</code> </p>
+
+<p>Se cumple solamente si el parámetro 1 es AL exactamente </p>
+
+<h3>IFDIF: IF DIFerent </h3>
+
+<p>Su acción es contraria a IFIDN </p>
+
+<h3>IFIDNI/IFDIFI: </h3>
+
+<p>Son similares a IFIDN e IFDIF, pero ignoran la distinción entre mayúsculas y
+minúsculas </p>
+
+<h3>Control de errores </h3>
+
+<p>Mensajes durante el proceso de ensamblar </p>
+
+<h4>DISPLAY 'Mensaje' </h4>
+
+<p>Despliega un mensaje al momento de ensamblar el programa </p>
+
+<h4>.ERR </h4>
+
+<p>Genera un error al momento de ensamblar </p>
+
+<p>Útil para evitar que se genere código incorrecto cuando con directivas condicionales
+se valida un error en el uso de las macros </p>
+
+<h4>.ERRE </h4>
+
+<p>Similar a IFE, seguido de un .ERR y el ENDIF; es decir, genera un error si la
+condición que evalúa es 0 </p>
+
+<p>Sintaxis: .ERRE [expresión] </p>
+
+<h3>Notas generales&nbsp;sobre el uso de condicionales </h3>
+
+<ul>
+  <li>Los parámetros de una macro deben encerrarse entre &lt;&gt; (&quot;angle
+    brackets&quot;), o &amp; si se quiere que se tomen literalmente. </li>
+  <li>Las expresiones a evaluar deben ser constantes o variables de ensamblador, excepto por
+    los símbolos definidos. (IFDEF/IFNDEF) </li>
+  <li>La comparación &gt; se lleva a cabo con el operador GT Ejemplo: <code>IF SIMBOLO GT 5</code>
+  </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Manuales de Turbo Assembler (User's Guide &amp; Reference Guide). </li>
+  <li>Libro de Texto, capítulo 13. </li>
+  <li>Macro Magic with Turbo Assembler </li>
+</ol>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ma 2-Jul-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-1998</em></p>
+</body>
+</html>

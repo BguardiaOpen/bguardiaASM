@@ -1,0 +1,588 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title> Arquitectura de la Familia de Procesadores 80x86</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF" text="#000000" link="#000066" vlink="#808080" alink="#FF0000" topmargin="0">
+
+<h1 align="center"><img src="../../images/ASM/386.jpg" alt="Chip" width="32" height="32"> </h1>
+
+<h1 align="center">Tema #5 </h1>
+
+<h1 align="center">Arquitectura de la Familia de Procesadores 80x86 </h1>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase04.htm">
+    <img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Temas/clase06.htm">
+    <img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos específicos </a></h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer los componentes más importantes de la línea de procesadores Intel 80x86. </li>
+  <li>Entender el funcionamiento general de los mismos. </li>
+  <li>Conocer los elementos que podemos usar del procesador a través de software </li>
+  <li>Conocer el funcionamiento del acceso a memoria y puertos. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<h2>Historia de los Procesadores Intel </h2>
+
+<p><a href="#arq">Arquitectura</a> </p>
+
+<h3>Familia &quot;80x86&quot; </h3>
+
+<ul>
+  <li><a href="#8086">8086</a> </li>
+  <li><a href="#8086">8088</a> </li>
+  <li><a href="#80186">80186</a> </li>
+  <li><a href="#80186">80286</a> </li>
+  <li><a href="#80386">80386</a> </li>
+  <li><a href="#80486">80486</a> </li>
+  <li><a href="#Pentium">Pentium</a> </li>
+  <li><a href="#PentiumPro">Pentium Pro</a> </li>
+</ul>
+
+<hr>
+
+<p><a name="8086">8086/8088</a> </p>
+
+<h4>Nace la industria de PC compatibles </h4>
+
+<dl>
+  <dt><em>Tamaño de palabra: 16 bits</em> </dt>
+  <dd>Innovación en un mercado dominado por 8 bits (6502, Z80)<br>
+    Posteriormente surge una versión &quot;recortada&quot;, con 16 bits en los buses
+    internos, pero solamente 8 en el bus de datos de la memoria, conocida como<strong> 8088</strong>.
+  </dd>
+  <dt><em>20 bits de direccionamiento</em> </dt>
+  <dd>Capacidad de direccionar 1 Mb. de memoria, contra 64 Kb </dd>
+  <dt><em>Velocidad de reloj: 4.77 Mhz.</em> </dt>
+  <dd>Alta velocidad (común 1-2 Mhz.).<br>
+    Permite ejecutar más de 1 millón de instrucciones por segundo </dd>
+  <dt><em>Cola de prefetch</em> </dt>
+  <dd>Disminuye el tráfico en el bus, al permitir separarlo en dos partes: una para uso del
+    Fetch, y otra para uso del Execute..<br>
+    Diferencia 8086/8088: el tamaño de la cola (6 vs.4 bytes) </dd>
+</dl>
+
+<hr>
+
+<p><a name="80186">80186/80286</a> </p>
+
+<h4>Se requiere más poder de cómputo </h4>
+
+<dl>
+  <dt><em>80186 extiende el conjunto de instrucciones del procesador</em> </dt>
+  <dd>Mantienen la compatibilidad hacia atrás </dd>
+  <dt><em>80186 no tuvo éxito</em> </dt>
+  <dd>Se ve la limitante de 1 Mb. y aparece el 286 </dd>
+  <dt><em>Aumenta el direccionamiento a 24 bits</em> </dt>
+  <dd>16 Mb. de memoria </dd>
+  <dt><em>Aparece el modo protegido</em> </dt>
+  <dd>Facilita sistemas multitarea, al proporcionar memoria separada por proceso </dd>
+</dl>
+
+<hr>
+
+<p><a name="80386">80386</a> 
+
+<dl>
+  <dt><em>El tamaño de palabra se extiende a 32 bits</em> </dt>
+  <dd>El espacio de direccionamiento llega a 4Gb. (2 a la 32 bytes) </dd>
+  <dt><em>Nuevas instrucciones</em> </dt>
+  <dd>Manejo de registros extendidos<br>
+    Instrucciones de &quot;3 direcciones&quot;: dos operandos fuentes y otro destino.<br>
+    Mejor aprovechamiento del modo protegido<br>
+    Modos diversos de acceso a memoria: compatibilidad hacia atrás (V8086), modo protegido
+    del 286 y modo &quot;flat&quot; exclusivo de 386. </dd>
+  <dt><em>Se extienden los registros a 32 bits, pero se conserva la versión de 16 bits</em> </dt>
+  <dd>Las versiones extendidas tienen nuevos nombres: EAX, EBX, ... </dd>
+  <dt><em>Dos versiones</em> </dt>
+  <dd>80386 DX - original </dd>
+  <dd>80386 SX - versión reducida <dl>
+      <dd>Internamente maneja 32 bits; pero sus conexiones externas son de 16 bits </dd>
+    </dl>
+  </dd>
+</dl>
+
+<hr>
+
+<p><a name="80486">80486</a> </p>
+
+<h4>Aún más poder </h4>
+
+<dl>
+  <dt><em>Nueva tecnología en la producción</em> </dt>
+  <dd>Mayor integración del circuito </dd>
+  <dt><em>Ejecución de instrucciones en &quot;pipelines&quot;</em> </dt>
+  <dd>Permite empezar a hacer instrucciones en paralelo </dd>
+  <dt><em>Coprocesador matemático como norma</em> </dt>
+  <dd>80486SX: versión reducida, elimina el coprocesador </dd>
+  <dt><em>Cache de instrucciones </em></dt>
+  <dd>Agiliza la ejecución </dd>
+</dl>
+
+<hr>
+
+<p><a name="Pentium">PENTIUM</a> </p>
+
+<h4>Intel busca mantener su posición, con nueva tecnología </h4>
+
+<dl>
+  <dt><em>Nueva extensión de instrucciones</em> </dt>
+  <dd>Punto flotante más poderoso </dd>
+  <dt><em>Doble pipeline de ejecución</em> </dt>
+  <dd>Bus interno de 64 bits. </dd>
+  <dt><em>Doble caché, para datos y código.</em> </dt>
+  <dd>Predicción de saltos optimiza los ciclos </dd>
+  <dt><em>Doble cola de prefetch</em> </dt>
+</dl>
+
+<hr>
+
+<p><a name="PentiumPro">PENTIUM PRO</a> </p>
+
+<h4>¿Cómo competir con Workstations, a menor precio? </h4>
+
+<dl>
+  <dt><em>Se rediseña completamente el procesador</em> </dt>
+  <dd>Tres unidades de procesamiento independientes </dd>
+  <dt><em>Capacidad de ejecutar instrucciones &quot;adelantadas&quot;</em> </dt>
+  <dd>Mientras una instrucción está en espera, por ejemplo de accesos a memoria, las
+    siguientes que estén listas se ejecutan. </dd>
+  <dt><em>Arriba de 200 Mhz.</em> </dt>
+</dl>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="arq">Arquitectura</a> </h2>
+
+<p>El procesador 8086 original introdujo nuevos conceptos en la arquitectura de los
+procesadores para microcomputadoras: 
+
+<ul>
+  <li><a href="#Pipeline">Arquitectura en Pipeline</a> </li>
+  <li><a href="#BusDatos">Bus de datos de 16 bits.</a> </li>
+  <li><a href="#BusDirecciones">Bus de direcciones de 20 bits</a> </li>
+</ul>
+
+<p>Vamos a explorar sus principales componentes, y cómo se implementaron estos adelantos
+tecnológicos, a continuación: </p>
+
+<p>En la figura tenemos un mapa de los elementos contenidos en el 8086, descritos más
+adelante; puedes accesarlos presionando la figura en la sección correspondiente. </p>
+
+<p align="center">
+<img bot="ImageMap" rectangle=" (154,147) (240, 206)  #BIU" rectangle=" (458,217) (540, 251)  #UnidadControl" polygon=" (240,259) (240,289) (524,289) (522,439) (558,439) (558,259) (240,259) #BusA" polygon=" (263,109) (280,83) (332,83) (348,109) (322,109) (314,100) (297,100) (288,109) (263,109) #Sumador" polygon=" (355,304) (394,304) (404,323) (463,323) (472,304) (512,304) (482,372) (385,372) (355,304) #ALU" rectangle=" (386,440) (480, 462)  #Banderas" rectangle=" (463,73) (562, 182)  #Prefetch" rectangle=" (240,384) (335, 462)  #Indices" rectangle=" (242,304) (332, 385)  #PropositoGral" rectangle=" (255,134) (352, 227)  #Segmentos" polygon=" (240,259) (240,289) (524,289) (522,439) (558,439) (558,259) (240,259) #BusA" rectangle=" (158,346) (217, 386)  #EU" rectangle=" (154,147) (240, 206)  #BIU" src="../../images/ASM/8086.gif" alt="Diagrama del 8086/8088" border="0" ismap startspan endspan i-checksum="49718" s-html="&lt;MAP NAME=&quot;FrontPageMap&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;54, 31, 262, 76&quot; HREF=&quot;#InterfazMemoria&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;458, 217, 540, 251&quot; HREF=&quot;#UnidadControl&quot;&gt;&lt;AREA SHAPE=&quot;POLYGON&quot; COORDS=&quot;274, 58, 274, 71, 258, 46, 275, 29, 274, 41, 511, 38, 512, 65, 520, 65, 501, 74, 487, 65, 493, 65, 494, 57, 382, 57, 382, 126, 356, 126, 356, 135, 347, 117, 356, 99, 356, 109, 365, 109, 365, 57, 313, 57, 313, 83, 294, 83, 295, 57, 274, 58&quot; HREF=&quot;#BusC&quot;&gt;&lt;AREA SHAPE=&quot;POLYGON&quot; COORDS=&quot;263, 109, 280, 83, 332, 83, 348, 109, 322, 109, 314, 100, 297, 100, 288, 109, 263, 109&quot; HREF=&quot;#Sumador&quot;&gt;&lt;AREA SHAPE=&quot;POLYGON&quot; COORDS=&quot;355, 304, 394, 304, 404, 323, 463, 323, 472, 304, 512, 304, 482, 372, 385, 372, 355, 304&quot; HREF=&quot;#ALU&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;386, 440, 480, 462&quot; HREF=&quot;#Banderas&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;463, 73, 562, 182&quot; HREF=&quot;#Prefetch&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;240, 384, 335, 462&quot; HREF=&quot;#Indices&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;242, 304, 332, 385&quot; HREF=&quot;#PropositoGral&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;255, 134, 352, 227&quot; HREF=&quot;#Segmentos&quot;&gt;&lt;AREA SHAPE=&quot;POLYGON&quot; COORDS=&quot;240, 259, 240, 289, 524, 289, 522, 439, 558, 439, 558, 259, 240, 259&quot; HREF=&quot;#BusA&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;158, 346, 217, 386&quot; HREF=&quot;#EU&quot;&gt;&lt;AREA SHAPE=&quot;RECT&quot; COORDS=&quot;154, 147, 240, 206&quot; HREF=&quot;#BIU&quot;&gt;&lt;/MAP&gt;&lt;a href=&quot;../_vti_bin/shtml.exe/asm9708/clase05.htm/map&quot;&gt;&lt;img ismap usemap=&quot;#FrontPageMap&quot; border=&quot;0&quot; height=&quot;480&quot; alt=&quot;Diagrama del 8086/8088&quot; src=&quot;8086.gif&quot; width=&quot;640&quot;&gt;&lt;/a&gt;" width="640" height="480"> </p>
+
+<h3><a name="Pipeline">Arquitectura en pipeline</a> </h3>
+
+<p>Los procesadores previos al 8086, estaban limitados en su desempeño por la necesidad
+de realizar los dos pasos principales de ejecución del procesador: <em>Fetch/Execute</em>,
+en forma secuencial. Es decir, no se puede ejecutar una instrucción hasta que se traiga
+de memoria (<em>Fetch</em>); y no podían traerse instrucciones de memoria mientras
+ejecutaba una instrucción, pues el procesador estaba ocupado. </p>
+
+<p>Resumiendo, un alto porcentaje del tiempo, el procesador estaba ocupado haciendo <em>Fetch</em>,
+cuando su función debiera ser ejecutar las instrucciones. La capacidad de ejecutar
+instrucciones sólo se ocupaba en un bajo porcentaje. </p>
+
+<p>Para solucionar esto, Intel desarrolló la arquitectura en <em>pipeline</em> del<em>
+Fetch/Execute</em>, en la cual simplemente se divide la tarea en dos secciones: una
+encargada del <em>Fetch </em>(<a href="#BIU">BIU</a>, y otra del Execute (<a href="#EU">EU</a>).
+De esta manera, existen circuitos separados para cada función, los cuales trabajan en
+paralelo. Si bien el proceso aún es secuencial, solamente al principio se requiere
+desperdiciar tiempo en el <em>Fetch</em>. A partir de ahí, <em>Fetch </em>va adelante del<em>
+Execute</em>, y trae instrucciones al procesador mientras este ejecuta las anteriores. </p>
+
+<h3><a name="BusDatos">Bus de datos de 16 bits</a> </h3>
+
+<p>Los procesadores dominantes antes de la introducción del IBM PC, basado en el 8086,
+eran todos de 8 bits; con lo que nos refereimos al bus de datos. Esto quiere decir que se
+podía accesar un byte de memoria en un solo ciclo de reloj, pues existían 8 cables entre
+la memoria y el procesador, por donde viajaban a la vez 8 bits de información. Que el
+procesador ahora sea de 16 bits, quiere decir que pueden viajar a la vez 16 bits (2 bytes)
+entre el procesador y la memoria; por tanto, el procesador puede mover bloques de memoria
+en la mitad del tiempo, y con la mitad de instrucciones. Esto hace más eficiente el
+acceso a memoria por parte del procesador. </p>
+
+<p>Al tamaño del bus de datos también suele llamársele <em>tamaño de palabra.</em> </p>
+
+<h3><a name="BusDirecciones">Bus de direcciones de 20 bits</a> </h3>
+
+<p>También antes del 8086 había una limitante en la memoria de la que el procesador
+podía disponer. Los procesadores anteriores contaban con un bus de direcciones de 16
+bits, con lo que podían indexar 65536 localidades distintas en memoria; siendo éstas
+bytes. Por tanto, su memoria máxima era de 64 Kb. Intel reconoció que pronto, esta
+memoria sería insuficiente, por lo que decidió ampliarla. Sin embargo, no pudieron
+imaginar usos para una memoria mayor a 1 Mb.; parecía infinita para los estándares de
+entonces. Por lo que aumentaron las líneas del bus de direcciones a 20, con lo cual se
+pueden indexar memorias con 1'048,576 elementos (1 Mb.) </p>
+
+<h3><a name="BIU">BIU: Bus Interface Unit</a> </h3>
+
+<p>El BIU es la parte del 8086 que se encarga de hacer el <em>Fetch</em>; es decir, su
+función es estar continuamente accesando la memoria, trayendo de ella las instrucciones
+para ser ejecutadas por el procesador. </p>
+
+<p>Contiene los siguientes elementos: 
+
+<ol>
+  <li><a href="#Segmentos">Los registros de segmentos</a> </li>
+  <li><a href="#Prefetch">La cola de prefetch</a> </li>
+  <li><a href="#Sumador">El generador de direcciones físicas</a> </li>
+  <li><a href="#BusC">El Bus C</a> </li>
+</ol>
+
+<p>Su funcionamiento es de la manera siguiente: </p>
+
+<h4><a name="Segmentos">Registros de segmentos</a> </h4>
+
+<p>Estos registros son localidades de 16 bits dedicados a las funciones de acceso a
+memoria. Se decidió, como se describirá más adelante al analizar el mecanismo de <a href="#Segmentacion">segmentación</a>, dividir el Megabyte de memoria al que puede
+accesar un 8086, en 65536 partes (segmentos), iniciadas cada 1 Mb / 65536 = 16 bytes.
+Así, podemos en general decir que los registros de segmentos nos van a indicar qué
+sección de memoria seleccionamos. </p>
+
+<p>Existen 4 registros de segmentos: </p>
+
+<h5>DS: Data Segment (Segmento de Datos) </h5>
+
+<p>Este registro selecciona una sección de 64 Kb. que se dedica generalmente a colocar en
+ella nuestras variables, por lo cual toma su nombre: sección de memoria dedicada a datos.
+</p>
+
+<h5>CS: Code Segment (Segmento de Código) </h5>
+
+<p>Este registro selecciona el área de 64 Kb. que generalmente dedicamos al código. En
+este caso, el CPU (específicamente, el BIU), siempre toma las instrucciones de esta
+región de memoria; por lo que cuando requerimos más de 64 Kb. de código
+(instrucciones), este registro tendrá que moverse, tomando distintos valores según
+recorremos distintas regiones de memoria. </p>
+
+<h5>SS: Stack Segment (Segmento de Pila) </h5>
+
+<p>Este registro selecciona la región de 64 Kb. que va a contener la pila del sistema.
+Como su nombre lo indica, tendremos una estructura de datos, con política LIFO (Last In,
+First Out = El último elemento en entrar, es el primero en salir), con instrucciones
+básicas PUSH y POP para su manejo. Esta estructura es usada por los programas de
+aplicación, pero también por el procesador para el control de instrucciones que lo
+requieren, tales como las llamadas a subrutinas yla atención de interrupciones. </p>
+
+<h5>ES: Extra Segment (Segmento Extra) </h5>
+
+<p>Este registro nos permite seleccionar una sección de 64 Kb., que no está destinada a
+ningún uso específico; por lo que el programador puede aplicarla como comodín,
+generalmente como un segundo segmento de datos; o bien, para el acceso a regiones de
+memoria del sistema, tales como la memoria de video o las variables del BIOS. </p>
+
+<h4><a name="Prefetch">Cola de prefetch</a> </h4>
+
+<p>Ya que el <a href="#BIU">BIU</a> trabaja en paralelo con el <a href="#EU">EU</a>,
+requieren de un mecanismo para comunicarse. Esto se logra con una cola, estructura de
+datos que permite que el EU obtenga instrucciones para ejecutar en el mismo orden en que
+el BIU las colocó en la misma. Así, el EU puede solicitar instrucciones en cuanto esté
+listo para ejecutar la siguiente, sin importar en qué paso está el BIU en la obtención
+de instrucciones; y viceversa, el BIU puede continuar su búsqueda de instrucciones,
+depositando la que acaba de obtener en la cola, sin importar si el EU en este momento
+está ocupado ejecutando. </p>
+
+<h4><a name="Sumador">Generador de direcciones físicas</a> </h4>
+
+<p>Como las direcciones son de 20 bits, y los registros que nos permiten accesarlas son de
+16, se requiere de 2 registros para que en combinación formen la dirección. </p>
+
+<p>Esta combinación está basada en la <a href="#Segmentacion">arquitectura segmentada</a>
+que veremos más adelante. La función del generador de direcciones físicas consiste en
+realizar esa combinación, para lo cual contiene la circuitería necesaria para calcular
+la fórmula: </p>
+
+<p align="center"><em>Dirección Fisica = Segmento * 0010h + Desplazamiento</em> </p>
+
+<h4><a name="BusC">Bus C</a> </h4>
+
+<p>Este bus interno del procesador permite que la información fluya entre la interfaz con
+la memoria y los distintos elementos del BIU. Se requiere un bus independiente, para que
+la información que usa el EU no se interfiera con la que está procesando el BIU. </p>
+
+<h3><a name="EU">EU: Execution Unit</a> </h3>
+
+<p>El EU es la parte del 8086 que </p>
+
+<p>Contiene los siguientes elementos: 
+
+<ol>
+  <li><a href="#UnidadControl">Unidad de control</a> </li>
+  <li><a href="#PropositoGral">Registros de propósito general</a> </li>
+  <li><a href="#Indices">Registros de índice</a> </li>
+  <li><a href="#ALU">ALU</a> </li>
+  <li><a href="#Banderas">Registro de Banderas</a> </li>
+  <li><a href="#BusA">Bus A</a> </li>
+</ol>
+
+<h4><a name="UnidadControl">Unidad de Control</a> </h4>
+
+<p>Es la sección del procesador que contiene la lógica de funcionamiento del mismo; es
+decir, esta circuitería gobierna el comportamiento de los distintos elementos en el
+procesador, coordinando los procesos de <em>Fetch </em>y<em> Execute</em>, así como las
+distintas microoperaciones necesarias para la ejecución. Por tanto, tiene dos funciones
+principales: 
+
+<ul>
+  <li>Generar la secuencia de estados del procesador, lo que logra gracias a la ejecución del
+    microcódigo. </li>
+  <li>Decodificar las instrucciones, determinando así los pasos para su ejecución. </li>
+</ul>
+
+<h4><a name="PropositoGral">Registros de Propósito general</a> </h4>
+
+<p>Son 4 registros de 16 bits, que el programador usará para una diversidad de funciones.
+Tienen varias características en común: 
+
+<ul>
+  <li>Pueden ejecutar la mayoría de las operaciones del procesador, incluyendo la generalidad
+    de las instrucciones aritméticas y lógicas, salvo la multiplicación y división. </li>
+  <li>Se dividen lógicamente en 2 registros de 8 bits cada uno, llamados parte alta y parte
+    baja; refiriéndose el registro de parte baja a los bits 0-7 (menos significativos) y la
+    parte alta a los bits 8-15 (más significativos). Se conocen como el registro 
+  L (parte baja) y H (parte baja), precedidos por la letra que identifica al 
+  registro. Por ejemplo, AX se divide en AH y AL.</li>
+  <li>Pueden conectarse a los registros de segmentos; de hecho, siempre se hará acceso a los
+    registros de segmento a través de un registro de propósito general, o de la pila. </li>
+</ul>
+
+<p>Los 4 registros tienen su nombre propio y ciertas especializaciones: </p>
+
+<h3>AX: Registro de acumulador </h3>
+
+<p>Este registro es el más usado, siendo de propósito general; y tiene ciertas
+especializaciones, de ahí su nombre: 
+
+<ul>
+  <li>Es el único que puede ser usado como multiplicando en la multiplicación </li>
+  <li>Es el único que puede ser usado como dividendo en la división </li>
+  <li>Es el parámetro que selecciona los distintos servicios del Sistema Operativo, usados
+    mediante el mecanismo de Interrupciones. </li>
+</ul>
+
+<h3>BX: Registro de Base </h3>
+
+<p>Este registro, además de las características generales de los registros de propósito
+general, se especializa 
+
+<ul>
+  <li>en el acceso a memoria en combinación con los registros de índice, especialmente para
+    el manejo de arreglos. </li>
+</ul>
+
+<h3>CX: Registro de Contador </h3>
+
+<p>Este registro, como su nombre indica, será ampliamente usado como contador. Puede ser
+usado como cualquier registro de propósito general, pero tiene capacidades especiales
+para ser usado en instrucciones: 
+
+<ul>
+  <li>de manejo de ciclos </li>
+  <li>como contador en los corrimientos </li>
+  <li>de manejo de memoria y strings </li>
+</ul>
+
+<h3>DX: Registro de Datos </h3>
+
+<p>Este registro de propósito general tiene como especializaciones: 
+
+<ul>
+  <li>Formar con AX números de 32 bits, siendo en este caso la parte más significativa. </li>
+  <li>El acceso a puertos. Las instrucciones IN y OUT, que permiten dicho acceso, requerirán
+    en ciertos casos que el número de puerto esté en DX. </li>
+</ul>
+
+<h4><a name="Indices">Registros de Índice</a> </h4>
+
+<p>Estos registros, de 16 bits, son muy similares a los de propósito general, pero no
+tienen todas las capacidades de los mismos; en particular: 
+
+<ul>
+  <li>No pueden conectarse directamente con los registros de segmentos. </li>
+  <li>No pueden verse como dos registros de 8 bits (parte alta y parte baja). </li>
+</ul>
+
+<p>Ahora bien, tienen sus propias habilidades. Específicamente, están diseñados para
+combinarse con los registros de segmento, ser usados como desplazamientos y así
+intervenir en el acceso a memoria. Se les usa, por ello, para el acceso a arreglos o como
+apuntadores. </p>
+
+<p>Los 4 registros que se consideran en este grupo son: </p>
+
+<h3>SI: Source Index, o Apuntador a la Fuente </h3>
+
+<p>Este registro se especializa en el acceso a bytes o words dentro del segmento de datos;
+existen instrucciones que lo toman por defecto como el registro que apunta a una localidad
+de memoria que se va a leer, por lo cual toma su nombre. </p>
+
+<h3>DI: Destination Index, Apuntador al Destino </h3>
+
+<p>Este registro se especializa en el acceso a bytes o words dentro del segmento de datos
+o el extra; existen instrucciones que lo toman por defecto como el registro que en
+combinación con el ES apunta a una localidad de memoria que se va a escribir, por lo cual
+toma su nombre. </p>
+
+<h3>BP: Base Pointer, o apuntador a la Base de la Pila. </h3>
+
+<p>Este registro es usado para accesar, dentro del segmento de pila, la información.
+Principalmente nos permite determinar cuando hay un <em>underflow</em>, es decir, cuando
+se quiere sacar más información de la pila que la que se ha colocado en ella; y el
+acceso a variables locales y parámetros. </p>
+
+<h3>SP: Stack Pointer, o apuntador al tope de la Pila. </h3>
+
+<p>Este registro también está siempre asociado al manejo de la pila. Su función
+especial es marcar el tope de la pila, y por tanto, indica en qué localidad de memoria se
+localiza la información de la pila; se incrementa cuando se hace un POP, con lo que
+apunta al siguiente elemento en la pila; y se decrementa al hacer un PUSH, con lo que
+controla el acceso a la memoria de la pila. </p>
+
+<h4><a name="ALU">ALU</a>: Unidad Aritmética-Lógica </h4>
+
+<p>Este componente, como su nombre indica, contiene la circuitería necesaria para
+realizar las diversas operaciones aritméticas y lógicas. Recibe sus operandos por el Bus
+A, y genera los resultados regresándolos al mismo bus. Una particularidad que es
+importante recalcar es su conexión al <a href="#Banderas">registro de banderas</a>, por
+lo cual todas las operaciones aritméticas y lógicas, de acuerdo a su resultado, lo
+alterarán. </p>
+
+<h4><a name="Banderas">Registro de Banderas</a> </h4>
+
+<p>Este es un registro de 16 bits, usados como banderas. Esto quiere decir que cada uno de
+los bits señala un evento dentro del procesador; cuando el bit tiene un valor de 0, el
+evento no ocurrió (falso); y cuando tiene un valor de 1, el evento ocurrió (verdadero).
+Entre las banderas más importantes mencionaremos: </p>
+
+<h5>ZF: Bandera de resultado 0 </h5>
+
+<p>Se prende cuando el resultado de la última operación realizada en el ALU fue un 0. </p>
+
+<h5>CF: Bandera de carry </h5>
+
+<p>Se prende cuando el resultado de la última operación realizada en el ALU
+(necesariamente, una suma o resta) generó un <em>carry </em>o un <em>borrow</em>. </p>
+
+<h5>OF: Bandera de overflow </h5>
+
+<p>Se prende cuando el resultado de la última operación realizada en el ALU excedió la
+capacidad del registro donde se almacena (<em>overflow</em>). </p>
+
+<h5>SF: Bandera de signo </h5>
+
+<p>Se prende cuando el resultado de la última operación realizada en el ALU fue
+negativo, según la representación de complemento a 2 que mencionamos en clases
+anteriores. </p>
+
+<h5>AF: Bandera de carry auxiliar </h5>
+
+<p>Se prende cuando el resultado de la última operación realizada en el ALU generó un
+carry cuando estaba a la mitad. Por ejemplo, si sumamos dos números de 16 bits, nos
+indicará si la suma de las partes bajas (primeros 8 bits) había generado carry; si
+sumamos dos números de 8 bits, indica si el resultado intermedio después de sumar los 4
+bits menos significativos, generó carry para sumarse a los bits 5. </p>
+
+<h5>DF: Bandera de dirección </h5>
+
+<p>A diferencia de las anteriores, esta bandera no se prende como resultado del ALU, sino
+que el programador la usa para controlar la dirección del acceso mediante apuntadores,
+especialmente en las <a href="../Temas/clase15.htm">instrucciones de strings</a>. </p>
+
+<h5>IF: Bandera de interrupción </h5>
+
+<p>Se prende cuando el procesador es interrumpido, y está ejecutando una rutina de
+atención de interrupción. Esto evita que el procesador acepte interrupciones mientras
+está procesando interrupciones previas, de manera que no se pierda el control del
+procesador. </p>
+
+<h4><a name="BusA">Bus A</a> </h4>
+
+<p>Este bus es el camino por el que viajan los datos dentro de la unidad de ejecución,
+principalmente entre los registros y el ALU. </p>
+
+<h3><a name="#Segmentacion">Manejo de Memoria: Segmentación</a> </h3>
+
+<p>Cuando Intel extendió el bus de direcciones, de 16 a 20 bits, se encontró con el
+problema de cómo asociar los registros con las direcciones de memoria. Para lograrlo,
+aplicó un concepto ya usado antes en mainframes, conocido como segmentación; en este
+modelo, se usan dos registros para seleccionar una localidad de memoria: 
+
+<ul>
+  <li><strong>Registro de Segmento</strong>: indica en qué segmento (región o sección) de
+    la memoria se encontrará la localidad deseada. </li>
+  <li><strong>Registro de Desplazamiento</strong>: indica en qué desplazamiento, es decir,
+    dirección relativa respecto al inicio de la sección, se encontrará la localidad
+    deseada. </li>
+</ul>
+
+<p>En el caso del 8086, los registros son de 16 bits, con lo que un registro de segmento
+puede tomar 65536 valores distintos; además, un registro de desplazamiento puede tomar
+los mismos valores. De ahí las siguientes propiedades: 
+
+<ul>
+  <li>Un segmento inicia cada 16 bytes de memoria; de esta manera, a&nbsp;cada sección de 16
+    bytes de la memoria se le llama <em>&quot;párrafo&quot;</em>. </li>
+  <li>Dos segmentos de memoria llegan a tener sobreposición; de manera que una misma
+    localidad de memoria puede accesarse en distintas formas. Exactamente, en ¡4096 formas
+    distintas! </li>
+  <li>La ventaja de esta sobreposición, que complica el manejo, es que se desperdicia menos
+    memoria entre código y datos, que están en segmentos distintos; si los segmentos no se
+    sobrepusieran, desperdiciaríamos por ejemplo 63 Kb. si nuestros datos ocuparan 1 Kb, para
+    completar el segmento. En cambio, con el esquema de segmentación con sobreposición,
+    pueden inclusive no desperdiciarse bytes. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<ul>
+  <li>Libro de texto, capítulos 3 y 5. </li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> Página por
+Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx">
+  <img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
+<em>Última actualización: Vi 7-Jun-96 </em></p>
+</body>
+</html>

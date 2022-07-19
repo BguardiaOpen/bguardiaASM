@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta NAME="GENERATOR" Content="Microsoft Developer Studio">
+<meta HTTP-EQUIV="Content-Type" content="text/html;     charset=iso-8859-1">
+<title>Ejemplo 1 de Dynamic HTML</title>
+
+<script LANGUAGE="VBScript">
+<!--
+    Function Menu1_OnMouseOver()        
+		Menu1.Color = "Red"
+    End Function    
+    
+    Function Menu1_OnMouseOut()
+        Menu1.Color = "Blue"        
+    End Function
+
+    Function Menu2_OnMouseOver()        
+		Menu2.Color = "Red"
+    End Function    
+    
+    Function Menu2_OnMouseOut()
+        Menu2.Color = "Blue"        
+    End Function
+
+    Function Liga1_OnMouseOver()        
+		ayuda.innerText = "Presiona aquí para regresar a ver la teoría"
+    End Function    
+    
+    Function Liga1_OnMouseOut()
+		document.linkColor = "Blue"
+		ayuda.innerText = "¿Qué tal?"
+    End Function
+
+    Function Liga2_OnMouseOver()        
+		ayuda.innerText = "Presiona aquí para ver el siguiente ejemplo"
+    End Function    
+    
+    Function Liga2_OnMouseOut()
+		document.linkColor = "Blue"
+		ayuda.innerText = "¿Qué tal?"
+    End Function
+// -->
+</script>
+</head>
+<body BGCOLOR="WHITE">
+<p>
+En este ejemplo, las ligas de un menú
+ se activan al pasar el ratón sobre ella, cambiando
+ el color con HTML dinámico.
+</p>
+<table><tr><td>
+<p> 
+<font FACE="Arial" ID="Menu1" COLOR="BLUE">1 - 
+<a NAME="Liga1" HREF="../Temas/Tema12.htm">Regresar a la teoría</a>
+</font>
+</p>
+<p>
+<font FACE="Arial" ID="Menu2" COLOR="BLUE">2 - 
+<a NAME="Liga2" HREF="DHTML2.htm">Siguiente ejemplo</a>
+</font>
+</p>
+</td>
+<td>
+<div ID="ayuda">
+Este es un texto de ayuda que va a ser sustituido gracias
+a las ventajas de HTML
+</div>
+</td></tr></table>
+</body>
+</html>

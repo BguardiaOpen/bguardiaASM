@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Dudas Comunes en la sesión 4</title>
+<!-- Created by AOLpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#00FF00" vlink="#0000FF">
+
+<h2>Dudas Comunes (Instrucciones básicas y modos de
+direccionamiento) </h2>
+
+<h3>¡En espera de las que manden! </h3>
+
+<ol>
+    <li><em>¿Cómo se manejan los errores al usar las funciones
+        de archivos?</em><br>
+        R: Cuando hay un error, al regresar de la interrupción
+        21h la bandera de Carry se encontrará prendida. De este
+        modo, solamente hay que validarla usando un salto
+        condicional; si no hay Carry (JNC), podemos continuar
+        realizando procesamiento, pues hubo éxito en la
+        operación; si el carry quedó prendido (caso contrario);
+        hay que revisar el error, para lo cual se consulta AX
+        donde se encuentra el código del error específico.</li>
+    <li><em>¿Siempre se tiene que avanzar el apuntador al
+        archivo?</em><br>
+        R: No, cada vez que se hace una operación de lectura o
+        de escritura, automáticamente la posición sobre el
+        archivo avanza a la siguiente, después de la zona leída
+        o escrita. De esta manera, sólo se deberá usar el
+        servicio 42h de la INT 21h cuando no se quiera recorrer
+        el archivo en forma secuencial.</li>
+</ol>
+</body>
+</html>

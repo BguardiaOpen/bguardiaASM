@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title> Representación y Tipos de Datos</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF" text="#000000" link="#000066" vlink="#808080" alink="#FF0000" topmargin="0">
+
+<h1 align="center">Tema #4 </h1>
+
+<h1 align="center">Representación y Tipos de Datos </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase03.htm">
+        <img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase05.htm">
+        <img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos específicos </a></h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Explicar cómo se almacena la información de distintos
+        tipos de datos, en memoria. </li>
+    <li>Calcular el espacio requerido para el almacenamiento </li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<p>Representación de Datos </p>
+
+<p>Cómo ve la información el CPU, en los distintos tipos de
+datos: </p>
+
+<ol>
+    <li><a href="#Unsigned">Números enteros sin signo</a> </li>
+    <li><a href="#Signed">Números enteros con signo</a> </li>
+    <li><a href="#Char">Caracteres</a> </li>
+    <li><a href="#Float">Punto flotante</a> </li>
+    <li><a href="#Struct">Estructuras</a> </li>
+    <li><a href="#Arrays">Arreglos</a> </li>
+    <li><a href="#String">Cadenas</a> </li>
+</ol>
+
+<h3 align="center"><img src="../../images/waveline.gif" width="756" height="16"></h3>
+
+<h3 align="left"><a name="Unsigned">Números enteros sin signo</a>
+</h3>
+
+<ul>
+    <li>Tipos &quot;unsigned&quot; de C </li>
+    <li>Representan solamente la magnitud, en forma binaria. <dl>
+            <dt>Permiten almacenar números desde 0 hasta (2^n) -
+                1 </dt>
+            <dd><em>n se refiere al número de bits usados para
+                representar</em> </dd>
+        </dl>
+    </li>
+    <li>Números de 1 byte sin signo: 0 a 255: <em>unsigned char</em>
+    </li>
+    <li>Números de 2 bytes sin signo: 0 a 65535: <em>unsigned
+        short</em> </li>
+    <li>Números de 4 bytes sin signo: 0 a algo más de 4 mil
+        millones: <em>unsigned long</em> </li>
+</ul>
+
+<h3 align="center"><img src="../../images/waveline.gif" width="756" height="16"></h3>
+
+<h3 align="left"><a name="Signed">Números enteros con signo</a> </h3>
+
+<ul>
+    <li>Los más usuales, &quot;integer&quot;, &quot;long&quot;. </li>
+    <li>Un bit (el más significativo) es usado para representar
+        el signo. </li>
+    <li>Cuando es 0, el número es positivo </li>
+    <li>Cuando es 1, el número es negativo </li>
+    <li>Permiten almacenar números desde -2^(n-1), hasta
+        +(2^(n-1)) - 1 </li>
+    <li>Bytes: -128 a +127, words: -32768 a 32767 </li>
+    <li>Para propósitos de aprovechar el mismo circuito
+        sumador/restador para números con signo o sin signo, los
+        números negativos se almacenan usando el complemento a
+        dos </li>
+</ul>
+
+<h4>Complemento a uno </h4>
+
+<ul>
+    <li>Primer paso para el manejo de números negativos </li>
+    <li>Consiste en complementar todos los bits de un número
+        binario </li>
+    <li>Los dígitos 0 se convierten en dígitos 1, y los
+        dígitos 1 se convierten en dígitos 0 </li>
+</ul>
+
+<h5>Operaciones para obtenerlo </h5>
+
+<ul>
+    <li>NOT - lógico </li>
+    <li>XOR del número contra una constante equivalente a tantos
+        1s binarios como bits tenga el número. </li>
+</ul>
+
+<h4>Complemento a dos </h4>
+
+<ul>
+    <li>Para manejo de números negativos </li>
+    <li>Se obtiene sumándole uno al complemento a uno </li>
+    <li>Tiene la propiedad de que si sumamos un número binario
+        con su complemento a dos, nos da 0. </li>
+    <li>Por tanto, se puede interpretar como el inverso aditivo o
+        simétrico </li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h3><a name="Char">Representación de caracteres</a> </h3>
+
+<p>Es una abstracción de datos: </p>
+
+<ul>
+    <li>El CPU solamente sabe procesar números </li>
+    <li>Otros datos deben representarse en términos numéricos </li>
+</ul>
+
+<p>Código de caracter: define una tabla de correspondencias
+entre caracteres y números asignados </p>
+
+<ul>
+    <li>EBCDIC: Antiguo, usado en Mainframes. </li>
+    <li>ASCII: es de 7 bits (0 a 127), en PC's se extiende a 256 </li>
+    <li>Unicode </li>
+</ul>
+
+<h3 align="center"><img src="../../images/waveline.gif" width="756" height="16"></h3>
+
+<h3 align="left"><a name="Float">Punto flotante</a> </h3>
+
+<p>Es una representación de los números reales<span lang="es-mx">, basada en la 
+notación científica</span>.</p>
+
+<p><span lang="es-mx">En decimal en la notación científica podemos escribir:</span></p>
+
+<p><span lang="es-mx">1.9 x 10<sup>9</sup> o en forma corta 1.9E9</span></p>
+
+<p><span lang="es-mx">En este caso, el signo es positivo; la mantisa es el 
+número que multiplica, es decir, el 1.9; y el exponente (al que se eleva la 
+base) es 9. En binario, simplemente se asignan los bits correspondientes para 
+cada uno de estos elementos, pero se usa la base 2 en vez de la base 10.</span></p>
+
+<p>Utiliza para su
+representación 32 bits (palabra doble), 64 (palabra cuádruple).
+El formato corto utiliza los 32 bits de la siguiente manera: </p>
+
+<ul>
+    <li>1 bit para signo, </li>
+    <li>8 bits para el exponente, </li>
+    <li>2<span lang="es-mx">4</span> bits para la <span lang="es-mx">mantisa</span>. </li>
+</ul>
+
+<p>El rango de los números a representar, en los positivos, es
+desde 2^-128 (1.175 x 10^-38) a 2^128 (3.40 x 10^38). Y
+equivalentemente, en los negativos. </p>
+
+<p>En C, el formato de 32 bits es conocido como tipo <em>float</em>;
+el de 64 bits, como <em>double</em>. </p>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h3><a name="Struct">Estructuras</a> </h3>
+
+<p>Una colección de datos cuya organización se caracteriza por
+las funciones de acceso que se usan para almacenar y acceder a
+elementos individuales de datos. </p>
+
+<p>Hay tres formas distintas de examinar una estructura de datos:
+</p>
+
+<ul>
+    <li>Nivel Abstracto o Lógico. En este nivel, se encuentra la
+        organización y especificación de los procedimientos y
+        funciones generales de acceso. </li>
+    <li>Nivel de Implementación. En este nivel, se examina las
+        formas de representación de los datos en memoria y cómo
+        implementar los procedimientos. </li>
+    <li>Nivel de Aplicación. Este nivel presenta con precisión
+        las relaciones entre los datos y como son representados
+        por las estructuras. </li>
+</ul>
+
+<p>Así, para calcular el espacio que ocupa una estructura y ver
+su forma de almacenamiento, nos basta con concatenar en memoria
+las de sus elementos. Por ejemplo, la estructura: </p>
+
+<p><em>struct ejemplo {</em> </p>
+
+<p><em>int Datos1;</em> </p>
+
+<p><em>char Datos2;</em> </p>
+
+<p><em>};</em> </p>
+
+<p>Requiere 3 bytes para su almacenamiento, encontrándose el
+entero a partir de la localidad 0 relativa al inicio de la
+estructura, y el caracter a partir de la localidad 2. </p>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h3><a name="Arrays">Arreglos</a> </h3>
+
+<p>El arreglo es un tipo de datos estructurado formado por una
+colección finita de elementos ordenados, todos del mismo tipo.
+El acceso se realiza mediante un índice que permite especificar
+cuál es el elemento deseado dando su posición en la colección.
+</p>
+
+<p>Un byte es la unidad de memoria que se asigna para almacenar
+un valor. En el caso de un arreglo las sentencias de declaración
+le dicen al compilador cuántos bytes se necesitan para
+representar el arreglo. Entonces el nombre del arreglo se asocia
+con las caracteristicas del mismo, estas son: </p>
+
+<ul>
+    <li>El límite superior del rango. </li>
+    <li>El límite inferior del rango </li>
+    <li>La posición en memoria del primer byte del arreglo,
+        llamada la dirección base. </li>
+    <li>El número de posiciones de memoria necesarias para cada
+        elemento del arreglo. </li>
+</ul>
+
+<p>La función de acceso utiliza esta información para
+determinar la posición del elemento deseado, usando una simple
+multiplicación y una suma: </p>
+
+<p align="center"><em>Posicion Elemento[i] = Dirección Base + (i
+- Limite Inferior) * Tamaño Elemento</em> </p>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h3><a name="String">Cadenas</a> </h3>
+
+<p>Una cadena es una secuencia de caracteres. Se utiliza para
+guardar textos. Dado que la longitud es dinámica, se usan
+algunos bits extras con información sobre la longitud máxima,
+la longitud real de la cadena o un indicador de fin de cadena. </p>
+
+<p>Por ejemplo, Pascal almacena en el primer byte, el número de
+caracteres que contiene la cadena. Por ello, la longitud máxima
+que permite es de 256 caracteres. </p>
+
+<p>C permite cadenas de longitud indefinida, pues codifica la
+información desde el primer byte, hasta encontrar un caracter
+nulo (código ASCII 0), que funciona como terminador de cadena. </p>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<ul>
+    <li>Capítulo 2 del libro de texto. </li>
+    <li>Manuales de C y Pascal. </li>
+    <li>Estándares, por ejemplo el de la IEEE para
+        representación de números reales. </li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<p align="center">Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx">
+    <img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
+<em>Última actualización: Mi 14-Ago-96 </em></p>
+</body>
+</html>

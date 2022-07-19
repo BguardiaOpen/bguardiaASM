@@ -1,0 +1,196 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Instrucciones de Ciclos</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #19 <br>
+Instrucciones de Ciclos </h1>
+<div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase18.htm">
+    <img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior </a></td>
+    <td><p align="center"><a href="../Sesiones/sv11.htm">
+    <img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 11</a></td>
+    <td><p align="center"><a href="../Temas/clase20.htm">
+    <img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente </a></td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer las instrucciones especiales de la familia 80x86, especialmente diseñadas para
+    el manejo eficiente de ciclos. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h3>Instrucciones de ciclos </h3>
+
+<p>Las instrucciones de ciclos son muy particulares de la familia 80x86, son instrucciones
+de mayor nivel que combinan la funcionalidad de varias instrucciones de las ya vistas; con
+ello, se reduce el FETCH para un proceso particular, por lo que estas instrucciones
+generalmente se usan para conseguir una mayor eficiencia del código, sea en tamaño
+o&nbsp;velocidad. 
+
+<ul>
+  <li><a href="#JCXZ">JCXZ</a> </li>
+  <li><a href="#LOOP">LOOP</a> </li>
+  <li><a href="#LOOPE">LOOPE/LOOPNE</a> </li>
+</ul>
+
+<hr>
+
+<h3><a name="JCXZ">JCXZ</a> </h3>
+
+<ul>
+  <li>CX se usa especialmente como contador </li>
+  <li>Es común&nbsp;tener&nbsp;que&nbsp;realizar la&nbsp;comparación Si CX = 0, entonces no
+    entres al ciclo (o salta a cualquier otro lado)</li>
+</ul>
+
+<p>Sintaxis: </p>
+
+<p><code>JCXZ &lt;etiqueta&gt;</code> </p>
+
+<p>equivale a: </p>
+
+<p><code>CMP CX, 0</code> </p>
+
+<p><code>JZ &lt;etiqueta&gt;</code> </p>
+
+<p>Diferencia importante: No altera las banderas </p>
+
+<hr>
+
+<h3><a name="LOOP">LOOP</a> </h3>
+
+<p>Ciclos comunes: repetir un bloque de instrucciones &quot;N&quot; veces </p>
+
+<p><code>(mientras N &gt; 0) {...; N--; }</code> </p>
+
+<p>Manejo: se pone N en CX </p>
+
+<p><code>MOV CX, N</code> </p>
+
+<p><code>Etiqueta:</code> </p>
+
+<p><code>...</code> </p>
+
+<p><code>DEC CX</code> </p>
+
+<p><code>CMP CX, 0</code> </p>
+
+<p><code>JNE Etiqueta</code> </p>
+
+<p>LOOP reemplaza al DEC, CMP y JNE; no afecta las banderas. </p>
+
+<p><code>MOV CX, N</code> </p>
+
+<p><code>Etiqueta:</code> </p>
+
+<p><code>...</code> </p>
+
+<p>LOOP<code> Etiqueta</code> </p>
+
+<h4>Ventajas: </h4>
+
+<ol>
+  <li>Es más estructurado </li>
+  <li>Es más compacto en memoria </li>
+  <li>Normalmente, es más eficiente </li>
+  <li>No altera las banderas, por lo que otra comparación puede conjugarse con la condición
+    de fin del ciclo. </li>
+</ol>
+
+<hr>
+
+<h3><a name="LOOPE">LOOPE/LOOPNE</a> </h3>
+
+<p>LOOPE: Mientras (CX &gt; 0 y ZF = 1), es decir &quot;Ciclo mientras la bandera de cero
+esté activa y el contador no llegue a 0&quot;</p>
+
+<p>Similar a LOOP, se puede explicar mencionando que un ciclo como el siguiente puede ser
+sustituido por el LOOPE: </p>
+
+<p><code>Ciclo: ...</code> </p>
+
+<p><code>JNE FinCiclo</code> </p>
+
+<p><code>DEC CX</code> </p>
+
+<p><code>CMP CX, 0</code> </p>
+
+<p><code>JNE Ciclo</code> </p>
+
+<p><code>FinCiclo:</code> </p>
+
+<p>LOOPNE: Mientras (CX &gt; 0 y ZF = 0) , es decir &quot;Ciclo mientras la bandera de
+cero esté <span lang="en-us">apagada </span>y el contador no llegue a 0&quot;</p>
+
+<p>Es un caso similar </p>
+
+<p><code>Ciclo: ...</code> </p>
+
+<p><code>JE FinCiclo</code> </p>
+
+<p><code>DEC CX</code> </p>
+
+<p><code>CMP CX, 0</code> </p>
+
+<p><code>JNE Ciclo</code> </p>
+
+<p><code>FinCiclo:</code> </p>
+
+<p>Al igual que LOOP, estas instrucciones no afectan las banderas </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Libros de referencia. </li>
+  <li>Libro de texto, solamente en la referencia de instrucciones, pp. 499-500 </li>
+</ol>
+
+<p align="center">
+<img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx">
+  <img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ma 2-Jul-96 </em><br>
+<em>Última actualización: Mi 15-Abr-1998</em></p>
+</body>
+</html>

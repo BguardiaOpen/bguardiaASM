@@ -1,0 +1,93 @@
+<html>
+
+<head>
+<title>Ejemplo 3 de Java Script</title>
+</head>
+<script language="JavaScript">
+<!-- Inicia el comentario para que no se vea el código en navegadores que no soporten Java Script.
+function Calendario() {
+// Averiguar en qué dia empieza el mes
+var Hoy=new Date(); // Crear el objeto día
+
+// Escribir el encabezado de la tabla
+document.write("<TABLE BORDER>");
+// Encabezado con el mes.
+// Nótese que como el HTML tiene comillas dentro, se debe usar el backslash para que estas comillas se
+// interpreten como comillas dentro del texto (\")
+document.write("<TR><TH COLSPAN=\"7\" ALIGN=\"CENTER\">" + (Hoy.getMonth()+1) + "/" + Hoy.getYear() + "</TH></TR>");
+
+
+// Encabezado días
+document.write("<TR><TH>Lunes</TH><TH>Martes</TH><TH>Miércoles</TH><TH>Jueves</TH>");
+document.write("<TH>Viernes</TH><TH>Sábado</TH><TH>Domingo</TH></TR>");
+var DiasDelMes=31; // Se ajustará según el mes.
+if (Hoy.getMonth()==1) // Febrero, entonces checar si es bisiesto. Nótese que getMonth regresa de 0-11
+	{
+	year=Hoy.getYear();
+	// Es bisiesto si el año es múltiplo de 4, y no es siglo (múltiplo de 100) a menos que sea múltiplo de 400.
+	if  ( (year % 4 == 0) && ( (year % 100 != 0) || (year % 400 == 0)) )
+		DiasDelMes=29;
+	else
+		DiasDelMes=28;
+	}
+if ( (Hoy.getMonth()==3) // Si es Abril
+	|| (Hoy.getMonth()==5) // o Junio
+	|| (Hoy.getMonth()==8) // o Septiembre
+	|| (Hoy.getMonth()==10)) // o Noviembre
+		DiasDelMes=30;
+
+// Para averigüar en qué día de la semana inicia el mes, generaremos un objeto fecha del primero de mes:
+var PrimeroMes=Hoy; // copia de la fecha de hoy
+// y para que sea el primero del mes, cambiamos el día dejando mes y año:
+PrimeroMes.setDate(1);
+
+var DiaSemana=PrimeroMes.getDay(); // Día de la semana en que inicia este mes; regresa de 0=Domingo a 6=Sábado.
+if (DiaSemana==0)
+	DiaSemana=7; // En México consideramos que la semana inicia en lunes, no domingo.
+
+var i;
+// Primer renglón: poner los espacios en blanco necesarios.
+document.write("<TR>");
+Fecha=1; // Día a desplegar
+for (i=1; i<DiaSemana; i++)
+	document.write("<TD></TD>"); // un espacio vacío en la tabla
+while (i<=7) {
+	document.write("<TD>" + Fecha + "</TD>"); // Mostrar días en la tabla
+	Fecha++;
+	i++;
+	}
+document.write("</tr>");
+// Escribir tantos renglones de 7 días como se requieran.
+while (Fecha<=DiasDelMes)
+	{
+	document.write("<TR>");
+	for (i=1; i<=7; i++)
+		{
+		if (Fecha<=DiasDelMes)
+			document.write("<TD>" + Fecha + "</TD>"); // Mostrar días en la tabla
+		else
+			document.write("<TD></TD>"); // espacio vacío
+		Fecha++;
+		}
+	document.write("</TR>");
+	}
+
+// Cerrar la tabla
+document.writeln("</TABLE>");
+
+}
+// aquí se pone doble slash para que esto sea un comentario de Java Script -->
+</script>
+
+
+<body background="js3.htm#FFFFF">
+
+<h3 align="center">Calendario JavaScript</h3>
+<script language="JavaScript">
+<!-- Inicia el comentario
+Calendario();
+// aquí se pone doble slash para que esto sea un comentario de Java Script -->
+</script>
+
+</body>
+</html>

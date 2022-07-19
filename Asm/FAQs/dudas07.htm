@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Dudas Comunes en la sesión 7</title>
+<!-- Created by AOLpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#00FF00" vlink="#0000FF">
+
+<h2>Dudas Comunes (Manejo de video) </h2>
+
+<p>&nbsp;</p>
+
+<ol>
+    <li><em>¿Por qué mi programa funciona en mi máquina, pero
+        no en la de la escuela (la de la escuela es IBM)?</em><br>
+        R: Hay un &quot;bug&quot; en la interrupción 10h en el
+        BIOS de muchas IBM, que MODIFICA el valor de AH, cuando
+        según la especificación de la interrupción, no debiera
+        hacerlo. De manera que cuando sea una máquina IBM, no se
+        puede asumir que AH no se destruye; para solucionarlo,
+        asegúrense de que cada vez que se va a usar la
+        interrupción 10h, el valor de AH se vuelva a cargar. </li>
+</ol>
+</body>
+</html>

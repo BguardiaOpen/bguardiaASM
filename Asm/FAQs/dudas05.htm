@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Dudas Comunes en la sesión 5</title>
+<!-- Created by AOLpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#00FF00" vlink="#0000FF">
+
+<h2>Dudas Comunes (Examen Parcial y Herramientas) </h2>
+
+<ol>
+    <li><em>¿Cómo es el examen del primer parcial?</em><br>
+        R: Son ejercicios que apliquen la teoría vista, tales
+        como los ejercicios de la sesión 4; es a libro abierto,
+        como todos los exámenes. Ejemplos de ejercicios pueden
+        ser ensamblar a mano, simular el ciclo de fetch,
+        pequeñas secciones de código...</li>
+    <li><em>Usando el Turbo Debugger, al abrir un programa
+        ejecutable generado por TASM y TLINK, no se ven las
+        instrucciones del programa fuente. El mensaje que aparece
+        es &quot;Program has no symbol table&quot;.&nbsp;¿Por
+        qué?</em><br>
+        R: Para que el Turbo Debugger relacione el código
+        máquina con el fuente, requiere que el ejecutable
+        contenga &quot;información de depuración&quot;. Para
+        esto, debe haberse ensamblado y&nbsp;ligado el programa,
+        con las opciones apropiadas (<em>/zi</em> y <em>/v</em>):<br>
+        &nbsp;<code>TASM fuente /zi<br>
+        &nbsp;TLINK fuente /v</code> </li>
+    <li><em>¿Cómo uso un makefile?</em><br>
+        Se tiene que crear primero el makefile, siguiendo las
+        reglas que se indican en clase; después de eso, se debe
+        colocar en el mismo directorio que los programas fuente,
+        el cual debe ser el actual de DOS, y llamarse exactamente
+        &quot;MAKEFILE&quot;; entonces ejecutamos MAKE y
+        automáticamente esta herramienta checa si se debe
+        recompilar el ejecutable.</li>
+</ol>
+
+<p>&nbsp;</p>
+</body>
+</html>

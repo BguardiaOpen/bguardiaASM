@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode url="home.aspx" title="Home" description="Página inicial">
+    <siteMapNode url="Resume" title="Curriculum" description="Curriculum">
+      <siteMapNode url="Resume/default.htm" title="Curriculum" description="Curriculum en español" />
+      <siteMapNode url="Resume/Resume2005.htm" title="Resume (English)" description="Curriculum en inglés" />
+    </siteMapNode>
+    <siteMapNode url="Cursos.aspx" title="Cursos" description="Cursos">
+      <!--
+      <siteMapNode url="Cursos/VS2005.htm" title="Visual Studio 2005" description="Visual Studio 2005" />
+      -->
+      <siteMapNode url="CursosAnteriores.aspx" title="Anteriores" description="Material de cursos anteriores">
+        <siteMapNode url="Asm/framev.htm" title="Lenguaje Ensamblador" description="Lenguaje Ensamblador (1994-2005)" />
+        <siteMapNode url="topicointernet/default.aspx" title="Tópico Internet" description="Topico de Desarrollo en Internet (1999-2001)" />
+        <!--
+        <siteMapNode url="Cursos/daai.htm" title="DAAI" description="Desarrollo de Aplicaciones Avanzadas en Internet (2000-2004)" />
+        <siteMapNode url="Java" title="Java" description="Diplomados Java (1999-2001)" />
+        -->
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="Investigacion/" title="Investigacion" description="Investigación">
+      <siteMapNode url="Investigacion/default.htm" title="Artículos" description="Artículos publicados" />
+      <siteMapNode url="Investigacion/Tesis/propuesta.htm" title="Propuesta de tesis" description="Propuesta de tesis de Maestría (1996)" />
+      <siteMapNode url="Investigacion/Tesis/portada.htm" title="Tesis de maestria" description="Mi tesis de Maestría (1997)" />
+    </siteMapNode>
+    <siteMapNode url="Notice.aspx" title="Aviso legal" description="Nota legal del sitio" />
+  </siteMapNode>
+</siteMap>

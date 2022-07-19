@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Organización de la Memoria en PC</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #6 </h1>
+
+<h1 align="center">Organización de la Memoria en PC </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase05.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase07.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Conocer la forma en que se organiza la memoria en una PC.</li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<p>Organización de PC </p>
+
+<h3>Sistema Operativo </h3>
+
+<ul>
+    <li>Abstracción que permite a los programadores de
+        aplicaciones realizar operaciones con el hardware de la
+        computadora sin importar cuál sea. </li>
+    <li>Proporciona rutinas de código que ahorran trabajo al
+        programador </li>
+    <li>Ventaja: fácil programación, uso estándar de los
+        recursos de la máquina </li>
+    <li>Desventaja: <em>overhead</em>, reduce la eficiencia (en
+        algunos casos no es importante, en otros sí) </li>
+</ul>
+
+<h3>Modelo de capas de la PC </h3>
+
+<h4>Aplicaciones </h4>
+
+<p>El programador crea sistemas de aplicación específica,
+apoyándose en las tres capas inferiores. </p>
+
+<h4>DOS </h4>
+
+<p>Se usa por medio de la técnica de interrupciones
+(instrucción INT) </p>
+
+<h4>BIOS </h4>
+
+<p>Al igual que DOS, provee interrupciones. </p>
+
+<h4>Hardware </h4>
+
+<p>Se accesa a través de puertos (instrucciones IN/OUT) </p>
+
+<h2>DOS </h2>
+
+<h3>Disk Operating System = Sistema Operativo de Disco </h3>
+
+<ul>
+    <li>Se aloja en RAM, se carga de un medio magnético u
+        óptico al arrancar la máquina </li>
+    <li>MS-DOS: origen Microsoft, 1981 </li>
+    <li>Principalmente da servicios de entrada/salida a diversos
+        dispositivos </li>
+    <li>Todos los dispositivos se manejan como archivos, a este
+        nivel </li>
+</ul>
+
+<h2>BIOS </h2>
+
+<ul>
+    <li>Basic Input Output System </li>
+    <li>Se aloja en memoria ROM </li>
+    <li>Mayor diversidad de versiones que DOS </li>
+    <li>Cada dispositivo de hardware (disco duro, tarjeta de
+        video) agrega funciones a BIOS </li>
+    <li>Manejo a más bajo nivel del hardware: servicios de
+        video, acceso a sectores individuales del disco. </li>
+</ul>
+
+<h2>Organización de memoria RAM en PC </h2>
+
+<h3>Partes </h3>
+
+<ul>
+    <li>Mapeo de la ROM (BIOS nativa y de dispositivos) </li>
+    <li>Áreas de datos de DOS/BIOS </li>
+    <li>Áreas de acceso a dispositivos: memoria de video </li>
+    <li>Memoria de usuario </li>
+</ul>
+
+<h2>Mapa de la memoria </h2>
+
+<table border="1" cellpadding="2">
+    <caption align="top">RAM </caption>
+    <tr>
+        <td>0 </td>
+        <td>0000:0000 - 0000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>1 </td>
+        <td>1000:0000 - 1000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>2 </td>
+        <td>2000:0000 - 2000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>3 </td>
+        <td>3000:0000 - 3000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>4 </td>
+        <td>4000:0000 - 4000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>5 </td>
+        <td>5000:0000 - 5000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>6 </td>
+        <td>6000:0000 - 6000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>7 </td>
+        <td>7000:0000 - 7000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>8 </td>
+        <td>8000:0000 - 8000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>9 </td>
+        <td>9000:0000 - 9000:FFFF </td>
+        <td>RAM Usuario </td>
+    </tr>
+    <tr>
+        <td>A </td>
+        <td>A000:0000 - A000:FFFF </td>
+        <td>RAM Video </td>
+    </tr>
+    <tr>
+        <td>B </td>
+        <td>B000:0000 - B000:FFFF </td>
+        <td>RAM Video </td>
+    </tr>
+    <tr>
+        <td>C </td>
+        <td>C000:0000 - C000:FFFF </td>
+        <td>BIOS extra </td>
+    </tr>
+    <tr>
+        <td>D </td>
+        <td>D000:0000 - D000:FFFF </td>
+        <td>Libre ROM </td>
+    </tr>
+    <tr>
+        <td>E </td>
+        <td>E000:0000 - E000:FFFF </td>
+        <td>Libre ROM </td>
+    </tr>
+    <tr>
+        <td>F </td>
+        <td>F000:0000 - F000:FFFF </td>
+        <td>ROM BIOS </td>
+    </tr>
+</table>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<p>Capítulo 3 del Libro de Texto</p>
+
+<p>&nbsp;</p>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<p align="center">Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Lu 26-Ago-96 </em><br>
+<em>Última actualización: Do 9-Feb-97</em> </p>
+</body>
+</html>

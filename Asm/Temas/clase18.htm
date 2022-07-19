@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Macros</title>
+<!-- Created by GNNpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #18 <br>
+Macros </h1>
+<div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase17.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv11.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 11</a></td>
+    <td><p align="center"><a href="../Temas/clase19.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Comprender el concepto de Macros, y su aplicación en Ensamblador. </li>
+  <li>Conocer las directivas que permiten evitar el tecleo de código repetitivo. </li>
+  <li>Conocer las directivas de ensamblado condicional. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h3>Conceptos básicos </h3>
+
+<h4>Definición y operación </h4>
+
+<p>Una macro es un símbolo que representa un bloque de texto. </p>
+
+<p>El ensamblador usa las macros de tal manera que cada vez que encuentra al símbolo que
+define la macro, lo sustituye por el texto que representa. </p>
+
+<h4>Cómo crear macros </h4>
+
+<h5>Sintaxis: </h5>
+
+<p><code>&lt;Nombre&gt; MACRO [parametros]</code> </p>
+
+<p><code>...</code> </p>
+
+<p><code>ENDM</code> </p>
+
+<h5>Ejemplo: </h5>
+
+<pre><code>DuplicaAL MACRO</code> </pre>
+
+<pre><code>    SHL AL, 1</code> </pre>
+
+<pre><code>ENDM</code> </pre>
+
+<h5>Código que la usa: </h5>
+
+<p><code>MOV AL, 2</code> </p>
+
+<p><code>DuplicaAL ; Esta es la &quot;llamada&quot; al macro</code> </p>
+
+<p>El ensamblador sustituye cada vez que aparezca la macro </p>
+
+<p>No es como los procedimientos, que se &quot;llaman&quot; pero no repiten el código </p>
+
+<p>Ejemplo: </p>
+
+<p><code>MOV AL, 2</code> </p>
+
+<p><code>DuplicaAL ; CALL Duplica</code> </p>
+
+<p><code>DuplicaAL ; CALL Duplica</code> </p>
+
+<p>Este código queda </p>
+
+<p><code>MOV AL, 2</code> </p>
+
+<p><code>SHL AL, 1 ; CALL Duplica</code> </p>
+
+<p><code>SHL AL, 1 ; CALL Duplica</code> </p>
+
+<h4>Cúando usarlas y cúando no </h4>
+
+<ul>
+  <li>Cuando se quiere el código más rápido y no importa ser repetitivo (código grande) </li>
+  <li>Cuando se van a generar diversas variantes de código similar </li>
+  <li>No cuando se quiere código compacto, evitando repetir el mismo (en este caso, usar
+    procedimientos) </li>
+</ul>
+
+<h3>Asignación de variables y constantes para el ensamblador </h3>
+
+<p>Pseudoinstrucciones, pues solamente se usan durante el proceso de traducción </p>
+
+<h5>Sintaxis: </h5>
+
+<p>&lt;Simbolo&gt; EQU Valor </p>
+
+<p>&lt;Simbolo&gt; = Valor </p>
+
+<p>Permiten definir constantes y variables del ensamblador </p>
+
+<p>La diferencia es que <em>=</em> puede usarse varias veces sobre el mismo símbolo (como
+una </p>
+
+<p>variable) </p>
+
+<h3>REPT </h3>
+
+<p>Directiva para definir bloques repetitivos </p>
+
+<p>Permite repetir un código determinado, tantas veces como se desee </p>
+
+<h5>Sintaxis: </h5>
+
+<p><code>REPT &lt;n&gt;</code> </p>
+
+<p><code>...</code> </p>
+
+<p><code>ENDM</code> </p>
+
+<p>Ejemplo: </p>
+
+<p><code>Valor = 0 ; Variable de ensamblador</code> </p>
+
+<p><code>REPT 10</code> </p>
+
+<p><code>&nbsp;&nbsp;&nbsp; DW Valor</code> </p>
+
+<p><code>&nbsp;&nbsp;&nbsp; Valor = Valor + 1</code> </p>
+
+<p><code>ENDM</code> </p>
+
+<h3>Uso de parámetros en macros </h3>
+
+<p>Los macros pueden ser adaptativos; por ejemplo: </p>
+
+<p><code>Potencia2 MACRO Registro, Valor</code> </p>
+
+<p><code>&nbsp;&nbsp;&nbsp; REPT Valor</code> </p>
+
+<p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHL Registro, 1</code> </p>
+
+<p><code>&nbsp;&nbsp;&nbsp; ENDM</code></p>
+
+<p><code>ENDM</code></p>
+
+<h5>Uso: </h5>
+
+<p><code>Potencia2 CX, 4</code> </p>
+
+<p>Se convierte en: </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><code>SHL CX, 1</code> </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Manuales de Turbo Assembler (User's Guide &amp; Reference Guide). </li>
+  <li>Libro de Texto, capítulo 13. </li>
+  <li>Macro Magic with Turbo Assembler </li>
+</ol>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<p align="center">Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ma 2-Jul-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-98</em> </p>
+</body>
+</html>

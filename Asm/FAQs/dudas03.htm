@@ -1,0 +1,253 @@
+<html>
+<head>
+  <!-- Created by AOLpress/1.2 -->
+  <title>Dudas Comunes en la sesión 3</title>
+</head>
+<body BGCOLOR="#ffffff" TEXT="#000000" LINK="#00ff00" VLINK="#0000FF">
+<h2>
+  Dudas Comunes (Arquitectura)
+</h2>
+<p>
+<ol>
+  <li>
+    <em>¿Cómo funciona el esquema de segmentación?</em><br>
+    R: Se tuvo que inventar para conseguir que con los registros de 16 bits que
+    tenemos para datos dentro del procesador, se lograra determinar una localidad
+    específica de memoria, teniendo 20 bits para direccionar
+    (2<sup>20</sup> bytes =&nbsp;1 Mb. de memoria). Para ello, requerimos de
+    2 registros, de 16 bits cada uno; pero estos nos dan 32 bits, por lo que
+    sobran y tenemos que usar algún mecanismo para generar sólo
+    20. La idea es tener tantas regiones de memoria como permita uno de los registros
+    (2<sup>16</sup> =&nbsp;65536 regiones), por lo que este registro se le llama
+    de <em>segmento</em>. Ya dentro de esa región, usar el otro registro
+    para indicar el byte específico dentro de la región, llamando
+    a este registro <em>desplazamiento</em>. Para hacer la combinación,
+    el circuito sumador de direcciones automáticamente usa la
+    fórmula:<br>
+    DF = S * 10h + D<br>
+    Donde DF es la Dirección Física; S&nbsp;es el Segmento; y&nbsp;D
+    es&nbsp;el Desplazamiento. La Dirección Física será
+    el número consecutivo de 20 bits que indica cuál localidad
+    de memoria de el Megabyte nos interesa. A la representación a través
+    de Segmento y Desplazamiento, le llamamos dirección física.
+  <li>
+    <em>¿Por qué se dice que el 8086 es un procesador de 16
+    bits?</em><br>
+    R: Por el tamaño de los registros internos y del bus de datos; es
+    la unidad con la que normalmente trabajará el procesador. Si bien
+    la unidad para dividir la memoria es el byte, el procesador es capaz de trabajar
+    dos bytes a la vez, para cualquier operación y&nbsp;para los accesos
+    a memoria. No debe confundirse con la información de que tiene 20
+    bits de direccionamiento. Esto quiere decir que el bus de direcciones mide
+    20 bits, lo que da el tamaño de memoria que puede manejar el procesador.
+  <li>
+    <em>¿Cuál es la diferencia entre los procesadores DX y
+    SX?</em><br>
+    R: Por problemas de costo, Intel después de sacar el 386 tuvo que
+    reducir el tamaño del bus de datos, para que además el procesador
+    nuevo, pudiera instalarse en los <em>motherboards </em>de 286. A esto se
+    le llamó el 386SX; básicamente un 386 por dentro, con la interfase
+    de 286 por fuera. Obviamente es más lento en el acceso a memoria que
+    un 386 tradicional (DX), pero superior al 286 en instrucciones, velocidad
+    y la capacidad interna de trabajar a 32 bits.<br>
+    Posteriormente ocurrió algo similar con el 486; nada más que
+    el 486SX (recortado) lo que redujeron no fue el bus de datos, sino la
+    eliminación del
+    coprocesador.<br>
+    <br>
+    <strong><font SIZE="+1">ENVIADAS POR ALUMNOS</font></strong><br>
+  <li>
+    <em>Que tal Bruno!, te escribo este mail ya que al estar checando el programa
+    que hace el fetch me surgió la siguiente duda: ¿Por qué
+    al querer sumar el contenido de dos registros, los datos del MDR primero
+    se van a un registro y después, de ese regitro pasan al ALU?, es decir,
+    ¿por qué los datos (a ser sumados) no pasan DIRECTAMENTE al
+    ALU?</em><br>
+    Nada más es porque de acuerdo a las especificaciones del procesador
+    que se simula en el programa de ejemplo, si te das cuenta el bus interno
+    no tenía una conexión de entrada al ALU, por eso no podía
+    pasar directo. En un 8086, por ejemplo, si ves el diagrama te darás
+    cuenta de que ahí sí se puede hacer, como los ejemplos que
+    vimos en clase.
+  <li>
+    <em>¿Puedo pasar el valor de un registro de segmento a otro?</em><br>
+    No, solamente se puede a&nbsp;través de un registro de propósito
+    general. Es decir, se requieren dos pasos.
+  <li>
+    <em>¿Cuál es la diferencia entre memoria fisica y logica, el
+    rango de la memoria cambia dependiendo de a cuál me estoy
+    refiriendo?</em><br>
+    La memoria es la misma, no se divide en lógica y física. Lo
+    que cambia es la dirección:<br>
+    - La dirección física es aquella que por hardware tiene la
+    memoria; si tengo 1 Mb, quiere decir que tengo 1'048,576 bytes, los que van
+    a numerarse del 0 al 1'048,575. Esa numeración consecutiva es la que
+    llamamos dirección física.<br>
+    - La dirección lógica es la abstracción que tenemos
+    dentro del CPU; como solamente tienen 16 bits los registros, no alcanzan
+    para dar la numeración que es la dirección física.
+    Imagínate que tuvieras sólo 4 espacios para representar una
+    dirección en una avenida con 15,000 números. Por ello, usas
+    dos registros, cada uno con los 16 espacios, para entre los dos juntar los
+    20 necesarios. Uno es el segmento, que es algo así como si fuera la
+    colonia; y otro, el desplazamiento, que es algo así como el número
+    de la calle si contáramos desde que empieza la colonia. La regla de
+    conversión es la fórmula que automáticamente calcula
+    el procesador: DF = S * 10h + D; lo importante aquí es entender el
+    concepto de que manejamos las dos direcciones, pues una es práctica
+    si lo ves desde el punto de vista de visualizar el hardware y como está,
+    y otra es la única forma en que el procesador puede acceder al recurso
+    de memoria.
+  <li>
+    <em>Tengo algunas dudas sobre la bandera de paridad, pues no entiendo bien
+    su funcionamiento.</em><br>
+    Cada vez que se realiza una operación en el ALU, se actualizan las
+    banderas; en particular, se cuenta el número de bits prendidos (valor
+    1), que hay en el byte menos significativo del resultado. Si este número
+    de bits es par, se prende el&nbsp;PF; si es non, se apaga. Para ver ejemplos,
+    sugiero que chequen el capítulo 5 del libro de texto, en particular
+    las secciones 5.1 y 5.3.
+  <li>
+    <em>Mi pregunta es: el registro CS, que guarda especificamente? Una
+    dirección, una instruccion o algo asi? También el DS es una
+    direccion (porque dice que aparta 64kb)</em><br>
+    Guarda el valor del segmento, donde va a estar el código. Este valor
+    se usa junto con un desplazamiento (generalmente el IP, cuando se trata del
+    CS), para calcular una dirección física.<br>
+    Un segmento representa una región de 64 Kb. de memoria, aquella que
+    puede accesarse a través de dicho valor en el registro de
+    segmento.<br>
+    Lo mismo pasa en el DS, nada más que en ese segmento (región)
+    se encontrarán los datos.<br>
+    Pero por sí mismos, no son direcciones ni apuntadores (que sería
+    lo mismo casi que direcciones)
+  <li>
+    <em>¿Cuáles son algunas de las variables del BIOS?</em><br>
+    Como algunos ejemplos, el reloj que indica la hora del sistema; la memoria
+    base instalada; los puertos instalados; para más, puedes checar el
+    libro del PC Interno 2.0
+  <li>
+    <em>No entiendo bien lo de como son 20 bits para las direcciones y los registros
+    son de 16, por que necesitamos dos registros? Es porque no alcanzan los 20
+    con un registro? De ser asi, por que dos registros (32
+    bits?)</em><br>
+    Efectivamente, no alcanzas 20 bits con un registro, pues son de 16; por eso
+    requieres dos. No vale un registro con 4 bits, no podemos usar a medias los
+    registros; además, se reduce el desperdicio de memoria al usar
+    segmentación. Pero obviamente es complejo el manejo, porque como
+    sobrarían 12 bits, se utilizan en una forma más complicada.
+    Tienes que tomar dos registros de 16 bits y aplicarles una operación
+    tal que quede un registro de 20 bits. Eso es la fórmula de DF = S
+    * 10h + D
+  <li>
+    <em>¿A que se refiere con la secuencia de estados del procesador que
+    logra gracias a la ejecucion del microcodigo? y como es ese microcodigo o
+    que dice?</em><br>
+    Bueno, esa es pregunta que corresponde más a las materias de Arquitectura
+    y Organización Computacional. El CPU es una máquina de estados,
+    como suelen diseñar los electrónicos los circuitos que dependen
+    de un reloj. El microcódigo es lenguaje totalmente de máquina,
+    que se analiza a nivel de bits, que indica en cada estado que pasará
+    con cada componente del sistema. Para más detalle, esto lo puedes
+    ver en libros de diseño digital, por ejemplo el Morris Mano. La idea
+    es que el microcódigo define cómo cambia de estado en estado
+    el procesador, según la instrucción que se quiera ejecutar.
+  <li>
+    <em>Tambien a que se refiere con que los registros se combinen con
+    otros?</em><br>
+    Como el caso de traducir 16 a 20 bits, se requieren 2 registros para una
+    acción; hay operaciones básicas, como el acceso a memoria,
+    que necesitan más de 16 bits de información.
+  <li>
+    <em>¿Cómo funciona el algoritmo del
+    <a HREF="../Ejemplos/ejem02.htm">ejemplo</a>?</em><br>
+    Sugiero que lo analices de la forma siguiente:<br>
+    Segmento Desplazamiento Dirección Física<br>
+    0000h 0000h 00000h<br>
+    0000h 0001h 00001h<br>
+    0000h 0002h 00002h<br>
+    ...<br>
+    0000h FFFEh 0FFFEh<br>
+    0000h FFFFh 0FFFFh<br>
+    <br>
+    Aquí, para continuar con la siguiente dirección física,
+    fíjate lo que pasa:<br>
+    <br>
+    0001h 0000h 00010h<br>
+    1000h 0000h 10000h<br>
+    <br>
+    Como verás, la forma correcta es la segunda; de ahí la
+    justificación del algoritmo.
+  <li>
+    Con respecto a la direccion física, ves que la fórmula
+    es:<br>
+    DF=segmento*0010h+desplazamiento<br>
+    La duda es por qué se hace el desplazamiento.
+  <li>
+    Acerca de la unidad de control, entiendo que controla todo lo relacionado
+    con el fetch/execute, pero que quieres decir con que genera la secuencia
+    de estados del procesador....no se si con esto, te refieres a que nos dice
+    las distintas fases que pasa el procesador mientras se ejecutan fetch/execute?
+  <li>
+    ¿Para qué sirve el modelo de capas? Tengo la idea, pero no me
+    queda muy clara.
+  <li>
+    La página dice que el DOS maneja los dispositivos como archivos,
+    ¿qué significa eso?
+  <li>
+    ¿Qué tipo de funciones agregan los dispositivos de hardware al
+    BIOS?
+  <li>
+    ¿Qué es un sector del disco?
+  <li>
+    ¿Qué sucede con los segmentos cuando se tiene más memoria
+    del 1 Mb que tenía el procesador 8086?
+  <li>
+    <em>He estado leyendo en revistas y periodicos sobre la aparición
+    del procesador MMX o algo así; solo por curiosidad, que tiene de nuevo
+    este procesador.</em><br>
+    Lo que tiene de nuevo es que ampliaron el set de instrucciones básicas,
+    con instrucciones especialmente diseñadas para Multimedia.
+  <li>
+    <em>Físicamente, ¿cómo puedo saber el tamaño del
+    bus de datos, el bus de direcciones y el bus de control en un procesador?,
+    ¿existe un estándar en cuanto a su ubicación en cualquier
+    procesador?</em><br>
+    Desafortunadamente no es fácil; no tienen una &quot;etiqueta&quot; las patitas
+    del procesador. Por lo que lo más físico es irse al manual
+    del procesador y ver el significado que tiene cada una, o bien tener la suerte
+    de contar con un motherboard donde se indique (que no es común).
+  <li>
+    <em>En cuanto a desplazamientos y segmentos, cuando te dan una direccion
+    como: 654321h, yo le puedo poner desplazamiento 6540 y segmento 3210. Y ademas
+    eso de poner segmentos y desplazamientos es subjetivo, no? Es decir que lo
+    pongo como a mi mejor me parezca o hay una regla o algo asi?</em><br>
+    Bueno, está incorrecto el ejemplo, pues en primer lugar la dirección
+    física deben ser 20 bits, no 24 como manejas; y el segmento y
+    desplazamiento están manejados al revés...<br>
+    Lo de que es subjetivo no es muy preciso; puedes ponerlos como mejor te
+    convengan, sí, pero sí existen reglas; pero eso lo veremos
+    en clases de herramientas, y el ensamblador pondrá los segmentos de
+    acuerdo al código y datos que usemos.
+  <li>
+    <em>Si yo tengo la direccion fisica 75500d como le hago para encontrar su
+    dirección lógica.</em><br>
+    Respecto a obtener la dirección lógica, simplemente es un despeje
+    hacia atrás, con dos variables (por tanto, una libre). Así
+    que tienes 4096 direcciones lógicas distintas, para esa dirección
+    física. Ejemplos de las formas más sencillas de solucionar
+    el problema son:<br>
+    (Asumiré que la dirección física estuviera en hexadecimal,
+    es decir, fuera 75500h).<br>
+    Tomar el desplazamiento como el último caracter (el dígito
+    hexadecimal que solamente depende del desplazamiento), y despejar el segmento.
+    Eso daría el Segmento 7550h, desplazamiento 0h.<br>
+    Otra forma: tomar los últimos 4 como desplazamiento. Entonces, sería
+    el segmento 7000h, desplazamiento 5500h.<br>
+    Si la tienes en decimal, es lo mismo el despeje, nada más que debes
+    trabajar en esa base y no se puede tan sencillo como tomar un cierto número
+    de caracteres. Por eso, no trabajamos en decimal esas direcciones, sino en
+    hexadecimal.
+  <li>
+</ol>
+</body></html>

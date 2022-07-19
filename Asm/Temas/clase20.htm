@@ -1,0 +1,296 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Instrucciones de Strings</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #20 <br>
+Instrucciones de Strings </h1>
+<div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase19.htm">
+    <img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv12.htm">
+    <img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 12</a></td>
+    <td><p align="center"><a href="../Temas/clase21.htm">
+    <img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer las instrucciones especiales de la familia 80x86, especialmente diseñadas para
+    el manejo eficiente de bloques de memoria. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<p>Instrucciones de Strings </p>
+
+<h3>Descripción </h3>
+
+<p>Las instrucciones de Strings son instrucciones muy particulares a la familia de
+procesadores Intel 80x86, que se especializan en los procesos más comunes de manejo de
+memoria. Conceptualmente, están concebidas para reunir en una sola instrucción la
+funcionalidad de una serie de instrucciones. En los primeros procesadores de la familia,
+esto era una ventaja porque es más eficiente realizar una instrucción compleja, que
+varias sencillas, al ahorrar tiempo en la decodificación; pero estas instrucciones
+tienden a volverse obsoleta, con las nuevas arquitecturas en &quot;pipeline&quot;, como la
+del Pentium. </p>
+
+<p>Las instrucciones que vamos a estudiar a este respecto son: 
+
+<ul>
+  <li><a href="#CLD">CLD</a> </li>
+  <li><a href="#STD">STD</a> </li>
+  <li><a href="#LODS">LODS</a> </li>
+  <li><a href="#STOS">STOS</a> </li>
+  <li><a href="#MOVS">MOVS</a> </li>
+  <li><a href="#SCAS">SCAS</a> </li>
+  <li><a href="#CMPS">CMPS</a> </li>
+  <li>El prefijo <a href="#REP">REP</a> y sus variantes <a href="#REPE">REPE/REPNE</a> </li>
+</ul>
+
+<hr>
+
+<h3><a name="CLD">CLD (CLear Direction flag) </a></h3>
+
+<p>Esta instrucción limpia (pone a 0) la bandera de dirección (DF). Esta bandera
+solamente tiene significado para las instrucciones de Strings; cuando está en 0, las
+instrucciones de Strings incrementarán los apuntadores, mientras que cuando está en 1,
+los decrementarán. Podemos conceptualizar que la dirección 0 es de izquierda a derecha,
+y 1 de derecha a izquierda. </p>
+
+<hr>
+
+<h3><a name="STD">STD (SeT Direction flag) </a></h3>
+
+<p>Prende la bandera de dirección (DF = 1) </p>
+
+<hr>
+
+<h3><a name="LODS">LODS (LOaD String)</a> </h3>
+
+<p>Esta instrucción carga el contenido apuntado por DS:SI en el acumulador, y además
+avanza el apuntador. Hay dos versiones: LODSB (LODS Byte) y LODSW (LODS Word). Equivalen
+aproximadamente al código siguiente: </p>
+
+<p><code>MOV AL, [DS:SI] ; Estas dos instrucciones equivalen a LODSB, con DF=0</code> </p>
+
+<p><code>INC SI</code> </p>
+
+<p><code>MOV AX, [DS:SI] ; Estas tres instrucciones equivalen a LODSW con DF=1</code> </p>
+
+<p><code>DEC SI</code> </p>
+
+<p><code>DEC SI</code> </p>
+
+<p>Las diferencias que hay entre los dos tipos de LODS y las series de instrucciones que
+las representan, son principalmente dos: </p>
+
+<p>a) LODS no altera el estado de las banderas. </p>
+
+<p>b) La instrucción es más compacta (ocupa menos memoria), y generalmente más rápida.
+</p>
+
+<hr>
+
+<h3><a name="STOS">STOS (STOre String)</a> </h3>
+
+<p>Esta instrucción copia el acumulador al contenido apuntado por ES:DI, y además avanza
+el apuntador. También hay dos versiones: STOSB y STOSW. Equivalen aproximadamente al
+código siguiente: </p>
+
+<p><code>MOV [ES:DI],AL ; Estas dos instrucciones equivalen a STOSB con DF=1</code> </p>
+
+<p><code>DEC DI</code> </p>
+
+<p><code>MOV [ES:DI],AX ; Estas tres instrucciones equivalen a STOSW con DF=0</code> </p>
+
+<p><code>INC DI</code> </p>
+
+<p><code>INC DI</code> </p>
+
+<hr>
+
+<h3><a name="MOVS">MOVS (MOVe String)</a> </h3>
+
+<p>Esta instrucción une la funcionalidad de las dos anteriores: copia el contenido
+apuntado por [DS:SI] al contenido apuntado por [ES:DI], con la característica de que no
+pierde el contenido de AX. También hay dos versiones: MOVSB y MOVSW. Equivalen
+aproximadamente al código siguiente: </p>
+
+<p><code>PUSHF ; Estas OCHO instrucciones equivalen a MOVSB, con DF=0</code> </p>
+
+<p><code>PUSH AX</code> </p>
+
+<p><code>MOV AL, [DS:SI]</code> </p>
+
+<p><code>INC SI</code> </p>
+
+<p><code>MOV [ES:DI],AL</code> </p>
+
+<p><code>INC DI</code> </p>
+
+<p><code>POP AX</code> </p>
+
+<p><code>POPF</code> </p>
+
+<hr>
+
+<h3><a name="REP">REP</a> </h3>
+
+<p>Este mnemónico no es realmente una instrucción; más bien, es un prefijo que modifica
+las instrucciones de strings, haciendo que se repitan, decrementando CX hasta llegar a 0.
+Hay que notar que si CX es de antemano 0, no se ejecuta nada. Las instrucciones
+equivalentes a un REP MOVSW, por ejemplo, serían: </p>
+
+<p><code>JCXZ @@FinREP</code> </p>
+
+<p><code>@@LoopREP:</code> </p>
+
+<p><code>MOVSW</code> </p>
+
+<p><code>LOOP @@LoopREP</code> </p>
+
+<p><code>@@FinREP:</code> </p>
+
+<p>Ejemplos para mostrar la utilidad del REP son instrucciones tales como el MEMCPY y el
+MEMSET. </p>
+
+<hr>
+
+<h3><a name="SCAS">SCAS (SCAn String)</a> </h3>
+
+<p>Esta instrucción busca un determinado valor en memoria. Equivale a un acceso a memoria
+unido con una comparación. Como es regla en las instrucciones de strings, hay dos
+versiones: SCASB y SCASW. Equivalen aproximadamente al código siguiente: </p>
+
+<p><code>&nbsp;</code></p>
+
+<p><code>CMP AL, [ES:DI] ; Estas cuatro instrucciones equivalen a SCASB, con DF=0</code> </p>
+
+<p><code>PUSHF</code> </p>
+
+<p><code>INC DI</code> </p>
+
+<p><code>POPF</code> </p>
+
+<p>&nbsp;</p>
+
+<p><code>CMP AX, [ES:DI] ; Estas cinco instrucciones equivalen a SCASW con DF=1</code> </p>
+
+<p><code>PUSHF</code> </p>
+
+<p><code>DEC DI</code> </p>
+
+<p><code>DEC DI</code> </p>
+
+<p><code>POPF</code> </p>
+
+<p>Para obtener toda la potencialidad de esta instrucción, suele combinarse con versiones
+particular de REP, tales como REPE o REPNE. De esta manera, se puede tener un ciclo que
+busque hasta que CX llegue a 0 o bien se encuentre un &quot;match&quot;. </p>
+
+<hr>
+
+<h3><a name="CMPS">CMPS (CoMPare String)</a> </h3>
+
+<p>Esta instrucción compara dos elementos en memoria. Equivale a dos acceso a memoria
+unidos con una comparación. Como es regla en las instrucciones de strings, hay dos
+versiones: CMPSB y CMPSW. Por ejemplo, CMPSB equivale en funcionalidad al código
+siguiente: </p>
+
+<p><code>PUSH AX</code> </p>
+
+<p><code>PUSHF</code> </p>
+
+<p><code>MOV AL, [DS:SI]</code> </p>
+
+<p><code>MOV AH, [ES:DI]</code> </p>
+
+<p><code><span lang="en-us">INC SI</span></code> </p>
+
+<p><code><span lang="en-us">INC </span>DI</code></p>
+
+<p><code>POPF</code> </p>
+
+<p><code>CMP AL, AH</code> </p>
+
+<p><code>POP AX</code> </p>
+
+<p>Para obtener toda la potencialidad de esta instrucción, suele combinarse con versiones
+particular de REP, tales como REPE o REPNE. De esta manera, se puede tener un ciclo que
+compare hasta que CX llegue a 0 o bien se encuentre una diferencia. </p>
+
+<hr>
+
+<h3><a name="REPE">REPE/REPNE </a></h3>
+
+<p>Estos mnemónicos también son prefijos que modifica las instrucciones de strings,
+haciendo que se repitan, decrementando CX hasta llegar a 0, o bien hasta que no se cumpla
+la condición indicada (en REPE, repite mientras ZF=1 o en REPNE, repite mientras ZF=0).
+Las instrucciones equivalentes a un REPNE SCASW, por ejemplo, serían: </p>
+
+<p>&nbsp;<code>JCXZ @@FinREP</code> </p>
+
+<p><code>@@LoopREP:</code> </p>
+
+<p>&nbsp;<code>SCASW</code> </p>
+
+<p>&nbsp;<code>JE @@FinREP ; Sale cuando llega a ser igual. (ZF != 0)</code> </p>
+
+<p><code>&nbsp;LOOP @@LoopREP</code> </p>
+
+<p><code>@@FinREP:</code> </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Libro de Texto, capítulo 11. </li>
+  <li>Capítulo correspondiente de los libros de referencia. </li>
+</ol>
+
+<p align="center">
+<img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx">
+  <img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ma 2-Jul-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-98</em></p>
+</body>
+</html>

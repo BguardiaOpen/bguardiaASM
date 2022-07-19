@@ -1,0 +1,227 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Tema 10 - BD Avanzada</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<p><font color="#ff0000" size="5" face="Arial"><b>Tema 10 - Uso
+avanzado de bases de datos</b></font></p>
+
+<p><IMG height=40 src="../../images/luces.gif" width=671> <br>
+</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Objetivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Comprender la sintaxis
+    de instrucciones más complejas en SQL:</font></p>
+    <ul>
+        <li><font color="#000000" face="Arial">Consultas
+            combinadas de dos o más tablas (Join)</font>
+        <li><font color="#000000" face="Arial">Inserción de
+            múltiples registros.</font>
+        <li><font color="#000000" face="Arial">Condiciones
+            basadas en consultas.</font></li>
+    </ul>
+    <p><font color="#000000" face="Arial">Comprender el manejo de
+    los procedimientos almacenados (Stored Procedures),
+    considerando SQL Server como manejador de bases de datos.</font></p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Consultas
+combinadas</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Cuando la información
+    que buscamos no está en una sola tabla, no basta con un
+    SELECT siguiendo la sintaxis vista la clase pasada. Se
+    requiere hacer el SELECT de varias tablas, pero como esto
+    produciría un resultado que reflejaría todas las
+    combinaciones posibles de todos los registros de cada tabla,
+    hay que condicionarlo mediante cláusulas WHERE que indiquen
+    la relación entre las tablas. La operación del manejador de
+    bases de datos que permite hacer esto es llamada
+    "JOIN".</font></p>
+    <p><font color="#000000" face="Arial">Ejemplo 1: obtener la
+    lista provisional de un grupo (CB95852-1, considerando que la
+    información de los grupos está en la tabla
+    "Grupos", la de los alumnos en la tabla
+    "Alumnos" y existe una tabla que define la
+    relación llamada "AlumnosGrupos":</font></p>
+    <p><font color="#000000" face="Arial"><em>select Alumnos.Matricula, 
+  Alumnos.Telefono, Alumnos.Carrera from Alumnos, AlumnosGrupos, Grupos where 
+  Alumnos.Matricula = AlumnosGrupos.Matricula and AlumnosGrupos.Materia =
+       
+         
+    Grupos.Materia and AlumnosGrupos.NoGrupo =
+    Grupos.NoGrupo and Grupos.Materia =  
+      'CB95852' and Grupos.NoGrupo = 1</em></font></p>
+    <p><font color="#000000" face="Arial">Ejemplo 2: Obtener
+    todas las materias del alumno 123456, de las mismas tablas:</font></p>
+    <p><font color="#000000" face="Arial"><em>select Grupos.Materia, 
+  Grupos.NoGrupo from Alumnos, AlumnosGrupos, Grupos where Alumnos.Matricula =
+        
+    AlumnosGrupos.Matricula and AlumnosGrupos.Materia = Grupos.Materia and
+    AlumnosGrupos.NoGrupo = Grupos.NoGrupo and
+    Alumnos.Matricula =   
+     123456</em></font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Inserción de
+múltiples registros</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Hemos visto cómo se
+    inserta un registro, a través de la sintaxis "insert
+    into ... values ...". Cuando queremos hacer una consulta
+    de una o más tablas (por medio de un select) pero en vez de
+    mostrar el resultado lo queremos guardar en otra tabla o
+    usarlo para otros cálculos (tabla temporal), tenemos dos
+    posibilidades: la sintaxis "insert into ... select"
+    y la sintaxis "select .. .into":</font></p>
+    <p><font color="#000000" face="Arial">Si el caso es insertar
+    información en una tabla existente, se utiliza "insert
+    into". Por ejemplo, si tenemos una tabla
+    "ProspectosAlumnos", donde se encuentran los
+    posibles alumnos que están presentando examen de admisión,
+    y deseamos tomar la información de los que ya pasaron el
+    examen para insertarlos en la tabla general
+    "Alumnos", usamos la siguiente sintaxis:</font></p>
+    <p><font color="#000000" face="Arial"><em>insert into Alumnos
+    (Matricula, Carrera, Nombre, Direccion, Telefono) select
+    Matricula, CarreraDeseada, Nombre, Direccion, Telefono from
+    ProspectosAlumnos where PuntosExamen &gt; 1400</em></font></p>
+    <p><font color="#000000" face="Arial">Si el caso es insertar
+    información en una tabla nueva, que no existen, se utiliza
+    "select .. into". Por ejemplo, si queremos obtener
+    una tabla separada con los alumnos de ISC, podemos hacer una
+    consulta como la siguiente:</font></p>
+    <p><font color="#000000" face="Arial"><em>select * into
+    AlumnosISC from Alumnos where Carrera = 'ISC'</em></font></p>
+    <p><font color="#000000" face="Arial">Hay que tener cuidado
+    en utilizar "insert into ... " solamente cuando ya
+    existe la tabla y vamos a agregarle nuevos registros. Muchas
+    veces podemos tener problemas de llaves duplicadas o
+    simplemente falla en el insert, si tratamos de insertar un
+    registro ya existente o información similar. En cambio, en
+    el "select ... into", debemos estar seguros que la
+    tabla a generar no existe, de lo contrario fallará.</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Condiciones
+basadas en consultas</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">En
+    diversos casos debemos condicionar la ejecución de una
+    consulta, actualización o inserción de acuerdo a si existe
+    ya un registro o conjunto de registros.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Existen
+    dos casos principales a checar: si existe algún registro que
+    cumpla una condición, en cuyo caso utilizaremos
+    "exists"; o bien, si está dentro del resultado de
+    una consulta.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">La
+    función "exists" permite verificar si existe
+    alguno que cumple la condición. Por ejemplo, si deseamos
+    condicionar la inserción de un registro, solamente cuando no
+    exista (para evitar inserciones duplicadas):</font></p>
+    <p align="left"><font color="#000000" size="3" face="Arial,Helv"><em>if not exists(select * from Alumnos
+    where Matricula=123456)</em></font></p>
+    <blockquote>
+        <p><font color="#000000" face="Arial"><em>insert into
+        Alumnos (Matricula, Carrera, Nombre, Direccion, Telefono)
+        values (123456, 'LAE', 'Pepito de los Cuentos', 'Puente
+        222', '56543210')</em></font></p>
+    </blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Cabe
+    aclarar que "exists" no funciona igual en todos los
+    manejadores de bases de datos.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Cuando la
+    condición depende de la existencia de diversos registros en
+    tablas existentes, utilizamos "in". Esta función
+    permite comparar un campo contra cualquiera de los valores
+    obtenidos por un select.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Por
+    ejemplo, si se desea saber todos los datos de los alumnos que
+    tienen una matrícula registrada en la tabla de Deudores de
+    la biblioteca, podemos hacerlo así:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><em>select
+    * from Alumnos where Matricula in (select Matricula from
+    Deudores)</em></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">De este
+    modo, se tomarán todos los datos de la tabla de Alumnos
+    donde la Matricula sea igual a cualquiera de las matrículas
+    en la tabla de Deudores.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Otra
+    aplicación es agregar a los alumnos Deudores los nuevos
+    deudores que están en DeudoresSemana, pero evitando la
+    inserción de duplicados:</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000000" face="Arial"><em>insert into
+    Deudores (Matricula) select Matricula from DeudoresSemana
+    where Matricula not in (select Matricula from Deudores)</em></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Esta
+    instrucción SQL insertará en Deudores las matrículas de
+    DeudoresSemana, siempre y cuando no existieran previamente en
+    Deudores.</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Actualizaciones
+que utilizan datos de otras tablas</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Un
+    último caso de instrucciones SQL con un poder especial es el
+    de actualizar datos haciendo una consulta para obtener el
+    dato correspondiente:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Si
+    acumulé los alumnos que pidieron cambio de teléfono en la
+    tabla "CambiosSolicitados", puedo incorporar los
+    cambios en la tabla principal de "Alumnos", con un
+    comando como el siguiente:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><em>UPDATE Alumnos SET Telefono = 
+  NuevoTelefono FROM
+    CambiosSolicitados where Alumnos.Matricula =   
+       CambiosSolicitados.Matricula</em></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><em></em></font>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Stored
+Procedures</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Por
+    razones de seguridad y eficiencia, los manejadores modernos y
+    de alto desempeño proporcionan la capacidad de guardar un
+    conjunto de estatutos SQL en un procedimiento al que llamamos
+    "procedimiento almacenado" o "stored
+    procedure", pues reside en la base de datos.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Veremos
+    en clase los casos de realizar transacciones por medio de
+    Stored Procedures: Depósito y Retiro. Una de las ventajas
+    adicionales de los Stored Procedures es que facilitan el
+    manejo de transacciones respecto a instrucciones SQL
+    aisladas.</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Bibliografía y
+Referencias</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Libro de
+    Texto: Programming Active Server Pages</font><font color="#000000" size="3" face="Arial">    ,</font></p>
+  <P><FONT face=Arial>Ejemplo: <A 
+  href="../ejemplos/MiniTienda/MiniTienda.zip">Mini Tienda 
+  Virtual</A>&nbsp;(bajar, está en .ZIP)</FONT></P>
+  <P>&nbsp;</P>
+</blockquote>
+</body>
+</html>

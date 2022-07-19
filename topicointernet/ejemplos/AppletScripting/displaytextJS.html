@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Display Text</title>
+</head>
+
+<script language="JavaScript">
+<!--
+
+function Actualiza(){
+	// Llama al método del applet
+	document.TextDisplay.setText(Phrase.value);
+}
+
+function Regresa() {
+	// llama al método del applet
+	document.TextDisplay.resetText();
+}
+
+-->
+</script>
+
+<body>
+
+<applet code="displaytext.class" id="TextDisplay" width="600" height="120" codebase="../appletscripting/">
+    <param name="initialValue" value="Hello World">
+</applet>
+<p>
+
+<input name="Phrase" value="Some new text">
+<input type="button" name="Set" value="Actualizar" onclick="return Actualiza();">
+<input type="button" name="Reset" value="Regresar" onclick="return Regresa();">
+
+<hr>
+
+<h3>Descripción</h3>
+
+<p>
+Este es el mismo ejemplo, modificado para usar Java Script y 
+por tanto funcionar tanto en Netscape como en Explorer.
+</p>
+<p>
+Las principales diferencias son:
+
+<ul>
+<li>
+El formato de los comentarios en el script (// en vez de ')
+</li>
+<li>
+La llamada a las funciones Java Script, en relación al evento onclick
+</li>
+<li>
+El formato de los comentarios en el script (// en vez de ')
+</li>
+<li>
+El uso de paréntesis en el llamado a los métodos del applet
+</li>
+</ul>
+</p>
+
+<hr>
+
+<a href="../appletscripting/displaytext.java">The source.</a>
+
+</body>
+</html>

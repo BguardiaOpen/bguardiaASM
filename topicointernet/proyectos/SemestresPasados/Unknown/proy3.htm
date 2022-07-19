@@ -1,0 +1,679 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Proyecto 3: Sistema de Información en Internet</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<h1>Desarrollo en Internet</h1>
+
+<h1>Proyecto 3: Sistema de Información en 
+Internet.</h1>
+
+<h3>Equipos de 4 personas.</h3>
+<P>Entrega: <span lang="en-us">5 </span>de <span lang="en-us">noviembre </span>del 2000</P>
+<P>El objetivo del proyecto será proporcionar al usuario un conjunto de 
+servicios a través de formas interactivas e información situada en una base de 
+datos.</P>
+
+<p>Entre las opciones de proyecto, que se sortearán o 
+asignarán entre los equipos durante la clase, se tendrán las 
+siguientes: </p>
+
+<ul>
+    <li><a href="#impuestos">Sistema <span lang="es-mx">experto de 
+    solución de problemas </span>por Internet</a>.</li>
+</ul>
+
+<ul>
+    <li><a href="#futbol">Sistema de 
+    estadísticas de <span lang="es-mx">ventas</span>.</a></li>
+</ul>
+
+<ul>
+    <li><a href="#inventario"><span lang="es-mx">Examen por Internet</span>.</a></li>
+</ul>
+
+<ul>
+    <li><a href="#cines">Sistema de 
+    <span lang="es-mx">apartado de stands</span>.</a></li>
+</ul>
+<p>            
+         
+     &nbsp;</p>
+
+<h3><a name="impuestos"><em>Sistema <span lang="es-mx">experto de solución de 
+problemas por </span>Internet</em></a></h3>
+
+<p>Este sistema contará con los módulos que 
+permitirán llenar y calcular <span lang="es-mx">el árbol de un &quot;Wizard&quot; para 
+solución de problemas. Como modelo del concepto, pueden tomar por ejemplo el &quot;Solucionador 
+de Problemas de Red&quot; de Windows 95 en adelante.</span></p>
+
+<ul>
+    <li><span lang="es-mx">Seleccionar un problema de la base de conocimiento</span><ul>
+    <li><span lang="es-mx">Cuando se de &quot;click&quot; a un problema, el sistema 
+    mostrará en secuencia las preguntas pertinentes para diagnosticar el 
+    problema</span></li>
+    <li><span lang="es-mx">Cada pregunta tendrá un conjunto de posibles 
+    respuestas, según sea la respuesta será la siguiente pregunta</span></li>
+    <li><span lang="es-mx">La última &quot;Pregunta&quot; en realidad será la solución del 
+    problema, la que ya no tendrá posibles respuestas.</span>. </li>
+</ul>
+
+    <li><span lang="es-mx">Interfaz del administrador</span></li>
+    <li><span lang="es-mx">Alta de problemas</span></li>
+    <li><span lang="es-mx">Alta de preguntas</span></li>
+    <li><span lang="es-mx">Alta de posibles respuestas (relación entre las 
+    preguntas)</span></li>
+</ul>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Problemas</span></strong>"</th>
+    </tr>
+    <tr>
+        <th align="left" width="33%">Nombre del campo</th>
+        <th align="left" width="33%">Tipo</th>
+        <th align="left" width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDProblema</span></td>
+        <td width="33%"><span lang="es-mx">Autonumérico</span></td>
+        <td width="34%"><span lang="es-mx">Consecutivo que indica el problema</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">TextoProblema</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Descripción del problema</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">PreguntaInicial</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Referencia al identificador de la 
+        primera pregunta para solucionar el problema</span></td>
+    </tr>
+    </table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Preguntas</span></strong>"</th>
+    </tr>
+    <tr>
+        <th align="left" width="33%">Nombre del campo</th>
+        <th align="left" width="33%">Tipo</th>
+        <th align="left" width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDPregunta</span></td>
+        <td width="33%"><span lang="es-mx">Auton</span>umérico</td>
+        <td width="34%"><span lang="es-mx">Identificador único de la pregunta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">TextoPregunta</span></td>
+        <td width="33%"><span lang="es-mx">Texto</span></td>
+        <td width="34%"><span lang="es-mx">Planteamiento de la pregunta (o en su 
+        caso, de la solución)</span></td>
+    </tr>
+    </table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Respuestas</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDRespuesta</span></td>
+        <td width="33%"><span lang="es-mx">Auton</span>umérico</td>
+        <td width="34%"><span lang="es-mx">Identificador único de la respuesta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDPregunta</span></td>
+        <td width="33%">Numérico</td>
+        <td width="34%"><span lang="es-mx">Referencia a la pregunta para la que 
+        puede presentarse esta respuesta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">TextoRespuesta</span></td>
+        <td width="33%"><span lang="es-mx">Texto</span></td>
+        <td width="34%"><span lang="es-mx">Texto que se presenta como opción de 
+        la pregunta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">SiguientePregunta</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Referencia a la pregunta que se 
+        presentará en caso de escoger esta respuesta</span></td>
+    </tr>
+    </table>
+</center></div>
+
+<p><span lang="es-mx">Como ejemplo, podríamos tener la siguiente información en 
+tablas:</span></p>
+<p><span lang="es-mx">Tabla Problemas</span></p>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
+  <tr>
+    <td><span lang="es-mx">IDProblema</span></td>
+    <td><span lang="es-mx">TextoProblema</span></td>
+    <td><span lang="es-mx">PreguntaInicial</span></td>
+  </tr>
+  <tr>
+    <td><span lang="es-mx">1</span></td>
+    <td><span lang="es-mx">No puedo prender la computadora</span></td>
+    <td><span lang="es-mx">1</span></td>
+  </tr>
+</table>
+<p><span lang="es-mx">Tabla Preguntas</span></p>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber2">
+  <tr>
+    <td><span lang="es-mx">IDPregunta</span></td>
+    <td><span lang="es-mx">TextoPregunta</span></td>
+  </tr>
+  <tr>
+    <td><span lang="es-mx">1</span></td>
+    <td><span lang="es-mx">¿Está conectada la computadora a la corriente 
+    eléctrica?</span></td>
+  </tr>
+  <tr>
+    <td><span lang="es-mx">2</span></td>
+    <td><span lang="es-mx">Conecta la computadora por favor</span></td>
+  </tr>
+  <tr>
+    <td><span lang="es-mx">3</span></td>
+    <td><span lang="es-mx">Ha surgido un problema que el Wizard no sabe 
+    resolver, llama a soporte técnico</span></td>
+  </tr>
+</table>
+<p><span lang="es-mx">Tabla Respuestas</span></p>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3">
+  <tr>
+    <td><span lang="es-mx">IDRespuesta</span></td>
+    <td><span lang="es-mx">IDPregunta</span></td>
+    <td><span lang="es-mx">TextoRespuesta</span></td>
+    <td><span lang="es-mx">SiguientePregunta</span></td>
+  </tr>
+  <tr>
+    <td><span lang="es-mx">1</span></td>
+    <td><span lang="es-mx">1</span></td>
+    <td><span lang="es-mx">Sí</span></td>
+    <td><span lang="es-mx">3</span></td>
+  </tr>
+  <tr>
+    <td><span lang="es-mx">2</span></td>
+    <td><span lang="es-mx">1</span></td>
+    <td><span lang="es-mx">No</span></td>
+    <td><span lang="es-mx">2</span></td>
+  </tr>
+</table>
+
+<h3>&nbsp;</h3>
+
+<h3><a name="futbol"><em>Sistema de estadísticas de  </em></a><em>
+<a name="futbol"><span lang="es-mx">ventas</span></a></em></h3>
+
+<p>Este sistema contará con los módulos que permitirán llenar y calcular las 
+estadísticas de un <span lang="es-mx">grupo de vendedores</span>:</p>
+
+<ul>
+    <li><span lang="es-mx">Se registrarán la fecha y el total de cada pedido, 
+    indicando el cliente y el vendedor</span>.
+    <li><span lang="es-mx">Se presentará un reporte por Mes o por Semana, el 
+    cual se podrá solicitar General, por cada Vendedor o por cada Cliente.</span><li>
+    <span lang="es-mx">El reporte General sacará totales desglosados por 
+    Vendedor, y el Total general</span><li><span lang="es-mx">El reporte por 
+    Vendedor sacará los pedidos agrupados por cliente, los totales de cada uno 
+    de sus Clientes, y el Total de sus ventas</span></li>
+    <li><span lang="es-mx">El reporte por Cliente sacará cada uno de sus 
+    pedidos, y el total de las ventas del Cliente.</span></li>
+    <li><span lang="es-mx">Cuando aparezca en cualquier reporte un Vendedor, al 
+    hacerle Click a su Nombre se navegará automáticamente al Reporte 
+    correspondiente a ese vendedor.</span></li>
+    <li><span lang="es-mx">Cuando aparezca en cualquier reporte un Cliente , al 
+    hacerle Click a su nombre se navegará automáticamente al Reporte 
+    correspondiente a ese cliente.</span></li>
+</ul>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Clientes</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDCliente</span></td>
+        <td><span lang="es-mx">Autonumérico</span></td>
+        <td><span lang="es-mx">Identificador único del cliente</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">NombreCliente</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Razón social del cliente</span></td>
+    </tr>
+    </table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Vendedores</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDVendedor</span></td>
+        <td><span lang="es-mx">Autonumérico</span></td>
+        <td><span lang="es-mx">Identificador único del vendedor</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">NombreVendedor</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Nombre y apellidos de la persona</span></td>
+    </tr>
+    </table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Pedidos</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDPedido</span></td>
+        <td><span lang="es-mx">Autonumérico</span></td>
+        <td><span lang="es-mx">Folio consecutivo del pedido</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDVendedor</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Referencia al vendedor que logró el 
+        pedido</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDCliente</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Referencia al cliente que hizo el 
+        pedido</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">Fecha</span></td>
+        <td><span lang="es-mx">Fecha/Hora</span></td>
+        <td><span lang="es-mx">Fecha que se realiza el pedido</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">Total</span></td>
+        <td><span lang="es-mx">Moneda</span></td>
+        <td><span lang="es-mx">Total de la venta (en pesos)</span></td>
+    </tr>
+</table>
+</center></div>
+
+<h3><em><a name="inventario"><span lang="es-mx">Examen por Internet</span></a></em></h3>
+
+<p>Este sistema contará con los módulos que 
+permitirán <span lang="es-mx">administrar exámenes de opción múltiple a alumnos 
+por Internet</span>.</p>
+
+<ul>
+    <li>Registrar el catálogo de <span lang="es-mx">exámenes</span>.
+    <li><span lang="es-mx">Registrar las preguntas de cada examen</span>.
+    <li><span lang="es-mx">Registrar las opciones de respuesta de cada pregunta</span>.
+    <li><span lang="es-mx">Catálogo de Alumnos</span>.<span lang="es-mx"> 
+    Permitirá ver las calificaciones que se han registrado para este alumno.</span></li>
+    <li><span lang="es-mx">Aplicar un examen (no se vale ir para atrás ni 
+    resolverlo dos veces, si lo intenta simplemente ya no se guarda nada más 
+    para esa combinación de Alumno/Examen). Al final se guardará la calificación 
+    y se le presentará al alumno, en escala de 0 a 100 y simplemente sale de 
+    dividir las respuestas correctas entre el total de preguntas y multiplicar 
+    por 100.</span></li>
+</ul>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Exámenes</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDExamen</span></td>
+        <td><span lang="es-mx">Autonumérico</span></td>
+        <td>Llave única <span lang="es-mx">del examen</span></td>
+    </tr>
+    <tr>
+        <td width="33%">Nombre<span lang="es-mx">Examen</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Descripción del examen</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">Profesor</span></td>
+        <td>Texto</td>
+        <td><span lang="es-mx">Nombre de quien define el examen</span></td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Preguntas</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td>ID<span lang="es-mx">Pregunta</span></td>
+        <td>Autonumérico</td>
+        <td><span lang="es-mx">Identificador único de pregunta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDExamen</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Examen al que pertenece la pregunta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">RespuestaCorrecta</span></td>
+        <td width="33%"><span lang="es-mx">Texto</span></td>
+        <td width="34%"><span lang="es-mx">Letra que identifica la respuesta 
+        correcta</span></td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Respuestas</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDPregunta</span></td>
+        <td><span lang="es-mx">Numérico</span></td>
+        <td><span lang="es-mx">Número de pregunta a la que corresponde esta 
+        respuesta</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">Opcion</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Letra que identifica la opción, de A 
+        a Z</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">TextoRespuesta</span></td>
+        <td><span lang="es-mx">Texto</span></td>
+        <td><span lang="es-mx">Texto que se le presenta al usuario</span></td>
+    </tr>
+</table>
+</center></div>
+
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Alumnos</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDAlumno</span></td>
+        <td><span lang="es-mx">Numérico</span></td>
+        <td><span lang="es-mx">Matrícula del alumno</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">Nombre</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Nombres y apellidos del alumno</span></td>
+    </tr>
+    </table>
+</center></div>
+
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">AlumnosExamenes</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDAlumno</span></td>
+        <td><span lang="es-mx">Numérico</span></td>
+        <td><span lang="es-mx">Matrícula del alumno</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDExamen</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Examen al que corresponde la 
+        calificación</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">UltimaPregunta</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Última pregunta que se le ha 
+        presentado al alumno</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">NumeroCorrectas</span></td>
+        <td width="33%"><span lang="es-mx">Numérico</span></td>
+        <td width="34%"><span lang="es-mx">Número de respuestas que lleva 
+        correctas hasta ahora</span></td>
+    </tr>
+    </table>
+</center></div>
+
+<h3>&nbsp;</h3>
+
+<h3>&nbsp;</h3>
+
+<h3>&nbsp;</h3>
+
+<h3><a name="cines"><em>Sistema de <span lang="es-mx">apartado de Stands</span></em></a></h3>
+
+<p>Este sistema contará con los módulos que permitirán <span lang="es-mx">
+registrarse a las empresas en una Expo, seleccionando el Stand que desean.</span></p>
+
+<ul>
+    <li><span lang="es-mx">Catálogo de Exposiciones. El administrador podrá dar 
+    altas, bajas y cambios de los datos de una exposición.</span><li>Catálogo de 
+    <span lang="es-mx">stands</span>.<span lang="es-mx">El administrador podrá 
+    dar altas, bajas y cambios de los datos de un stand.</span><li>
+    <span lang="es-mx">Mapa de Stands (se asume que son todos del mismo tamaño), 
+    hay que indicar el tamaño del espacio NxM</span><li>Registro de 
+    <span lang="es-mx">una empresa para apartar un Stand</span>.
+    <span lang="es-mx">Deberá poner sus datos (Nombre), seleccionar la Expo a la 
+    que desea asistir, y seleccionar en el mapa (visualmente) el Stand que desea 
+    apartar. No podrá apartar uno que ya esté apartado, ni lugar en un pasillo.</span><li>
+    <span lang="es-mx">El administrador podrá Cancelar el apartado de una 
+    empresa, eliminándola del mapa correspondiente.</span></ul>
+
+<p><span lang="es-mx">Por ejemplo, si tenemos la Exposición &quot;InternetExpo&quot;, que 
+va a ser en un salón de 2 pasillos con 5 Stands a cada lado (total 20 stands), 
+la definimos como N</span><span lang="en-us">=6 y M=5, </span>
+<span lang="es-mx">donde el único Stand apartado sea el 12 por &quot;Sinergia&quot;,
+</span><span lang="en-us">el mapa se presentar</span><span lang="es-mx">á por 
+medio de tablas HTML</span><span lang="en-us">:</span></p>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber4">
+  <tr>
+    <td width="16%" bgcolor="#C0C0C0"><span lang="en-us">Stand 1</span></td>
+    <td width="16%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 6</span></td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 15</span></td>
+    <td width="17%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 16</span></td>
+  </tr>
+  <tr>
+    <td width="16%" bgcolor="#C0C0C0"><span lang="en-us">Stand 2</span></td>
+    <td width="16%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 7</span></td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 14</span></td>
+    <td width="17%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 17</span></td>
+  </tr>
+  <tr>
+    <td width="16%" bgcolor="#C0C0C0"><span lang="en-us">Stand 3</span></td>
+    <td width="16%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 8</span></td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 13</span></td>
+    <td width="17%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 18</span></td>
+  </tr>
+  <tr>
+    <td width="16%" bgcolor="#C0C0C0"><span lang="en-us">Stand 4</span></td>
+    <td width="16%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 9</span></td>
+    <td width="17%" bgcolor="#FF0000"><span lang="es-mx">SINERGIA</span></td>
+    <td width="17%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 19</span></td>
+  </tr>
+  <tr>
+    <td width="16%" bgcolor="#C0C0C0"><span lang="en-us">Stand 5</span></td>
+    <td width="16%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 10</span></td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 11</span></td>
+    <td width="17%">&nbsp;</td>
+    <td width="17%" bgcolor="#C0C0C0"><span lang="en-us">Stand 20</span></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>Para esto, la base de datos contará con las 
+siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Exposiciones</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDExpo</span></td>
+        <td><span lang="es-mx">Autonumérico</span></td>
+        <td><span lang="es-mx">Identificador único de la exposición</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">NombreExpo</span></td>
+        <td width="33%">Texto</td>
+        <td width="34%"><span lang="es-mx">Título oficial del evento</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">FechaInicia</span></td>
+        <td><span lang="es-mx">Fecha/Hora</span></td>
+        <td><span lang="es-mx">Día que inicia la exposición</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">FechaFin</span></td>
+        <td><span lang="es-mx">Fecha/Hora</span></td>
+        <td><span lang="es-mx">Día que termina la exposición</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">AreaExpoAncho</span></td>
+        <td>Entero</td>
+        <td><span lang="es-mx">N, número de columnas en el mapa de la expo</span></td>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">AreaExpoAlto</span></td>
+        <td>Entero</td>
+        <td><span lang="es-mx">M, número de renglones en el mapa de la expo</span></td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de "<strong><span lang="es-mx">Stands</span></strong>"</th>
+    </tr>
+    <tr>
+        <th width="33%">Nombre del campo</th>
+        <th width="33%">Tipo</th>
+        <th width="34%">Descripción</th>
+    </tr>
+    <tr>
+        <td><span lang="es-mx">IDStand</span></td>
+        <td><span lang="es-mx">Autonumérico</span></td>
+        <td><span lang="es-mx">Identificador único del stand en una Expo</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">IDExpo</span></td>
+        <td width="33%"><span lang="es-mx">Entero</span></td>
+        <td width="34%"><span lang="es-mx">Expo en la que está el Stand</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">X</span></td>
+        <td width="33%"><span lang="es-mx">Entero</span></td>
+        <td width="34%"><span lang="es-mx">Coordenada X (columna) en el mapa en 
+        que está el stand</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">Y</span></td>
+        <td width="33%"><span lang="es-mx">Entero</span></td>
+        <td width="34%"><span lang="es-mx">Coordenada Y (renglón) en el mapa en 
+        que está el stand</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">NombreCliente</span></td>
+        <td width="33%"><span lang="es-mx">Texto</span></td>
+        <td width="34%"><span lang="es-mx">Si ya se apartó, nombre del cliente. 
+        Si está vacío, no hay cliente que lo haya apartado.</span></td>
+    </tr>
+    <tr>
+        <td width="33%"><span lang="es-mx">Pasillo</span></td>
+        <td width="33%"><span lang="es-mx">Verdadero/Falso</span></td>
+        <td width="34%"><span lang="es-mx">Si es verdadero, es un espacio vacío 
+        en el mapa que no se puede apartar</span></td>
+    </tr>
+</table>
+</center></div>
+</body>
+</html>

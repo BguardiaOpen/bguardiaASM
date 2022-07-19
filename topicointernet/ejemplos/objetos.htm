@@ -1,0 +1,452 @@
+<html>
+
+<head>
+<title>Página nueva </title>
+</head>
+
+<body>
+
+<p>Ejemplos de aplicaciones ASP:</p>
+
+<p>&nbsp;</p>
+
+<h2>Clase 7 - Objetos intrínsecos</h2>
+
+<p>Ejemplo de la Votación por Internet</p>
+
+<p><em>default.htm</em></p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;TITLE&gt;&lt;/TITLE&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    &lt;H3 align=center&gt;P&amp;aacute;gina de votaci&amp;oacute;n&lt;/H3&gt;<br>
+    <br>
+    &lt;P&gt;&amp;nbsp;&lt;/P&gt;<br>
+    <br>
+    &lt;P&gt;<br>
+    &lt;form method=POST action=&quot;registravoto.asp&quot;&gt;<br>
+    &lt;input type=&quot;hidden&quot; value=&quot;1&quot; name=&quot;Candidato&quot;&gt;<br>
+    &lt;input type=&quot;submit&quot; value=&quot;Candidato 1&quot;&gt;<br>
+    &lt;/form&gt;<br>
+    &lt;/P&gt;<br>
+    <br>
+    &lt;P&gt;<br>
+    &lt;form method=POST action=&quot;registravoto.asp&quot; id=form1 name=form1&gt;<br>
+    &lt;input type=&quot;hidden&quot; value=&quot;2&quot; name=&quot;Candidato&quot;&gt;<br>
+    &lt;input type=&quot;submit&quot; value=&quot;Candidato 2&quot; id=submit1
+    name=submit1&gt;<br>
+    &lt;/form&gt;<br>
+    &lt;/P&gt;<br>
+    <br>
+    &lt;P&gt;<br>
+    &lt;form method=POST action=&quot;registravoto.asp&quot; id=form2 name=form2&gt;<br>
+    &lt;input type=&quot;hidden&quot; value=&quot;3&quot; name=&quot;Candidato&quot;&gt;<br>
+    &lt;input type=&quot;submit&quot; value=&quot;Candidato 3&quot; id=submit2
+    name=submit2&gt;<br>
+    &lt;/form&gt;<br>
+    &lt;/P&gt;<br>
+    <br>
+    &lt;P&gt;<br>
+    &lt;form method=POST action=&quot;registravoto.asp&quot; id=form3 name=form3&gt;<br>
+    &lt;input type=&quot;hidden&quot; value=&quot;4&quot; name=&quot;Candidato&quot;&gt;<br>
+    &lt;input type=&quot;submit&quot; value=&quot;Candidato 4&quot; id=submit3
+    name=submit3&gt;<br>
+    &lt;/form&gt;<br>
+    &lt;/P&gt;<br>
+    <br>
+    &lt;P&gt;&amp;nbsp;&lt;/P&gt;<br>
+    <br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;</td>
+  </tr>
+</table>
+</div>
+
+<p><em>global.asa</em></p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+    <br>
+    'You can add special event handlers in this file that will get run automatically when<br>
+    'special Active Server Pages events occur. To create these handlers, just create a<br>
+    'subroutine with a name from the list below that corresponds to the event you want to<br>
+    'use. For example, to create an event handler for Session_OnStart, you would put the<br>
+    'following code into this file (without the comments):<br>
+    <br>
+    'Sub Session_OnStart<br>
+    '**Put your code here **<br>
+    'End Sub<br>
+    <br>
+    'EventName Description<br>
+    'Session_OnStart Runs the first time a user runs any page in your application<br>
+    'Session_OnEnd Runs when a user's session times out or quits your application<br>
+    'Application_OnStart Runs once when the first page of your application is run for the
+    first time by any user<br>
+    'Application_OnEnd Runs once when the web server shuts down<br>
+    <br>
+    Sub Application_OnStart<br>
+    &nbsp;&nbsp;&nbsp; Application(&quot;C1&quot;)=0<br>
+    &nbsp;&nbsp;&nbsp; Application(&quot;C2&quot;)=0<br>
+    &nbsp;&nbsp;&nbsp; Application(&quot;C3&quot;)=0<br>
+    &nbsp;&nbsp;&nbsp; Application(&quot;C4&quot;)=0<br>
+    End Sub<br>
+    <br>
+    &lt;/SCRIPT&gt;</td>
+  </tr>
+</table>
+</div>
+
+<p><em>registravoto.asp</em></p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;%@ Language=VBScript %&gt;<br>
+    &lt;%<br>
+    Candidato = Request(&quot;Candidato&quot;)<br>
+    Candidato = &quot;C&quot; &amp; Candidato<br>
+    <br>
+    Application.Lock<br>
+    Application(Candidato)=Application(Candidato)+1<br>
+    Application.UnLock<br>
+    %&gt;<br>
+    &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    <br>
+    &lt;P&gt;Gracias, tu voto ha sido registrado&lt;/P&gt;<br>
+    <br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;</td>
+  </tr>
+</table>
+</div>
+
+<p><em>resultados.asp</em></p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;%@ Language=VBScript %&gt;<br>
+    &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    <br>
+    &lt;P&gt;<br>
+    &lt;TABLE border=1 cellPadding=1 cellSpacing=1 width=100%&gt;<br>
+    <br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;Candidato&lt;/TD&gt;<br>
+    &lt;TD&gt;Votos&lt;/TD&gt;&lt;/TR&gt;<br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;1&lt;/TD&gt;<br>
+    &lt;TD&gt;&lt;%=Application(&quot;C1&quot;)%&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;2&lt;/TD&gt;<br>
+    &lt;TD&gt;&lt;%=Application(&quot;C2&quot;)%&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;3&lt;/TD&gt;<br>
+    &lt;TD&gt;&lt;%=Application(&quot;C3&quot;)%&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;4&lt;/TD&gt;<br>
+    &lt;TD&gt;&lt;%=Application(&quot;C4&quot;)%&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/P&gt;<br>
+    <br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;<br>
+    </td>
+  </tr>
+</table>
+</div>
+
+<p>&nbsp;</p>
+
+<h2>Clase 8 - ActiveX Server Components</h2>
+
+<p>Ejemplo de mostrar directorios en el servidor</p>
+
+<p><em>discos.asp</em></p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;%@ Language=VBScript %&gt;<br>
+    &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    Drives del sistema:<br>
+    &lt;P&gt;&amp;nbsp;&lt;/P&gt;<br>
+    &lt;%<br>
+    Dim fso, d, dc, s, n<br>
+    Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)<br>
+    Set dc = fso.Drives<br>
+    For Each d in dc<br>
+    &nbsp;&nbsp;&nbsp; s=&quot;&quot;<br>
+    s = s &amp; d.DriveLetter &amp; &quot; - &quot; <br>
+    If d.DriveType = 3 Then<br>
+    n = d.ShareName<br>
+    ElseIf d.IsReady Then<br>
+    n = d.VolumeName<br>
+    End If<br>
+    s = s &amp; n &amp; &quot;&lt;BR&gt;&quot;<br>
+    Response.Write s<br>
+    If d.IsReady Then<br>
+    Call MuestraFolders(fso, d.DriveLetter)<br>
+    End If<br>
+    Next<br>
+    <br>
+    %&gt;<br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;<br>
+    &lt;%<br>
+    Sub MuestraFolders(FileSystem, Letra )<br>
+    &nbsp;&nbsp;&nbsp; dim Carpeta<br>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write &quot;&lt;blockquote&gt;&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set Drive = FileSystem.GetDrive(Letra)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' El error era que faltaba tomar la colección
+    &quot;Subfolders&quot; del RootFolder, pues el RootFolder no es una<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' colección y por eso no acepta al For Each<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for each Carpeta in Drive.RootFolder.Subfolders<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write
+    Carpeta.Name &amp; &quot;&lt;br&gt;&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' Se agrega: llamada a
+    función recursiva<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MuestraSubFolders(Carpeta)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; next<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write &quot;&lt;/blockquote&gt;&quot;<br>
+    End Sub<br>
+    <br>
+    Sub MuestraSubFolders(Carpeta)<br>
+    &nbsp;&nbsp;&nbsp; Dim Subdir<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write &quot;&lt;blockquote&gt;&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for each SubDir in Carpeta.Subfolders<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write
+    SubDir.Name &amp; &quot;&lt;br&gt;&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' Se agrega: llamada a
+    función recursiva<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MuestraSubFolders(SubDir)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; next<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Response.Write &quot;&lt;/blockquote&gt;&quot;<br>
+    End Sub<br>
+    %&gt;</td>
+  </tr>
+</table>
+</div>
+
+<p>Ejemplo de acceso a bases de datos</p>
+
+<p><em>global.asa </em>(no necesario en el ejemplo)</p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+    <br>
+    'You can add special event handlers in this file that will get run automatically when<br>
+    'special Active Server Pages events occur. To create these handlers, just create a<br>
+    'subroutine with a name from the list below that corresponds to the event you want to<br>
+    'use. For example, to create an event handler for Session_OnStart, you would put the<br>
+    'following code into this file (without the comments):<br>
+    <br>
+    'Sub Session_OnStart<br>
+    '**Put your code here **<br>
+    'End Sub<br>
+    <br>
+    'EventName Description<br>
+    'Session_OnStart Runs the first time a user runs any page in your application<br>
+    'Session_OnEnd Runs when a user's session times out or quits your application<br>
+    'Application_OnStart Runs once when the first page of your application is run for the
+    first time by any user<br>
+    'Application_OnEnd Runs once when the web server shuts down<br>
+    <br>
+    &lt;/SCRIPT&gt;<br>
+    <br>
+    &lt;SCRIPT LANGUAGE=VBScript RUNAT=Server&gt;<br>
+    Sub Application_OnStart<br>
+    &nbsp;&nbsp;&nbsp; '==Visual InterDev Generated - startspan==<br>
+    &nbsp;&nbsp;&nbsp; '--Project Data Connection<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application(&quot;Connection1_ConnectionString&quot;)
+    = &quot;DSN=FoodMart;DBQ=D:\Program Files\OLAP
+    Services\Samples\FoodMart.mdb;DriverId=281;FIL=MS
+    Access;MaxBufferSize=2048;PageTimeout=5;&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application(&quot;Connection1_ConnectionTimeout&quot;)
+    = 15<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application(&quot;Connection1_CommandTimeout&quot;)
+    = 30<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application(&quot;Connection1_CursorLocation&quot;)
+    = 3<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application(&quot;Connection1_RuntimeUserName&quot;)
+    = &quot;&quot;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Application(&quot;Connection1_RuntimePassword&quot;)
+    = &quot;&quot;<br>
+    &nbsp;&nbsp;&nbsp; '-- Project Data Environment<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'Set DE =
+    Server.CreateObject(&quot;DERuntime.DERuntime&quot;)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'Application(&quot;DE&quot;) =
+    DE.Load(Server.MapPath(&quot;Global.ASA&quot;),
+    &quot;_private/DataEnvironment/DataEnvironment.asa&quot;)<br>
+    &nbsp;&nbsp;&nbsp; '==Visual InterDev Generated - endspan==<br>
+    End Sub<br>
+    &lt;/SCRIPT&gt;</td>
+  </tr>
+</table>
+</div>
+
+<p><em>default.asp </em>(forma de login)</p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;%@ Language=VBScript %&gt;<br>
+    &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    <br>
+    &lt;P&gt;<br>
+    &lt;form method=&quot;post&quot; action=&quot;valida.asp&quot;&gt;<br>
+    &lt;TABLE border=1 cellPadding=1 cellSpacing=1 width=100%&gt;<br>
+    <br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;Nombre:&lt;/TD&gt;<br>
+    &lt;TD&gt;&lt;input type=&quot;text&quot;
+    name=&quot;nombre&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+    &lt;TR&gt;<br>
+    &lt;TD&gt;Password:&lt;/TD&gt;<br>
+    &lt;TD&gt;&lt;input type=&quot;password&quot;
+    name=&quot;clave&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+    &lt;tr&gt;&lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;<br>
+    &lt;input type=&quot;submit&quot; value=&quot;Entrar&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+    <br>
+    &lt;/TABLE&gt;<br>
+    &lt;/form&gt;<br>
+    &lt;/p&gt;<br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;<br>
+    </td>
+  </tr>
+</table>
+</div>
+
+<p><em>valida.asp </em>(Responde información con validaciones básicas)</p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;%@ Language=VBScript %&gt;<br>
+    &lt;%<br>
+    '<br>
+    ' Primero: Obtener los datos de la pantalla de Entrada<br>
+    '<br>
+    Nombre = Request(&quot;Nombre&quot;)<br>
+    Clave = Request(&quot;Clave&quot;)<br>
+    '<br>
+    ' Validar<br>
+    '<br>
+    if not isnumeric(Clave) then<br>
+    &nbsp;&nbsp;&nbsp; Response.Write &quot;La clave es incorrecta&quot;<br>
+    &nbsp;&nbsp;&nbsp; Response.End<br>
+    end if<br>
+    <br>
+    if instr(1, Nombre, &quot;'&quot;)&lt;&gt;0 then<br>
+    &nbsp;&nbsp;&nbsp; Response.Write &quot;No hackear esta página&quot;<br>
+    &nbsp;&nbsp;&nbsp; Response.End&nbsp;&nbsp;&nbsp; <br>
+    end if<br>
+    '<br>
+    ' Abrir la base de datos<br>
+    '<br>
+    Set Conexion = Server.CreateObject (&quot;ADODB.Connection&quot;)<br>
+    Conexion.Open &quot;FoodMart&quot;<br>
+    <br>
+    SQL = &quot;select * from customer where <br>
+    customer_id=&quot; &amp; Clave<br>
+    SQL = SQL &amp; &quot; and fname='&quot; &amp; Nombre &amp; &quot;'&quot;<br>
+    Set Resultado = Conexion.Execute (SQL)<br>
+    <br>
+    if Resultado.EOF then<br>
+    &nbsp;&nbsp;&nbsp; Response.Write &quot;Error&quot;<br>
+    &nbsp;&nbsp;&nbsp; Conexion.Close<br>
+    &nbsp;&nbsp;&nbsp; Response.End<br>
+    else<br>
+    %&gt;<br>
+    &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    <br>
+    &lt;P&gt;Bienvenido&lt;/P&gt;<br>
+    <br>
+    Dirección secreta: &lt;%=Resultado(&quot;address1&quot;)%&gt;<br>
+    <br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;<br>
+    &lt;%<br>
+    Conexion.Close<br>
+    end if<br>
+    %&gt;</td>
+  </tr>
+</table>
+</div>
+
+<p><em>reporte.asp </em>(Ejemplo simple de reporte de Base de Datos)</p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0" width="640">
+  <tr>
+    <td>&lt;%@ Language=VBScript %&gt;<br>
+    &lt;%<br>
+    Set Conexion = Server.CreateObject(&quot;ADODB.Connection&quot;)<br>
+    <br>
+    Conexion.Open &quot;FoodMart&quot;<br>
+    %&gt;<br>
+    &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &lt;META NAME=&quot;GENERATOR&quot; Content=&quot;Microsoft Visual Studio 6.0&quot;&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    <br>
+    &lt;TABLE&gt;<br>
+    &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Apellido&lt;/th&gt;&lt;/tr&gt;<br>
+    &lt;%<br>
+    Set Resultado = Conexion.Execute(&quot;select fname, lname from customer&quot;)<br>
+    <br>
+    do while not Resultado.EOF<br>
+    %&gt;<br>
+    &lt;tr&gt;<br>
+    &lt;td&gt;&lt;%=Resultado(&quot;fname&quot;)%&gt;&lt;/td&gt;<br>
+    &lt;td&gt;&lt;%=Resultado(&quot;lname&quot;)%&gt;&lt;/td&gt;<br>
+    &lt;/tr&gt;<br>
+    &lt;%<br>
+    &nbsp;&nbsp;&nbsp; Resultado.MoveNext<br>
+    loop<br>
+    %&gt;<br>
+    &lt;/TABLE&gt;<br>
+    <br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;<br>
+    &lt;%<br>
+    Conexion.Close<br>
+    %&gt;</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

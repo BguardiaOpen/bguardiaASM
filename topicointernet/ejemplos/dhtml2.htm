@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE>Dynamic HTML - ejemplo 2</TITLE>
+</HEAD>
+<BODY BGCOLOR="WHITE">
+<script language="JavaScript">
+<!--
+function ActivaEjemplos() {
+	// sólo activar si no está ya activo
+	if (menu1.innerHTML.indexOf('<BLOCKQUOTE>') == -1 ) {
+		menu1.innerHTML = '<p>Ejemplos</p><blockquote><p><a href="DHTML1.htm">Ejemplo 1</a></p><p><a href="DHTML2.htm">Ejemplo 2</a></p></blockquote>';
+		DesactivaTeoria();
+		}
+}
+
+function DesactivaEjemplos() {
+	menu1.innerHTML = '<p>Ejemplos</p>';
+}
+
+function ActivaTeoria() {
+	if (menu2.innerHTML.indexOf('<BLOCKQUOTE>') == -1 ) {
+		menu2.innerHTML = '<p>Regresar a teoría</p><blockquote><p><a href="../Temas/Tema12.htm">Tecnologías del lado del cliente</a></p><p><a href="../Temas/Tema11.htm">Tema anterior</a></p></blockquote>';
+		DesactivaEjemplos();
+	}
+}
+
+function DesactivaTeoria() {
+	menu2.innerHTML = '<p>Regresar a teoría</p>'
+}
+
+// -->
+</script>
+<h3 align="center">Menú adaptable</h3>
+<table>
+<tr>
+<td width="50%">
+<div ID="menu1" onmouseover="ActivaEjemplos();"><p>Ejemplos</p></div>
+<div ID="menu2" onmouseover="ActivaTeoria();"><p>Regresar a teoría</p></div>
+</td>
+<td width="50%" align="top">
+<div ID="ayuda">
+Si bien falta afinar el funcionamiento (en general, con
+imágenes), se puede ver la idea de un menú adaptable
+</div>
+</td>
+</tr>
+</table>
+
+</BODY>
+</HTML>

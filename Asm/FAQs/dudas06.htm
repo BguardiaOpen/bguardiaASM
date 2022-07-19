@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+  <!-- Created by AOLpress/1.2 -->
+  <TITLE>Dudas Comunes en la sesi&oacute;n 6</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#00ff00" VLINK="#0000FF">
+<H2>
+  Dudas Comunes (Entrada/Salida)
+</H2>
+<P>
+<OL>
+  <LI>
+    <EM>Tengo un problema al dividir. Me marca divisi&oacute;n por cero, y ya
+    chequ&eacute; con el Debugger, que el registro que pongo en el divisor no
+    es un 0. &#191;A qu&eacute; se debe?</EM><BR>
+    R: Hay que cuidar, al dividir, es com&uacute;n el error consistente en sobrepasar
+    la capacidad del registro destino. Pongamos el siguiente ejemplo en
+    c&oacute;digo:<BR>
+    <CODE>MOV AX, 1000<BR>
+    MOV BL, 2<BR>
+    DIV BL</CODE><BR>
+    Este c&oacute;digo marcar&aacute; el error "Dividir por cero" o "Desbordamiento
+    de divisi&oacute;n" y tronar&aacute; la ejecuci&oacute;n del programa. La
+    raz&oacute;n (mal explicada en algunos casos) es que el resultado sobrepasa
+    el tama&ntilde;o del registro destino (en este caso, el cociente, 500,
+    deber&aacute; ponerse en AL; pero como no cabe...)<BR>
+    En este tipo de errores, el programador debe tener mucho cuidado.
+  <LI>
+    <EM>Tengo un problema al dividir. Tal vez mi procesador no funcione, pues
+    divido dos n&uacute;meros y el resultado no es correcto.</EM><BR>
+    R: Tambi&eacute;n esto es com&uacute;n, por problemas en el entendimiento
+    de la divisi&oacute;n. Pongamos como ejemplo el siguiente
+    c&oacute;digo:<BR>
+    <BR>
+    .data<BR>
+    Hola DB 'Hola$'<BR>
+    MensajeBienvenida DB 'Programa que muestra la
+    divisi&oacute;n$'<BR>
+    .code<BR>
+    MOV AX, @data<BR>
+    MOV DX, AX<BR>
+    MOV AH, 9<BR>
+    MOV DX, OFFSET MensajeBienvenida<BR>
+    INT 21h<BR>
+    MOV AX, 1000<BR>
+    MOV BX, 50<BR>
+    DIV BX<BR>
+    ; Aqu&iacute; esperamos que AL = 1000 / 50 = 20, pero resulta que AX &gt;
+    60000 !!!<BR>
+    <BR>
+    Como puede notarse, el problema es que se quiso dividir un word entre otro
+    word, lo que no hace la instrucci&oacute;n DIV. El DIV al tener un word (BX)
+    como par&aacute;metro, autom&aacute;ticamente toma como dividendo un double
+    word (DX:AX), as&iacute; que toma un n&uacute;mero de 32 bits formado por
+    DX y AX, que en este caso es algo m&aacute;s de 300,000; mientras que se
+    deseaba que el dividendo fuera solamente AX (1000). Este caso puede corregirse
+    de dos formas:<BR>
+    a) Vemos que no necesitamos un word para el divisor; cambiamos BX por BL,
+    y entonces haremos divisi&oacute;n entre word y byte, que s&iacute; da un
+    resultado byte.<BR>
+    b) Ampliamos nuestro dividendo a double word; para que la doble palabra DX:AX
+    tenga un valor de 1000, hay que poner DX en 0 antes de dividir.
+</OL>
+<P>
+</BODY></HTML>

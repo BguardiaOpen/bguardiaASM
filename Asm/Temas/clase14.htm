@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Ciclos</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #14 </h1>
+
+<h1 align="center">Técnicas de programación: Ciclos y arreglos </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase13.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><a href="../Sesiones/sv09.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+        Sesión 9</a></td>
+        <td><p align="center"><a href="../Temas/clase15.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Revisar las técnicas apropiadas para el manejo de
+        ciclos, condiciones y arreglos. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h2>Condiciones </h2>
+
+<p>Antes que nada, hay que analizar cuál es el funcionamiento de
+una condición, tal como la manejamos en un lenguaje de alto
+nivel. </p>
+
+<hr>
+
+<p><code>SI SE CUMPLE (Condicion)</code> </p>
+
+<p><code>{</code> </p>
+
+<p><code>Instrucciones que se ejecutan en caso de cumplirse la
+condición (bloque THEN)</code> </p>
+
+<p><code>}</code> </p>
+
+<p><code>DE LO CONTRARIO</code> </p>
+
+<p><code>{</code> </p>
+
+<p><code>Instrucciones que se ejecutan en caso de no cumplirse la
+condición (bloque ELSE)</code> </p>
+
+<p><code>}</code> </p>
+
+<hr>
+
+<p>Para implementarlo en ensamblador, se suelen seguir los
+siguientes pasos: </p>
+
+<ol>
+    <li>Evaluar la condición </li>
+    <li>Usar un salto condicional, para que en caso de no
+        cumplirse, se salte a la región del programa donde se
+        encontrarán las instrucciones del bloque ELSE. </li>
+    <li>Codificar a continuación las instrucciones del bloque
+        THEN. </li>
+    <li>Codificar un salto incondicional hacia después del
+        bloque ELSE, donde continuará la ejecución. </li>
+    <li>Poner la etiqueta a la que saltó el salto condicional
+        del paso 2. </li>
+    <li>Codificar a continuación las instrucciones del bloque
+        ELSE. </li>
+</ol>
+
+<p>Por ejemplo, supongamos el pseudocódigo: </p>
+
+<p><code>Si A es mayor que B</code> </p>
+
+<p><code>{</code> </p>
+
+<p><code>Imprime &quot;A mayor que B&quot;</code> </p>
+
+<p><code>}</code> </p>
+
+<p><code>de lo contrario (A &lt;= B)</code> </p>
+
+<p><code>{</code> </p>
+
+<p><code>Imprime &quot;A menor o igual a B&quot;</code> </p>
+
+<p><code>}</code> </p>
+
+<p>En ensamblador, podría codificarse: </p>
+
+<p><code>.data</code> </p>
+
+<p><code>... ; más variables</code> </p>
+
+<p><code>; dentro de los datos</code> </p>
+
+<p><code>A DW ? ; Variables que vamos a comparar posteriormente</code>
+</p>
+
+<p><code>B DW ?</code> </p>
+
+<p><code>Mensaje1 DB 'A mayor que B$'</code> </p>
+
+<p><code>Mensaje2 DB 'A menor o igual que B$'</code> </p>
+
+<p><code>... ; más variables</code> </p>
+
+<p><code>.code</code> </p>
+
+<p><code>... ; principio del código</code> </p>
+
+<p><code>; Aquí va la condición</code> </p>
+
+<p><code>; Paso 1: Evaluar la condición</code> </p>
+
+<p><code>MOV AX, A ; No puede compararse memoria-memoria, uso un
+registro como temporal.</code> </p>
+
+<p><code>CMP AX, B</code> </p>
+
+<p><code>JLE ParteElse ; Comparación salto condicional
+considerando variables con signo</code> </p>
+
+<p><code>; Aquí van las instrucciones de la parte THEN</code> </p>
+
+<p><code>MOV AH, 9</code> </p>
+
+<p><code>MOV DX, OFFSET Mensaje1</code> </p>
+
+<p><code>INT 21h</code> </p>
+
+<p><code>; Saltar al final</code> </p>
+
+<p><code>JMP DespuesDelIf</code> </p>
+
+<p><code>ParteElse: ; Etiqueta que señala dónde empieza el
+bloque ELSE</code> </p>
+
+<p><code>; Aquí van las instrucciones de la parte ELSE</code> </p>
+
+<p><code>MOV AH, 9</code> </p>
+
+<p><code>MOV DX, OFFSET Mensaje2</code> </p>
+
+<p><code>INT 21h</code> </p>
+
+<p><code>DespuesDelIf:</code> </p>
+
+<p>En este caso, puede eficientarse el código al darnos cuenta
+de que los dos bloques tienen instrucciones comunes: </p>
+
+<p><code>.data</code> </p>
+
+<p><code>... ; más variables</code> </p>
+
+<p><code>; dentro de los datos</code> </p>
+
+<p><code>A DW ? ; Variables que vamos a comparar posteriormente</code>
+</p>
+
+<p><code>B DW ?</code> </p>
+
+<p><code>Mensaje1 DB 'A mayor que B$'</code> </p>
+
+<p><code>Mensaje2 DB 'A menor o igual que B$'</code> </p>
+
+<p><code>... ; más variables</code> </p>
+
+<p><code>.code</code> </p>
+
+<p><code>... ; principio del código</code> </p>
+
+<p><code>; Aquí va la condición</code> </p>
+
+<p><code>; Paso 1: Evaluar la condición</code> </p>
+
+<p><code>MOV AX, A ; No puede compararse memoria-memoria, uso un
+registro como temporal.</code> </p>
+
+<p><code>CMP AX, B</code> </p>
+
+<p><code>JLE ParteElse ; Comparación salto condicional
+considerando variables con signo</code> </p>
+
+<p><code>; Aquí van las instrucciones de la parte THEN</code> </p>
+
+<p><code>MOV DX, OFFSET Mensaje1</code> </p>
+
+<p><code>; Saltar al final</code> </p>
+
+<p><code>JMP DespuesDelIf</code> </p>
+
+<p><code>ParteElse: ; Etiqueta que señala dónde empieza el
+bloque ELSE</code> </p>
+
+<p><code>; Aquí van las instrucciones de la parte ELSE</code> </p>
+
+<p><code>MOV DX, OFFSET Mensaje2</code> </p>
+
+<p><code>DespuesDelIf:</code> </p>
+
+<p><code>MOV AH, 9</code> </p>
+
+<p><code>INT 21h</code> </p>
+
+<h2>Ciclos </h2>
+
+<p>Para realizar un ciclo, tenemos varios casos: </p>
+
+<ul>
+    <li>Caso Ciclo Infinito.<br>
+        En este caso, se desea repetir una acción
+        indefinidamente.<br>
+        Se codifica sencillamente, haciendo un JMP incondicional
+        hacia el inicio del ciclo:<br>
+        <code>CicloInfinito:<br>
+        ; Aquí van todas las instrucciones que quieran poner
+        dentro del ciclo<br>
+        JMP CicloInfinito</code> </li>
+    <li>Caso While.<br>
+        En este caso, se va a evaluar una condición; si no se
+        cumple, se continúa la ejecución DESPUÉS del ciclo,
+        mientras que si se cumple, entra a ejecutar las
+        instrucciones dentro del ciclo, y al final del ciclo se
+        regresa a la condición. Es como un ciclo infinito, nada
+        más con una condición que se evalúa al principio del
+        ciclo, que puede sacarlo:<br>
+        Puede verse como un ciclo infinito que tiene un IF
+        dentro, en el cual el caso ELSE es fuera del ciclo.<br>
+        <code>While:<br>
+        ; Aquí va la condición, supongamos para ejemplificar
+        que se compara AX con 0<br>
+        CMP AX, 0<br>
+        JNE Salir ; Si no se cumple, fuera del ciclo<br>
+        ; Aquí van todas las instrucciones que se requieran
+        dentro del ciclo<br>
+        JMP While<br>
+        Salir:</code><br>
+        A veces se puede tener el problema de que el ciclo es muy
+        grande, y marca un error &quot;<em>Relative Jump Out of
+        Range...</em>&quot;; hay dos soluciones: <ul>
+            <li>Poner las instrucciones dentro del ciclo, en un
+                procedimiento separado. </li>
+            <li>Usar lógica negativa. Esta idea se ejemplifica a
+                continuación<br>
+                <code>While:<br>
+                ; Aquí va la condición, supongamos para
+                ejemplificar que se compara AX con 0<br>
+                CMP AX, 0<br>
+                JE NoSalir ; Si se cumple, dentro del ciclo<br>
+                JMP Salir ; Si no se cumple, fuera del ciclo<br>
+                NoSalir:<br>
+                ; Aquí van todas las instrucciones que se
+                requieran dentro del ciclo<br>
+                JMP While<br>
+                Salir:</code> </li>
+        </ul>
+    </li>
+    <li>Caso For<br>
+        Este caso es un caso particular de While, generalmente
+        regulado por un contador. Se recomienda en Ensamblador
+        usar una lógica de decremento, y a CX como contador. Si
+        el objetivo es realizar un ciclo X&nbsp;veces, supongamos
+        8 veces, el código apropiado sería del tipo:<br>
+        <code>MOV CX, 8 ; Número de veces<br>
+        For:<br>
+        DEC CX<br>
+        JZ Salir ; Cuando llega a 0, se terminó, salimos<br>
+        ;&nbsp;Instrucciones dentro del ciclo<br>
+        JMP For</code> </li>
+</ul>
+
+<h3>Arreglos </h3>
+
+<p>Para manejar un arreglo en ensamblador, ya vimos las técnicas
+de representación. Para el acceso, generalmente usamos modo
+indexado de base, o modo indirecto. </p>
+
+<p>En caso de usar modo indexado de base, la técnica consiste
+en: </p>
+
+<ol>
+    <li>Poner la dirección de base del arreglo en BX </li>
+    <li>Poner en SI (o DI)&nbsp;el desplazamiento del elemento
+        deseado (calculado como tamaño de cada elemento *
+        número del elemento, iniciando siempre en 0). </li>
+    <li>Acceder a la memoria del arreglo usando [BX+SI] </li>
+</ol>
+
+<p>En caso de usar modo indirecto, la técnica consiste en
+calcular la dirección de un elemento, y colocarla en SI o DI. </p>
+
+<p>Por ejemplo, si tenemos un arreglo de números enteros de 16
+bits, vamos a recorrerlo y mandarlo a imprimir:<br>
+<code>.data</code> </p>
+
+<p><code>Arreglo DW 50 DUP(?) ; Arreglo de 50 Words.</code> </p>
+
+<p><code>.code</code> </p>
+
+<p><code>; Instrucciones al inicio...</code> </p>
+
+<p><code>RecorreArreglo PROC</code> </p>
+
+<p><code>; Primero, coloquemos BX en la base</code> </p>
+
+<p><code>MOV BX, OFFSET Arreglo</code> </p>
+
+<p><code>; Coloquemos en SI el número de elemento * Tamaño del
+elemento</code> </p>
+
+<p><code>MOV SI, 0 ; Esto sería más eficiente con un SUB SI,
+SI, por ejemplo</code> </p>
+
+<p><code>; Va el ciclo, 50 veces</code> </p>
+
+<p><code>MOV CX, 50</code> </p>
+
+<p><code>Ciclo:</code> </p>
+
+<p><code>DEC CX</code> </p>
+
+<p><code>JZ FinRecorre</code> </p>
+
+<p><code>MOV AX, [BX+SI] ; Accesa el elemento del arreglo</code> </p>
+
+<p><code>CALL ImprimeAX ; Rutina que imprima el número en AX</code>
+</p>
+
+<p><code>ADD SI, 2 ; Apuntar al siguiente elemento del arreglo</code>
+</p>
+
+<p><code>JMP Ciclo</code> </p>
+
+<p><code>FinRecorre: RET</code> </p>
+
+<p><code>RecorreArreglo ENDP</code> </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ul>
+    <li>Libros de metodología de la programación </li>
+    <li>Clases anteriores. </li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por
+Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Do 9-Mar-97</em><br>
+<em>Última actualización: Do 9-Mar-97</em> </p>
+</body>
+</html>

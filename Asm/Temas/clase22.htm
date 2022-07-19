@@ -1,0 +1,645 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Modelos de Memoria</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #22</h1>
+
+<h1 align="center">Modelos de Memoria</h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase21.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv13.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 13</a></td>
+    <td><p align="center"><a href="../Temas/clase23.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Comprender el concepto de Modelos de Memoria, y como nace de la arquitectura segmentada
+    del manejo de la memoria en los procesadores 80x86. </li>
+  <li>Entender las diferencias en la generación tanto del código como de los datos, entre
+    los distintos modelos de memoria. </li>
+  <li>Unir los conceptos de modelos de memoria con los de interfase de Ensamblador con otros
+    lenguajes, para comprender cómo varía la interfase de acuerdo al modelo de memoria usado
+    por el compilador. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<p>Modelos de memoria </p>
+
+<p>Por modelos de memoria nos referimos al concepto de definir apuntadores
+&quot;cortos&quot; y/o &quot;largos&quot;, según sea necesario para la aplicación. </p>
+
+<p>Este concepto nace de la arquitectura segmentada de los procesadores Intel de la
+familia del 8086. Debido a esta arquitectura, se pueden accesar bloques de memoria hasta
+de 64 Kb. solamente (segmentos). Cuando el &quot;software&quot; se desarrolla y empieza a
+requerir más memoria, empiezan a construirse programas de segmentos múltiples. Para
+soportar estos programas, sin perder eficiencia en aquellos que no lo requieran, se
+desarrolla la idea de usar apuntadores dentro del mismo segmento, que contienen solamente
+el offset (16 bits), y a los que se llama apuntadores cortos (&quot;near&quot;). Y
+distinguir de ellos los apuntadores que se requieran para los nuevos programas, que
+contengan tanto segmento como desplazamiento (32 bits), a los que se llama apuntadores
+largos (&quot;far&quot;). </p>
+
+<p>Veremos como maneja un compilador de &quot;C&quot; este concepto, dando a las variables
+el espacio necesario. Para ello, se presenta un ejemplo de un programa mínimo en
+&quot;C&quot;, y porciones seleccionadas del código que genera en los distintos modelos
+de memoria. Por cuestiones de espacio, se muestran solamente los más representativos. 
+
+<ul>
+  <li><a href="#corto">Modelo Corto</a> </li>
+</ul>
+
+<ul>
+  <li><a href="#compacto">Modelo Compacto</a> </li>
+</ul>
+
+<ul>
+  <li><a href="#largo">Modelo Largo</a> </li>
+</ul>
+
+<hr>
+
+<p><a name="corto"><code>/* Modelo corto */</code></a> </p>
+
+<p><code>/* Programa de prueba, en &quot;C&quot; */</code> </p>
+
+<p><code>char *Temporal;</code> </p>
+
+<p><code>char Arreglo[64000];</code> </p>
+
+<p><code>funcion()</code> </p>
+
+<p><code>{</code> </p>
+
+<p><code>char *Temporal2;</code> </p>
+
+<p><code>Temporal2 = Temporal;</code> </p>
+
+<p><code>while(*(--Temporal2));</code> </p>
+
+<p><code>}</code> </p>
+
+<p><code>main()</code> </p>
+
+<p><code>{</code> </p>
+
+<p><code>Temporal = Arreglo;</code> </p>
+
+<p><code>while(*Temporal) Temporal++;</code> </p>
+
+<p><code>funcion();</code> </p>
+
+<p><code>}</code> </p>
+
+<p><code>/* Codigo generado, en ensamblador: */</code> </p>
+
+<p><code>/* Modelo Small */</code> </p>
+
+<p><code>_TEXT segment byte public 'CODE'</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; funcion()</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>assume cs:_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_funcion proc near</code> </p>
+
+<p><code>push bp</code> </p>
+
+<p><code>mov bp,sp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; {</code> </p>
+
+<p><code>; char *Temporal2;</code> </p>
+
+<p><code>; Temporal2 = Temporal;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov dx,word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>jmp short @1@58</code> </p>
+
+<p><code>@1@58:</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; while(*(--Temporal2));</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>dec dx</code> </p>
+
+<p><code>mov bx,dx</code> </p>
+
+<p><code>cmp byte ptr [bx],0</code> </p>
+
+<p><code>jne short @1@58</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; }</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>pop bp</code> </p>
+
+<p><code>ret </code></p>
+
+<p><code>_funcion endp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; main()</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>assume cs:_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_main proc near</code> </p>
+
+<p><code>push bp</code> </p>
+
+<p><code>mov bp,sp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; {</code> </p>
+
+<p><code>; Temporal = Arreglo;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov word ptr DGROUP:_Temporal,offset DGROUP:_Arreglo</code> </p>
+
+<p><code>jmp short @2@86</code> </p>
+
+<p><code>@2@58:</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; while(*Temporal) Temporal++;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>inc word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>@2@86:</code> </p>
+
+<p><code>mov bx,word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>cmp byte ptr [bx],0</code> </p>
+
+<p><code>jne short @2@58</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; funcion();</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>call near ptr _funcion</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; }</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>pop bp</code> </p>
+
+<p><code>ret </code></p>
+
+<p><code>_main endp</code> </p>
+
+<p><code>_TEXT ends</code> </p>
+
+<p><code>_BSS segment word public 'BSS'</code> </p>
+
+<p><code>_Temporal label word</code> </p>
+
+<p><code>db 2 dup (?)</code> </p>
+
+<p><code>_Arreglo label byte</code> </p>
+
+<p><code>db 64000 dup (?)</code> </p>
+
+<p><code>_BSS ends</code> </p>
+
+<p><code>public _Temporal</code> </p>
+
+<p><code>public _Arreglo</code> </p>
+
+<p><code>public _funcion</code> </p>
+
+<p><code>public _main</code> </p>
+
+<p><code>end</code> </p>
+
+<p>Comentario: </p>
+
+<p>En este caso vemos que el apuntador Temporal es solamente de 2 bytes, es decir, es un
+apuntador corto. Por ello, solamente se almacena en el mismo el OFFSET, como se puede ver
+en la inicialización. Esto requiere menos código para incrementar el apuntador, tanto
+como para accesar su contenido. Nótese también que ambos procedimientos son
+&quot;near&quot;. </p>
+
+<p>También vemos algunas características generales de &quot;C&quot;: todos los símbolos
+se anteceden con un subguión, y son públicos por defecto, si son globales. </p>
+
+<hr>
+
+<p><a name="compacto"><code>/* Modelo compacto */</code></a> </p>
+
+<p><code>DGROUP group _DATA,_BSS</code> </p>
+
+<p><code>assume cs:_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_TEXT segment byte public 'CODE'</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; funcion()</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>assume cs:_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_funcion proc near</code> </p>
+
+<p><code>push bp</code> </p>
+
+<p><code>mov bp,sp</code> </p>
+
+<p><code>sub sp,4</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; {</code> </p>
+
+<p><code>; char *Temporal2;</code> </p>
+
+<p><code>; Temporal2 = Temporal;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov dx,word ptr DGROUP:_Temporal+2</code> </p>
+
+<p><code>mov ax,word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>mov word ptr [bp-2],dx</code> </p>
+
+<p><code>mov word ptr [bp-4],ax</code> </p>
+
+<p><code>jmp short @1@58</code> </p>
+
+<p><code>@1@58:</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; while(*(--Temporal2));</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>dec word ptr [bp-4]</code> </p>
+
+<p><code>les bx,dword ptr [bp-4]</code> </p>
+
+<p><code>cmp byte ptr es:[bx],0</code> </p>
+
+<p><code>jne short @1@58</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; }</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov sp,bp</code> </p>
+
+<p><code>pop bp</code> </p>
+
+<p><code>ret </code></p>
+
+<p><code>_funcion endp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; main()</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>assume cs:_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_main proc near</code> </p>
+
+<p><code>push bp</code> </p>
+
+<p><code>mov bp,sp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; {</code> </p>
+
+<p><code>; Temporal = Arreglo;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov word ptr DGROUP:_Temporal+2,ds</code> </p>
+
+<p><code>mov word ptr DGROUP:_Temporal,offset DGROUP:_Arreglo</code> </p>
+
+<p><code>jmp short @2@86</code> </p>
+
+<p><code>@2@58:</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; while(*Temporal) Temporal++;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>inc word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>@2@86:</code> </p>
+
+<p><code>les bx,dword ptr DGROUP:_Temporal</code> </p>
+
+<p><code>cmp byte ptr es:[bx],0</code> </p>
+
+<p><code>jne short @2@58</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; funcion();</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>call near ptr _funcion</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; }</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>pop bp</code> </p>
+
+<p><code>ret </code></p>
+
+<p><code>_main endp</code> </p>
+
+<p><code>_TEXT ends</code> </p>
+
+<p><code>_BSS segment word public 'BSS'</code> </p>
+
+<p><code>_Temporal label dword</code> </p>
+
+<p><code>db 4 dup (?)</code> </p>
+
+<p><code>_Arreglo label byte</code> </p>
+
+<p><code>db 64000 dup (?)</code> </p>
+
+<p><code>_BSS ends</code> </p>
+
+<p><code>public _Temporal</code> </p>
+
+<p><code>public _Arreglo</code> </p>
+
+<p><code>public _funcion</code> </p>
+
+<p><code>public _main</code> </p>
+
+<p><code>end</code> </p>
+
+<p>Comentario: </p>
+
+<p>En este caso, podemos ver que el código sigue siendo &quot;near&quot;, pero los datos
+ahora son &quot;far&quot;. Esto se ve en la definición de Temporal, que ahora se almacena
+en 4 bytes, tanto como en su inicialización y su manejo, que ahora requiere dos
+instrucciones donde antes bastaba una. </p>
+
+<hr>
+
+<p><a name="largo"><code>/* Modelo Largo */</code></a> </p>
+
+<p><code>PRUEBA_TEXT segment byte public 'CODE'</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; funcion()</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>assume cs:PRUEBA_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_funcion proc far</code> </p>
+
+<p><code>push bp</code> </p>
+
+<p><code>mov bp,sp</code> </p>
+
+<p><code>sub sp,4</code> </p>
+
+<p><code>; Temporal2 = Temporal;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov dx,word ptr DGROUP:_Temporal+2</code> </p>
+
+<p><code>mov ax,word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>mov word ptr [bp-2],dx</code> </p>
+
+<p><code>mov word ptr [bp-4],ax</code> </p>
+
+<p><code>jmp short @1@58</code> </p>
+
+<p><code>@1@58:</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; while(*(--Temporal2));</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>dec word ptr [bp-4]</code> </p>
+
+<p><code>les bx,dword ptr [bp-4]</code> </p>
+
+<p><code>cmp byte ptr es:[bx],0</code> </p>
+
+<p><code>jne short @1@58</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; }</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov sp,bp</code> </p>
+
+<p><code>pop bp</code> </p>
+
+<p><code>ret </code></p>
+
+<p><code>_funcion endp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; main()</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>assume cs:PRUEBA_TEXT,ds:DGROUP</code> </p>
+
+<p><code>_main proc far</code> </p>
+
+<p><code>push bp</code> </p>
+
+<p><code>mov bp,sp</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; {</code> </p>
+
+<p><code>; Temporal = Arreglo;</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>mov word ptr DGROUP:_Temporal+2,ds</code> </p>
+
+<p><code>mov word ptr DGROUP:_Temporal,offset DGROUP:_Arreglo</code> </p>
+
+<p><code>jmp short @2@86</code> </p>
+
+<p><code>@2@58:</code> </p>
+
+<p><code>; while(*Temporal) Temporal++;</code> </p>
+
+<p><code>inc word ptr DGROUP:_Temporal</code> </p>
+
+<p><code>@2@86:</code> </p>
+
+<p><code>les bx,dword ptr DGROUP:_Temporal</code> </p>
+
+<p><code>cmp byte ptr es:[bx],0</code> </p>
+
+<p><code>jne short @2@58</code> </p>
+
+<p><code>; funcion();</code> </p>
+
+<p><code>push cs</code> </p>
+
+<p><code>call near ptr _funcion</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>; }</code> </p>
+
+<p><code>; </code></p>
+
+<p><code>pop bp</code> </p>
+
+<p><code>ret </code></p>
+
+<p><code>_main endp</code> </p>
+
+<p><code>PRUEBA_TEXT ends</code> </p>
+
+<p><code>_BSS segment word public 'BSS'</code> </p>
+
+<p><code>_Temporal label dword</code> </p>
+
+<p><code>db 4 dup (?)</code> </p>
+
+<p><code>_Arreglo label byte</code> </p>
+
+<p><code>db 64000 dup (?)</code> </p>
+
+<p><code>_BSS ends</code> </p>
+
+<p><code>public _Temporal</code> </p>
+
+<p><code>public _Arreglo</code> </p>
+
+<p><code>public _funcion</code> </p>
+
+<p><code>public _main</code> </p>
+
+<p><code>end</code> </p>
+
+<p>Comentario: </p>
+
+<p>En este último caso, vemos que ahora también el código es largo, por lo que todas
+las definiciones son &quot;far&quot;. Sin embargo, la llamada es &quot;near&quot;, en este
+caso, por la optimización del compilador, pues resulta que es más rápido y más óptimo
+hacer el PUSH del CS, seguido de la llamada, que el CALL FAR. Esto solamente se puede
+realizar gracias a que ambos procedimientos están con seguridad en el mismo segmento. Sin
+embargo, no podemos dejar de hacer &quot;far&quot; el procedimiento &quot;funcion&quot;,
+pues puede ser llamado desde otro módulo, con otro segmento, y por tanto se requerirá el
+RETF (Retorno largo). Podemos mencionar también que se asume que cada módulo o archivo
+fuente va a corresponder a un segmento de código y uno de datos. De esta manera, se
+podrán tener más de 64Kb. de datos y/o código, pero divididos en módulos de 64Kb. o
+menos. </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"><a name="objetivo"> </a></p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Manuales de Turbo Assembler, Turbo C, Borland C. </li>
+  <li>La serie de libros de referencia de Herbert Schildt: &quot;Manual de Referencia de Turbo
+    C&quot; en sus distintas versiones. </li>
+</ol>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ma 2-Jul-96 </em><br>
+<em>Última actualización: Mi 1ª-Abr-1998</em></p>
+</body>
+</html>

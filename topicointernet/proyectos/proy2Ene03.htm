@@ -1,0 +1,125 @@
+<html>
+
+<head>
+
+<title>Proyecto 2: Aplicación Script Internet</title>
+<link REL="stylesheet" TYPE="text/css" href="../../Clases.css">
+</head>
+
+<body>
+
+<h1>Desarrollo <span lang="en-us">de Aplicaciones Avanzadas en </span>Internet</h1>
+
+<h1><span lang="es-mx">Segundo </span>Proyecto Parcial: <span lang="en-us">Aplicación dinámica del lado del 
+cliente con persistencia basada en el servidor</span></h1>
+
+<h3>Proyecto <span lang="es-mx">en equipos de 3 ó 4 personas</span>.</h3>
+
+<p>Se entregará el 7 de octubre de 2003. <span lang="es-mx">S</span>e deberá publicar en 
+<span lang="es-mx">algún </span>servidor<span lang="es-mx">, por ejemplo 
+&quot;www.brinkster.com&quot;</span>; <span lang="es-mx">
+adicionalmente se deberá </span>entrega<span lang="es-mx">r electrónicamente 
+(por correo electrónico) un 
+archivo .ZIP </span>con <span lang="es-mx">todos </span>los
+archivos <span lang="es-mx">del proyecto y el URL donde está publicado.</span></p>
+
+<p><span lang="es-mx">Se considerarán </span>los siguientes aspectos: 
+
+<ul>
+  <li><span lang="es-mx">Interfase compleja (imitando capacidades avanzadas de 
+  GUIs no soportadas por HTML tradicional), utilizando dibujos acordes a la 
+  especificación.</span><li><span lang="es-mx">Todas las aplicaciones requieren 
+  uso de imágenes GIF o JPEG para botones, fichas, cartas, formatos o iconos. No 
+  se calificará la calidad de diseño, pero sí se requerirá hacer algo de 
+  producción gráfica.</span><li>Barra de navegación<span lang="es-mx"> 
+  y efectos especiales en los menúes</span><li><span lang="es-mx">Uso de Style 
+  Sheets para generar interfase consistente</span><li><span lang="es-mx">Incluir 
+  al menos 4 páginas HTML independientes y con funciones distintas</span><li>
+  <span lang="es-mx">Uso  de tecnologías del lado del cliente, incluso Applets de 
+  Java (requerido al menos uno).</span></li><li>
+  <span lang="es-mx">Uso de tecnología Scripting del lado del servidor (ASP, PHP, 
+  JSP o Perl versión scripting, no CGI)</span></li><li>
+  <span lang="es-mx">Deberá documentarse la estructura del sitio (página por 
+  página, la descripción de lo que hace y qué ligas tiene; así como un árbol 
+  general de navegación); y de la base de datos (descripción tabla por tabla de 
+  su función, así como de sus campos).</span></li>
+</ul>
+
+<p>Deberá funcionar y verse correctamente en <span lang="es-mx">Internet </span>
+Explorer<span lang="es-mx"> 5 o superior</span></p>
+<p><span lang="es-mx">Se tomará como base el proyecto del 1er. parcial (según 
+les haya sido sorteado), extendiendo su funcionalidad, particularmente 
+incluyendo bases de datos.</span></p>
+<ul>
+  <li>Examen de certificación</li>
+  <li>Sistema experto de diagnóstico</li>
+  <li>Organigrama de la empresa</li>
+  <li>Carrito de compras</li>
+</ul>
+<p>Las especificaciones detalladas <span lang="es-mx">adicionales a las del 
+primer parcial, </span>son:</p>
+<h4>Examen de certificación</h4>
+<p>
+<span lang="es-mx">Se extenderá, para soportar varios exámenes, seleccionando al 
+principio qué examen se desea realizar.</span></p>
+<p>
+<span lang="es-mx">Los exámenes y sus preguntas se alimentarán en una base de 
+datos, así como la respuesta correcta. Esto se hará con una interfaz 
+administrativa, protegida con password; y la interfase tomará como base la 
+información de la base de datos.</span></p>
+<p>
+<span lang="es-mx">El resultado final se almacenará en un &quot;histórico&quot;, agregando 
+a la calificación, el nombre del usuario que contestó el examen. Podrá contestar 
+el mismo usuario varias veces el examen, y se tendrá un reporte de su historia. 
+Se deberá tener administración de usuarios y roles, indicando qué usuarios 
+pueden administrar el sistema y qué usuarios tienen derecho a contestar el 
+examen</span>. 
+</p>
+<h4>Sistema experto de diagnóstico</h4>
+<p>
+<span lang="es-mx">Se agregará la interfaz administrativa para agregar síntomas 
+y diagnósticos, editando en base de datos la máquina de estados que genera el 
+sistema experto.</span></p>
+<p>
+<span lang="es-mx">Deberá tener control de usuarios y roles (administración y 
+consulta); se registrará un histórico de qué usuario capturó qué síntomas (todo 
+el recorrido), y el diagnóstico que se le dio. Al final, el usuario deberá 
+evaluar el diagnóstico, en escala de 1 (muy mal diagnóstico) a 10, con un 
+comentario abierto (no obligatorio) donde explique el porqué de su calificación.</span></p>
+<p>
+<span lang="es-mx">Podrá sacarse un reporte del uso del sistema, útil para 
+mejorar su capacidad de diagnóstico</span>.<span lang="es-mx"> Este reporte 
+ordenará por calidad del diagnóstico, y permitirá navegar directamente a agregar 
+más preguntas en los estados donde el diagnóstico fue incorrecto, con objeto de 
+hacerlo más preciso.&nbsp; Finalmente, el reporte mostrará un promedio de la 
+calificación del sistema experto, tanto a nivel global (toda la historia) como 
+dividido por tiempo en días o semanas (el promedio de ayer, hoy, etc.)</span></p>
+<h4>Organigrama/directorio de la empresa</h4>
+<p>
+<span lang="es-mx">Se extenderá para soportar varias empresas; de modo que al 
+inicio, se seleccionará de qué empresa se va a consultar el organigrama.</span></p>
+<p>
+<span lang="es-mx">Se agregarán los catálogos de áreas de la empresa (recursivo) 
+y empleados, administrando así sus datos. De este modo, el 
+organigrama/directorio no será fijo.</span></p>
+<p>
+<span lang="es-mx">Deberá tener control de usuarios y roles (administración y 
+consulta). El usuario de consulta será anónimo. Se registrará un histórico de 
+cuántos &quot;hits&quot; tiene cada usuario (cuántas veces se consultan sus datos); y se 
+podrá consultar un reporte de visitas con este histórico</span>.
+</p>
+<h4>Carrito de compras</h4>
+<p>
+<span lang="es-mx">Se extenderá para soportar varias empresas en un centro 
+comercial, cada una con su propio catálogo de productos y proceso de compra.</span></p>
+<p>
+<span lang="es-mx">Se agregará en base de datos el catálogo administrable de 
+productos y precios; se registrará un histórico de pedidos, donde se almacenarán 
+los productos seleccionados al final del pedido, si se &quot;confirma&quot;, así como qué 
+usuario hizo el pedido. </span>&nbsp;</p>
+<p>
+<span lang="es-mx">Deberá tener control de usuarios y roles (administración y 
+hacer pedidos). Se contará con un reporte de todo lo que ha pedido un usuario 
+determinado.</span></p>
+</body>
+</html>

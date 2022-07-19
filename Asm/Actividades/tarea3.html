@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Ejercicios para tarea #3</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Arial" SIZE=4><P>Ejercicios cortos para aplicar Instrucciones B&aacute;sicas y Modos de Direccionamiento:</P>
+</B></FONT><FONT SIZE=2>
+<P>B&aacute;sicos</P>
+
+<OL>
+
+<LI>Instrucciones para restar dos n&uacute;meros de 32 bits; el minuendo se encontrar&aacute; en DX y AX (parte alta y parte baja, respectivamente), y el sustraendo se encontrar&aacute; en CX y BX. Dejar el resultado en DX y AX.</LI>
+<LI>Instrucciones para multiplicar CX por 4, que dejen el resultado en el mismo CX y respeten todos los dem&aacute;s registros, es decir, no se pierda el valor de ning&uacute;n otro registro.</LI>
+<LI>Instrucciones para sumar el valor en la variable Cuenta, de tipo BYTE, a DX, dejando el resultado en DX.</LI>
+<LI>Calcular la sumatoria de todos los enteros entre un valor inicial (i) y un valor final (j), que se proporcionan en variables. El resultado deber&aacute; quedar en AX, utiliza enteros de 16 bits sin signo.</LI>
+<LI>Calcular el factorial de N, que se proporciona en una variable.</LI>
+<LI>Tengo un n&uacute;mero en AL, que est&aacute; en binario. Quiero saber el valor del bit 5 (numerando 7 al m&aacute;s significativo y 0 al menos significativo). Tu rutina entrega en BL el c&oacute;digo ‘0’ o ‘1’ en ASCII.</LI>
+<LI>Calcular y=mx + b. Todas las variables (4) en la funci&oacute;n son words y se han definido con los nombres respectivos.</LI>
+<LI>El usuario tecle&oacute; s&iacute; o no (S/N/s/n). Tengo el c&oacute;digo de la tecla en la variable Tecla. Realizar instrucciones que conviertan a may&uacute;sculas la tecla, independientemente de si fue ‘s’ o ‘n’, respetando el valor en caso de que sea ‘S’ o ‘N’</LI>
+<LI>Tengo un n&uacute;mero de 32 bits en DX y AX (parte alta y baja respectivamente), con signo. Quiero cambiarle el signo (hacer complemento a 2), pero el NEG no acepta los 32 bits. ¿C&oacute;mo lo hacemos?</LI>
+<LI>El tama&ntilde;o de un disco en Kilobytes, sale del n&uacute;mero de Caras (Cabezas), Pistas y Sectores. Cada sector ocupa ½ Kb., cada pista tiene tantos Sectores como te indica la variable correspondiente; cada Cabeza tiene tantas pistas como indica la variable. De modo que tienes que multiplicar el n&uacute;mero de Cabezas por el de Pistas y &eacute;ste por el de Sectores, para saber cu&aacute;ntos sectores tienes, y de ah&iacute; deducir cu&aacute;ntos Kb.</LI>
+
+<P>Intermedios</P>
+
+<LI>Instrucciones para restar dos n&uacute;meros de 32 bits; el minuendo se encontrar&aacute; en la variable Minuendo y el sustraendo en la variable Sustraendo. Deber&aacute;s pasar los datos a registros para operar sobre ellos; dejar&aacute;s el resultado en la variable Resultado, tambi&eacute;n de 32 bits. TIP: para acceder a distintos elementos de una variable, puedes usar una sintaxis similar a arreglos; por ejemplo, Variable[3] permite acceder al contenido del tercer byte en adelante dentro de una variable.</LI>
+<LI>El apuntador SI est&aacute; colocado sobre el elemento 0 del arreglo Numeros, que contiene valores num&eacute;ricos de tipo byte. Se requiere calcular una sumatoria de los 1000 elementos del arreglo Numeros.</LI>
+<LI>Quiero prender el bit ‘N’ en el numero binario ‘Numero’. Recibes los datos en las variables N y Numero, y al final el resultado queda en Numero. Por ejemplo, si Numero vale 145 (&quot;10010001&quot; en binario) y N vale 3, se prender&aacute; el bit 3, quedando en Numero el resultado &quot;10011001&quot; (153 decimal).</LI>
+<LI>El apuntador BX est&aacute; colocado sobre el elemento 0 del arreglo Numeros, que tiene 1000 elementos de tipo WORD, con signo. Buscar el valor m&aacute;s grande en el arreglo, y depositarlo en la variable Max.</LI>
+<LI>Realizar una rutina que cuente el n&uacute;mero de caracteres que tiene la cadena apuntada por SI (buscando el caracter nulo, cuyo ASCII es 0)</LI></OL>
+
+
+<P>&nbsp;</P></FONT></BODY>
+</HTML>

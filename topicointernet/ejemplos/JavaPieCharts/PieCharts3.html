@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>PieCharts</title>
+</head>
+<body>
+<hr>
+<script language="JavaScript">
+<!--
+	cuantos = prompt ("cuantos sectores");
+	Leyenda="";
+	Porcientos="";
+	Colores="";
+
+	for (i =1;i<cuantos; i++)
+		{
+		Texto = prompt ("dame el texto " + i);
+		PorCiento = prompt ("dame su porcentaje");
+		Color = prompt("dame su color en hexadecimal");
+		Leyenda = Leyenda + Texto + ",";
+		Porcientos = Porcientos + PorCiento + ",";
+		Colores = Colores + Color + ",";
+		}		
+		Texto = prompt ("dame el texto " + i);
+		PorCiento = prompt ("dame su porcentaje");
+		Color = prompt("dame su color en hexadecimal");
+		Leyenda = Leyenda + Texto;
+		Porcientos = Porcientos + PorCiento;
+		Colores = Colores + Color;
+	document.write ("<applet code=PieCharts.class name=PieCharts width=600 height=400 >");
+	document.write ("<param name=Leyenda value=\"" + Leyenda + "\">");
+	document.write ("<param name=Porcientos value=\"" + Porcientos + "\">");
+	document.write ("<param name=Colores value=\"" + Colores + "\">");
+	document.write ("<param name=Posicion value=\"200,100\">");
+	document.write ("<param name=Radio value=\"250\">");
+	document.write ("</applet>");
+//-->
+</script>
+
+<hr>
+<a href="../javapiecharts/PieCharts.java">Código fuente.</a>
+</body>
+</html>

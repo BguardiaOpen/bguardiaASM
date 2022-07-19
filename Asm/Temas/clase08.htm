@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Modos de direccionamiento</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #8 </h1>
+
+<h1 align="center">Modos de direccionamiento </h1>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase07.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Temas/clase09.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer el concepto de modos de direccionamiento y acceso a memoria. </li>
+  <li>Conocer los principales modos de direccionamiento </li>
+  <li>Saber cuándo utilizarlos. </li>
+  <li>Saber qué combinaciones de modos de direccionamiento son válidas y cuáles no. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<h2>Modos de direccionamiento </h2>
+
+<p>Se les llama modos de direccionamiento a las distintas formas de combinar los operandos
+según el acceso que se hace a memoria. </p>
+
+<p>Dicho de otra manera, un modo de direccionamiento será una forma de parámetro para
+las instrucciones. Una instrucción que lleve un parámetro, por lo tanto, usará un modo
+de direccionamiento, que dependerá de cómo direccionará (accesará) al parámetro; una
+instrucción de dos parámetros, combinará dos modos de direccionamiento. </p>
+
+<hr>
+
+<p>Direccionamiento implícito 
+
+<ul>
+  <li>Depende solamente de la instrucción, es decir, la instrucción no lleva parámetros. </li>
+  <li>Particularmente en instrucciones que no accesan memoria, o bien que tienen una forma
+    específica de accesarla. </li>
+  <li>Ejemplos: <code>PUSHF, POPF, NOP</code> </li>
+</ul>
+
+<hr>
+
+<p>Modo registro 
+
+<ul>
+  <li>Usa solamente registros como operandos </li>
+  <li>Es el más rápido, pues minimiza los recursos necesarios (toda la información fluye
+    dentro del EU del CPU) </li>
+</ul>
+
+<h3>Ejemplo: </h3>
+
+<ul>
+  <li><code>MOV AX, BX</code> </li>
+</ul>
+
+<hr>
+
+<p>Modo inmediato 
+
+<ul>
+  <li>Tiene dos operandos: un registro y una constante que se usa por su valor. </li>
+  <li>El valor constante no se tiene que buscar en memoria, pues ya se obtuvo al hacer el
+    &quot;fetch&quot; de la instrucción. </li>
+  <li>Por tanto, es rápido aunque no tanto como el modo registro; requiere ir al BIU por el
+    dato. </li>
+</ul>
+
+<h3>Ejemplo: </h3>
+
+<ul>
+  <li><code>MOV AH, 9</code> </li>
+</ul>
+
+<hr>
+
+<p>Modo directo 
+
+<ul>
+  <li>Uno de los operandos involucra una localidad específica de memoria </li>
+  <li>El valor constante se tiene que buscar en memoria, en la localidad especificada. </li>
+  <li>Es más lento que los anteriores, pero es el más rápido para ir a memoria, pues ya
+    &quot;sabe&quot; la localidad, la toma de la instrucción y no la tiene que calcular. </li>
+</ul>
+
+<h3>Ejemplo: </h3>
+
+<ul>
+  <li><code>MOV AH, [0000]</code> </li>
+  <li><code>MOV AH, Variable</code> </li>
+</ul>
+
+<p>Estas dos instrucciones serían equivalentes, si Variable está, por ejemplo, en la
+localidad 0 de memoria. En la forma primitiva del lenguaje de máquina, como el primer
+ejemplo, se tiene que indicar &quot;mover a AH el <strong>contenido </strong>(indicado por
+los corchetes), de la localidad 0 de los datos (lo de los datos es implícito). El
+lenguaje Ensamblador, sin embargo, nos permite la abstracción del uso de variables, pero
+como una variable tiene una localidad determinada en memoria, para el procesador funciona
+igual. La única diferencia consiste en que el programador no tiene que preocuparse por la
+dirección, ese manejo lo hace automáticamente el Ensamblador. </p>
+
+<hr>
+
+<p>Modo indirecto 
+
+<ul>
+  <li>Se usan los registros SI, DI como apuntadores </li>
+  <li>El operando indica una localidad de memoria, cuya dirección (sólo la parte
+    desplazamiento) está en SI o DI. </li>
+  <li>Es más lento que los anteriores, pues tiene que &quot;calcular&quot;&nbsp;la localidad </li>
+</ul>
+
+<h3>Ejemplos: </h3>
+
+<ul>
+  <li><code>MOV AL, [SI]</code> </li>
+  <li><code>MOV BL, ES:[SI]</code> ; Aquí se dice que se usa un &quot;<em>segment override</em>&quot;,
+    donde se indica que en vez de usar el segmento de datos por defecto, se use en su lugar
+    como referencia el segmento extra. </li>
+</ul>
+
+<hr>
+
+<p>Modo indexado de base </p>
+
+<h3>Formato: </h3>
+
+<p><code>[<br>
+BX o BP<br>
++ SI o DI </code>(opcionales)<code><br>
++ constante </code>(opcional)<code><br>
+]</code> </p>
+
+<p>BX o BP indica una localidad base de la memoria </p>
+
+<p>A partir de BX o BP, se puede tener un desplazamiento variable y uno constante </p>
+
+<p>La diferencia es el segmento sobre el que trabajan por defecto: 
+
+<ul>
+  <li>BX por defecto en el segmento de datos </li>
+  <li>BP por defecto en el segmento de pila. </li>
+</ul>
+
+<h3>Ejemplos: </h3>
+
+<ul>
+  <li><code>MOV AX, [BX]</code> </li>
+  <li><code>MOV DX, [BX+2]</code> </li>
+  <li><code>MOV CX, [BX+DI]</code> </li>
+  <li><code>MOV DL, [BX+SI+3]</code> </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h3>Tabla de combinaciones posibles</h3>
+
+<p>De acuerdo a lo que se ha visto, y a la regla de que no se permiten dos accesos a
+memoria en la misma instrucción, se pueden combinar en la siguiente forma:</p>
+<div align="left">
+
+<table border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <th>Modo <br>
+    destino</th>
+    <th>Modo <br>
+    Fuente</th>
+    <th>Registro</th>
+    <th>Inmediato</th>
+    <th>Directo</th>
+    <th>Indirecto</th>
+    <th>Indexado</th>
+  </tr>
+  <tr>
+    <th colspan="2">Registro</th>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+  </tr>
+  <tr>
+    <th colspan="2" align="center">Inmediato</th>
+    <td colspan="5" align="center">No se puede tener inmediato a la izquierda <br>
+    (¿dónde se depositaría la información?)</td>
+  </tr>
+  <tr>
+    <th colspan="2">Directo</th>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td colspan="3" rowspan="3"><p align="center">Estas combinaciones no se pueden <br>
+    (serían dos accesos a memoria<br>
+    en la misma instrucción)</td>
+  </tr>
+  <tr>
+    <th colspan="2">Indirecto</th>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+  </tr>
+  <tr>
+    <th colspan="2">Indexado</th>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+    <td><img src="../../images/bien.gif" width="85" height="31" alt="bien.gif (2262 bytes)"></td>
+  </tr>
+</table>
+</div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<p>Manual de Turbo Assembler, versión 2.0 </p>
+
+<p>Un poco, capítulo 10 del libro de texto (tiene un enfoque distinto) </p>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Lu 26-Ago-96 </em><br>
+<em>Última actualización: Do 9-Feb-97</em> </p>
+</body>
+</html>

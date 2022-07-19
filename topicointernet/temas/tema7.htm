@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<title>Tema 7 - Formas y su procesamiento</title>
+</head>
+
+<body>
+<b><font FACE="Arial" SIZE="5" COLOR="#ffff00">
+
+<p></font><font color="#FF0000" face="Arial" size="5">Tema 7 - Formas y su procesamiento.</font><font FACE="Arial" SIZE="5"> </p>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objetivos</p>
+
+<blockquote>
+  </font></b><p><font face="Arial" color="#000000">Comprender las capacidades del objeto
+  Request.</font></p>
+  <p><font face="Arial" color="#000000">Manejar el paso de parámetros y variables de una
+  página a otra, utilizando distintas técnicas:</font><ul>
+    <li><font face="Arial" color="#000000">Variables de sesión.</font></li>
+    <li><font face="Arial" color="#000000">Elementos escondidos de formas.</font></li>
+    <li><font face="Arial" color="#000000">Paso de variables por método GET.</font></li>
+    <li><font face="Arial" color="#000000">Paso de variables por método POST.</font></li>
+  </ul>
+  <font FACE="Arial" SIZE="5" COLOR="#006600"><b><p>&nbsp;</p>
+  </b></font>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>El objeto Request</p>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  </font></b></font><p><font FACE="Arial" SIZE="3" COLOR="#000000">Como vimos la clase
+  pasada, entre los objetos intrínsecos de ASP, contamos con uno llamado Request, el cual
+  permite tomar los parámetros que se envían a una página ASP (sea por método GET o
+  POST), en una forma sencilla, sobre todo en comparación con el trabajo de análisis de
+  cadenas que tiene que hacer un CGI.</font></p>
+  <p>&nbsp;</p>
+  <p><font FACE="Arial" SIZE="3" COLOR="#000000">Este objeto cuenta con los siguientes
+  métodos y propiedades:</font><ul>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>QueryString </em>- Contiene las
+      variables recibidas por el método GET, como parte del URL. Para accesar a alguna de
+      ellas, simplemente se indexa un elemento de <em>QueryString </em>con el nombre de la
+      variable; por ejemplo, si recibimos el valor de la siguiente forma, método GET:</font></li>
+  </ul>
+  <p align="center"><em><font FACE="Arial" SIZE="3" COLOR="#000000">boleta.asp?Matricula=123456</font></em></p>
+  <blockquote>
+    <p><font FACE="Arial" SIZE="3" COLOR="#000000">Podemos referirnos a la variable Matricula
+    mediante <em>Request.QueryString(&quot;Matricula&quot;)</em>, y esto nos devolverá el
+    valor &quot;123456&quot;</font></p>
+    <p>&nbsp;</p>
+  </blockquote>
+  <ul>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>Form </em>- Contiene las variables
+      recibidas por el método POST. Para accesar a alguna de ellas, simplemente se indexa un
+      elemento de <em>Form</em> con el nombre de la variable; por ejemplo, si Matricula fuera un
+      campo de la forma siguiente:</font></li>
+  </ul>
+  <blockquote>
+    <blockquote>
+      <div align="center"><center><table border="1" cellpadding="2">
+        <tr>
+          <td><font FACE="Arial" SIZE="3" COLOR="#000000"><em>&lt;form
+          action=&quot;boleta.asp&quot;&gt;<br>
+          &lt;input type=&quot;text&quot; name=&quot;Matricula&quot; value=&quot;123456&quot;&gt;<br>
+          &lt;/form&gt;</em></font></td>
+        </tr>
+      </table>
+      </center></div>
+    </blockquote>
+    <p><font FACE="Arial" SIZE="3" COLOR="#000000">Si en <em>boleta.asp </em>queremos
+    referirnos a la variable Matricula, lo hacemos mediante <em>Request.Form(&quot;Matricula&quot;)</em>,
+    y esto nos devolverá el valor &quot;123456&quot;</font></p>
+  </blockquote>
+  <ul>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>ServerVariables</em>: es una colección,
+      al igual que QueryString y Form, que contiene todas las variables con las que cuenta el
+      servidor que vienen en el encabezado del protocolo HTTP. Entre otras importantes, nos
+      permite acceder a los siguientes datos:</font><ol>
+        <li>LOGON_USER : El usuario que se firmó en el servidor Web, si no es una conexión
+          anónima.</li>
+        <li>REMOTE_ADDR : La dirección IP del cliente.</li>
+      </ol>
+    </li>
+  </ul>
+  <table>
+  </table>
+  <b><font COLOR="#000000" SIZE="3"><p></font></b><font face="Arial">Para los tres casos, al
+  ser colecciones de VBScript, podemos recorrerlas a través de un For Each; por ejemplo,
+  para conocer todos los parámetros recibidos en QueryString y todas las variables del
+  servidor, puedes usar este script:</font><font COLOR="#000000" SIZE="3"><b></p>
+  </b><p>&nbsp;</p>
+</blockquote>
+</font><b><font SIZE="5" COLOR="#006600">
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Una forma y cómo captar sus
+variables. </p>
+
+<blockquote>
+  </font><font FACE="Arial" COLOR="#000000" SIZE="2"><p></font>&nbsp;</p>
+  <font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+</blockquote>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Técnica de paso de variables por
+método GET</p>
+</font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+
+<blockquote>
+  <p></b>Consiste en generar las ligas con todas las variables necesarias, en un &lt;a
+  href=&quot;&quot;..&gt; de tal modo que el URL contiene los parámetros; o bien, una forma
+  que se declara con METHOD=&quot;GET&quot;.</p>
+  <p>Inconvenientes:<font face="Arial" color="#000000" size="3"> se ven las variables en el
+  URL y está limitada la longitud.</font></p>
+  <p></font><font face="Arial" color="#000000" size="3">Ventajas: cuando de una página
+  requerimos muchas ligas hacia páginas dinámicas, pasando variables. Por ejemplo, cuando
+  es una lista (generalmente obtenida de base de datos) y cada liga deberá llevarte al
+  mismo lugar pero con distintos parámetros.</font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000"></p>
+  <b>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Técnica de paso de variables
+escondidas</p>
+
+<blockquote>
+  </font></b><p><font face="Arial" color="#000000" size="3">Antes de la existencia de los <em>cookies</em>,
+  la forma básica para permitir conservar una variable toda una sesión consistía en que
+  cada página tuviera un elemento escondido (&lt;input type=&quot;hidden&quot;&gt; </font></p>
+  <p><font face="Arial" color="#000000" size="3">Cada vez que un navegador se conecta por
+  primera vez al servidor Web (Internet Information Server), éste lo registra con un
+  número único de <em>sesión</em>. Éste nos permite distinguirlo de cualquier otro
+  cliente que posteriormente pudiera conectarse. Los siguientes requerimientos que hará
+  este cliente, se reconocerán por ese número de sesión; por lo cual, podemos guardar
+  variables de estado que identifiquen a este cliente y nos permitan conservar información
+  del mismo en el servidor, sin tener que acarrearla en variables enviadas de página en
+  página con el método Get o Post.</font></p>
+  <p><font face="Arial" color="#000000" size="3">Para ello, una vez que se registra una
+  nueva sesión, el IIS crea un objeto dinámicamente en su propia memoria, al que conocemos
+  como Session, ya que esta será la forma en la cual una página puede referirse al mismo.</font></p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600">
+
+<p><b>Aplicación Ejemplo</b></p>
+</font>
+
+<blockquote>
+  <font FACE="Arial" SIZE="5" COLOR="#006600"><p></font><font face="Arial" size="3" color="#000000">Encontrarás el siguiente <a href="../ejemplos/Objetos.htm">código fuente
+  </a>para un ejemplo completo de aplicación, consistente en una votación por Internet</font><font FACE="Arial" SIZE="5" COLOR="#006600"></p>
+  </font><p>&nbsp;</p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>Bibliografía y Referencias</p>
+</b></font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+
+<blockquote>
+  <p>Libro de Texto: Programming Active Server Pages</font><font face="Arial" color="#000000" size="3">, Capítulo , pp. .</p>
+  <blockquote>
+    </font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000"><font FACE="Arial" COLOR="#000000" SIZE="2"><p></font>Microsoft Press/McGraw Hill<font FACE="Arial" COLOR="#000000" SIZE="2"></p>
+    <p></font>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</font>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage (Visual InterDev Edition) 2.0">
+<title>Ejemplo usando SMX</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1><font face="Arial">Código del ejemplo de Seleccionar
+productos, usando SMX</font></h1>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial">%expand%</font></p>
+
+<p><font face="Arial">%form%</font></p>
+
+<p><font face="Arial">%gset(DSN,BaseDatos)</font></p>
+
+<p><font face="Arial">&lt;HTML&gt;</font></p>
+
+<p><font face="Arial">&lt;HEAD&gt;</font></p>
+
+<p><font face="Arial">&lt;TITLE&gt;Seleccionar
+productos&lt;/TITLE&gt;</font></p>
+
+<p><font face="Arial">&lt;/HEAD&gt;</font></p>
+
+<p><font face="Arial">&lt;BODY BGCOLOR=#FFFFFF TEXT=#0000cc
+LINK=#ff0000 VLINK=#FF0000 ALINK=#FF0000&gt;</font></p>
+
+<p><font face="Arial">&lt;CENTER&gt;&lt;H2&gt; Selecciona un
+producto&lt;/H2&gt;</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial">&lt;table border&gt;</font></p>
+
+<p><font face="Arial">&lt;tr&gt;&lt;th&gt;Producto&lt;/th&gt;&lt;th&gt;Precio&lt;/th&gt;</font></p>
+
+<p><font face="Arial">%sql(%BaseDatos%,</font></p>
+
+<p><font face="Arial">&quot;SELECT ProductName, Price FROM
+Items&quot;,</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial">&lt;a
+href=&quot;BagItem.htm?%NumCliente%&amp;Product=%ProductName%&quot;&gt;</font></p>
+
+<p><font face="Arial">&lt;tr&gt;&lt;td&gt;%column(ProductName)&lt;/td&gt;</font></p>
+
+<p><font face="Arial">&lt;td&gt;$
+%fmt(%column(Price))&lt;/td&gt;&lt;/tr&gt;&lt;/a&gt;</font></p>
+
+<p><font face="Arial">)</font></p>
+
+<p><font face="Arial">&lt;/table&gt;</font></p>
+
+<p><font face="Arial">&nbsp;&lt;/BODY&gt;</font></p>
+
+<p><font face="Arial">&lt;/HTML&gt;</font></p>
+</body>
+</html>

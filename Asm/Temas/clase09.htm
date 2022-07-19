@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Uso de las herramientas y estructura general del programa</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #9 </h1>
+
+<h1 align="center">Uso de las herramientas y estructura general del programa </h1>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase08.htm">
+    <img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Temas/clase10.htm">
+    <img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer el uso de las herramientas básicas para programar en lenguaje Ensamblador en
+    8086 y familia. </li>
+  <li>Conocer la estructura general de un programa en Ensamblador del 8086 y familia. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+<div align="left">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top">Manejo de las Herramientas <ul>
+      <li><a href="#TASM">TASM</a> </li>
+      <li><a href="#TLINK">TLINK</a> </li>
+      <li><a href="#MAKE">MAKE</a> </li>
+      <li><a href="#TD">TD</a> </li>
+      <li><a href="#TPROF">TPROF</a></li>
+    </ul>
+    </td>
+    <td valign="top"><a href="#Estructura">Estructura general de un programa</a></td>
+  </tr>
+</table>
+</div>
+
+<hr>
+
+<h3><span lang="en-us">Proceso de Ensamblado</span></h3>
+<p>&nbsp;</p>
+<p align="center"><img border="0" src="../../images/ASM/DiagramaASM.jpg" width="354" height="480"></p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<h3><a name="TASM">TASM: Ensamblador</a> </h3>
+
+<p>Se le llama ensamblador no sólo al lenguaje; sino también al programa que traduce el
+código fuente escrito en ensamblador, a código objeto, equivalente a los opcodes en
+lenguaje de máquina. </p>
+
+<p>En el caso de 8086 y familia, el ensamblador, sea TASM (Borland) o MASM (Microsoft), se
+encarga de generar los archivos .OBJ que representan el código de máquina asociado al
+programa fuente en ensamblador. </p>
+
+<p>La sintaxis básica para su uso es: </p>
+
+<p><em>TASM &lt;nombre del programa&gt; {opciones}</em> </p>
+
+<p>En el nombre del programa, podemos omitir la extensión .ASM, que es la que tenemos por
+defecto. </p>
+
+<p>Por ejemplo, para ensamblar el programa HOLA.ASM, basta la siguiente línea de
+comandos: </p>
+
+<p><samp>C&gt; </samp><strong>TASM HOLA</strong> </p>
+
+<p>En las opciones se puede controlar el proceso de ensamblado, para que genere
+información adicional o cambie su forma de operación. Las dos más útiles para este
+curso serán: 
+
+<dl>
+  <dt>/la </dt>
+  <dd>Genera un archivo, adicional al .OBJ, con extensión .LST, que muestra un listado
+    detallado del proceso de ensamblado. Entre otras cosas, muestra la asociación existente
+    entre el código fuente y los opcodes generados. </dd>
+  <dt>/zi </dt>
+  <dd>Almacena información de símbolos junto con el programa objeto, útil para que el
+    depurador permita ejecutar el código objeto en sincronía con el código fuente. </dd>
+</dl>
+
+<p>Así, se recomienda que durante el desarrollo de un programa se ejecute TASM con una
+línea de comandos similar a la siguiente: </p>
+
+<p><samp>C&gt; </samp><strong>TASM HOLA</strong> /zi /la </p>
+
+<p>En algunas versiones las opciones deben ponerse previamente, por ejemplo:</p>
+
+<p><samp>C&gt; </samp><strong>TASM </strong>/zi /la <strong>HOLA</strong></p>
+
+<hr>
+
+<h3><a name="TLINK">TLINK: Linker</a> </h3>
+
+<p>Un archivo .OBJ, si bien contiene ya todo el código de máquina, no puede ser
+ejecutado todavía por el sistema operativo, pues no contiene información necesaria para
+el mismo, tal como la memoria requerida. Esto se coloca en un encabezado, que es leído
+por el sistema para determinar cómo ejecutar el programa. </p>
+
+<p>Por otro lado, cuando hacemos un programa en varios módulos, no solamente existe un
+código objeto sino varios, que debemos combinar o relacionar entre sí. </p>
+
+<p>Estos procesos son llevados a cabo por el TLINK; el cual toma como entrada uno o varios
+archivos .OBJ y genera los archivos ya ejecutables por el sistema, con extensión .COM o
+.EXE. Desde el sistema operativo 4.0 se está buscando eliminar a los archivos .COM, por
+sus limitaciones; por lo cual, en general no se trabaja con ellos en este curso. </p>
+
+<p>Se ejecuta en forma similar al TASM, desde la línea de comandos (&quot;prompt&quot;): </p>
+
+<p>La sintaxis básica para su uso es: </p>
+
+<p><em>TLINK &lt;nombre del programa o programas&gt; {opciones}</em> </p>
+
+<p>En el nombre del programa, podemos omitir la extensión .OBJ, que es la que tenemos por
+defecto. </p>
+
+<p>Por ejemplo, para ligar el código objeto generado anteriormente HOLA.OBJ, basta la
+siguiente línea de comandos: </p>
+
+<p><samp>C&gt; </samp><strong>TLINK HOLA</strong> </p>
+
+<p>En las opciones se puede controlar el proceso de ligado. La opción que generalmente se
+utiliza más es: 
+
+<dl>
+  <dt>/v </dt>
+  <dd>Almacena información de símbolos junto con el programa ejecutable, útil para que el
+    depurador permita ejecutar el código objeto en sincronía con el código fuente.<strong> <font color="#FF0000">Cuidado: Esta opción debe ponerse en minúsculas, estrictamente.</strong>
+    </font></dd>
+</dl>
+
+<p>Así, se recomienda que durante el desarrollo de un programa se ejecute TLINK con una
+línea de comandos similar a la siguiente: </p>
+
+<p><samp>C&gt; </samp><strong>TLINK HOLA</strong> /v </p>
+
+<p>También aquí a veces se requiere de poner las opciones antes, como por ejemplo:</p>
+
+<p><samp>C&gt; </samp><strong>TLINK /v HOLA</strong></p>
+
+<hr>
+
+<h3><a name="MAKE">MAKE: Reglas de construcción</a> </h3>
+
+<p>La información sobre esta herramienta se colocará más adelante. </p>
+
+<p>Ejemplo de su uso: </p>
+
+<p>Archivo MAKEFILE </p>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td>hola.exe: hola.asm <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasm
+    hola /zi /la # Hay un caracter tabulador al inicio de línea <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tlink
+    hola /v </td>
+  </tr>
+</table>
+
+<p>Al ejecutar <em>MAKE</em> con este archivo presente en el directorio actual, si <em>hola.exe</em>
+no existe o es más viejo que <em>hola.asm</em>, se creará <em>hola.exe</em> siguiendo
+las reglas indicadas, es decir, ejecutando tanto al <em>TASM</em> como al <em>TLINK</em>. </p>
+
+<hr>
+
+<h3><a name="TD">TD: Depuración</a> </h3>
+
+<p>Se pondrá más información sobre esta herramienta posteriormente </p>
+
+<p>Se ejecuta un ambiente amigable de menús; se requiere de ensamblar y ligar con las
+opciones de depuración (/zi en el TASM y /v en el TLINK) </p>
+
+<p>Las funciones más importantes para su uso serán la ejecución por pasos (F7 y F8),
+examinar los recursos en la ventana de CPU, y visualizar variables por medio de Watch y
+Evaluate. </p>
+
+<hr>
+
+<h3><a name="TPROF">TPROF: Pruebas de eficiencia</a> </h3>
+
+<p>Se pondrá más información sobre esta herramienta posteriormente. </p>
+
+<p>Se ejecuta un ambiente amigable de menús; al igual que el depurador, requiere de
+ensamblar y ligar con las opciones de depuración (/zi en el TASM y /v en el TLINK) </p>
+
+<hr>
+
+<h1><a name="Estructura">Estructura general de un programa </a></h1>
+
+<p>Todo programa fuente en ensamblador contará con cuatro secciones básicas: </p>
+
+<hr>
+
+<p>Directivas generales: </p>
+
+<h4>TITLE &lt;titulo&gt; </h4>
+
+<p>Esta directiva permite poner un título al programa en ensamblador, es similar a <em>program</em>
+en Pascal. No se requiere, pero se recomienda por documentación. </p>
+
+<hr>
+
+<p>.model &lt;modelo&gt; </p>
+
+<p>Indica el <a href="../Temas/clase22.htm">modelo de memoria </a>que se va a&nbsp;utilizar. Esto
+lo veremos con más profundidad al final del curso; por el momento, simplemente pondremos
+el modelo <em>small</em>, que es el más usual y&nbsp;que es apropiado para casi todas las
+actividades del curso. </p>
+
+<hr>
+
+<p>.stack &lt;tamaño&gt; </p>
+
+<p>Indica cuánto espacio se reservará para la pila del sistema. Se requiere este espacio
+para la operación apropiada del programa, pues diversas instrucciones hacen uso de la
+pila. Por lo general, basta con un tamaño de 256 bytes (<em>.stack 100h</em>). Solamente
+en programas que hagan fuerte uso de la pila, como aquellos que usen recursión
+o&nbsp;gráficos VESA, requerirán tamaños mayores. </p>
+
+<hr>
+
+<p>Datos y variables: </p>
+
+<h4>.data </h4>
+
+<p>Con esta directiva, indicamos al ensamblador donde iniciaremos las definiciones de
+variables; de acuerdo a las variables que definamos, se reservará el espacio necesario;
+lo importante es que la directiva le indica al ensamblador la asociación para crear el
+segmento de datos. </p>
+
+<hr>
+
+<p>&lt;variable&gt; DB &lt;contenido&gt; </p>
+
+<p>Esta directiva permite definir espacio de variables, en unidades de bytes. Si por
+ejemplo, se requiere una variable de tipo char Bandera, con valor inicial de 0, se
+definirìa: </p>
+
+<p><code>Bandera DB 0</code> </p>
+
+<p>No siempre se requiere indicar un nombre de variable, especialmente en arreglos: </p>
+
+<p><code>Arreglo DB 0</code> </p>
+
+<p><code>DB 1</code> </p>
+
+<p><code>DB 2...</code> </p>
+
+<hr>
+
+<p>&lt;variable&gt; DW &lt;contenido&gt; </p>
+
+<p>Esta directiva, similar a la anterior, permite definir espacio para un Word. (variable
+que ocupa 2 bytes o 16 bits). Aplican todos los comentarios de la misma. </p>
+
+<hr>
+
+<h4>? </h4>
+
+<p>Cuando se usa el signo de interrogación, se puede definir una variable sin especificar
+su valor, por ejemplo: </p>
+
+<p><code>Variable DB ?</code> </p>
+
+<hr>
+
+<h4>&lt;numero&gt; DUP &lt;valor&gt; </h4>
+
+<p>Esta directiva, combinada con DB o DW, permite llenar un arreglo con un valor repetido.
+Por ejemplo, si se quiere un arreglo de 100 caracteres, con valor de 0 en cada uno, se
+define: </p>
+
+<p><code>Arreglo <span lang="en-us">DB </span>100 <span lang="en-us">DUP (
+</span>0</code> <span lang="en-us">&nbsp;)</span></p>
+
+<hr>
+
+<p>Código: </p>
+
+<h4>.code </h4>
+
+<p>Con esta directiva, se indica al ensamblador que termina la definición de datos, e
+inicia la definición del código. Después de esta sección, se inicia la secuencia de
+instrucciones y <a href="../Temas/clase10.htm">procedimientos </a>que forman el programa. </p>
+
+<p>El código casi siempre tendrá dos elementos importantes: 
+
+<ul>
+  <li>Inicialización de segmentos </li>
+  <li>Regreso a&nbsp;DOS </li>
+</ul>
+
+<p>La inicialización de segmentos asegura que el segmento de datos (DS) se ajuste para
+acceder a las variables del programa, y no a los datos que DOS usó previamente. De manera
+que acostumbraremos iniciar el código con las instrucciones. </p>
+
+<p><code>&nbsp;MOV AX, @data ; obtener valor del segmento</code> </p>
+
+<p><code>&nbsp;MOV DS, AX ; Ponerlo en DS</code> </p>
+
+<p>Para regresar a DOS, tendremos que hacer uso del mecanismo de interrupciones. Por el
+momento, simplemente enunciaremos cuáles se usan por lo común: </p>
+
+<p><code>&nbsp;MOV AH, 4Ch ; Número del servicio &quot;salir&quot;</code> </p>
+
+<p><code>&nbsp;INT 21h ; Llamar a DOS</code> </p>
+
+<hr>
+
+<p>Final del programa: </p>
+
+<p>Una vez que terminamos con las instrucciones, el ensamblador requiere saber cuándo
+dejar de ensamblar. Para ello, requiere de la directiva <em>END</em>, que hace dos cosas:
+indicar al ensamblador que deje de traducir; e indicarle si se desea que el programa
+inicie su ejecución en un punto distinto al principio del código. </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<p>Capítulo 4, libro de texto. </p>
+
+<p>Manuales de TASM o MASM. </p>
+
+<p align="center">
+<img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx">
+  <img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
+<em>Última actualización: Do 16-Feb-97</em> </p>
+</body>
+</html>

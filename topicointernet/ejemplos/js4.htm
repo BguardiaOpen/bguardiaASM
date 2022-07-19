@@ -1,0 +1,165 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Ejemplo 4 de Java Script</title>
+<script language="JavaScript">
+<!-- Para esconder el código y que no aparezca en navegadores que no soportan Java Script.
+
+// Esta función requiere que le pasen como dato la referencia del objeto Forma
+function CalculaEdad(forma)
+{
+// Checar la fecha de hoy.
+var Hoy=new Date();
+var Anos=Hoy.getYear() - forma.Year.value;
+// El mes se regresa de 0 a 11.
+var Meses=Hoy.getMonth()+1 - forma.Mes.value;
+var Dias=Hoy.getDate() - forma.Dia.value;
+
+// Acumular días, meses y años.
+if (Dias<0) // Día actual menor al día de nacimiento; ejemplo hoy es 1 y naciste el 30.
+	{
+	// Pedir prestados días al mes anterior.
+	Meses-=1;
+	if ( (Hoy.getMonth == 0) // Enero
+		|| (Hoy.getMonth == 1) // Febrero
+		|| (Hoy.getMonth == 3) // Abril
+		|| (Hoy.getMonth == 5) // Junio
+		|| (Hoy.getMonth == 7) // Agosto
+		|| (Hoy.getMonth == 8) // Septiembre
+		|| (Hoy.getMonth == 10)) // Noviembre
+			Dias+=31;
+	else // si el mes anterior no es de 31 días...
+		if (Hoy.getMonth != 2) // si no es Marzo ni fue mes anterior de 31 días
+			Dias+=30; // entonces es de 30
+		else {
+			// Caso de febrero requiere evaluar si es bisiesto.
+			year=Hoy.getYear();
+			// Es bisiesto si el año es múltiplo de 4, y no es siglo (múltiplo de 100) a menos que sea múltiplo de 400.
+			if  ( (year % 4 == 0) && ( (year % 100 != 0) || (year % 400 == 0)) )
+				Dias+=29;
+			else
+				Dias+=28;
+			}
+	}
+// Los meses, debido a la acumulación anterior, pueden llegar a ser equivalentes a más de un año. Por eso
+// se revisa al menos dos veces.
+while (Meses<0) {
+	Anos-=1;
+	Meses+=12;
+	}
+
+forma.Edad1.value=Anos;
+forma.Edad2.value=Meses;
+forma.Edad3.value=Dias;
+
+// Checar que la fecha de nacimiento no esté en el futuro.
+if  ( (Anos < 0) || (Anos == 0 && Meses<0) || (Anos == 0 && Meses==0 && Dias<0 )) {
+	alert("Fecha de nacimiento inválida. Está en el futuro.");
+	return(false);
+	}
+return (true);
+}
+
+function valida_correo(forma)
+{
+	// Sacar el dato de la forma
+	var Correo=forma.EMail.value;
+
+	if (Correo == "" ) {
+		alert("Debes proporcionar tu dirección de correo electrónico.");
+		forma.EMail.focus();
+		return false;
+	}
+	NumeroArrobas=0;
+	NumeroPuntos=0;
+	for (contador=0; contador<Correo.length; contador++)
+		{
+		if (Correo.charAt(contador)=='@')
+			{
+			AntesArroba=contador;
+			NumeroArrobas++;
+			}
+		if (Correo.charAt(contador)=='.')
+			{
+			AntesPunto=contador;
+			NumeroPuntos++;
+			}
+		}
+		
+	if ( (NumeroArrobas!=1) || (NumeroPuntos<1) || (AntesArroba==0) || (AntesArroba==Correo.length-1) 
+			|| (AntesPunto<AntesArroba) || (AntesPunto==Correo.length-1))
+		{
+		alert("Tu dirección de correo no es válida.");
+		forma.EMail.focus();
+		return(false);
+		}
+return true;
+}
+
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="center">Ejemplo 4 de Java Script</h3>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<form method="POST" name="Forma" align="center" onsubmit="return CalculaEdad(this);">
+  <table border="1" cellpadding="2" width="100%">
+    <tr>
+      <td width="50%">Dame tu fecha de nacimiento:</td>
+      <td width="50%"><div align="center"><center><table border="0" cellpadding="2" width="100%">
+        <tr>
+          <td width="33%" align="center">Año</td>
+          <td width="33%" align="center">Mes</td>
+          <td width="34%" align="center">Día</td>
+        </tr>
+        <tr>
+          <script language="JavaScript">
+<!-- Para esconder el código y que no aparezca en navegadores que no soportan Java Script.
+// Obtener fecha de hoy
+Hoy=new Date();
+
+// Crear los campos, inicializándolos con los valores de hoy
+document.write("<td align=\"center\">");
+document.write("<input type=\"text\" name=\"Year\" ");
+document.write(" value=\"" + Hoy.getYear() + "\"");
+document.write("onchange=\"CalculaEdad(Forma);\" size=\"4\"> </td>");
+document.write("<td width=\"33%\" align=\"center\">");
+document.write("<input type=\"text\" name=\"Mes\"");
+document.write(" value=\"" + (Hoy.getMonth()+1) + "\"");
+document.write("onchange=\"CalculaEdad(Forma);\" size=\"4\"> </td>");
+document.write("<td width=\"34%\" align=\"center\">");
+document.write("<input type=\"text\" name=\"Dia\"");
+document.write(" value=\"" + Hoy.getDate() + "\"");
+document.write("onchange=\"CalculaEdad(Forma);\" size=\"4\"> </td>");
+// -->
+          </script>
+
+        </tr>
+      </table>
+      </center></div></td>
+    </tr>
+    <tr align="center">
+<!--Estos campos son para que JavaScript genere los datos, por eso cuando se hace foco a ellos, automáticamentese hace blur(), es decir, perder el foco. Con esto se evita hasta cierto punto capturar en ellos.-->
+      <td width="50%">Tu edad al día de hoy es:</td>
+      <td width="50%" align="center"><input type="text" name="Edad1" value="0" size="4" onfocus="blur();"> años, <input type="text" name="Edad2" value="0" size="4" onfocus="blur();"> meses y <input type="text" name="Edad3" value="0" size="4" onfocus="blur();"> días </td>
+    </tr>
+    <tr align="center">
+      <td width="50%">Ahora dime tu correo electrónico</td>
+      <td width="50%" align="center"><input type="text" name="EMail" size="30" onblur="return valida_correo(Forma);"> </td>
+      <td width="50%">&nbsp;</td>
+      <td width="50%" align="center">&nbsp;</td>
+    </tr>
+  </table>
+  <div align="center"><center><p><input type="submit" value="Enviar (y validar)" name="B1"><input type="reset" value="Limpiar datos" name="B2"> </p>
+  </center></div>
+</form>
+</body>
+</html>

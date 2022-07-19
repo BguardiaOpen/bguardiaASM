@@ -1,0 +1,208 @@
+<html>
+
+<head>
+
+<title>Tema 6 - Módulos y objetos en ASP. Detección de navegador y páginas adaptativas.</title>
+</head>
+
+<body>
+<b><font FACE="Arial" SIZE="5" COLOR="#ffff00">
+
+<p></font><font color="#FF0000" face="Arial" size="5">Tema 6 - Módulos y objetos en ASP.
+Detección del browser y páginas que se adaptan.</font><font FACE="Arial" SIZE="5"> </p>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objetivos</p>
+
+<blockquote>
+  </font></b><font face="Arial" color="#000000"><p>Conocer los objetos básicos a los que se
+  tiene acceso en ASP.</p>
+  </font><p><font face="Arial" color="#000000">Comprender las capacidades del objeto
+  Response y el control que nos permite sobre la información que recibe el navegador.</font></p>
+  <p><font face="Arial" color="#000000">Comprender el manejo de sesiones del Internet
+  Information Server y su aplicación.</font></p>
+  <p><font face="Arial" color="#000000">Manejar el contexto o estado de una sesión.</font></p>
+  <p><font face="Arial" color="#000000">Detectar las capacidades del navegador que se
+  conecta a una página ASP, y utilizarlas para generar páginas ASP distintas según el
+  navegador que corresponda.</font></p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>&nbsp;</p>
+
+<p>Uso de objetos en ASP</p>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  </font></b></font><p><font FACE="Arial" SIZE="3" COLOR="#000000">Hasta ahora, lo que hemos
+  podido hacer en ASP ha sido muy limitado; no contamos con la posibilidad de hacer todavía
+  nada que no pudiéramos haber hecho en JavaScript, del lado del cliente. La promesa que
+  tenemos pendiente es la capacidad de hacer más del lado del servidor; sin embargo,
+  solamente hemos visto la lógica de programación del servidor, pero nos falta contar con
+  acceso a funciones interesantes en el mismo.</font></p>
+  <p><font FACE="Arial" SIZE="3" COLOR="#000000">Para acceder a una mayor funcionalidad, el
+  lenguaje VBScript nos permite comunicarnos con Objetos, los cuales son componentes que
+  cuentan con ciertas funciones, parámetros y métodos que podemos utilizar; del mismo modo
+  que ocurría en Java Script. Solamente que estos objetos residirán en el lado del
+  servidor.</font></p>
+  <p><font FACE="Arial" SIZE="3" COLOR="#000000">El Internet Information Server, que es el
+  servidor Web de Microsoft que da soporte a ASP, nos ofrece 5 objetos básicos que nos
+  permiten tener un cierto control sobre aspectos del servidor Web y de la interacción
+  entre distintas páginas. Con ayuda de estos objetos, podremos realizar nuevas funciones
+  con las cuales se pueden realizar sitios más completos y dinámicos.</font></p>
+  <p><font FACE="Arial" SIZE="3" COLOR="#000000">Estos 5 objetos intrínsecos son:</font><ul>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>Response</em>, el cual se refiere a el
+      flujo HTTP que se envía de regreso al cliente. Con este objeto, por tanto, podremos
+      controlar todos los elementos con los que el servidor Web contesta al&nbsp; cliente:
+      encabezados HTTP, <em>cookies</em>, el tipo de contenido, y el mismo HTML que se devuelve.
+      Inclusive podremos gracias a este objeto, producir como resultado un documento que no sea
+      HTML (por ejemplo, un GIF).</font></li>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>Session</em>, el cual permite tener el
+      control sobre lo que realiza un cliente en una sesión de conexión al servidor Web; es
+      decir, permite manejar variables de estado, así como identificar cuando dos
+      requerimientos diferentes de páginas son realizados por el mismo cliente, en la misma
+      sesión de navegador.</font></li>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>Application</em>, el cual permite que
+      todos los scripts ASP dentro de un sistema compartan información en un lugar común. Esto
+      naturalmente facilita conseguir un mejor uso de la memoria para aplicaciones Web.</font></li>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>Server</em>, el cual cuenta con
+      funciones propias de un servidor Web, tales como analizar URLs y convertir caracteres
+      especiales a HTML y viceversa.</font></li>
+    <li><font FACE="Arial" SIZE="3" COLOR="#000000"><em>Request</em>, el cual permite tomar los
+      parámetros que se envían a una página ASP (sea por método GET o POST), en una forma
+      sencilla, sobre todo en comparación con el trabajo de análisis de cadenas que tiene que
+      hacer un CGI.</font></li>
+  </ul>
+  <font COLOR="#000000" SIZE="3">
+</blockquote>
+</font><b>
+
+<blockquote>
+  <font COLOR="#000000" SIZE="3"><p></font></b><font FACE="Arial" SIZE="3" COLOR="#000000">En
+  esta sesión, analizaremos cada uno de los 4 primeros objetos y las bases del quinto, para
+  crear nuestra primera aplicación dinámica del lado del servidor, que de hecho será una
+  página sencilla para controlar la entrada de los usuarios.</font><b><font COLOR="#000000" SIZE="3"></p>
+  </font>
+</blockquote>
+<font SIZE="5" COLOR="#006600">
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objeto Response</p>
+
+<blockquote>
+  </font></b><font FACE="Arial" COLOR="#000000" SIZE="2"><p></font><font face="Arial" size="3" color="#000000">Como ya dijimos, este objeto se refiere al flujo HTTP que se
+  envía de regreso al cliente. Cuenta con los siguientes métodos (entre otros):</font><ul>
+    <li><font face="Arial" size="3" color="#000000"><em>Write </em>- Éste permite escribir
+      variables a la salida que se está generando; por ejemplo, <em>Response.Write Variable </em>es
+      equivalente a <em>%&gt;&lt;%=Variable%&gt;&lt;%</em>. Tiene la ventaja de que es más
+      corto cuando se trata de varias variables a mostrar, o intercalando cadenas, y no requiere
+      cerrar la sección de un script.</font></li>
+    <li><font face="Arial" size="3" color="#000000"><em>End </em>- Es como la terminación del
+      programa ASP; cuando se indica <em>Response.End</em>, no se procesan las líneas
+      subsiguientes del Script. Por tanto, es útil por ejemplo cuando hay un error, para
+      detener el procesamiento.</font></li>
+    <li><font face="Arial" size="3" color="#000000"><em>Redirect </em>- Permite dirigir la
+      lógica hacia otra página, sea HTML o ASP. Una vez que se realizó cierto procesamiento,
+      siempre y cuando no se haya enviado nada a la salida, sea utilizando <em>Response.Write</em>,
+      HTML embebido o las cabeceras HTTP, podemos decidir que se presente otra página; esto lo
+      hacemos utilizando <em>Response.Redirect(URL)</em>, donde URL es la dirección relativa de
+      la página que mostraremos. Se utiliza fuertemente en validaciones; por ejemplo, cuando
+      una página requiere ciertos permisos para ser accesada, se preguntan los permisos y si no
+      los cumple, se hace <em>Redirect </em>a una pantalla alterna (inclusive a la pantalla de <em>login</em>).</font></li>
+  </ul>
+  <font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+</blockquote>
+<b>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Manejo de sesiones del IIS</p>
+
+<blockquote>
+  </font></b><p><font face="Arial" size="3" color="#000000">Cada vez que un navegador se
+  conecta por primera vez al servidor Web (Internet Information Server), éste lo registra
+  con un número único de <em>sesión</em>. Éste nos permite distinguirlo de cualquier
+  otro cliente que posteriormente pudiera conectarse. Los siguientes requerimientos que
+  hará este cliente, se reconocerán por ese número de sesión; por lo cual, podemos
+  guardar variables de estado que identifiquen a este cliente y nos permitan conservar
+  información del mismo en el servidor, sin tener que acarrearla en variables enviadas de
+  página en página con el método Get o Post.</font></p>
+  <p><font face="Arial" size="3" color="#000000">Para ello, una vez que se registra una
+  nueva sesión, el IIS crea un objeto dinámicamente en su propia memoria, al que conocemos
+  como Session, ya que esta será la forma en la cual una página puede referirse al mismo.</font></p>
+</blockquote>
+<b><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objeto Session</p>
+</font></b>
+
+<blockquote>
+  <p><font face="Arial" size="3" color="#000000">El objeto Session creado para cada
+  instancia del navegador cada vez que se conecta por primera vez al servidor, contiene
+  entre otros los siguientes métodos:</font><ul>
+    <li><font face="Arial" size="3" color="#000000"><em>Abandon</em>: Permite limpiar la sesión
+      actual y forzar al cliente a crear una nueva; útil para la seguridad del sitio.</font></li>
+    <li><font face="Arial" size="3" color="#000000"><em>Session_OnStart</em>: éste lo debemos
+      construir nosotros, definiéndolo en el archivo <em>global.asa </em>que se localiza en la
+      base de nuestro directorio virtual. Consiste en una rutina que será ejecutada la primera
+      vez que el cliente entre a una página ASP en el sitio; es ideal para inicializar
+      variables que se conservarán durante toda la sesión.</font></li>
+    <li><font face="Arial" size="3" color="#000000"><em>Session_OnEnd</em>: éste lo debemos
+      construir nosotros, definiéndolo en el archivo <em>global.asa </em>que se localiza en la
+      base de nuestro directorio virtual. Consiste en una rutina que será ejecutada cuando el
+      cliente abandone la sesión; esto puede ocurrir de dos formas: cuando se ejecuta <em>Session.Abandon</em>;
+      o bien, cuando se cumple cierto tiempo de espera (<em>Session.Timeout</em>), desde que el
+      cliente en sesión no ha hecho ningún requerimiento al servidor, la sesión
+      automáticamente se cierra.</font></li>
+  </ul>
+  <p><font face="Arial" size="3" color="#000000">La sesión cuenta con dos parámetros:</font><ul>
+    <li><font face="Arial" size="3" color="#000000"><em>SessionID</em>, que es un número
+      (entero sin signo de 32 bits), el cual identifica en forma única a la sesión,
+      distinguiendo al cliente de cualquier otro cliente que esté conectado con el servidor Web
+      en ese momento. Por tanto, es muy útil para identificar por ejemplo los resultados de una
+      consulta en base de datos, de forma que sólo el cliente con ese número de sesión pueda
+      acceder a los mismos.</font></li>
+    <li><font face="Arial" size="3" color="#000000"><em>Timeout</em>, que representa el número
+      máximo de minutos que la sesión permanecerá activa aún cuando el cliente no haga
+      ningún requerimiento al servidor. Por defecto, tiene un valor de 15; esto quiere decir
+      que si no lo alteramos, y el cliente no ha llamado ninguna página en 15 minutos, el
+      servidor cierra la sesión, con lo que se ejecuta <em>Session_OnEnd </em>y se limpia
+      cualquier variable de sesión que se tuviera. Si queremos modificarlo, podemos hacerlo,
+      como cualquier otra variable:<br>
+      <em><br>
+      Session.Timeout = 5 ' Sólo 5 minutos de timeout!!!</em></font></li>
+  </ul>
+  <p>&nbsp;</p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600">
+
+<p><b>Manejo de variables de Sesión y Aplicación</b></p>
+</font>
+
+<blockquote>
+  <p><font face="Arial">El objeto Session, así como Application, permiten almacenar
+  variables del usuario en su contexto. Esto quiere decir que en la memoria que el Servidor
+  Web utiliza para cada cliente (objeto Session) y para toda la aplicación (objeto
+  Application) se pueden compartir variable. A nivel Application las compartirían todos los
+  clientes; mientras que a nivel Session se conservan las variables para un cliente, sin
+  importar qué página accese dentro del servidor Web. Esto permite comunicar
+  eficientemente valores entre distintas páginas que representan distintos módulos de una
+  aplicación.</font></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>Bibliografía y Referencias</p>
+</b></font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  <p>Libro de Texto: Programming Active Server Pages</font><font face="Arial" size="3" color="#000000">, Capítulo 5, pp. 89-100.</p>
+  <blockquote>
+    </font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3"><font face="Arial" color="#000000" size="2"><p></font>Microsoft Press/McGraw Hill<font face="Arial" color="#000000" size="2"></p>
+    <p></font>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</font>
+</body>
+</html>

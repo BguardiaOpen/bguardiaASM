@@ -1,0 +1,282 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Tema 12 - Intercambio con otros sistemas</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<p><font color="#FF0000" size="5" face="Arial"><b>Tema 11 -
+Intercambio con otros sistemas</b></font></p>
+
+<p>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Objetivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Conocer las técnicas
+    prácticas para enviar y recibir información a otros
+    sistemas integrados a Web.</font></p>
+    <ul>
+        <li><font color="#000000" face="Arial">Exportación de
+            archivos</font></li>
+        <li><font color="#000000" face="Arial">Importación de
+            archivos</font></li>
+        <li><font color="#000000" face="Arial">ODBC - bases de
+            datos</font></li>
+        <li><font color="#000000" face="Arial">Componentes Active
+            X</font></li>
+    </ul>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Exportación de
+archivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">En
+    diversos contextos es posible que nuestro sistema en Internet
+    genere información que otros sistemas deben consumir. Por
+    poner unos ejemplos simples:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv">Puede
+            construirse un sistema de captura en Internet, que
+            facilita que muchos usuarios capturen desde su
+            máquina y se concentre la información en un solo
+            servidor; si requiero procesar la información en
+            otro sistema (por ejemplo, Excel) o en otra máquina
+            y no el servidor de Internet, puedo pasar la
+            información a través de archivos de texto.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Puede
+            ser que el sistema en Internet haga cierto
+            procesamiento pero parte tenga que hacerse por
+            separado, entonces el sistema Internet podría
+            pasarnos archivos con reportes de su operación o
+            información sobre lo que hay que procesar. Por
+            ejemplo, un sistema de comercio electrónico que haga
+            autorizaciones manuales.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Un
+            cliente puede requerir un reporte de su trabajo, por
+            ejemplo un estado de cuenta o algún otro documento
+            que se genere dinámicamente. El sistema Internet
+            puede generar el archivo y luego proporcionarle la
+            liga para bajarlo por FTP o similar.</font></li>
+    </ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">De modo
+    que una primera forma de intercambio de información entre
+    nuestros sistemas Internet y otros sistemas, será que el
+    sistema Internet genere archivos que puedan ser tomados por
+    un usuario o un proceso automático, para ser usados en otras
+    aplicaciones.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Entre las
+    principales ventajas de este esquema, cabe hacer notar:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv">El
+            sistema en Internet puede intercambiar información
+            con sistemas que no cuentan con facilidades de
+            comunicaciones.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Transferir
+            la información capturada en Internet elimina los
+            posibles errores en la transcripción.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">El
+            sistema en Internet puede generar la información en
+            el formato soportado por las aplicaciones con las que
+            cuenta el cliente u otras fases del proceso.</font></li>
+    </ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">Como
+    desventajas, hay que anotar:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv">Puede
+            ser complejo establecer una esquema de seguridad para
+            garantizar que los usuarios incorrectos no tengan
+            acceso a los archivos exportados.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">La
+            construcción de un archivo complejo es lenta.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Se
+            deben manejar riesgos de concurrencia.</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Se
+            requiere dar mantenimiento al servidor para que no se
+            llene de archivos temporales.</font></li>
+    </ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">Para
+    implementar el proceso, utilizaremos el objeto Filesystem
+    (&quot;Scripting.FileSystemObject&quot;), así como el objeto
+    Archivo de texto (&quot;TextStream&quot;), con una sintaxis
+    como la siguiente:</font></p>
+    <p><font size="3" face="Courier New">Set fso =
+    CreateObject(&quot;Scripting.FileSystemObject&quot;)</font></p>
+    <p><font size="3" face="Courier New">Set Archivo =
+    fso.CreateTextFile(&quot;c:\testfile.txt&quot;, True)</font></p>
+    <p><font size="3" face="Courier New">Archivo.WriteLine(&quot;This
+    is a test.&quot;)</font></p>
+    <p><font size="3" face="Courier New">Archivo.Close</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Resumiendo:
+    se crea el archivo a través del File System, se escribe en
+    él, y se proporciona una liga para accesarlo. Por ejemplo,
+    un reporte de base de datos se puede presentar en un archivo
+    .CSV (separado por comas), que luego podemos abrir en Excel:</font></p>
+    <p>&nbsp;</p>
+    <p><font size="3" face="Courier New">Set fso =
+    CreateObject(&quot;Scripting.FileSystemObject&quot;)</font></p>
+    <p><font size="3" face="Courier New">Set Archivo =
+    fso.CreateTextFile(&quot;c:\InetPub\wwwroot\app\exporta.csv&quot;,True)</font></p>
+    <p><font size="3" face="Courier New">' Asumimos ya está el
+    SQL</font></p>
+    <p><font size="3" face="Courier New">Set Reporte =
+    Conn.Execute(SQL) ' ya está creada la conexión</font></p>
+    <p><font size="3" face="Courier New">do while not Reporte.EOF</font></p>
+    <blockquote>
+        <p><font size="3" face="Courier New">' Supongamos que hay
+        8 campos</font></p>
+        <p><font size="3" face="Courier New">Texto=&quot;&quot;</font></p>
+        <p><font size="3" face="Courier New">' Concatenar los
+        valores, separados por comas...</font></p>
+        <p><font size="3" face="Courier New">for i=1 to 8</font></p>
+        <blockquote>
+            <p><font size="3" face="Courier New">Texto=Texto
+            &amp; Reporte(i) &amp; &quot;,&quot;</font></p>
+        </blockquote>
+        <p><font size="3" face="Courier New">next</font></p>
+        <p><font size="3" face="Courier New">' toda la linea que
+        equivale a un registro</font></p>
+        <p><font size="3" face="Courier New">Archivo.WriteLine(
+        Texto )</font></p>
+        <p><font size="3" face="Courier New">Reporte.MoveNext</font></p>
+    </blockquote>
+    <p><font size="3" face="Courier New">loop</font></p>
+    <p><font size="3" face="Courier New">Archivo.Close</font></p>
+    <p><font size="3" face="Courier New">' Poner la liga</font></p>
+    <p><font size="3" face="Courier New">Response.Write
+    &quot;&lt;a href=&quot; &amp; chr(34) &amp;
+    &quot;exporta.csv&quot; &amp; chr(34) &amp; &quot;&gt;&quot;</font></p>
+    <p><font size="3" face="Courier New">Response.Write
+    &quot;Reporte en archivo&lt;/a&gt;&quot;</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Importación de
+archivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">También
+    nuestro sistema puede requerir de subir información a una
+    base de datos; por ejemplo, si el usuario tiene un archivo de
+    texto con la información generada por otro sistema, o si por
+    cualquier otra razón (incluyendo seguridad) no podemos
+    conectarnos directamente a la base de datos.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">En este
+    caso, hay que subir el archivo al servidor (por ejemplo,
+    mediante un FTP o el servicio de Posting Acceptor) y luego
+    correr el script ASP (o el objeto que corresponda) para que
+    lo importe, es decir, lo procese.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Se
+    usarán objetos muy similares a los anteriores, pero ahora
+    leeremos el archivo y de acuerdo al archivo produciremos
+    información. Inclusive puede servir esta idea para realizar
+    consultas sencillas si no se tiene soporte a bases de datos.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">En el
+    ejemplo, se tiene un archivo CSV que se desea utilizar para
+    localizar las calificaciones del alumno:</font></p>
+</blockquote>
+
+<blockquote>
+    <p><font size="3" face="Courier New">Const ForReading = 1,
+    ForWriting = 2, ForAppending = 8 </font></p>
+    <p><font size="3" face="Courier New">Set fso =
+    CreateObject(&quot;Scripting.FileSystemObject&quot;)</font></p>
+    <p><font size="3" face="Courier New">Set Archivo =
+    fso.OpenTextFile(&quot;c:\califs.csv&quot;, ForReading, True)
+    </font></p>
+    <p><font size="3" face="Courier New">while not
+    Archivo.AtEndOfStream</font></p>
+    <blockquote>
+        <p><font size="3" face="Courier New">Linea =
+        Archivo.ReadLine</font></p>
+        <p><font size="3" face="Courier New">if Left(Linea,6)=
+        Matricula</font></p>
+        <blockquote>
+            <p><font size="3" face="Courier New">Response.Write
+            &quot;Tus calificaciones: &quot; &amp; Linea</font></p>
+        </blockquote>
+        <p><font size="3" face="Courier New">end if</font></p>
+    </blockquote>
+    <p><font size="3" face="Courier New">loop</font></p>
+    <p><font size="3" face="Courier New">Archivo.Close</font></p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>ODBC - Bases de
+datos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Cuando
+    contamos con ODBC en el servidor, éste nos proporciona
+    facilidades para acceder a diversos tipos de archivos o bases
+    de datos, incluyendo archivos Excel, Access, DBase y
+    similares. Por tanto, también se puede intercambiar
+    información con otros sistemas, si podemos establecer una
+    conexión ODBC con sus archivos o bases de datos.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">El
+    algoritmo general para importar/exportar información, en
+    este caso, será:</font></p>
+    <ol>
+        <li><font color="#000000" size="3" face="Arial,Helv">Abrir
+            la conexión a la base de datos propia (de la
+            aplicación Internet)</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Abrir
+            la conexión al otro origen de datos (por ejemplo,
+            conectarnos al archivo usado por la aplicación en el
+            mainframe!!)</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Leer
+            datos de una conexión</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Escribir
+            datos en la otra conexión</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Ciclarse
+            mientras haya datos</font></li>
+        <li><font color="#000000" size="3" face="Arial,Helv">Cerrar
+            ambas conexiones</font></li>
+    </ol>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Componentes
+Active X</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Finalmente,
+    tenemos la opción de utilizar componentes ActiveX del lado
+    del servidor. En este caso, programaremos en un lenguaje
+    apropiado (Visual Basic, Delphi, Visual C++) un componente
+    que cumpla la especificación COM Automation para proveer las
+    funciones a ASP que hagan los procesos de importación o
+    exportación; este componente podrá hacer uso de cualquier
+    recurso del servidor, y por tanto convertir archivos al
+    formato que se requiera o conectarse a donde se requiera para
+    obtener la información.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">El
+    problema es que es más complejo de programar, y puede
+    requerir intervención directa en el servidor. Por ello,
+    será principalmente utilizada si tenemos control total del
+    servidor y en Intranets. Sus ventajas incluyen la
+    flexibilidad y la eficiencia.</font></p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Bibliografía y
+Referencias</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Libro de
+    Texto: Programming Active Server Pages</font><font color="#000000" size="3" face="Arial">, Capítulo , pp. .</font></p>
+    <blockquote>
+        <p><font color="#000000" size="3" face="Arial,Helv">Microsoft
+        Press/McGraw Hill</font></p>
+        <p>&nbsp;</p>
+    </blockquote>
+</blockquote>
+</body>
+</html>

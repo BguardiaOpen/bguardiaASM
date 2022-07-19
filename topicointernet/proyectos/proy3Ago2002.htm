@@ -1,0 +1,72 @@
+<html>
+
+<head>
+
+<title>Proyecto 3: Aplicación Distribuida</title>
+<link REL="stylesheet" TYPE="text/css" href="../../Clases.css">
+</head>
+
+<body>
+
+<h1>Desarrollo <span lang="en-us">de Aplicaciones Avanzadas en </span>Internet</h1>
+
+<h1><span lang="es-mx">Tercer </span>Proyecto Parcial<span lang="en-us">,</span> <span lang="en-us">Aplicación 
+distribuida: Facturación multisucursal</span></h1>
+
+<p>&nbsp;</p>
+
+<h3>Proyecto <span lang="es-mx">en equipos de 4 personas</span>.</h3>
+
+<p>Se entregará el&nbsp;<span lang="es-mx">5 </span>de <span lang="es-mx">
+noviembre </span>del 200<span lang="es-mx">2</span>. <span lang="es-mx">S</span>e 
+deberá entrega<span lang="es-mx">r electrónicamente 
+(por correo electrónico, en la cuenta del Campus, no Hotmail por favor) un 
+archivo .ZIP </span>con <span lang="es-mx">todos </span>los
+archivos <span lang="es-mx">del proyecto, incluyendo documentación, y en su caso el URL 
+donde está publicado; podrá revisarse en algún momento su ejecución, en máquinas 
+definidas por los alumnos.</span></p>
+
+<p><span lang="es-mx">Deberá cumplir las siguientes especificaciones:</span></p>
+
+<ul>
+  <li><span lang="es-mx">El objetivo de la aplicación será proporcionar una 
+  interfase de cobro a los clientes, que permita pagar en cualquier &quot;sucursal&quot;, 
+  tenga o no la información del cliente en línea.</span><li><span lang="es-mx">
+  Será una aplicación de arquitectura Peer to Peer, en la cual cada nodo será 
+  una &quot;sucursal&quot;, y podrá realizar su facturación en forma independiente 
+  (sin tener conexión a otros nodos); y podrá realizar la facturación de otra 
+  sucursal, sea con conexión o sin ella.</span><li>
+  <span lang="es-mx">La base de datos contendrá primordialmente dos tablas: la 
+  de facturación, con un ID del cliente (por ejemplo el teléfono) y el saldo 
+  deudor del cliente; y la de prefijos, que indicará que IDs de cliente (en el 
+  caso del teléfono por ejemplo se usan las &quot;series&quot; de los teléfonos), 
+  pertenecen a qué sucursal; de modo que pueda determinar en qué máquina se 
+  encuentra la información del cliente.</span><li><span lang="es-mx">La tabla de 
+  facturación por&nbsp; tanto está particionada en los distintos servidores, de 
+  modo que la información del saldo de un cliente oficialmente está en el que le 
+  toque a su serie o prefijo.</span><li><span lang="es-mx">La interfase con el 
+  usuario será Web generado dinámicamente, sea por JSPs o Servlets.</span><li>
+  <span lang="es-mx">El proyecto estará realizado completamente en lenguajes 
+  HTML, Java Script y Java..</span></ul>
+
+<p>&nbsp;</p>
+
+<p><span lang="es-mx">Se considerarán </span>los siguientes aspectos: 
+
+<ul>
+  <li><span lang="es-mx">Interfaz simple y eficiente.</span><li>
+  <span lang="es-mx">Tolerancia a fallas, de tal modo que en caso de perderse la 
+  conexión con otra sucursal, se pueda aceptar pagos y posteriormente se realice la aplicación del 
+  mismo transmitiéndolo por la red.</span><li>
+  <span lang="es-mx">Uso de JDBC</span></li><li>
+  <span lang="es-mx">Uso de Servlets o JSP</span></li><li>
+  <span lang="es-mx">Uso de Sockets para la comunicación entre servidores</span></li><li>
+  <span lang="es-mx">Factores extra: implementación de la comunicación sobre 
+  HTTP; uso de objetos distribuidos.</span></li><li>
+  <span lang="es-mx">Diseño de la arquitectura distribuida apropiadamente</span></li>
+</ul>
+
+<p>Deberá funcionar y verse correctamente <span lang="es-mx">tanto </span>en <span lang="es-mx">Internet </span>
+Explorer<span lang="es-mx"> como Netscape versiones recientes.</span></p>
+</body>
+</html>

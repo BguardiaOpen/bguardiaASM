@@ -1,0 +1,221 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Bases de Microcomputadoras</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF" text="#000000" link="#000066" vlink="#808080" alink="#FF0000" topmargin="0">
+
+<h1 align="center">Tema #3 </h1>
+
+<h1 align="center">Bases de Microcomputadoras </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase02.htm">
+        <img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase04.htm">
+        <img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos específicos </a></h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Conocer la terminología básica y el contexto requeridos
+        para el estudio de la materia. </li>
+    <li>Comprender cómo se visualiza al sistema computacional
+        (computadora personal), desde el procesador. </li>
+    <li>Comprender cómo funciona el procesador. </li>
+    <li>Conocer el funcionamiento básico de los puertos </li>
+    <li>Conocer los conceptos y diferencias de Lenguaje
+        Ensamblador y Lenguaje de Máquina </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<h4>Sistema Computacional: Componentes físicos </h4>
+
+<ol>
+    <li>Unidad del sistema </li>
+    <li>Dispositivos de entrada <ul>
+            <li>Teclado </li>
+            <li>Ratón </li>
+        </ul>
+    </li>
+    <li>Dispositivos de salida <ul>
+            <li>Monitor </li>
+            <li>Impresoras </li>
+        </ul>
+    </li>
+    <li>Almacenamiento <ul>
+            <li>Discos flexibles </li>
+            <li>Discos duros </li>
+        </ul>
+    </li>
+</ol>
+
+<h4>Componentes básicos de Microcomputadoras </h4>
+
+<p>Dentro de la Unidad del Sistema </p>
+
+<ul>
+    <li>CPU </li>
+    <li>Memoria </li>
+    <li>Puertos de Entrada/Salida </li>
+</ul>
+
+<h3>Unidad Central de Proceso (CPU) </h3>
+
+<ul>
+    <li>Su función es ejecutar instrucciones (procesamiento) </li>
+    <li>La representación de las instrucciones o acciones se
+        conoce como &quot;lenguaje máquina&quot; </li>
+    <li>Las instrucciones se almacenan en memoria, formando
+        programas. </li>
+</ul>
+
+<h3>Memoria </h3>
+
+<ul>
+    <li>Organizada en un arreglo unidimensional </li>
+    <li>RAM: Área de datos (variables y código) </li>
+    <li>ROM: Software del sistema </li>
+</ul>
+
+<h3>Puertos de Entrada/Salida </h3>
+
+<ul>
+    <li>Son la liga con el mundo exterior </li>
+    <li>Actúan como interfase con los dispositivos </li>
+    <li>Se accesan como localidades de memoria, sea de entrada
+        (lectura) o salida (escritura) </li>
+    <li>Dos tipos básicos: Seriales y Paralelos </li>
+</ul>
+
+<h3>Ciclo de Fetch/Execute </h3>
+
+<p>Modelo del funcionamiento del procesador </p>
+
+<p><em>Fetch:</em> </p>
+
+<ul>
+    <li>Traer la instrucción de memoria </li>
+    <li>Decodificar la instrucción </li>
+    <li>Traer los datos de memoria, si se requieren </li>
+</ul>
+
+<p><em>Execute:</em> </p>
+
+<ul>
+    <li>Procesa los datos </li>
+    <li>Almacena los resultados en memoria, si aplica </li>
+</ul>
+
+<p><a href="../download/fetch.zip">Programa de Simulación del Procesador</a>.
+</p>
+
+<h2><img src="../../images/waveline.gif" width="756" height="16">Mecanismos
+de Entrada y Salida </h2>
+
+<h3>Comunicación con el mundo exterior </h3>
+
+<h3>¿Por qué se requieren? </h3>
+
+<ul>
+    <li>Permiten comunicar al CPU con el mundo exterior </li>
+</ul>
+
+<h3>Funcionamiento de los puertos </h3>
+
+<dl>
+    <dt>Registros de entrada </dt>
+    <dd>Localidades de memoria, que al leerlas, reportan el
+        estado del dispositivo. </dd>
+    <dt>Registros de salida </dt>
+    <dd>Localidades de memoria, que al ser escritas, funcionan
+        como interruptores que controlan el dispositivo </dd>
+</dl>
+
+<h3>Concepto de mapeo </h3>
+
+<dl>
+    <dt>Memoria = puerto = dispositivo </dt>
+</dl>
+
+<p>Ejemplo de mapeo: Memoria de video </p>
+
+<h3>¿Qué es el lenguaje ensamblador? </h3>
+
+<h3>Lenguaje de máquina </h3>
+
+<p>Ejemplo: principio de una pianola </p>
+
+<p>Explicación: </p>
+
+<ul>
+    <li>El programa es un rollo, formado por &quot;n&quot;
+        instrucciones </li>
+    <li>Cada instrucción representa un estado del hardware
+        (teclas presionadas o teclas sueltas) </li>
+    <li>La secuencia dada por el distinto tiempo en que se van
+        ejecutando las instrucciones, va formando la música. </li>
+</ul>
+
+<h3>Lenguaje ensamblador </h3>
+
+<ul>
+    <li>Es la primera abstracción del lenguaje máquina </li>
+    <li>Características de la abstracción </li>
+    <li>El lenguaje se traduce en términos más humanos: <ul>
+            <li>Símbolos </li>
+            <li>Mnemónicos </li>
+        </ul>
+    </li>
+    <li>Sin embargo, esos términos se refieren directamente a la
+        máquina </li>
+    <li>No es un lenguaje de alto nivel </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<p>Capítulo 1 del libro de texto. </p>
+
+<p align="center"><img src="../../images/waveline.gif" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx" name="objetivo">
+    <img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a> 
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
+<em>Última actualización: Vi 7-Jun-96 </em></p>
+</body>
+</html>

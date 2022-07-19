@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage (Visual InterDev Edition) 2.0">
+<title>Ejemplo usando ASP</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1><font face="Arial">Código fuente de la página de Selección
+de Productos, usando </font><a href="http://www.microsoft.com/asp"><font face="Arial">ASP</font></a></h1>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial">&lt;HTML&gt;</font></p>
+
+<p><font face="Arial">&lt;HEAD&gt;&lt;TITLE&gt;Seleccionar
+productos&lt;/TITLE&gt;</font></p>
+
+<p><font face="Arial">&lt;/HEAD&gt;</font></p>
+
+<p><font face="Arial">&lt;BODY BGCOLOR=#FFFFFF&gt; </font></p>
+
+<p><font face="Arial">&lt;H2&gt;Selecciona un producto&lt;/H2&gt;</font></p>
+
+<p><font face="Arial">&lt;%</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; Set Conn =
+Server.CreateObject(&quot;ADODB.Connection&quot;)</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; Conn.Open
+&quot;ADOSamples&quot;</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; sql=&quot;SELECT * FROM
+Items&quot;</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; Set RS = Conn.Execute(sql)</font></p>
+
+<p><font face="Arial">%&gt;</font></p>
+
+<p><font face="Arial">&lt;TABLE BORDER&gt;</font></p>
+
+<p><font face="Arial">&lt;TR&gt;</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; &lt;%&nbsp; For i = 0 to
+RS.Fields.Count - 1 %&gt; &#145; Títulos de los campos</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;TD&gt;&lt;B&gt;&lt;%= RS(i).Name %&gt;&lt;/B&gt;&lt;/TD&gt;</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; &lt;%&nbsp; Next %&gt;</font></p>
+
+<p><font face="Arial">&lt;/TR&gt;</font></p>
+
+<p><font face="Arial">&lt;%</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; ' Crea 100 filas en una
+segunda matriz variante</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; v=RS.GetRows(100) &#145;v es
+la matriz variante, que se dimensiona de acuerdo a cuántos
+renglones existieron realmente</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; RS.close</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp; Conn.close</font></p>
+
+<p><font face="Arial">%&gt;</font></p>
+
+<p><font face="Arial">&lt;P&gt;</font></p>
+
+<p><font face="Arial">&lt;%for row = 0 to UBound(v,2) '
+repetición a través de las filas en la matriz variante%&gt;</font></p>
+
+<p><font face="Arial">&lt;TR&gt;</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;%for col
+= 0 to UBound(v,1)%&gt;&nbsp;&nbsp; </font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TD&gt;
+&lt;%=v(col,row)%&gt;&nbsp; &lt;/TD&gt;</font></p>
+
+<p><font face="Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;%next%&gt;</font></p>
+
+<p><font face="Arial">&lt;/TR&gt;</font></p>
+
+<p><font face="Arial">&lt;%next%&gt;</font></p>
+
+<p><font face="Arial">&lt;/TABLE&gt;</font></p>
+
+<p><font face="Arial">&lt;/BODY&gt;</font></p>
+
+<p><font face="Arial">&lt;/HTML&gt;</font></p>
+</body>
+</html>

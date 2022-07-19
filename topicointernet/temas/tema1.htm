@@ -1,0 +1,387 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Clase 1 - protocolo HTTP</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<p><img src="../../images/luces.gif" width="671" height="40"> <br>
+</p>
+
+<p><font color="#FF0000" size="5" face="Arial"><b>Temario del
+Curso</b></font></p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Temario</b></font><b>
+</b></p>
+
+<p><font color="#000000" size="2" face="Arial,Helv">Antes que
+nada, un breve vistazo a lo que vamos a ver en el curso.</font><font color="#000000" size="3" face="Arial,Helv"><b> </b></font></p>
+
+<ol>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Modelo
+        de funcionamiento del WWW y ejemplos</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Páginas
+        estáticas - HTML</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Páginas
+        dinámicas 1 - Java Script</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Modelos
+        de ejecución en el servidor:</b></font><blockquote>
+            <p><font color="#000000" size="2" face="Arial"><b>CGI-BIN</b></font></p>
+            <p><font color="#000000" size="2" face="Arial"><b>ISAPI</b></font></p>
+            <p><font color="#000000" size="2" face="Arial"><b>NSAPI</b></font></p>
+            <p><font color="#000000" size="2" face="Arial"><b>ASP</b></font></p>
+        </blockquote>
+    </li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Uso
+        de variables y estructuras de control en ASP</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Módulos
+        y objetos ASP; detección de Browser y objeto Response.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Formas
+        y su procesamiento.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Creacion
+        de objetos ActiveX Server Components. Introduccion a ADO
+        para acceso a datos.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>Diseño
+        de BD y su explotación con ASP</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>.
+        Procedimientos almacenados (Stored Procs),
+        modularización de componentes y validación</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>.
+        Exportación e importación de datos para intercambio con
+        otros sistemas.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>.
+        Applets Java. Introduccion a Java.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>.
+        Controles ActiveX para el cliente.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>.
+        Tendencias futuras.</b></font></li>
+    <li><font color="#000000" size="3" face="Arial,Helv"><b>.
+        Entrega y exposición del proyecto final.</b></font></li>
+</ol>
+
+<p><font color="#FFFF00" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#FF0000" size="5" face="Arial"><b>Tema 1 -
+Funcionamiento del Protocolo HTTP</b></font></p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Historia</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="2" face="Arial">Internet nace
+    en los sesentas, como un proyecto de la agencia de
+    investigaciones avanzadas del departamento de la Defensa de
+    los Estados Unidos (ARPA).</font></p>
+    <p><font color="#000000" size="2" face="Arial">Originalmente,
+    solo existen unos cuantos nodos, correspondientes a agencias
+    del gobierno de los EU y a las principales universidades;
+    todos ellos son computadoras de buen tamaño, con acceso
+    compartido en el tiempo de las terminales tontas. El sistema
+    operativo UNIX aún estaba en sus principios, de modo que en
+    primera instancia hubo una amplia diversidad de sistemas
+    conectados a la ARPANET, como se conocía en estos tiempos.</font></p>
+    <p><font color="#000000" size="2" face="Arial">La&nbsp;
+    característica que permitió unir a las computadoras en red,
+    fue la estandarización en los protocolos de comunicación
+    empleados; en una forma bastante democrática, a base de
+    comités en línea y publicación de documentos &quot;para
+    comentarios&quot; (RFCs=Request For Comments), es decir, para
+    ser evaluados y perfeccionados por la comunidad
+    investigadora. Mientras una computadora cumpliera los puntos
+    estipulados en cierto número de RFCs, podía comunicarse con
+    otra.</font></p>
+    <p><font color="#000000" size="2" face="Arial">La familia de
+    protocolos que nació en esta etapa, se conoce como TCP/IP,
+    llamada así por sus dos principales protocolos: IP (Internet
+    Protocol), y TCP (Transport Control Protocol).</font></p>
+    <p><font color="#000000" size="2" face="Arial">Una vez que se
+    determinó el estándar de los protocolos básicos en TCP/IP
+    (que sigue evolucionando), los que permitieron la
+    comunicación en redes complejas y entre sistemas
+    heterogéneos, se fueron diseñando protocolos de nivel
+    superior, que requieren TCP/IP como base. Estos
+    &quot;protocolos de aplicación&quot; se desarrollaron
+    pensando en necesidades específicas para el trabajo a
+    través de computadoras comunicadas entre sí. Los dos
+    primeros, de gran importancia hasta nuestros días, fueron <em>telnet
+    </em>y <em>ftp</em>. </font></p>
+    <ul>
+        <li><font color="#000000" size="2" face="Arial">Telnet
+            permite que una computadora se conecte a otra
+            emulando una terminal de la segunda; esto permite que
+            un usuario trabaje en una computadora remota, tal
+            como lo haría en una terminal local de la misma,
+            generalmente a través de una interfaz de comandos.</font></li>
+        <li><font color="#000000" size="2" face="Arial">FTP (File
+            Transfer Protocol) permite conectarnos a una
+            computadora remota y transferir archivos con la
+            computadora local. Permite un envío y recepción
+            confiable de dichos archivos, además de funciones de
+            administración tales como listado, creación y
+            eliminación de directorios.</font></li>
+    </ul>
+    <p><font color="#000000" size="2" face="Arial">Posteriormente,
+    con la difusión de sistemas UNIX y especialmente del correo
+    interno a los mismos, se definió el protocolo SMTP (Simple
+    Mail Transfer Protocol), el que permitió el nacimiento del
+    correo Internet, en el cual un usuario puede enviar
+    información a otro en forma de mensajes, sin importar que
+    esté en otra sección de la Internet.</font></p>
+    <p><font color="#000000" size="2" face="Arial">El crecimiento
+    de Internet fue principalmente académico y relativamente
+    lento, hasta 1992, cuando Tim Berners-Lee fusionó dos viejos
+    conceptos: Internet y el hipertexto, creando el WWW (World
+    Wide Web), que no es sino el conjunto de computadoras en
+    Internet que soportan el protocolo creado por él: HTTP
+    (Hyper Text Transfer Protocol). Este protocolo permite la
+    visualización de documentos localizados en un servidor
+    remoto, junto con las características de control y
+    navegación que lo convierten en un
+    &quot;hiperdocumento&quot;, es decir, un documento que cuenta
+    con ligas para explorar documentos relacionados.</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Protocolo HTTP</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">HTTP:
+    Hyper Text Transfer Protocol</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Es el
+    protocolo que se utiliza el cliente (browser) para
+    comunicarse con el servidor (servidor Web) para la
+    transferencia de información (principalmente, páginas Web)</font><font color="#000000" size="3" face="Arial">.</font></p>
+    <p><font color="#000000" size="3" face="Arial">Es un
+    protocolo no orientado a <b>conexión</b>.</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial">Esto
+        significa que se envían los datos sin esperar recibir un
+        mensaje de &#145;<i>Acknowle</i></font><font color="#000000" size="2" face="Arial,Helv"><i>d</i></font><font color="#000000" size="2" face="Arial"><i>ge</i>&#146; (o
+        confirmación que los datos se recibieron correctamente)</font></p>
+    </blockquote>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Solicitud de
+páginas al servidor</b></font></p>
+
+<blockquote>
+    <p align="center"><font color="#000000" size="2" face="Arial"><b><img src="../../images/Internet/arquitectura_www.gif" alt="Gráfica: Arquitectura del Web" width="1051" height="573"></b></font></p>
+    <p><font color="#000000" size="2" face="Arial"><b>Cliente</b>:
+    Se establece el enlace con el servidor indicándose la
+    página que se quiere obtener, mediante el URL</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial,Helv">URL
+        (Uniform Resourc</font><font color="#000000" size="2" face="Arial">e Locator): es la convención que permite
+        identificar en forma única a cualquier recurso conectado
+        a Internet.</font></p>
+    </blockquote>
+    <p><font color="#000000" size="2" face="Arial">Se envían las
+    cabeceras de solicitud de la página web solicitadas</font></p>
+    <p><font color="#000000" size="2" face="Arial"><b>Servidor</b>:
+    Decodifica y valida la solicitud</font></p>
+    <p><font color="#000000" size="2" face="Arial">Localiza la
+    página Web solicitada</font></p>
+    <p><font color="#000000" size="2" face="Arial">Genera las
+    cabeceras de respuesta y devuelve la página solicitada al
+    cliente</font></p>
+    <p><font color="#000000" size="2" face="Arial"><b>Cliente</b>:
+    </font></p>
+    <p><font color="#000000" size="2" face="Arial,Helv">Recibe</font><font color="#000000" size="2" face="Arial"> la página que el
+    Servidor envió como respuesta.</font></p>
+    <p><font color="#000000" size="2" face="Arial">Muestra la
+    página Web solicitada</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Cabeceras HTTP</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial">Además del
+    contenido mismo de la información que el servidor regresa al
+    cliente, se requiere información para control de la
+    comunicación. Esto se hace a través de
+    &quot;cabeceras&quot;, que el servidor envía al cliente
+    antes del resto de la información.</font></p>
+    <p><font color="#000000" size="3" face="Arial">Existen 5
+    tipos de cabeceras:</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial">Códigos
+        de estado informativo</font></p>
+        <p><font color="#000000" size="2" face="Arial">Códigos
+        de operación satisfactoria</font></p>
+        <p><font color="#000000" size="2" face="Arial">Códigos
+        de estado de redirección</font></p>
+        <p><font color="#000000" size="2" face="Arial">Códigos
+        de error del cliente</font></p>
+        <p><font color="#000000" size="2" face="Arial">Códigos
+        de error del servidor</font></p>
+    </blockquote>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Códigos de
+estado informativo</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial">Son para
+    funciones experimentales y sólo ofrecen información. </font></p>
+    <p><font color="#000000" size="3" face="Arial">No se usan,
+    pero están reservadas para uso futuro</font></p>
+    <p><font color="#000000" size="3" face="Arial">Comienzan a
+    partir del número 100</font></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Códigos de
+operación Satisfatoria</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial">La acción se
+    ha recibido y aceptado satisfactoriamente</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>201
+        (Created)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">La
+            petición se ha llevado a cabo y ha dado como
+            resultado, la creación de un nuevo recurso, al que
+            puede referirse mediante el URL</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>202
+        (Accepted)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">La
+            solicitud fue aceptada para ser procesada, pero no se
+            ha completado</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>204 (No
+        Content)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">El
+            servidor ha llevado a cabo la solicitud, pero no hay
+            información qué devolver.</font></p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Códigos de
+Redirección</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial">Debe
+    realizarse una acción adicional para llevar a cabo la
+    solicitud</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>300
+        (Multiple Choices)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">El
+            recurso se encuentra disponible en varias ubicaciones
+            y no es posible determinar la ubicación preferente</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>301
+        (Moved Permanently)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">Se ha
+            asignado un URL permanente y cualquier referencia
+            futura se deberá hacer a las referencias del URL
+            devuelto</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>302
+        (Moved Temporarily)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">El
+            recurso reside temporalmente en otro URL</font></p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Códigos de
+Error del Cliente</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial">La solicitud,
+    contiene una sintaxis errónea o no puede llevarse a cabo</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>400
+        (Bad Request)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">No se
+            ha llevado a cabo la solicitud, debido a un error de
+            sintaxis</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>401
+        (Unauthorized)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">Se
+            solicita una clave de acceso, la cual el cliente no
+            ha podido ofrecer.</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>403
+        (Forbidden)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">Se ha
+            comprendido la solicitud, pero el servidor se niega a
+            devolver una respuesta, por algún motivo</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>404
+        (Not Found)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">No se
+            ha encontrado un URL que coincida con la petición.</font></p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Códigos de
+Error del Servidor</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial">El servidor,
+    ha fracasado en su intento de llevar una solicitud,
+    aparentemente válida.</font></p>
+    <blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>500
+        (Internal Server Error)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">El
+            servidor, ha encontrado un error que le impide
+            realizar la solicitud</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>502
+        (Bad Gateway)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">Se ha
+            recibido un error por parte del Gateway</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>503
+        (Service Unavailable)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">El
+            servidor es incapaz de realizar la petición debido a
+            una sobrecarga temporal o por mantenimiento del
+            servidor</font></p>
+        </blockquote>
+        <p><font color="#000000" size="2" face="Arial"><b>504
+        (Gateway Timeout)</b></font></p>
+        <blockquote>
+            <p><font color="#000000" size="1" face="Arial">El
+            servidor, no ha tenido una respuesta a tiempo por
+            parte del gateway.</font></p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+</body>
+</html>

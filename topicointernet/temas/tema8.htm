@@ -1,0 +1,209 @@
+<html>
+
+<head>
+<title>Tema 8 - ActiveX Server Components</title>
+</head>
+
+<body>
+<b><font FACE="Arial" SIZE="5" COLOR="#ffff00">
+
+<p></font><font FACE="Arial" SIZE="5">&nbsp;</P>
+
+<p><font color="#ff0000" face="Arial" size="5">Tema 8 - ActiveX Server Components</font></p>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objetivos</P>
+
+<blockquote>
+  </font></b><p><font face="Arial" color="#000000">Comprender el uso de objetos externos al
+  servidor Web.</font></p>
+  <p><font face="Arial" color="#000000">Crear objetos para su uso desde una página ASP.</font></p>
+  <p><font face="Arial" color="#000000">Ejemplos de objetos accesibles por ASP:</font><ul>
+    <li><font face="Arial" color="#000000">Browser Capabilities</font></li>
+  </ul></BLOCKQUOTE>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>&nbsp;</p>
+
+<p>Modelo de objetos ActiveX Server Components</p>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  </font></b></font><p><font face="Arial" size="3" color="#000000">En clases pasadas, vimos
+  los 5 objetos intrínsecos de ASP, que forman parte propiamente de la interfase de
+  programación con el Servidor Web. Estos objetos representan directamente una parte del
+  ISAPI, es decir, modelan las capacidades de programación del servidor Web.</font></p>
+  <p><font face="Arial" size="3" color="#000000">Es posible contar con otros recursos en el
+  servidor Web, que no forman parte propiamente dicha del mismo sino que son aplicaciones
+  instaladas en la misma computadora; si estas aplicaciones siguen el estándar COM para
+  exponer sus objetos a un lenguaje de programación, pueden ser programadas desde un script
+  ASP.</font></p>
+  <p><font face="Arial" size="3" color="#000000">Esto quiere decir que se pueden desarrollar
+  aplicaciones, formadas por clases COM, y será posible utilizar estas clases desde
+  cualquier cliente COM, por ejemplo una aplicación desarrollada en Visual Basic, Visual
+  C++, o inclusive ASP.</font></p>
+  <p><font face="Arial" size="3" color="#000000">Más adelante en el curso veremos como
+  desarrollar componentes COM en otros lenguajes para ser usados en ASP (o en otros
+  ambientes); en esta clase, se examinará cómo usar en ASP componentes ya desarrollados, y
+  se utilizarán como ejemplos algunos que ya trae el IIS.</font></p>
+  <font COLOR="#000000" SIZE="3"><p>&nbsp;</p></BLOCKQUOTE>
+</font><b><font SIZE="5" COLOR="#006600">
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Creación de objetos ActiveX Server</p>
+
+<blockquote></FONT><p></B><font face="Arial" size="3" color="#000000">Para crear un objeto ActiveX del
+  lado del servidor, el script ASP cuenta con dos opciones:</font><ul>
+    <li><font face="Arial" size="3" color="#000000">Declarar el objeto y su alcance en el
+      global.asa</font>
+    <li><font face="Arial" size="3" color="#000000">Utilizar el método Server.CreateObject</font></li>
+  </ul>
+  <p><font face="Arial" size="3" color="#000000">En la próxima clase veremos el primer caso
+  para crear objetos de acceso a datos; por el momento, utilizaremos solamente
+  Server.CreateObject.</font><b></p>
+  <p></B><font face="Arial" size="3" color="#000000">La sintaxis es:</font><b></p>
+  <p align="center"></B><font face="Arial" size="3" color="#000000"><em>Set
+  Variable=Server.CreateObject(NombreClase)</em></font></p>
+  <p><font face="Arial" size="3" color="#000000">Donde NombreClase es una cadena que permite
+  referenciar en forma única al componente que se utilizará, según fue registrado en la
+  base de datos interna de Windows.</font><b></p>
+  <p></B><font face="Arial" size="3" color="#000000">Nótese que se usa Set, pues la
+  variable será una referencia al objeto.</font></p>
+  <b><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+
+<p></FONT><font FACE="Arial" SIZE="5" COLOR="#006600">Ejemplo de objetos: Browser
+Capabilities</p></FONT><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+
+<blockquote>
+  <p></B>Este objeto está diseñado para analizar la información que envía el cliente, y
+  en base a ello averigüar las capacidades con las que cuenta este cliente: si soporta
+  JavaScript, Java, controles ActiveX, etcétera.</p>
+  <p>Para crear el objeto, utilizaremos Server.CreateObject con el nombre de clase
+  "MSWC.BrowserType":<b></p>
+  <p align="center">Set </B><i>BrowserType </i><b>= 
+  Server.CreateObject("MSWC.BrowserType") </b></p>
+  <p>El código que tenemos abajo utiliza esto para mostrar todos los atributos que tiene el
+  objeto BrowserType; puedes <A href="../Ejemplos/browser1.asp">abrir este ejemplo</A> para
+  ver los datos de tu navegador.</p>
+  <div align="center"><center><table border="1" cellpadding="2">
+    <tr>
+      <td><pre><font face="Courier" size="2">&lt;%  Set bc = Server.CreateObject("MSWC.BrowserType") %&gt;  
+&lt;table border=1&gt; 
+&lt;tr&gt;&lt;td&gt;Browser&lt;/td&gt;&lt;td&gt;  &lt;%= bc.browser  %&gt;  
+&lt;tr&gt;&lt;td&gt;Version&lt;/td&gt;&lt;td&gt;  &lt;%= bc.version  %&gt;  &lt;/td&gt;&lt;/TR&gt; 
+&lt;tr&gt;&lt;td&gt;Frames&lt;/td&gt;&lt;td&gt;
+&lt;%  if (bc.frames = TRUE) then  %&gt;  TRUE
+&lt;%  else  %&gt;  FALSE
+&lt;%  end if  %&gt; &lt;/td&gt;&lt;/TR&gt; 
+&lt;tr&gt;&lt;td&gt;Tables&lt;/td&gt;&lt;td&gt;
+&lt;%  if (bc.tables = TRUE) then  %&gt;  TRUE 
+&lt;%  else  %&gt; FALSE
+&lt;%  end if  %&gt; &lt;/td&gt;&lt;/TR&gt; 
+&lt;tr&gt;&lt;td&gt;BackgroundSounds&lt;/td&gt;&lt;td&gt; 
+&lt;%  if (bc.BackgroundSounds = TRUE) then  %&gt;  TRUE 
+&lt;%  else  %&gt; FALSE
+&lt;%  end if  %&gt; &lt;/td&gt;&lt;/TR&gt; 
+&lt;tr&gt;&lt;td&gt;VBScript&lt;/td&gt;&lt;td&gt; 
+&lt;%  if (bc.vbscript = TRUE) then  %&gt;  TRUE 
+&lt;%  else  %&gt; FALSE
+&lt;%  end if  %&gt; &lt;/td&gt;&lt;/TR&gt; 
+&lt;tr&gt;&lt;td&gt;JScript&lt;/td&gt;&lt;td&gt; 
+&lt;%  if (bc.javascript = TRUE) then  %&gt;  TRUE 
+&lt;%  else  %&gt; FALSE
+&lt;%  end if  %&gt; &lt;/td&gt;&lt;/TR&gt; 
+&lt;/table&gt; 
+</font></pre>
+      </td>
+    </tr>
+  </table>
+  </center></div><b>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Otros objetos disponibles</P>
+
+<blockquote>
+  </font></B><p><font face="Arial" color="#000000" size="3">Si bien no vamos a analizarlos
+  en este tema, se mencionan otros objetos que provee IIS:</font><ul>
+    <li><font face="Arial" color="#000000" size="3"><em>AdvertisementRotator</em> - Permite
+      mostrar anuncios (<em>banners</em>) en una secuencia al azar o programada.</font>
+    <li><font face="Arial" color="#000000" size="3"><em>ADO </em>- Proporciona acceso a bases de
+      datos (semana próxima)</font>
+    <li><font face="Arial" color="#000000" size="3"><em>ContentLinking</em> - Permite construir
+      dinámicamente las ligas de un temario (por ejemplo, un libro); de modo que cada página
+      automáticamente se liga a las anteriores y siguientes.</font>
+    <li><font face="Arial" color="#000000" size="3"><em>Dictionary </em>- Permite crear pares
+      llave/valor y hacer búsquedas sobre ellos.</font>
+    <li><font face="Arial" color="#000000" size="3"><em>Err </em>- Proporciona manejo de
+      códigos de error. Se usará en el acceso a bases de datos.</font>
+    <li><font face="Arial" color="#000000" size="3"><em>FileSystemObject </em>- Permite acceder
+      al sistema de archivos del servidor.</font>
+    <li><font face="Arial" color="#000000" size="3"><em>TextStream </em>- Permite leer y
+      escribir archivos de texto, asociado con <em>FileSystemObject</em>.</font></li>
+  </ul></BLOCKQUOTE>
+<font FACE="Arial" SIZE="5" COLOR="#006600">
+
+<p><b>Ejemplos de código que usa objetos</b></p>
+
+<p></font><font face="Arial" size="3" color="#000000">Junto con la clase pasada,
+encontrarás el siguiente <A href="../ejemplos/Objetos.htm">código fuente </A>para
+ejemplos</font></p>
+<P><span lang="es-mx"><font face="Arial">Ejemplo de lectura de directorio 
+recursivo</font></span><FONT face=Arial>. Para bajarlo<span lang="es-mx">, es un 
+solo archivo:</span>:</FONT></P>
+<UL>
+  <LI><span lang="es-mx"><font face="Arial">
+  <a href="../ejemplos/VerDir/default.txt">default.txt (ASP) </a>- </font>
+  </span><FONT face=Arial><span lang="en-us">Recorre todo el disco duro y árbol 
+  de drives; salvarlo como como ASP en vez de TXT (en el sitio se pone como TXT 
+  para que vean el código)</span></FONT></LI></UL>
+<P>&nbsp;</P>
+<P><span lang="es-mx"><font face="Arial">Ejemplo de </font></span><FONT face=Arial>acceso a base de datos. Para bajarlo, tienen que accesar los 
+<span lang="es-mx">3</span> 
+archivos:</FONT></P>
+<UL>
+  <LI><FONT face=Arial><span lang="en-us">
+  <a href="../ejemplos/VerDir/materias.mdb">materias.mdb</a> - Base de datos, 
+  debes ponerla en C:\ o corregir la trayectoria indicada en el archivo 
+  siguiente.</span></FONT><LI><FONT face=Arial>
+  <a href="../ejemplos/VerDir/ConsultaCalificacion.txt"><span lang="en-us">
+  consultacalificacion</span>.txt 
+  (.ASP)</a></FONT> <span lang="en-us">&nbsp;- </span><span lang="en-us">
+  <font face="Arial">Forma que llama a boleta.asp</font></span><LI>
+  <span lang="es-mx"><font face="Arial"><a href="../ejemplos/VerDir/boleta.txt">
+  boleta.txt (ASP) </a>- </font></span><FONT face=Arial><span lang="en-us">
+  Presenta el resultado, checar la trayectoria de la base de datos y salvarlo 
+  como ASP en vez de TXT (en el sitio se pone como TXT para que vean el código)</span></FONT></LI></UL>
+<P><font SIZE="5" COLOR="#006600" >&nbsp;</P>
+
+<p><FONT face=Arial><b>Ejemplos de objetos de terceros proveedores</b></FONT></p></FONT>
+
+<blockquote>
+  <ul>
+    <li><font face="Arial" color="#000000" size="3"><a href="http://www.softwarefx.com">ChartFX
+      Internet Edition</a>. Permite construir gráficas basadas en datos del lado del servidor,
+      para enviarse al cliente en formatos GIF, JPEG o activos.</font></li>
+  </ul>
+  <p>&nbsp;</p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>Bibliografía y Referencias</p>
+</b></font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">
+
+<blockquote>
+  <p>Libro de Texto: Programming Active Server Pages</font><font face="Arial" color="#000000" size="3">.</P>
+  <blockquote>
+    </font><font FACE="Arial,Helv" SIZE="3" COLOR="#000000"><font FACE="Arial" COLOR="#000000" SIZE="2"><p></font>Microsoft Press/McGraw Hill<font FACE="Arial" COLOR="#000000" SIZE="2"></P>
+    <p></font>&nbsp;</P></BLOCKQUOTE></BLOCKQUOTE>
+</font>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Tema 12 - Intercambio con otros sistemas</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<p><font color="#ff0000" size="5" face="Arial"><b>Tema 12 - Tecnologías del lado del 
+cliente</b></font></p>
+
+<p><font size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Objetivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Repasar las diversas opciones para mejorar la experiencia del usuario, 
+    aprovechando las capacidades del navegador para construir interfases 
+    más complejas, más allá del HTML.</font></p>
+    <ul>
+        <li><font face="Arial">JavaScript y VBScript: alcances y limitaciones</font>
+        <li><font color="#000000" face="Arial">DHTML</font>
+        <li><font color="#000000" face="Arial">Java</font>
+        <li><font color="#000000" face="Arial"></font><font face="Arial">ActiveX</font></li>
+    </ul>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>JavaScript y VBScript: alcances y 
+limitaciones</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Recordaremos que JavaScript es un lenguaje que permite 
+    modificar el flujo de salida HTML, de modo que podemos adaptar la 
+    información que presenta el navegador. VBScript (del lado del 
+    cliente) funciona del mismo modo, solamente que es tecnología 
+    específica de Microsoft Internet Explorer.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Las 
+    limitantes de este esquema las hemos atacado, hasta ahora, del lado del 
+    servidor. Sin embargo, es posible generar un mayor dinamismo explotando 
+    nuevas características de los mismos.</font></p>
+    <p><font face="Arial"></font><font face="Arial">Con lo que hemos visto hasta ahora, Java 
+    Script o VBScript en el navegador pueden utilizarse para:</font></p>
+    <ul>
+        <li><font face="Arial"></font><font face="Arial">Generar 
+        dinámicamente el código HTML, reduciendo el tráfico 
+        entre el cliente y el servidor.</font>
+        <li><font face="Arial"></font><font face="Arial">Interactuar con el 
+        cliente a través de &quot;prompt&quot;</font>
+        <li><font face="Arial"></font><font face="Arial">Validar formas o 
+        reaccionar a eventos dentro de las mismas.</font>
+        <li><font face="Arial"></font><font face="Arial">Calcular en forma 
+        algorítmica el código HTML, como hicimos en los ejemplos 
+        de Calendario y Tablas de Multiplicar.</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">Entre las ventajas de Java Script, podemos 
+    mencionar:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Se 
+        pueden editar e incluir en HTML sin mayor problema, no se tienen que 
+        compilar ni requieren herramientas de programación con mayor 
+        complejidad.</font>
+        <li><font face="Arial"></font><font face="Arial">No tenemos 
+        dependencia de las capacidades del servidor.</font>
+        <li><font face="Arial">Es 
+        soportado por Netscape Navigator 2 en adelante y Microsoft Internet 
+        Explorer 3 en adelante, lo que actualmente representa arriba del 95% de 
+        los navegadores.</font>
+        <li><font face="Arial">No afecta 
+        la operación o genera errores con navegadores que no lo soporten; 
+        simplemente éstos ignorarán el código Java 
+        Script.</font>
+        <li><font face="Arial">Es 
+        seguro, al no tener acceso a los recursos de la computadora excepto los 
+        del navegador. Inclusive, no se tiene acceso a datos de páginas 
+        externas al sitio de donde se baja el código 
+        JavaScript.</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">VBScript tiene las mismas ventajas, excepto por no ser 
+    soportado por Netscape sin ayuda de &quot;plug-ins&quot;.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Las desventajas de ambos esquemas incluyen:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Es 
+        limitado el acceso a los objetos del navegador; no todos los objetos 
+        dentro del navegador son modificables.</font>
+        <li><font face="Arial"></font><font face="Arial">En particular, no se 
+        tiene acceso a modificar el HTML (excepto los datos de una forma) 
+        después de que se carga la página, sólo durante la 
+        carga.</font>
+        <li><font face="Arial">Al ser 
+        interpretados, pueden resultar lentos e ineficientes. Por ejemplo, un 
+        script que funciona bien en Internet Explorer, inclusive usado 15 
+        ó 20 veces, cuando se repite 100 veces en la misma página 
+        traba el navegador.</font>
+        <li><font face="Arial">Debido a 
+        la seguridad que tienen, y su acceso limitado a los recursos de la 
+        máquina, a veces resultan insuficientes para hacer todo lo que se 
+        desearía.</font>
+        <li><font face="Arial"></font><font face="Arial">No se permiten 
+        diversas acciones sobre sitios alternos, lo que limita aplicaciones muy 
+        prácticas basadas en obtener la información de otra 
+        página.</font></li></ul>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Dynamic HTML</b></font></p>
+<blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font><font color="#000000" size="3" face="Arial,Helv">Tanto en Internet Explorer 4 y 5 como en 
+    Netscape Navigator 4.x, se busca superar las limitantes de 
+    JavaScript.</font></p>
+
+<p><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">La idea 
+    básica del HTML dinámico, en ambos casos, consiste en permitir 
+    que el código Java Script modifique el HTML que ya se ha 
+    cargado.</font></p>
+
+<p><font color="#000000" size="3" face="Arial,Helv">Esto se logra de mejor manera en Internet Explorer ya 
+    que su modelo de objetos es mucho más completo, cubre casi todas las 
+    capacidades del navegador. De cualquier modo, ambos soportan la idea 
+    básica, si bien en formas incompatibles (lo que complica la vida de 
+    los desarrolladores en Internet).</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Entre las aplicaciones encontramos 
+    comúnmente:</font></p>
+<ul>
+    <li><font color="#000000" size="3" face="Arial,Helv">Menúes que se &quot;abren&quot; en forma de 
+        árbol de exploración, sin necesidad de conectarse al 
+        servidor nuevamente.</font>
+    <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Interfases ricas tales como pasar opciones de una lista de 
+        opciones a otra (clásicamente el seleccionar de una lista 
+        cuáles aplican y cuales no a cierta 
+    selección).</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">Como ventaja básica, la página puede 
+    modificar su presentación (tanto en formato como en 
+    información) en reacción a diversos eventos. Esto facilita la 
+    creación de interfases más ricas y prácticas en su 
+    uso.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Desafortunadamente, al no ser todavía un estándar de 
+    ambos navegadores dominantes, no es fácil aprovechar las ventajas del 
+    concepto. Por ello, generalmente los desarrolladores sólo pueden 
+    aprovechar HTML dinámico en aplicaciones de Intranet, donde sabemos 
+    que la empresa está estandarizada a un navegador y de este modo es 
+    posible usar la implementación específica; o bien, haciendo 
+    distintas versiones y seleccionándolas mediante la detección 
+    del navegador, sea en Java Script o por medio de un componente como el 
+    BrowserCapabilities de ASP.</font></p>
+    <p><font face="Arial"></font><font face="Arial">Algunos ejemplos del uso 
+incluyen:</font></p>
+<ol>
+    <li><font face="Arial"><a href="../ejemplos/DHTML1.htm">Ayuda 
+        contextual.</a></font>
+    <li><font face="Arial"></font><font face="Arial"><a href="../ejemplos/DHTML2.htm">Menú 
+        dinámico</a></font>
+    <li><font face="Arial"></font><font face="Arial"><a href="../ejemplos/DHTML3.htm">&quot;Gráfica&quot; construida con 
+        DHTML</a></font></li></ol></blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Java</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Otra de las tecnologías sumamente interesante y 
+    poderosa para ampliar las capacidades de interfase con el usuario, es el uso 
+    de &quot;applets&quot; de Java.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Java es un lenguaje con mucha base en C y C++, pero 
+    totalmente orientado a objetos. A diferencia de C++, todo en Java es un 
+    objeto. Esto hace el lenguaje más sencillo, en particular, el uso de 
+    apuntadores se abstrae lo que simplifica hasta cierto punto la 
+    programación. Sin embargo, no es un lenguaje trivial para programar, 
+    es más complejo que Basic.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Otra 
+    característica importante de la mayoría de las 
+    implementaciones y la definición del estándar de Java, es que 
+    no es ni interpretado ni compilado, sino trabaja en un esquema intermedio 
+    llamado &quot;máquina virtual&quot;. En este esquema, el 
+    código Java se compila a un código máquina definido 
+    específicamente para adaptarse a Java, pero que no es igual al 
+    código máquina del procesador donde se ejecutará; por 
+    lo que se requiere un software adicional, llamado &quot;máquina 
+    virtual&quot;, el cual traduce del código máquina virtual Java 
+    al código máquina nativo de la computadora donde se ejecute. 
+    </font></p>
+    <p><font face="Arial">Respecto a los 
+    lenguajes compilados a código nativo, esto da como ventaja la 
+    portabilidad a nivel binario y no sólo de código fuente, es 
+    decir, si creo una aplicación Java en la máquina virtual en 
+    una PC con Windows 95, se ejecutará igualmente en Sun, Macintosh, o 
+    cualquier otra plataforma donde se soporte la Java VM. </font></p>
+    <p><font face="Arial">Respecto a los 
+    lenguajes interpretados, Java resulta más eficiente, se ejecuta 
+    más rápido al no requerir los procesos de análisis 
+    sintáctico y gramatical, sino solamente la traducción directa 
+    de los códigos máquina Java a máquina 
+nativa.</font></p>
+    <p><font face="Arial"></font><font face="Arial">Como contraparte, requiere una 
+    compilación compleja y es más lento que código 
+    nativo.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Existen tres grandes rubros de aplicaciones a las que 
+    se ha orientado Java:</font></p>
+    <ul>
+        <li><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Las 
+        aplicaciones Java, donde se puede realizar un sistema como en cualquier 
+        otro lenguaje, con las ventajas de un lenguaje orientado a objetos, el 
+        acceso a todos los recursos de la máquina, con la más alta 
+        portabilidad.</font>
+        <li><font face="Arial"></font><font face="Arial">Los 
+        &quot;applets&quot; Java, donde se ejecuta código Java dentro de 
+        un navegador; esto las hace prácticas para la programación 
+        en Internet. Se tiene acceso a muchos recursos de la máquina, 
+        aún más que los que permite el navegador con JavaScript 
+        por ejemplo. Sin embargo, se maneja seguridad con un contexto de 
+        &quot;sandbox&quot;, es decir, los recursos a los que puede accesar un 
+        &quot;applet&quot; están estrictamente restringidos. Por ejemplo, 
+        en general no se permite imprimir o escribir en archivos desde applets 
+        Java.</font>
+        <li><font face="Arial"></font><font face="Arial">Los 
+        &quot;servlets&quot; Java, donde se ejecuta código Java dentro 
+        del servidor Web. Como recordaremos del tema 4, esta es una 
+        tecnología alternativa a CGI&nbsp; y ASP.</font></li></ul>
+    <p><font color="#000000" size="3" face="Arial,Helv">En este tema y el siguiente, explícitamente nos 
+    enfocamos a las características y uso de Java en forma de 
+    applets.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Las ventajas del uso de applets incluyen una interfaz 
+    más poderosa con el usuario, inclusive con cierta capacidad de acceso 
+    al servidor (solamente a aquel de donde se &quot;bajó&quot; el 
+    código del applet)</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Entre las desventajas, nuevamente los applets 
+    están bastante limitados, por cuestiones de seguridad. 
+    Desafortunadamente, a veces la seguridad es exageradamente restrictiva; y 
+    por otro lado, las implementaciones actuales no son totalmente seguras, es 
+    decir, tanto Explorer como Netscape tienen errores que permiten a los 
+    applets ejecutar código indebido, lo que abre la puerta a hackers y 
+    programadores de virus, para invadir la seguridad de un sistema cliente o 
+    bien generar daños a la máquina del cliente.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font face="Arial">Los 
+    navegadores principales que soportan Java incluyen a Netscape Navigator 
+    desde la versión 2 en adelante, Microsoft Internet Explorer desde la 
+    3 en adelante, HotJava y Opera.</font></p>
+    <p><font face="Arial">Entre ejemplos 
+    de applets, además de todos los que se pueden encontrar en las 
+    referencias, veamos los siguientes:</font></p>
+    <ul>
+        <li><font face="Arial"></font><font face="Arial">Applet de 
+        gráficas de Pie</font>
+        <li><font face="Arial">Control 
+        LED</font></li></ul>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b></p>
+
+<p><font color="#006600" size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Controles ActiveX</b></font></p></b>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Finalmente, una tecnología propietaria de 
+    Microsoft Internet Explorer y de la plataforma Windows en general, pero que 
+    nos permite aprovechar al máximo los recursos de la máquina 
+    (particularmente la interfase del sistema operativo Windows), es el uso de 
+    controles Active X.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font color="#000000" size="3">Como recordaremos del tema 8, Microsoft definió su 
+    estándar de interoperabilidad con objetos que llamamos COM. Entre las 
+    distintas formas de utilizar COM, vimos los componentes en el lado del 
+    servidor. Los componentes que van del lado del cliente, generalmente con una 
+    interfase propia, son llamados &quot;controles ActiveX&quot;. De hecho, son 
+    los mismos que se utilizan en Visual Basic para construir las 
+    interfases.</font></p>
+    <p><font color="#000000" size="3">Entre algunos de los controles más utilizados contamos 
+    con:</font></p>
+    <ul>
+        <li><font color="#000000" size="3">Un calendario, captura de un número o contador con un 
+        &quot;spin button&quot;, que permite incrementar o decrementar el 
+        valor,</font>
+        <li><font color="#000000" size="3"></font><font color="#000000" size="3">Conference 
+        Control, que permite establecer conferencias mediante Net 
+        Meeting.</font>
+        <li><font color="#000000" size="3">Popup&nbsp; Menu, que permite por ejemplo la creación de un 
+        menú contextual como los que estamos acostumbrados a trabajar con 
+        el botón derecho sobre una ventana en Windows.</font>
+        <li><font color="#000000" size="3">Shockwave y Flash, que permiten el control de contenido multimedia 
+        creado con las herramientas de <a href="http://www.macromedia.com">Macromedia</a>.</font>
+        <li><font color="#000000" size="3">ActiveMovie, que permite incluir videos y audio, con un control de 
+        su avance o retraso desde nuestra página.</font>
+        <li><font color="#000000" size="3">Internet controls...</font>
+        <li><font color="#000000" size="3">Wallet, que permite a IE implementar la funcionalidad de 
+        seleccionar las tarjetas de crédito para un pago en línea, 
+        sin tener que recapturar para distintos sitios la información de 
+        mis tarjetas.</font>
+        <li><font color="#000000" size="3"></font><font color="#000000" size="3">Real Audio, 
+        que permite procesar sonido en tiempo real.</font>
+        <li><font color="#000000" size="3"></font><font color="#000000" size="3">Image Scan 
+        de Wang, que en general está instalado en Windows NT como una 
+        aplicación, y puede ser controlado en un cliente para permitir 
+        digitalizar una imagen y luego subirla al 
+servidor.</font></li></ul>
+</blockquote>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">La obvia ventaja de los controles ActiveX, es que 
+    contamos con la mayor potencialidad y flexibilidad para hacer casi lo que se 
+    desee en el lado del cliente, con la facilidad de que el código se 
+    &quot;baja&quot; de nuestro servidor (posiblemente en Internet) lo que evita 
+    los problemas de instalar ejecutables en todos los clientes.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font color="#000000" size="3">La principal d</font><font color="#000000" size="3" face="Arial,Helv">esventaja es en el aspecto seguridad: si entramos a un 
+    sitio no confiable, y bajamos un control ActiveX, éste podrá 
+    hacer lo que quiera en su máquina, por ejemplo: formatear el disco 
+    duro, copiar un virus, apagar el equipo, o peor aún, transmitir 
+    información delicada hacia donde se desee.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><font color="#000000" size="3">Por ello, se establecen dos alternativas: el uso de ActiveX en una 
+    intranet, de modo que haya un control y confianza para ellos;; o bien, el 
+    uso de firmas digitales que permiten verificar el autor del control, lo que 
+    permite confiar en su uso. </font></p>
+    <p><font color="#000000" size="3">Para 
+    Netscape, existe la alternativa de los Plugins, programas externos que se 
+    instalan y tienen la mismas ventajas y desventajas de los ActiveX, excepto 
+    porque son más difíciles de instalar, no es automático, 
+    sino que se obliga al usuario a realizar la instalación (y por 
+    consiguiente, también es más difícil que 
+    inadvertidamente bajemos código que nos genere un 
+    daño).</font></p>
+    <p><font color="#000000" size="3"></font><font color="#000000" size="3">Desafortunadamente, no hay compatibilidad y nuevamente, tenemos que 
+    usar estas características de acuerdo al navegador.</font></p>
+    <p><font color="#000000" size="3">Chequen los siguientes ejemplos del uso de ActiveX:</font></p>
+    <p><font color="#000000" size="3"></font><b>&nbsp;</p>
+</blockquote>
+
+<p>Bibliografía y Referencias</b></font>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Libro de Texto: <strong>Programming Active Server Pages</strong></font><font color="#000000" size="3" face="Arial">.</font></p>
+    <blockquote>
+        <p><font color="#000000" size="3" face="Arial,Helv">Microsoft Press/McGraw Hill</font></p>
+    </blockquote>
+        <p><font color="#000000" size="3" face="Arial,Helv"></font>&nbsp;<font face="Arial"><font color="#000000" size="3" face="Arial,Helv">Libros 
+    de Apoyo:</font></p>
+    <blockquote><font color="#000000" size="3" face="Arial,Helv"><strong>Cree sus 
+        applets para Web con Java</strong>, de Gulbransen y Rawlings (Sams Net, 
+        Prentice Hall)</font></blockquote>
+    <blockquote><font color="#000000" size="3" face="Arial,Helv"></font><strong>Aprenda 
+        Java en 21 días</strong>.(Sams Net, Prentice Hall)</blockquote>
+    <blockquote><strong>Aprendiendo Programación con ActiveX</strong>, de Kaufman, 
+        Jr., Perkins y Fleet (Sams Net, Prentice Hall)</blockquote>
+        <p>Sitios Web:</p></font>
+    <blockquote><font face="Arial">
+        <p></font><font face="Arial">Gamelan: <a href="http://www.gamelan.com">http://www.gamelan.com</a></font></p>
+        <p><font face="Arial"></font><font face="Arial">Java Soft: <a href="http://www.javasoft.com">http://www.javasoft.com</a></font></p>
+        <p><font face="Arial"></font><font face="Arial">ActiveX: <a href="http://www.activex.org">http://www.activex.org</a></font></p>
+        <p><font face="Arial"></font><font face="Arial">Librería MSDN 
+        de Microsoft: <a href="http://msdn.microsoft.com/library/default.htm">http://msdn.microsoft.com/library/default.htm</a></font></p>
+        <p>&nbsp;</p></blockquote></blockquote>
+</body>
+</html>

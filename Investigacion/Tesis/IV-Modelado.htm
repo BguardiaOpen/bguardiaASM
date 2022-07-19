@@ -1,0 +1,2546 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="IV-Modelado_files/filelist.xml">
+<link rel=Edit-Time-Data href="IV-Modelado_files/editdata.mso">
+<link rel=OLE-Object-Data href="IV-Modelado_files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Capítulo 4: Modelado del problema</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Subject>Tesis</o:Subject>
+  <o:Author>Bruno Guardia Robles</o:Author>
+  <o:Template>tesis2.dot</o:Template>
+  <o:LastAuthor>Soporte Tecnico</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>395</o:TotalTime>
+  <o:Created>2003-07-07T16:57:00Z</o:Created>
+  <o:LastSaved>2003-07-07T16:57:00Z</o:LastSaved>
+  <o:Pages>22</o:Pages>
+  <o:Words>8606</o:Words>
+  <o:Characters>49057</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>408</o:Lines>
+  <o:Paragraphs>115</o:Paragraphs>
+  <o:CharactersWithSpaces>57548</o:CharactersWithSpaces>
+  <o:Version>10.4219</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;}
+h1
+	{mso-style-next:Normal;
+	margin-top:141.75pt;
+	margin-right:0in;
+	margin-bottom:.75in;
+	margin-left:.25in;
+	text-indent:-.25in;
+	page-break-before:always;
+	mso-pagination:none;
+	mso-outline-level:1;
+	mso-list:l2 level1 lfo1;
+	tab-stops:list .25in;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	text-transform:uppercase;
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:ES-TRAD;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-next:Normal;
+	margin-top:42.0pt;
+	margin-right:0in;
+	margin-bottom:30.0pt;
+	margin-left:.55in;
+	text-indent:-.55in;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-list:l2 level2 lfo1;
+	tab-stops:list .55in;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	text-transform:uppercase;
+	mso-ansi-language:ES-TRAD;
+	mso-bidi-font-weight:normal;}
+h3
+	{mso-style-next:Normal;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	mso-list:l2 level3 lfo1;
+	tab-stops:list .5in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	text-transform:uppercase;
+	mso-ansi-language:ES-TRAD;
+	mso-bidi-font-weight:normal;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	mso-list:l5 level4 lfo3;
+	tab-stops:list .25in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:ES;
+	mso-bidi-font-weight:normal;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 220.95pt right 441.9pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 220.95pt right 441.9pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:ES;}
+p.Ttulo4, li.Ttulo4, div.Ttulo4
+	{mso-style-name:Título4;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level4 lfo1;
+	tab-stops:list .75in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES-TRAD;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.Ttulo5, li.Ttulo5, div.Ttulo5
+	{mso-style-name:Título5;
+	margin-top:24.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level5 lfo1;
+	tab-stops:list 1.0in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES-TRAD;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.TituloCaptulo, li.TituloCaptulo, div.TituloCaptulo
+	{mso-style-name:TituloCapítulo;
+	mso-style-parent:"Heading 1";
+	mso-style-next:Normal;
+	margin-top:141.75pt;
+	margin-right:0in;
+	margin-bottom:.75in;
+	margin-left:0in;
+	page-break-before:always;
+	mso-pagination:none;
+	mso-outline-level:1;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	text-transform:uppercase;
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:ES-TRAD;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.NormalCVineta, li.NormalCVineta, div.NormalCVineta
+	{mso-style-name:NormalCVineta;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo2;
+	tab-stops:list .25in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;}
+p.NormalCVineta2, li.NormalCVineta2, div.NormalCVineta2
+	{mso-style-name:NormalCVineta2;
+	mso-style-parent:NormalCVineta;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo4;
+	tab-stops:list .5in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;}
+p.TextoDePortada, li.TextoDePortada, div.TextoDePortada
+	{mso-style-name:TextoDePortada;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:113.4pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES-TRAD;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.tituloTesis, li.tituloTesis, div.tituloTesis
+	{mso-style-name:tituloTesis;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	tab-stops:right 439.45pt;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.SubtituloTesis, li.SubtituloTesis, div.SubtituloTesis
+	{mso-style-name:SubtituloTesis;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:ES-TRAD;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:612.1pt 792.1pt;
+	margin:56.7pt 56.7pt 56.7pt 85.05pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-header:url("IV-Modelado_files/header.htm") h1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+@page Section2
+	{size:612.1pt 792.1pt;
+	margin:56.7pt 56.7pt 56.7pt 85.05pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-header:url("IV-Modelado_files/header.htm") h2;
+	mso-paper-source:0;}
+div.Section2
+	{page:Section2;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:452094087;
+	mso-list-type:simple;
+	mso-list-template-ids:-2100681626;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:NormalCVineta2;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:947154740;
+	mso-list-type:simple;
+	mso-list-template-ids:1087286924;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:NormalCVineta;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:1132553124;
+	mso-list-template-ids:-604863698;}
+@list l2:level1
+	{mso-level-start-at:4;
+	mso-level-style-link:"Heading 1";
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l2:level2
+	{mso-level-start-at:4;
+	mso-level-style-link:"Heading 2";
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:.55in;
+	mso-level-number-position:left;
+	margin-left:.55in;
+	text-indent:-.55in;}
+@list l2:level3
+	{mso-level-style-link:"Heading 3";
+	mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l2:level4
+	{mso-level-style-link:Título4;
+	mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l2:level5
+	{mso-level-style-link:Título5;
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l2:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.25in;
+	mso-level-number-position:left;
+	margin-left:1.9in;
+	text-indent:-.65in;}
+@list l2:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:2.75in;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.75in;}
+@list l2:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:3.25in;
+	mso-level-number-position:left;
+	margin-left:2.6in;
+	text-indent:-.85in;}
+@list l2:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	margin-left:3.0in;
+	text-indent:-1.0in;}
+@list l3
+	{mso-list-id:1629780183;
+	mso-list-template-ids:349307146;}
+@list l3:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l3:level2
+	{mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:.55in;
+	mso-level-number-position:left;
+	margin-left:.55in;
+	text-indent:-.55in;}
+@list l3:level3
+	{mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l3:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l3:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l3:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.25in;
+	mso-level-number-position:left;
+	margin-left:1.9in;
+	text-indent:-.65in;}
+@list l3:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:2.75in;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.75in;}
+@list l3:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:3.25in;
+	mso-level-number-position:left;
+	margin-left:2.6in;
+	text-indent:-.85in;}
+@list l3:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	margin-left:3.0in;
+	text-indent:-1.0in;}
+@list l4
+	{mso-list-id:1928926840;
+	mso-list-template-ids:-549135298;}
+@list l4:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l4:level2
+	{mso-level-start-at:4;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:.55in;
+	mso-level-number-position:left;
+	margin-left:.55in;
+	text-indent:-.55in;}
+@list l4:level3
+	{mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l4:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l4:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l4:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.25in;
+	mso-level-number-position:left;
+	margin-left:1.9in;
+	text-indent:-.65in;}
+@list l4:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:2.75in;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.75in;}
+@list l4:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:3.25in;
+	mso-level-number-position:left;
+	margin-left:2.6in;
+	text-indent:-.85in;}
+@list l4:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	margin-left:3.0in;
+	text-indent:-1.0in;}
+@list l5
+	{mso-list-id:2014407396;
+	mso-list-template-ids:-1120503288;}
+@list l5:level1
+	{mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l5:level2
+	{mso-level-reset-level:level1;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:.55in;
+	mso-level-number-position:left;
+	margin-left:.55in;
+	text-indent:-.55in;}
+@list l5:level3
+	{mso-level-reset-level:level1;
+	mso-level-text:"%1\.%2\.%3\.";
+	mso-level-tab-stop:.85in;
+	mso-level-number-position:left;
+	margin-left:.85in;
+	text-indent:-.85in;}
+@list l5:level4
+	{mso-level-style-link:"Heading 4";
+	mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	margin-left:1.2in;
+	text-indent:-.45in;}
+@list l5:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	margin-left:1.55in;
+	text-indent:-.55in;}
+@list l5:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.25in;
+	mso-level-number-position:left;
+	margin-left:1.9in;
+	text-indent:-.65in;}
+@list l5:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:2.75in;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.75in;}
+@list l5:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:3.25in;
+	mso-level-number-position:left;
+	margin-left:2.6in;
+	text-indent:-.85in;}
+@list l5:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	margin-left:3.0in;
+	text-indent:-1.0in;}
+@list l6
+	{mso-list-id:2135438153;
+	mso-list-template-ids:237676186;}
+@list l6:level1
+	{mso-level-start-at:4;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l6:level2
+	{mso-level-start-at:4;
+	mso-level-text:"%1\.%2\.";
+	mso-level-tab-stop:.55in;
+	mso-level-number-position:left;
+	margin-left:.55in;
+	text-indent:-.55in;}
+@list l6:level3
+	{mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l6:level4
+	{mso-level-text:"%1\.%2\.%3\.%4\.";
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l6:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:7.1pt;
+	text-indent:-7.1pt;}
+@list l6:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.";
+	mso-level-tab-stop:2.25in;
+	mso-level-number-position:left;
+	margin-left:1.9in;
+	text-indent:-.65in;}
+@list l6:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.";
+	mso-level-tab-stop:2.75in;
+	mso-level-number-position:left;
+	margin-left:2.25in;
+	text-indent:-.75in;}
+@list l6:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.";
+	mso-level-tab-stop:3.25in;
+	mso-level-number-position:left;
+	margin-left:2.6in;
+	text-indent:-.85in;}
+@list l6:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9\.";
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	margin-left:3.0in;
+	text-indent:-1.0in;}
+@list l2:level2 lfo8
+	{mso-level-start-at:1;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<h1><a name="_Toc405006000"></a><a name="_Toc404074474"><span style='mso-bookmark:
+_Toc405006000'><![if !supportLists]><span lang=ES-TRAD><span style='mso-list:
+Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span><![endif]><span
+lang=ES-TRAD>Modelado de la</span></span></a><span style='mso-bookmark:_Toc405006000'><span
+lang=ES-TRAD> arquitectura</span></span></h1>
+
+<h2 style='mso-list:l2 level2 lfo8'><a name="_Toc405006001"></a><a
+name="_Toc404074475"><span style='mso-bookmark:_Toc405006001'><![if !supportLists]><span
+lang=ES-TRAD style='mso-font-kerning:14.0pt'><span style='mso-list:Ignore'>4.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Panorama
+del capítulo</span></span></a><span lang=ES-TRAD style='mso-font-kerning:14.0pt'><o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>En este capítulo se revisan las necesidades que
+plantea la implementación de ANGEL, una vez que se ha determinado que es un
+sistema tutor inteligente, con las características adicionales de ser un agente
+que funciona como interfaz inteligente, es decir, de ser un asesor inteligente
+automatizado.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Entre estas necesidades, se tienen que examinar:<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Las funciones que realizará ANGEL dentro del proceso
+de enseñanza - aprendizaje, siguiendo el rol de asesor.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El contexto del curso dentro del cual se integrará,
+y el rediseño que dicho curso ha tenido para incluir al asesor como una
+herramienta del mismo.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El diseño de la arquitectura general de
+implementación.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Las técnicas de la Inteligencia Artificial, Ciencias
+Computacionales y Pedagogía que permitirán su implementación.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El diseño detallado de los componentes de ANGEL.<o:p></o:p></span></p>
+
+<h2><a name="_Toc405006002"></a><a name="_Toc404074476"><span style='mso-bookmark:
+_Toc405006002'><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Papel
+del asesor inteligente en el proceso de enseñanza - aprendizaje</span></span></a><span
+lang=ES-TRAD style='mso-font-kerning:14.0pt'><o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Se empezó a analizar en la sección 2.4, donde se
+reconocieron tres roles básicos dentro del proceso de enseñanza - aprendizaje,
+particularmente en el caso de lenguajes de programación:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El transmisor<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El asesor<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El receptor<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>En particular para el asesor, tenemos las siguientes
+funciones:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Observar el comportamiento del estudiante al aplicar
+sus nuevos conocimientos (en el caso de estudio, programando, sentado frente a
+la computadora). [7]<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Diagnosticar la situación de aprendizaje del
+estudiante: si ha adquirido correctamente unidades de conocimiento, y las está
+aplicando de esa manera; o si está cometiendo errores comunes en la aplicación
+del conocimiento. [2]<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Retroalimentar oportunamente al estudiante, de
+manera que éste pueda modificar su comportamiento y reforzar el aprendizaje
+mediante dicho nuevo comportamiento.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Conocer al estudiante, y adaptar la
+retroalimentación de acuerdo a su nivel de conocimientos y situación en la
+adquisición de conceptos específicos.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Estas serán las características que identifiquen a
+un asesor inteligente automatizado; en este caso, se busca que ANGEL pueda reducir
+la necesidad de asesores humanos, y esté disponible aún cuando y donde no
+podría estar disponible un asesor humano.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Para conseguir la realización de dichas funciones,
+ANGEL observará al estudiante a través de una interfase con el usuario
+apropiada, mientras está programando; el diagnóstico se hará a través de un
+sistema experto [30], el cual opera sobre la base de conocimientos específica
+del dominio del lenguaje; la retroalimentación se hará a través de la misma
+interfase; el conocimiento del estudiante estará en una base de conocimiento
+sobre el estudiante, que implementará al componente “modelo del estudiante” del
+Sistema Tutor Inteligente. Finalmente, las estrategias de retroalimentación
+serán dictadas por la implementación apropiada del “modelo pedagógico”.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Resumiendo, la arquitectura general de un Sistema
+Tutor Inteligente vista en el capítulo 3, es apropiada para el asesor
+inteligente ANGEL. De modo que, a lo largo de este capítulo, se analizará cómo
+implementar cada uno de sus componentes.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Sería deseable que ANGEL cuente con conocimiento
+equivalente al de un asesor humano; sin embargo, aquí se encuentra un problema
+difícil de la Inteligencia Artificial: dotarlo de “sentido común”. Por ello, en
+este trabajo no se espera llegar a dicho nivel y “sustituir” totalmente al
+asesor humano; pero, de acuerdo a la experiencia de la rama de Inteligencia
+Artificial, es razonable esperar que el asesor cuente con el “conocimiento
+experto”, totalmente especializado al dominio donde va a asesorar al estudiante,
+en este caso, un lenguaje específico de programación.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>A continuación, se presenta un resumen del contexto
+del curso de Ensamblador, en el cual se aplica el prototipo del asesor
+inteligente; hay que mencionar que no solamente el asesor inteligente deberá encajar
+apropiadamente en el curso, sino que el curso requirió de una adaptación para
+facilitar la función del asesor inteligente. Una vez que se plantee dicho
+contexto, se analizará módulo a módulo el diseño de ANGEL.<o:p></o:p></span></p>
+
+<h2><a name="_Toc405006003"></a><a name="_Toc404074477"><span style='mso-bookmark:
+_Toc405006003'><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Adaptación
+del curso</span></span></a><span lang=ES-TRAD style='mso-font-kerning:14.0pt'><o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Los objetivos planteados para el curso de
+Ensamblador [E7] son:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Conocer y aplicar el lenguaje Ensamblador de los
+procesadores 80x86 en la resolución de problemas.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Consolidar las habilidades de programación.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Para conseguir estos objetivos, se cuenta con una
+serie de herramientas básicas:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Libro de texto y apuntes en páginas WWW [E7], que
+contienen la información sobre los conceptos (teoría) del curso: componentes
+del procesador, modos de direccionamiento, uso de variables e instrucciones.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Programas de ejemplo [E7] que ilustran la aplicación
+de dichos conceptos para resolver problemas específicos.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Ejercicios y proyectos, que se asignan al alumno
+para que resuelva los problemas que le plantean utilizando las herramientas.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Laboratorio de cómputo donde los alumnos cuentan con
+las herramientas computacionales que les permiten desarrollar las soluciones,
+supervisados o no por el profesor.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Biblioteca, hemeroteca, centro de información y
+conexión a Internet, recursos de información que le permiten al alumno
+documentarse más ampliamente.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Correo electrónico, <span class=SpellE>chat</span> y
+grupo de noticias, en diversos grados de desarrollo, que permiten intercambiar
+la información y asesorar a los alumnos en forma asíncrona.<o:p></o:p></span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES-TRAD style='mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES-TRAD style='mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD'>A diferencia de otros sistemas tutores inteligentes, ANGEL no busca
+sustituir el rol del transmisor: en su lugar, hará referencias al libro de
+texto, programas de ejemplo y apuntes en páginas WWW, para que el alumno
+refuerce su conocimiento teórico en el tema que ANGEL determine que el alumno
+no domina y por tanto cause problemas en su práctica de programación. También
+es importante ver que se tiene la orientación de proporcionar los apuntes,
+programas de ejemplo, etcétera, en <span class=SpellE>diskette</span>, para que
+el alumno cuente con el acceso a dicha información al igual que al asesor
+inteligente automatizado, aún en casa o cualquier otro lugar fuera del
+laboratorio de la escuela, siempre y cuando cuente con una computadora
+personal, lo cual es un requisito básico para ejecutar la práctica de la
+programación.<o:p></o:p></span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES-TRAD style='mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES-TRAD style='mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD'>El correo electrónico ha funcionado como un buen mecanismo de
+asesoría, al permitir enviar y recibir programas fuente y señalar en ellos los
+errores comunes, o los puntos que se pueden perfeccionar; por lo que es un buen
+complemento para mejorar la capacidad del profesor de asesorar a los alumnos.
+Sin embargo, al ser asíncrono y no en línea, es relativamente lento, no siempre
+proporciona la respuesta con suficiente oportunidad; además de que el alumno no
+cuenta con acceso al correo en todo momento en que esté practicando la
+programación, por lo cual, muchas oportunidades de asesoría no se aprovechan.
+Estas limitantes son el área de oportunidad para ANGEL.<o:p></o:p></span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES-TRAD style='mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES-TRAD style='mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD'>Para maximizar la disponibilidad de los recursos, los alumnos del
+grupo Virtual cuentan con clase en laboratorio 3 horas a la semana; en dicho
+laboratorio se cuenta con computadoras PC compatibles, las cuales permiten
+acceder a Internet, y en particular, al material y referencias del curso, así
+como al correo electrónico; en ellas se instalará el asesor inteligente ANGEL,
+para complementar el equipo de herramientas de los alumnos. Tanto los alumnos
+del grupo presencial como virtual requerirán de la entrega de un <span
+class=SpellE>diskette</span> de instalación, para permitirles el uso de todas
+las herramientas del curso en su casa o en otros laboratorios.<o:p></o:p></span></p>
+
+<h2><a name="_Toc405006004"><![if !supportLists]><span lang=ES-TRAD
+style='mso-font-kerning:14.0pt'><span style='mso-list:Ignore'>4.4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Diseño
+de la arquitectura</span></a><span lang=ES-TRAD style='mso-font-kerning:14.0pt'><o:p></o:p></span></h2>
+
+<h3><a name="_Toc405006005"><![if !supportLists]><span lang=ES-TRAD
+style='mso-font-kerning:14.0pt'><span style='mso-list:Ignore'>4.4.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Diagrama
+general</span></a><span lang=ES-TRAD style='mso-font-kerning:14.0pt'><o:p></o:p></span></h3>
+
+<p class=MsoNormal><span class=SpellE><span lang=ES>Kaplan</span></span><span
+lang=ES> [11] sugiere una arquitectura general para Sistemas Tutores
+Inteligentes, la cual ya fue mostrada en la figura 8, del capítulo 3; tomando
+como base esta arquitectura, y los requerimientos explicados en la sección
+anterior, se presenta en la figura 11 el diagrama con los componentes a que se
+consideran necesarios para el asesor inteligente, a un nivel conceptual.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span lang=ES
+style='font-size:10.0pt'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:437.25pt;
+ height:326.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="IV-Modelado_files/image001.wmz" o:title=""/>
+ <w:bordertop type="single" width="6"/>
+ <w:borderleft type="single" width="6"/>
+ <w:borderbottom type="single" width="6"/>
+ <w:borderright type="single" width="6"/>
+</v:shape><![endif]--><![if !vml]><img width=585 height=437
+src="IV-Modelado_files/image002.gif" v:shapes="_x0000_i1025"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Word.Picture.8" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1119084224">
+ </o:OLEObject>
+</xml><![endif]--></span></i></p>
+
+<p class=MsoToc1><!--[if supportFields]><span lang=ES><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>TC &quot;<span
+style='mso-bookmark:_Toc405006065'>Figura 11: Arquitectura general de ANGEL</span>&quot;
+\f f </span><![endif]--><span lang=ES><![if !supportNestedAnchors]><a
+name="_Toc405006065"></a><![endif]></span><!--[if supportFields]><span lang=ES><span
+style='mso-element:field-end'></span></span><![endif]--><span lang=ES
+style='font-style:normal'>Figura 11</span><span lang=ES>:</span><span lang=ES
+style='font-style:normal'> Arquitectura general de ANGEL</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Las entidades externas que interactúan con
+ANGEL son el profesor (humano), el alumno y el desarrollador.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El profesor (humano), guiará al
+grupo de alumnos, ejecutar el rol de Transmisor del curso; y respaldar las
+funciones del Asesor, cuando esté disponible. Para ello, podrá extraer
+información recabada por ANGEL, a través de la interfase propia para ello, que
+le indicará el comportamiento y errores comunes de un alumno, lo cual le
+permitirá dirigir mejor su asesoría o la transmisión de información sobre el
+curso.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Los alumnos interactuarán uno a
+uno con ANGEL; su función será practicar la programación, lo cual harán a
+través de un editor de texto, donde escriben el código fuente, el cual servirá
+como interfase para que el asesor observe sus acciones y les retroalimente.
+Cabe aclarar que cada estudiante, por lo tanto, contará con su propia “copia”
+de ANGEL. El caso en el cual múltiples estudiantes interactúen con la misma
+instancia de ANGEL no será soportado, en la primera versión.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El desarrollador, depurará las
+reglas, tanto en el modelo del dominio como en el modelo pedagógico, así como
+la gramática del lenguaje. Para la experimentación inicial, el desarrollador,
+profesor y autor de este trabajo, son la misma persona; sin embargo, se deja
+abierta la arquitectura de modo que otros profesores y desarrolladores puedan
+intervenir en la <span class=SpellE>impartición</span> del curso de
+Ensamblador, o bien en la adaptación de ANGEL para otro lenguaje.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Mientras que, a grandes rasgos, cada uno de
+los componentes de la arquitectura estará encargado de las siguientes
+funciones:</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La interfase será el conjunto de
+módulos y funciones encargados de interactuar con los tres actores indicados.
+De esta forma, incluirá: un módulo editor de texto, el cual proporcionará la
+interacción con el alumno; un módulo editor de reglas y gramática, para el
+desarrollador; y un módulo de información sobre el alumno que ha usado ANGEL,
+para el profesor.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El modelo del experto contendrá el
+conocimiento sobre el lenguaje de programación. Se divide en tres partes: el <i
+style='mso-bidi-font-style:normal'>scanner </i>o analizador léxico; el <span
+class=SpellE><i style='mso-bidi-font-style:normal'>parser</i></span><i
+style='mso-bidi-font-style:normal'> </i>o analizador sintáctico; y las reglas
+del dominio, que permiten obtener deducciones de acuerdo a las acciones
+disparadas los analizadores léxicos y sintáctico, y por tanto, diagnosticar los
+errores cometidos, así como las probables intenciones del alumno.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El modelo del estudiante
+representará el estado actual del conocimiento del estudiante, indicando qué
+conceptos se han dominado [34], así como las relaciones entre ellos; se
+construirá<span style='mso-spacerun:yes'>  </span>de acuerdo al diagnóstico que
+ofrezca el modelo del experto.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Finalmente, el modelo <span
+class=SpellE>instruccional</span> o pedagógico, basado en el modelo <span
+class=SpellE>instruccional</span> de <span class=SpellE>Gagné</span>, como se
+justificó en el capítulo 2, será un sistema experto que decidirá la estrategia
+o técnica <span class=SpellE>instruccional</span> que se usará para
+retroalimentar al alumno, según el diagnóstico que ofrezca el modelo experto y
+el estado del modelo del estudiante.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El diseño específico para cada uno de estos
+componentes se analizará en las siguientes secciones.</span></p>
+
+<h3><a name="_Toc405006006"></a><a name="_Toc404074480"><span style='mso-bookmark:
+_Toc405006006'><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Diseño
+de la interfase</span></span></a><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><o:p></o:p></span></h3>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD><span style='mso-list:
+Ignore'>4.4.2.1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD>Interfase con el estudiante:
+Editor de programa.</span></p>
+
+<p class=MsoNormal><span lang=ES>En el capítulo 2 se describió cómo es el
+proceso actual de enseñanza – aprendizaje de la materia; en particular, se
+determinó que las principales actividades del estudiante, fuera de la clase,
+son prácticas y ejercicios de programación.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Por ello, podemos delimitar el alcance del
+asesor ANGEL: debe estar “disponible” en el momento en que el alumno está
+practicando la programación; es decir, en el momento en que está sentado frente
+a una computadora, desarrollando programas que resuelvan los problemas que
+tenga planteados.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El proceso de programación, independientemente
+de las etapas de análisis, diseño, y documentación, es ejecutado en una
+computadora; en los lenguajes de programación no visuales, tales como C y
+Ensamblador, la construcción de los programas requiere editar un código fuente,
+el cual es un texto en el lenguaje dado, y sigue la sintaxis y gramática del
+lenguaje correspondiente; posteriormente, el programador compila (o ensambla)
+su código, obteniendo código objeto y finalmente ejecutable, el cual queda
+listo para probarlo. Al ejecutarlo, la computadora procesará las entradas que
+se le proporcionen y entregará una salida, que se busca solucione el problema.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Observando esta dinámica de la práctica de
+programación, está claro que el momento donde el programador expresa sus ideas
+es cuando escribe su código fuente; todo asesor humano en el área de lenguajes
+de programación reconoce que el código fuente muestra el estilo y objetivos que
+se planteaba el programador [2][E6]; en particular el autor ha tenido buenos
+resultados utilizando el correo electrónico como medio de asesoría, siempre y
+cuando el alumno envíe su código fuente, de cuyo análisis se pueden detectar
+concepciones erróneas, lo cual permite retroalimentar en forma efectiva al
+alumno.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Algunos asesores inteligentes aplicados a la
+enseñanza de la programación, tales como MENO [15], hacen un análisis del
+programa una vez escrito; y después de ello, informan al alumno de sus posibles
+errores. Otros, como COACH [7] y WEST [15], retroalimentan al alumno mientras
+que está editando su programa fuente; de ello viene que su comentario sea más
+oportuno. Existen teorías pedagógicas, como la de <span class=SpellE>Skinner</span>
+[13], que respaldan experimentalmente la estrategia de sentido común, consistente
+en que la retroalimentación debe ser lo más inmediata al estímulo, para ser
+efectiva. Por ello, ANGEL seguirá la segunda estrategia; sin olvidar la
+característica de no interrumpir al usuario, la cual es más efectiva según
+estudios en el área del diseño de interfases [6<span class=GramE>][</span>36],
+y es usada también en COACH y WEST.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>De manera que se eligió como metáfora de la
+interfase, una que sea similar a la experiencia previa del alumno [6]. Se tomó
+en cuenta que en la generalidad de los lenguajes de programación, donde se
+desea aplicar ANGEL, tales como Ensamblador, C, Pascal, Java, LISP o C++, se
+usa un editor de texto para escribir el código, de manera que se siguió el
+modelo del editor de texto, con una interfase tradicional basada en menús <span
+class=SpellE><i style='mso-bidi-font-style:normal'>pull</i></span><i
+style='mso-bidi-font-style:normal'>-<span class=SpellE>down</span></i>, de la
+cual tenemos como ejemplos el <span class=SpellE><i style='mso-bidi-font-style:
+normal'>Edit</i></span><i style='mso-bidi-font-style:normal'> </i>de MS-DOS, el
+<span class=SpellE><i style='mso-bidi-font-style:normal'>Notepad</i></span><i
+style='mso-bidi-font-style:normal'> </i>de Windows, el <span class=SpellE><i
+style='mso-bidi-font-style:normal'>ASMEdit</i></span><i style='mso-bidi-font-style:
+normal'> </i>en X-Windows y otros muchos editores similares. Sin embargo, el
+módulo editor es lo bastante independiente de los otros módulos, como para que
+ANGEL se integre en un futuro a otros editores, como puede ser el <i
+style='mso-bidi-font-style:normal'>vi </i>en UNIX, o editores visuales como los
+que vienen incluidos en Microsoft Visual Basic ® y Borland <span class=SpellE>Delphi</span>®.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Un problema relacionado con la necesidad de
+que el usuario, en este caso el alumno programando, no sea interrumpido por el
+asesor, es el de plantear la interfase mediante la cual el asesor inteligente
+retroalimentará al estudiante. Como ejemplo, el asistente de Office 97 es una
+ventana que aparece repentinamente, cuando considera que es apropiado para el
+usuario, y le hace perder el foco de la ventana donde está editando, lo cual
+puede causar cierto retraso e incomodidad para el usuario. COACH resuelve este
+problema mediante una interfase dividida en paneles, la cual permite que en una
+ventana se edite, mientras en otra ventana aparecen los mensajes del asistente,
+en una forma que no interrumpe al usuario [7]. Se sigue esta idea para ANGEL,
+con dos consideraciones importantes basadas en principios del diseño de
+interfases [6][36]: la ventana de mensajes del asistente es mucho menor que el
+espacio de trabajo para editar, a diferencia de COACH; y, para conseguir que el
+usuario tenga una sensación de control de la aplicación, además de dicha
+ventana le proporciona una opción de “ayuda”, en la cual el alumno podrá
+pedirle consejo al asesor en el momento que considere lo requiera [36].</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>En conclusión, la interfase de ANGEL con el
+alumno constará de:</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Un editor de texto, con las
+características generales que se pueden encontrar en los editores comunes.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Una ventana de retroalimentación,
+donde el alumno podrá ver las sugerencias que el asesor inteligente considere
+pertinente hacer.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Una opción de solicitar ayuda, que
+le permitirá al alumno “pedirle pistas” al asesor ANGEL, en el momento que
+considere conveniente.</span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD><span style='mso-list:
+Ignore'>4.4.2.2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD>Interfase con el profesor:
+Reportes de comportamiento del estudiante.</span></p>
+
+<p class=MsoNormal><span lang=ES>Cuando el profesor humano combina los roles de
+transmisor y asesor, se puede reconocer que hay interacción entre ellos: por
+ejemplo, si el asesor observa un error, el transmisor informa al alumno sobre
+las partículas de conocimiento o conceptos teóricos que le ayuden a superarlo;
+del mismo modo, puede ejemplificarse que el transmisor repite un tema o lo
+parafrasea, cuando el asesor descubre que el grupo de alumnos no lo ha captado.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>En el modelo de tres roles, donde el rol de
+asesor será cubierto por ANGEL, dicha interacción es menor. Por un lado, el
+profesor transmisor puede ajustar las reglas que dirigen el comportamiento de
+ANGEL, comportándose como desarrollador, tal como se trata en el siguiente
+apartado; pero sería desafortunado que el profesor humano, sea para su rol de
+transmisor o para extender el rol de asesor, no contara con información sobre
+el comportamiento previo del estudiante.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Por ello, además del código fuente del alumno,
+el profesor humano puede consultar el registro de la información recabada por
+ANGEL; esta información debe contener, entre sus elementos:</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Los errores que ha diagnosticado
+ANGEL, su tiempo y forma de resolución, en su caso.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Resúmenes de los parámetros
+almacenados en el modelo del estudiante, y su evolución con el tiempo.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Información sobre consultas
+realizadas por el alumno, y si fueron o no satisfactoriamente resueltas.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Se decidió que este módulo fuera separado del
+módulo editor a través del cual interactúa el alumno, para no hacer el módulo
+editor demasiado grande y en particular, que ocupara demasiada memoria, lo que
+impediría su aplicación práctica por parte del alumno; además de facilitar su
+distribución. Por ello, el funcionamiento del módulo consiste en tomar un archivo
+con los datos propios de un estudiante, y mostrar sus reportes a partir de
+dicha información. De esta manera, el profesor puede llevar su aplicación de
+interfase, en <span class=SpellE>diskette</span>, a la máquina del alumno y así
+obtener el reporte deseado; o al revés, pedir sus archivos de registro al
+alumno.</span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD><span style='mso-list:
+Ignore'>4.4.2.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD>Interfase con el
+desarrollador: edición de reglas, conceptos y gramática.</span></p>
+
+<p class=MsoNormal><span lang=ES>Para entender más claramente este apartado,
+puede ser necesario considerar los apartados que se refieren al diseño del
+modelo del dominio y del modelo pedagógico, que se encuentran en las siguientes
+secciones, puesto que la interfase del desarrollador es dependiente de los
+detalles de dichos modelos.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Se asume que el desarrollador cuenta con los
+conocimientos apropiados de la arquitectura de ANGEL, así como de la teoría de
+compiladores [44] y sistemas expertos [30], suficiente para describir las
+reglas de la gramática, tales como BNF; y de la misma manera, conoce la
+sintaxis de las reglas usadas por el motor de inferencia. Como se explica en el
+capítulo 5, “Implementación de ANGEL”, se usa LALR como compilador - compilador
+para obtener el analizador sintáctico, y CLIPS como API para el desarrollo de
+los sistemas expertos integrados en ANGEL; por ello, se usa dicha sintaxis para
+el planteamiento de las reglas, tanto de la gramática como de los sistemas
+expertos. De acuerdo a ello, ambos tipos de reglas se almacenan en archivos de
+texto: las de gramática, en un archivo GRM, y las de sistemas expertos, en
+archivos CLP. En el caso de cambiar la gramática, para conseguir la mayor
+eficiencia del analizador sintáctico, se tiene que recompilar, usando LALR para
+generar el nuevo código fuente del mismo. Sin embargo, en el caso de las reglas
+del sistema experto, basta con editar el archivo CLP y “compilar” las reglas,
+utilizando un programa auxiliar, para cambiar el funcionamiento del sistema
+experto, lo que permite fácilmente modificar el modelo pedagógico o el del
+dominio. Esto facilita su evolución rápida, distribuyendo nuevos archivos de
+reglas sin necesidad de cambiar el ejecutable del asesor.</span></p>
+
+<p class=MsoNormal><span lang=ES>En esta primera versión no se proporciona una
+interfase de mayor nivel para el desarrollador, salvo para la edición del
+archivo de conceptos; solamente una plataforma de código fuente, estructurada y
+modificable. Esto reduce el tiempo de desarrollo, sin embargo, por el momento
+solamente permite la adaptación de ANGEL por parte de un desarrollador
+especializado en el área de sistemas.</span></p>
+
+<h3><a name="_Toc405006007"></a><a name="_Toc404074481"><span style='mso-bookmark:
+_Toc405006007'><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Diseño
+del modelo del dominio.</span></span></a><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><o:p></o:p></span></h3>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.3.1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Generalidades.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Para describir el modelo del dominio, se tomó
+el enfoque de dividir varias clases de conocimiento, requeridas por el alumno
+que está aprendiendo a programar en determinado lenguaje. Ya se había
+visualizado la necesidad de esta división en el capítulo 1, “Antecedentes”, al
+comparar el aprendizaje de un lenguaje de programación con el lenguaje
+matemático.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Esta clasificación no es aleatoria; además de
+ser similar a las de otros asesores inteligentes, tales como COACH [7] y MENO
+[15], resulta natural al considerar las herramientas con las que las Ciencias
+Computacionales y la Inteligencia Artificial se han referido a dichas áreas
+para solucionar problemas de las mismas.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Las clases de conocimiento consideradas son:</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El léxico del lenguaje, es decir,
+qué palabras son válidas dentro del mismo y cuál es su función.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La sintaxis del lenguaje, que
+indica cómo se relacionan las palabras en unidades sintácticas válidas.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La semántica del lenguaje, que se
+refiere a extraer el significado propio de una unidad sintáctica válida; en el
+caso de los lenguajes de programación, generalmente representa la declaración
+de un elemento (variable, etiqueta, procedimiento) que será usado en otra
+sección del programa; o bien, una acción específica que se debe realizar.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El conocimiento sobre las acciones
+comunes del lenguaje, específicas al mismo; por ejemplo, en Ensamblador se
+requiere del conocimiento sobre cómo llamar a una interrupción del sistema
+operativo, el cual no es usado en lenguajes de alto nivel como C, Pascal o
+Java. Del mismo modo, en Java se requiere conocer el nombre de los métodos que
+contiene una clase, para implementar apropiadamente una clase derivada de ella.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El conocimiento sobre los errores
+y concepciones erróneas que suelen ocurrir al aprender el lenguaje, y cómo
+evitarlos.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Finalmente, el conocimiento
+general a los lenguajes de programación, aplicable a los distintos lenguajes
+que serán usados; podría llamársele “el conocimiento sobre el paradigma de
+programación”.</span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El conocimiento experto sobre el dominio, de acuerdo
+a las funciones que deberá realizar ANGEL, deberá ser suficiente para
+diagnosticar los errores más comunes cuando los estudiantes están en proceso de
+aprendizaje del lenguaje; se presenta una lista de errores comunes de acuerdo a
+la experiencia del profesor, en el apéndice B.<o:p></o:p></span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.3.2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Conocimiento
+sobre el léxico y la gramática.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Ya se ha trabajado ampliamente en la teoría de
+la Computación y los lenguajes formales [44], por lo que se cuenta con
+herramientas que facilitan enormemente la construcción de los analizadores
+léxicos o semánticos. A estas herramientas se les suele llamar “compiladores -
+compiladores”; los más conocidos son las utilerías LEX y YACC disponibles
+ampliamente en las distintas versiones de UNIX en el mercado.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Se toma el enfoque de que el conocimiento
+sobre el lenguaje en este “bajo nivel”, es estático; es decir, generalmente no
+va cambiando con el tiempo. Cuando se especifique un lenguaje de programación
+para que ANGEL apoye a los alumnos en su aprendizaje, puede conocerse
+completamente su léxico y su gramática. En cambio, el conocimiento sobre
+librerías, técnicas de programación y errores comunes, va perfeccionándose con
+el tiempo; por ejemplo, si bien el autor cuenta con casi 4 años impartiendo el
+curso de Ensamblador, y ha recabado más de 60 tipos de errores comunes, todavía
+suele encontrarse con nuevas categorías; conviene ir adicionando ese
+conocimiento que se va “descubriendo” o ampliando con el tiempo, por lo que se
+considera dinámico. Cuando se especifica un nuevo lenguaje, se conoce
+totalmente su léxico y sintaxis; pero con toda seguridad, aún no se han
+observado todas las problemáticas posibles a las que se enfrentarán los
+programadores.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Una limitante, resultado del enfoque tomado,
+es que cuando se requiera adaptar ANGEL a otros lenguajes, se tendrá que
+modificar la gramática y reconstruir el analizador léxico y sintáctico. Podría
+haberse evitado eso, si la gramática se expresara en forma de reglas que un
+analizador léxico y un analizador sintáctico genéricos tomaran en tiempo de
+ejecución, creando “al vuelo” la tabla de transiciones; sin embargo, esto
+hubiera tenido un fuerte costo en desempeño y requeriría el desarrollo de dicho
+analizador léxico y sintáctico, lo cual iba más allá del objetivo buscado; por
+otro lado, hubiera complicado el llamado dinámico de las funciones adicionales
+relacionadas con la generación de hechos en la base de conocimientos, según se
+van cumpliendo las producciones. De manera que puede resumirse que, por
+desempeño, se sacrificó generalidad, siguiendo la línea que han establecido la
+generalidad de los analizadores léxicos y sintácticos basados en tablas.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Para conectar el conocimiento de este nivel
+con el conocimiento basado en reglas utilizado en el siguiente nivel, como se
+describe en el siguiente apartado, las reglas gramaticales que indican la
+formación de una unidad sintáctica completa de código, es decir, de una
+instrucción completa, invocan a funciones externas, las cuales agregan hechos
+simples a la base de conocimiento. Como ya se explicó, el introducir reglas de
+inferencia en este nivel hubiera tenido un costo fuerte en desempeño; con el
+enfoque tomado, una regla de más alto nivel (un término de la gramática), se
+convierte en un ladrillo del más bajo nivel del sistema de inferencia usado en
+el siguiente nivel. Esto permite un balance entre el conocimiento dinámico y
+fácilmente adaptable, correspondiente al significado de las instrucciones en el
+contexto de un problema, o las técnicas de programación utilizadas; y el
+conocimiento estático, como es la sintaxis y gramáticas del lenguaje.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Dicho de otra forma: se hace la distinción
+entre el conocimiento estático, descrito por la sintaxis y léxico del lenguaje
+de programación, pues una vez establecido el lenguaje, éste no cambia; y el
+dinámico, que según el experto adquiere más experiencia, puede ir evolucionando.
+El primero se implementó buscando el máximo desempeño; el segundo, como se ve
+en la siguiente sección, busca la máxima flexibilidad.</span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.3.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Conocimiento
+particular del lenguaje.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Más allá del léxico y la sintaxis, que están
+definidos por reglas claras, maquinales, y sin ambigüedad, existe el
+conocimiento de alto nivel sobre el lenguaje, que incluye al semántico, a los
+errores comunes, así como las acciones comunes del lenguaje. El conocimiento
+sobre la semántica se consideró dentro de esta clasificación, pues a diferencia
+de lo que ocurre con un compilador, no será un proceso monótono de traducción.
+Para el asesor, una instrucción puede tener un significado distinto, de acuerdo
+al contexto, pues no solamente se está realizando un análisis local sobre la acción
+que corresponde a la instrucción dada, sino un análisis global sobre sí su
+relación con otras instrucciones es coherente y consigue un fin determinado y
+de acuerdo a los patrones comunes de programación.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Gracias a la combinación de estos tres tipos
+de conocimiento, es posible realizar diagnósticos distintos a los que hace el
+compilador: además de los errores estrictos, se pueden reconocer errores de
+lógica, o estructuras correctas en el lenguaje pero cuya aplicación indica
+probablemente que el alumno ha asimilado erróneamente un concepto, o determinar
+que el estudiante ha dominado un concepto.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Este conocimiento se puede implementar
+mediante reglas, usando un motor de inferencia para procesarlas [30]. Se tomó
+en cuenta la posibilidad de representarlo por medio de redes semánticas, redes
+neuronales, y redes causales; sin embargo, se decidió usar reglas de producción
+para representar el conocimiento, técnica común en los sistemas expertos, por
+las siguientes ventajas:</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Otros métodos, como es el caso de
+las redes neuronales [42], son opacos; es decir, el conocimiento no se
+representa en una forma clara para el desarrollador; esto complica su
+transcripción, e impide que un experto en el lenguaje pero no experto en
+Inteligencia Artificial lo codifique.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El proceso de inferencia es no
+monótono, es decir, es posible deducir primero conclusiones tales como “el
+alumno domina el uso de MOV”, y después encontrarse con hechos o nuevas
+conclusiones que se opongan a la deducción anterior, lo cual sugiere la
+necesidad de retractar las conclusiones. Esto es difícil de hacer con otras
+técnicas, específicamente con las redes causales.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Es deseable contar con relaciones
+distintas a causa – efecto, naturales de las redes causales, tales como son los
+conceptos de “es parte de” o “está formado por”.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Se ha demostrado que es siempre
+posible construir el equivalente a una red semántica, utilizando reglas. [18]</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Existe una mayor oferta de
+herramientas disponibles comercialmente o para usos educativos, en el área de
+sistemas expertos y motores de inferencia que en cualquiera de las otras
+opciones de representación de conocimiento mencionadas [30].</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>De entre las distintas formas de representar
+la incertidumbre, en el conocimiento representado por medio de reglas, tales
+como el uso de lógica difusa, o de factores de certeza, podemos observar que a
+pesar de su complejidad, el conocimiento sobre el uso de un lenguaje de
+programación está lo bastante bien definido como para considerar que las
+conclusiones referentes a las acciones o relaciones en el lenguaje, son
+necesariamente falsas o verdaderas, pero no pueden tener un valor intermedio de
+certeza.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La afirmación anterior se debe considerar como
+un teorema, basado en la observación del contexto; en la observación de que las
+decisiones entre alternativas de implementación suelen ser tomadas basándose en
+factores no ambiguos; y en la reflexión sobre los “<span class=SpellE>tips</span>”
+que el profesor suele proporcionar a los alumnos, que toman precisamente la
+forma “Si (<i style='mso-bidi-font-style:normal'>determinadas condiciones
+ocurren</i>) utiliza (<i style='mso-bidi-font-style:normal'>tal técnica, tal
+instrucción, o tal truco</i>) para (<i style='mso-bidi-font-style:normal'>hacer
+más veloz la ejecución, usar menos memoria, escribir menos código</i>)”. No se
+pudo encontrar un contraejemplo, por lo cual, se decidió explorar la opción de
+implementar ANGEL utilizando reglas sin el manejo de incertidumbre. Esto hace
+más fácil la adaptación de las reglas por parte de un experto humano en el
+dominio, sin menoscabo de que, de ser necesario, puede posteriormente
+sustituirse el motor de inferencia por uno que soporte incertidumbre y extender
+las reglas del dominio para que la manejen. Esto ocurriría, por ejemplo, en
+caso de encontrar un contraejemplo, una regla o conclusión que fuera complejo
+implementar sin manejo de incertidumbre.</span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.3.4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Conocimiento
+general del paradigma de programación.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Independientemente del lenguaje que se domine,
+es un hecho conocido y generalmente aceptado el que un experto programador
+humano, en un lenguaje imperativo como C o Pascal, puede transferir dicho
+conocimiento experto de las técnicas que usa para programar, a otros lenguajes
+como Ensamblador o Basic. También se reconoce que existe una menor
+transferencia del conocimiento cuando se desea aprender un lenguaje de
+programación que sigue otro paradigma, como pueden ser el aprendizaje Java y <span
+class=SpellE>Smalltalk</span> (paradigma orientado a objetos) para un
+programador en Basic; o de LISP o Miranda (lenguajes funcionales), para un
+programador de Ensamblador.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La conclusión que se obtiene de dichas
+observaciones, es que existe un cierto conocimiento transferible entre los
+distintos lenguajes. Por ejemplo, las reglas referentes a dividir el código en
+pequeños módulos, incluir comentarios con determinada frecuencia, evitar los
+ciclos infinitos, o no colocar una instrucción en un punto inalcanzable, tal
+que nunca se ejecute, son aplicables a todos los lenguajes de programación
+imperativa, y más o menos transferibles a aquellos orientados a objetos. Del
+mismo modo, las reglas sobre cómo aplicar el uso la herencia o el polimorfismo,
+aunque sea en distinta forma, tanto a C++ como a Java. Por ello se propone que
+este conocimiento se coloque en una clase diferente, la cual para este trabajo
+se llamará “conocimiento general del paradigma de programación”, lo cual
+permitirá que dicha sección del conocimiento se transfiera con un mínimo de
+modificaciones al cambiar de un lenguaje de programación a otro.</span></p>
+
+<h3><a name="_Toc405006008"></a><a name="_Toc404074482"><span style='mso-bookmark:
+_Toc405006008'><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Diseño
+del modelo del estudiante.</span></span></a><span lang=ES-TRAD
+style='mso-font-kerning:14.0pt'><o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=ES>Uno de los factores críticos para que el
+asesor ANGEL tenga buenos resultados, es el conocimiento con el que cuente
+sobre el alumno al que está asesorando. Por ello, la representación del
+conocimiento sobre el alumno, conocida como “el modelo del estudiante”
+siguiendo la arquitectura general de Sistemas Tutores Inteligentes propuesta
+por <span class=SpellE>Kaplan</span> [11]; la cual corresponde con el módulo
+conocido como “modelo del usuario”, dentro de la arquitectura general de
+Sistemas <span class=SpellE>Adaptativos</span> propuesta por <span
+class=SpellE>Benyon</span> y <span class=SpellE>Murray</span> [20].</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>En primer lugar, se va a profundizar en
+algunos detalles de la implementación que otros trabajos han realizado de estos
+modelos; posteriormente, se hará referencia al modelo <span class=SpellE>instruccional</span>
+y cómo representa al estudiante; para finalmente, integrando las ideas
+recabadas, explicar cómo será el modelo del estudiante usado por ANGEL.</span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4.1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Modelo
+usado por COACH.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span class=SpellE><span lang=ES>Selker</span></span><span
+lang=ES>, para implementar COACH [7], usa un modelo explícito del usuario, compuesto
+por marcos (<span class=SpellE><i style='mso-bidi-font-style:normal'>frames</i></span>),
+hechos y reglas. Existen dos marcos por cada concepto a aprender: uno “de la
+materia”, que contiene el conocimiento invariante del concepto, y corresponde
+al modelo del dominio; y uno “<span class=SpellE>adaptativo</span>”, que
+corresponde a una parte del modelo del estudiante, y contiene los siguientes
+atributos (<span class=SpellE><i style='mso-bidi-font-style:normal'>slots</i></span>)
+o características del usuario: experiencia, latencia, calificación global, tasa
+de aprendizaje, y ejemplos específicos. Estos conceptos se describen a
+continuación.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La experiencia se define como
+cuántas veces se ha usado el concepto a aprender.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La latencia indica cuánto tiempo
+ha pasado desde que fue usado el concepto.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La calificación global mide en
+general qué tan bien ha sido usado el concepto.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>La tasa de aprendizaje es la tasa
+de cambio en la calificación global.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Finalmente, los ejemplos
+específicos son una lista de los errores en que ha caído un usuario respecto al
+concepto, y cómo los ha solucionado.</span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Estos conceptos se encuentran en una red
+semántica, que contiene principalmente las relaciones de “conocimiento
+requerido” y “conocimiento relacionado”; de manera que se pueden distinguir los
+conocimientos que son prerrequisitos, y otros conocimientos que si bien no son
+requeridos, es pertinente contar con ellos para dominar el concepto que está
+relacionado con ellos.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Cabe hacer notar que los valores que pueden
+tomar los atributos, ya no son simplemente verdadero o falso. En este caso, se
+requiere algún tipo de medida de estos atributos, tal como “bajo” o “alto”. De
+modo que las reglas que operen con este conocimiento, requerirán de algún tipo
+de manejo de incertidumbre, o bien de definir con precisión conceptos difusos
+como los anteriores, como se hace cuando se toman valores umbral y se usan
+operadores de comparación. Por ejemplo, “calificación baja” puede definirse
+como “calificación &lt; 70”.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>También se cuenta con un atributo implícito
+adicional, que es el nivel de ayuda que requiere el usuario, e indica cómo
+catalogar al usuario: novato, intermedio, profesional o experto. Este nivel de ayuda
+requerida está directamente relacionado con la forma en la que se presenta la
+asesoría al alumno.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4.2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Modelo
+del usuario manejado en el asistente de agenda CAP.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>CAP (Aprendiz de Calendario) [17] es un
+asistente inteligente, cuyo objetivo consiste en llevar la agenda del usuario,
+como lo haría una secretaria. Para ello, requiere conocer el comportamiento
+común del usuario, al que se ajusta, aprendiendo de la experiencia.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El contexto donde trabaja el asistente, es un
+ambiente para manejar una agenda en línea y correo electrónico. Se pueden
+registrar citas, juntas y otras tareas en la agenda, y dichos eventos pueden
+marcarse como tentativos o confirmados. En particular, la organización de
+juntas utiliza el correo electrónico para enviar las invitaciones y recordatorios.
+Existen otros comandos útiles, tales como la impresión de la agenda.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El tipo de comportamientos que CAP aprende del
+usuario, incluye el tiempo o duración de una junta, el lugar donde se
+realizará, su hora y fecha; y con ese conocimiento, puede sugerir dichos
+atributos cuando el usuario desea convocar una junta; así como aceptar o
+declinar en forma tentativa, las invitaciones que reciba en ausencia del
+usuario.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Se usa el algoritmo ID3, también conocido como
+“algoritmo de entropía”, para descubrir los patrones comunes en el
+comportamiento del usuario. Con este algoritmo se pueden crear reglas, las
+cuales requieren el mínimo de factores para diferenciar entre dos conclusiones
+distintas.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>De esta forma, todo el conocimiento que maneja
+CAP sobre el usuario se puede dividir en dos partes:</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Ejemplos anteriores, que conserva
+los últimos 180 ejemplos de reuniones. Este tamaño fue escogido como un número
+de ejemplos suficiente para el entrenamiento. Este conocimiento puede
+considerarse como “hechos”, con atributos específicos al dominio como son la
+hora, lugar y asistentes a la reunión.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Reglas inducidas, utilizando ID3,
+a partir de dichos ejemplos. Un ejemplo de una posible regla sería “si el
+director asiste a la reunión, la reunión es en Dirección General, con un factor
+de certeza del 100%”. Esta regla habría venido de encontrar que el valor
+“director” en el atributo “asistentes” de los ejemplos anteriores, estaba
+correlacionado con el atributo “lugar” con el valor “Dirección General”, y que
+no se encontró ni un contraejemplo del mismo. Puede decirse que el conocimiento
+de alto nivel sobre el usuario, el que puede ser transferible, se encuentra en
+esta parte, pues describe más claramente y en forma más general los
+comportamientos inherentes al usuario.</span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Modelo
+del alumno según <span class=SpellE>Gagné</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Como se revisó en la sección 2.7, para <span
+class=SpellE>Gagné</span> el alumno se modela como un procesador de
+información, el cual contiene sensores, un registro sensorial, una memoria de
+corto plazo, una memoria de largo plazo, un generador de respuestas, efectores,
+el control ejecutivo y las expectativas [13]. Estos parámetros son entidades
+modelables, que en conjunto pueden servir como un modelo del estudiante.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Los sensores y efectores no son modelados en
+ninguno de los trabajos analizados en esta sección. Más bien, tanto el usuario
+como la interfase inteligente tienen acceso a un conjunto común de información,
+que perciben por sus “sensores”; y el efecto del comportamiento del usuario,
+también puede ser percibido por la interfase. De modo que la interfase resulta
+una abstracción apropiada para los sensores y efectores del alumno; y el estado
+actual de “hechos” relacionados con la interfase, puede considerarse
+equivalente al registro sensorial propuesto por <span class=SpellE>Gagné</span>.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La memoria de corto plazo puede ser
+representada, como se hace en CAP, registrando <span class=GramE>los últimos</span>
+<i style='mso-bidi-font-style:normal'>n </i>ejemplos del comportamiento del
+alumno. CAP utiliza los ejemplos recientes para obtener “reglas nuevas”, las
+cuales suelen ser válidas durante un corto plazo.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>En CAP, según una regla deducida va siendo
+utilizada, y la tasa de éxito de dicha regla es alta, se refuerza esa regla y
+pasa a formar parte del conjunto de “reglas viejas”. Este conjunto de reglas
+puede asemejarse a una memoria de largo plazo.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>En el caso de COACH, ambos tipos de memoria
+son implícitamente representados, en forma de ejemplos explícitos, tanto como
+en los atributos abstraídos del aprendizaje, como es la latencia y la tasa de
+aprendizaje.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El generador de respuestas es una parte que no
+se modela en COACH, para el estudiante; el conocimiento del dominio es un
+modelo de lo que se espera del generador de respuestas, pero no se representa
+el del alumno. Por otro lado, en CAP las reglas inducidas no son otra cosa sino
+una representación explícita del generador de respuestas del usuario; CAP
+predice la respuesta del usuario, porque ha adquirido el conocimiento sobre la
+regla que utiliza el usuario para decidir.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El control ejecutivo es la estrategia de
+aprendizaje que el alumno usa para modificar su generación de respuestas y
+transferir la información registrada, a la memoria de corto y largo plazo. Para
+representar este “control ejecutivo”, se requeriría conocer sobre los posibles
+estilos de aprendizaje de un alumno [28], de modo que se le clasifique dentro
+de uno de ellos. La teoría 4-MAT [21] puede ser utilizada para definir estos
+estilos, con lo que el estilo de aprendizaje se convierte en un atributo
+concreto del modelo del estudiante, que puede afectar la estrategia <span
+class=SpellE>instruccional</span> que ANGEL usará con ese alumno en particular.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Finalmente, las expectativas del alumno
+afectan el proceso de aprendizaje. Para representarlas, al igual que se hizo
+con el control ejecutivo, conviene contar con una teoría que permita clasificar
+a los alumnos en un número finito de clases, de acuerdo a sus expectativas, y
+reconocer qué comportamientos son propios de cada clase. Afortunadamente, el
+mismo modelo 4-MAT indica las expectativas del alumno de acuerdo a su estilo de
+aprendizaje; de modo que, bajo la premisa del uso de este modelo, el control ejecutivo
+y las expectativas se pueden ver reflejados en reglas dependientes de una sola
+variable, que es el atributo “estilo de aprendizaje” del estudiante.</span></p>
+
+<b style='mso-bidi-font-weight:normal'><span lang=ES-TRAD style='font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+"Times New Roman";mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA'><br clear=all style='page-break-before:always'>
+</span></b>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4.4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Resumen
+de requerimientos del modelo del estudiante.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Se requiere modelar la memoria de corto y
+largo plazo, así como el generador de respuestas, en forma de reglas o hechos;
+la adaptabilidad del modelo se hace más sencilla si se usan reglas [5], pero es
+más sencillo implementar el modelo en forma de hechos, los cuales son
+procesados por reglas adicionales, establecidas por el desarrollador.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Por otro lado, el control ejecutivo así como
+las expectativas se pueden consolidar mediante el conocimiento del “estilo de
+aprendizaje” del alumno, y reglas fijas obtenidas por el modelo de estilos de
+aprendizaje; ambos se tomarán del modelo 4-MAT.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Se resumen a continuación los campos o
+atributos que se requerirá almacenar en el modelo del estudiante, así como las
+reglas que se requerirán para complementarlo.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Una lista de los conceptos que se
+han manejado, y para cada concepto su experiencia, latencia, calificación
+global, tasa de aprendizaje, y nivel de asesoría requerido; así como la fase de
+aprendizaje, requerida por el modelo de <span class=SpellE>Gagné</span>.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Ejemplos anteriores, que se
+organizan como una lista de hechos.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Estilos de aprendizaje y la
+dominancia de uno u otro hemisferio.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>Con objeto de personalizar al
+asesor, el nombre y matrícula del alumno [38].</span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4.5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Reglas
+para calcular o estimar los parámetros requeridos.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La experiencia se calculará como el número de
+veces que se ha manejado el concepto [7]. De modo que cada vez que se use el
+concepto, se incrementará el coeficiente asociado.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La latencia se describe almacenando la fecha y
+hora cada vez que se maneje el concepto, y se calculará mediante la diferencia
+entre el momento actual y el tiempo almacenado en que se usó.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La calificación global será la resultante de
+dividir el número de veces que se ha manejado correctamente el concepto, entre
+la experiencia.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La tasa de aprendizaje se calculará como el
+promedio del cambio de la calificación global en <span class=GramE>las últimas</span>
+<i style='mso-bidi-font-style:normal'>n </i>veces que se ha manejado el
+concepto. Por lo tanto, requerirá de almacenar <span class=GramE>las últimas</span>
+<i style='mso-bidi-font-style:normal'>n </i>calificaciones globales.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>De acuerdo a los resultados del modelo <span
+class=SpellE>instruccional</span>, para cada vez que se maneja erróneamente el
+concepto, se propone una forma de retroalimentar al estudiante, correspondiente
+a un nivel de asesoría. Si este nivel es satisfactorio y proporciona el
+resultado esperado, se almacena dicho nivel para la ocasión <i
+style='mso-bidi-font-style:normal'>i </i>que se usa el concepto. De lo
+contrario, se eleva el nivel de asesoría y se retroalimenta nuevamente al
+alumno con ese nuevo nivel. El nivel de asesoría almacenado en el modelo del
+estudiante, será formado por dos partes: <span class=GramE>los últimos</span> <i
+style='mso-bidi-font-style:normal'>n </i>niveles de asesoría, así como el
+promedio de dichos últimos <i style='mso-bidi-font-style:normal'>n </i>niveles.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>La fase del aprendizaje indicará si el alumno
+se encuentra en la fase de motivación, aprehensión, adquisición, retención,
+recuerdo, generalización, el desempeño o la retroalimentación que indica si se
+alcanzó el objetivo; estas fases ya fueron descritas al analizar el modelo de <span
+class=SpellE>Gagné</span>.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Las reglas requeridas por el modelo serán
+aquellas que permitan la evolución del mismo; en una primera versión, se sigue
+el enfoque de COACH, consistente en usar reglas fijas, y de representar el
+generador de respuestas del alumno como el conjunto de reglas dentro del modelo
+del dominio que aparentemente el alumno está aplicando, de acuerdo al
+diagnóstico realizado sobre el alumno.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Los ejemplos específicos serán hechos
+observados; principalmente se referirán a las conclusiones obtenidas sobre
+errores cometidos por el alumno, así como los usos correctos del concepto.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El estilo de aprendizaje puede abstraerse
+reconociendo ciertos comportamientos comunes; existen 4 estilos, que se
+combinan en distintas circunstancias; y están relacionados con dos tipos de
+técnicas de procesamiento, que corresponden con los hemisferios derecho e
+izquierdo del cerebro. Por ello, la forma en que se representa esta información
+sobre el estudiante está dada en seis contadores: L1, L2, L3, L4, HI, HD; cada
+uno de ellos representará el número de “pruebas” o hechos que respalden dicho
+estilo de aprendizaje (L1 a L4), o el uso de ese hemisferio (HI o HD). De este
+modo, las reglas <span class=SpellE>instruccionales</span> podrán tomar en
+cuenta si el estudiante procesa predominantemente usando el hemisferio
+izquierdo o derecho, y si su estilo de aprendizaje es tipo 1, 2, 3 ó 4. Las
+reglas específicas vendrán de las definiciones de los estilos de aprendizaje,
+dadas por el método 4-MAT, que a continuación se indican.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El estilo de aprendizaje 1
+(correspondiente al contador L1), percibe en forma concreta y reflexiva;
+aprenden escuchando y compartiendo ideas. Su pregunta descriptiva es “¿por
+qué?”.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El estilo de aprendizaje 2
+(contador L2), es abstracto y reflexivo; aprenden en forma racional y lógica,
+forman teorías y diseñan estructuras. Su pregunta descriptiva es “¿qué?”.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El estilo de aprendizaje 3
+(contador L3), es abstracto y activo; aprenden probando las teorías, son
+sujetos de acción inmediata. Su pregunta descriptiva es “¿cómo funciona?”.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>El estilo de aprendizaje 4
+(contador L4), es concreto y activo; aprenden por ensayo y error. Descubren por
+sí mismos, en forma creativa. Su pregunta descriptiva es “¿qué pasaría si...?”.</span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>Del mismo modo, para describir la dominancia
+de los hemisferios, el modelo nos sugiere características como las siguientes:</span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>En el hemisferio izquierdo se
+procesa en forma racional; el pensamiento es verbal; se requiere información
+lógica y objetiva; y el proceso es analítico y secuencial. Se eliminan los
+sentimientos, se es “imparcial”.</span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES style='font-family:
+Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES>En el hemisferio derecho se
+procesa en forma intuitiva; el pensamiento es visual; los juicios son
+subjetivos y creativos; es un pensamiento sintético y paralelo Intervienen
+fuertemente los sentimientos, se siguen corazonadas.</span></p>
+
+<p class=NormalCVineta style='margin-left:0in;text-indent:0in;mso-list:none;
+tab-stops:35.4pt'><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El desarrollo de las reglas que asocien un
+comportamiento observado en el alumno con descubrir su estilo de aprendizaje y
+la dominancia de hemisferios cerebrales es un ejercicio fuera del alcance de
+este trabajo. Sin embargo, en el prototipo de ANGEL se demuestran unas cuantas
+de estas reglas, con el objetivo de comprobar que pueden ser usadas para
+ampliar el alcance del perfil del estudiante.</span></p>
+
+<p class=Ttulo4><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.4.6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Proceso
+de adaptación del conocimiento sobre el estudiante.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>El modelo del estudiante se almacena en una
+base separada de hechos; se crea un perfil con valores por defecto para el
+perfil del estudiante, salvo su nombre y matrícula; y la interacción con el
+estudiante genera hechos. Algunos de estos hechos son usados para diagnosticar
+los errores, y son premisas usadas por reglas en el modelo del dominio; pero
+también se usan para el modelo del estudiante, pues indican el afectar la
+experiencia o latencia de un concepto. Del mismo modo, algunas de las
+conclusiones obtenidas en el diagnóstico, afectarán a las variables dentro del
+modelo del estudiante.</span></p>
+
+<p class=MsoNormal><span lang=ES><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES>De acuerdo a la definición manejada por COACH,
+los atributos internos de un concepto, se recalculan continuamente, como
+función de su valor anterior y a los nuevos hechos presentados. Esto se logra
+creando unas cuantas funciones de usuario, invocadas por el sistema de
+inferencia al cumplirse las reglas o por el analizador léxico cuando una
+producción se completa. Estas funciones permiten registrar que se está usando
+un concepto, y por tanto incrementar su índice de uso (experiencia); se indica
+si el uso fue correcto o inapropiado, y automáticamente se actualiza la
+Latencia del concepto, ajustándola a 0. Si el concepto usado es el mismo que
+estaba registrado como “Concepto Actual”, no se incrementa la experiencia; si
+es uno distinto, se marca el tiempo actual como el tiempo de último uso del
+concepto anterior, antes de ajustar el nuevo concepto como concepto actual. En
+este enfoque, solamente se puede manejar un concepto a la vez; en un futuro se
+puede explorar el tener un cierto número de conceptos concurrentes.</span></p>
+
+<h3><a name="_Toc405006009"></a><a name="_Toc404074483"><span style='mso-bookmark:
+_Toc405006009'><![if !supportLists]><span lang=ES-TRAD style='mso-font-kerning:
+14.0pt'><span style='mso-list:Ignore'>4.4.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Diseño
+del modelo instruccional o pedagógico</span></span></a><span lang=ES-TRAD
+style='mso-font-kerning:14.0pt'><o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>ANGEL cuenta con conocimiento sobre cómo y cuando
+retroalimentar al estudiante, de acuerdo a su perfil y al diagnóstico con el
+que se cuenta. Para ello, utiliza un subconjunto de las técnicas que utiliza el
+asesor humano; ejemplos de las reglas <span class=SpellE>instruccionales</span>
+se encuentran en el apéndice C.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Cuenta también con reglas que le indican cuándo
+aplicar dichas técnicas <span class=SpellE>instruccionales</span>, de acuerdo
+al estado actual del conocimiento del estudiante, su estilo de aprendizaje y
+los tipos de errores que el experto diagnostica en el momento.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El modelo de <span class=SpellE>Gagné</span>, que se
+seleccionó como un modelo apropiado para implementar la estrategia <span
+class=SpellE>instruccional</span>, requiere de conocer la fase del aprendizaje,
+y los procesos que ocurren dentro de ella; y establece los estímulos externos
+que debe proveer el instructor para facilitar la ocurrencia del aprendizaje.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Se utilizarán de esta manera, tácticas bien
+definidas [24], de acuerdo al nivel de aprendizaje establecido.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>En primer lugar, durante la fase de motivación,
+dirigir las expectativas del alumno. Esta táctica queda reservada al profesor
+transmisor, debe ocurrir antes de que el alumno empiece a programar y usar el
+asesor ANGEL. Por ello, ANGEL asume como fase inicial, la fase 2 (dirigir la
+atención).<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>En la segunda fase, se debe dirigir la atención del
+alumno. El asesor puede participar en esta fase, al resaltar los errores que
+detecte, permitiendo que el alumno los note. De modo que el primer nivel de
+asesoría, siguiendo el modelo, será “llamar la atención del alumno hacia una
+línea de su programa”.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>En la tercera fase, <span class=SpellE>Gagné</span>
+sugiere estimular la memoria. Por ello, la siguiente estrategia de asesoría,
+correspondiente al segundo nivel, consistirá en que ANGEL le proporcione una
+“pista” sobre la causa del error.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Otra estrategia sugerida por <span class=SpellE>Gagné</span>
+en esta fase indica “guiar el aprendizaje”. El tercer nivel de asesoría de
+ANGEL consistirá en indicarle al alumno la referencia sobre el tema o apunte
+que le conviene repasar para superar el error.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El cuarto nivel de asesoría, cuando el error siga
+sin ser corregido, consistirá en hacer una referencia donde se explique a un
+nivel “novato”, cómo corregir el error específico.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Finalmente, un quinto nivel de “asesoría”, el cual será
+usado por ANGEL si el alumno aún no logra corregir el error, será apoyarse en
+el profesor humano; ANGEL recomendará el uso del correo electrónico y
+registrará el hecho, el cual podrá ser usado por el profesor humano al recibir
+el reporte del modelo del estudiante.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Mientras el alumno esté recibiendo asesoría de nivel
+4 o 5 sobre un concepto, se considerará que se encuentra en la fase 2 (dirigir
+la atención) del aprendizaje de dicho concepto; cuando se le proporcione
+asesoría en nivel 3, se considerará que se encuentra en la fase 3
+(adquisición); similarmente, si con un nivel 2 de asesoría basta para resolver
+el problema, se considerará que se encuentra entre las fases 4 (retención) y 5
+(recuerdo) del aprendizaje; cuando se use un nivel 1 de asesoría, se le
+considerará entre las fases 6 (generalización) y 7 (desempeño). Cuando no se
+requiera asesoría, es decir, no se cometan errores, se podrá considerar que se
+ha alcanzado la fase 8 del aprendizaje (retroalimentación).<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El uso del resto de las estrategias <span
+class=SpellE>instruccionales</span> propuestas por <span class=SpellE>Gagné</span>,
+se hará según descienda el nivel de asesoría requerido. La estrategia “promover
+la retención”, correspondiente a las fases 4 y 5 del aprendizaje, se implementa
+al utilizar el historial del atributo “nivel de asesoría”. Cada vez que se va a
+dar asesoría sobre un mismo concepto, si las demás condiciones son similares,
+ANGEL intenta asesorar al alumno usando un nivel menor al anterior; de este
+modo, un mayor nivel de aprendizaje del alumno deberá reflejarse en solucionar
+un problema que ya había solucionado, requiriendo de menos asesoría.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>De este modo, un concepto no se considera dominado
+sino hasta que se ocupe correctamente y sin requerir ningún tipo de asesoría;
+sin embargo, la calificación va subiendo, según el alumno disminuye su nivel de
+asesoría y por tanto, el número de errores en que cae al usar dicho concepto.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>La estrategia “promover la transferencia”,
+correspondiente a las fases 6 y 7 del aprendizaje, se implementa gracias a la
+relación de “conceptos relacionados”. El nivel de dominio de un concepto se ve
+afectado por el nivel de dominio de sus conceptos relacionados; de forma que un
+error en la aplicación de un concepto, deberá propagarse como un posible error
+o concepto erróneo, que deberá representarse en los conceptos relacionados. De
+este modo, se refuerza la probabilidad de que el asesor inteligente sugiera al
+alumno el estudio de un tema que esté indirectamente relacionado con el error,
+pero en realidad pudiera ser la causa de que el alumno no comprenda totalmente
+el concepto actual, directamente relacionado con el error diagnosticado.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Por último, cuando se alcanza un nivel de desempeño
+apropiado, o se da un gran salto en el nivel de asesoría requerido, es decir,
+se puede considerar que el alumno está dirigiéndose a la fase de refuerzo,
+ANGEL retroalimenta al alumno, felicitándolo por el buen desempeño observado.<o:p></o:p></span></p>
+
+<h2><a name="_Toc405006010"><![if !supportLists]><span lang=ES-TRAD
+style='mso-font-kerning:14.0pt'><span style='mso-list:Ignore'>4.5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt'>Conclusiones</span></a><span
+lang=ES-TRAD style='mso-font-kerning:14.0pt'><o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>De acuerdo a los modelos seleccionados, expuestos en
+este capítulo, se cuenta con las bases para plantear la arquitectura física del
+sistema, sobre la que se fundamenta la implementación.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Haciendo una recapitulación, el asesor inteligente
+que se desarrolla en este trabajo, utilizará los siguientes modelos y
+herramientas:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>La interfase con el alumno: se basa en el paradigma
+del editor de texto, el cual está integrado con la parte “observadora” del
+agente, que permite inducir hechos de acuerdo al texto (programa) que el alumno
+escribe.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>La interfase con el profesor humano, consiste de una
+herramienta de reportes, los cuales se obtienen directamente del modelo del
+estudiante, almacenado en archivos.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>La interfase con el desarrollador es a través de la
+edición directa de las reglas gramaticales o las reglas de producción, las
+cuales son usadas tanto en el modelo del dominio como en el modelo <span
+class=SpellE>instruccional</span>.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Modelo del dominio: basado en dos partes, el
+análisis léxico y sintáctico; y la representación del conocimiento dinámico,
+sea específico al lenguaje o general al paradigma de programación asociado; el
+análisis léxico y sintáctico se implementa como conocimiento estático, el cual
+se debe programar explícitamente como la gramática usada por un compilador –
+compilador para generar los módulos correspondientes; mientras que el
+conocimiento dinámico se implementa en forma de reglas, y es el que se adquiere
+del experto del lenguaje utilizando la metodología de desarrollo de sistemas
+expertos; ya que este evoluciona continuamente, se implementa en reglas que se
+interpretan por el motor de inferencia del asesor inteligente, con un cierto
+costo en el desempeño, ganando mayor generalidad.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Modelo del estudiante: tomando como referencia
+trabajos anteriores, se sugiere un registro <span class=SpellE>adaptativo</span>
+que representa las características propias del alumno, como su nombre,
+matrícula, estilos dominantes de aprendizaje, y dominancia hemisférica en dicho
+aprendizaje; así como un historial de ejemplos de las situaciones a las que se
+ha enfrentado el alumno; y una lista de los conceptos que maneja, y
+cuantificadores del aprendizaje sobre cada uno de los conceptos.<o:p></o:p></span></p>
+
+<p class=NormalCVineta><![if !supportLists]><span lang=ES-TRAD
+style='font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol;mso-font-kerning:14.0pt;mso-ansi-language:ES-TRAD'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>Modelo <span class=SpellE>instruccional</span>:
+sigue el de <span class=SpellE>Gagné</span>, implementado en forma de reglas
+que se disparan de acuerdo a la fase en que se encuentra el alumno, que a su
+vez se deduce del nivel de asesoría requerido. Estas reglas son procesadas por
+el motor de inferencia, usado también en el diseño del modelo del dominio; sin
+embargo, se encuentran en una “base de conocimiento” separada, lo que permite
+su sustitución sin afectar al modelo del dominio.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-font-kerning:14.0pt;
+mso-ansi-language:ES-TRAD'>El establecimiento de estos modelos permite pasar a
+la fase de construcción de ANGEL, que se explica con el detalle pertinente, en
+el próximo capítulo; así como diseñar experimentos que permitan validar que
+ANGEL sea útil para los alumnos, de acuerdo a su diseño. Se propone un
+experimento, el cual se desarrollará en el capítulo 6, y comprobará la
+funcionalidad del asesor inteligente una vez implementado.<span
+style='background:yellow;mso-highlight:yellow'><o:p></o:p></span></span></p>
+
+</div>
+
+<span lang=ES-TRAD style='font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:"Times New Roman";mso-fareast-font-family:"Times New Roman";
+background:yellow;mso-highlight:yellow;mso-font-kerning:14.0pt;mso-ansi-language:
+ES-TRAD;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
+style='page-break-before:always;mso-break-type:section-break'>
+</span>
+
+<div class=Section2>
+
+<p class=MsoNormal><span lang=ES-TRAD style='mso-ansi-language:ES-TRAD'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

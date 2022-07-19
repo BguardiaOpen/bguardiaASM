@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<!-- Created by AOLpress/1.2 -->
+<title>Proyecto 2 - 9901</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#0000ff">
+
+<h2>Proyecto 2 Lenguaje Ensamblador</h2>
+
+<h2 align="center">Convertidor de archivos HTML a texto</h2>
+
+<p>Fecha de entrega: 30 de octubre de 2000, 19:00 horas. </p>
+
+<p>En equipo de dos personas <strong>máximo </strong>     . 
+
+<ul>
+  <li>El objetivo del programa será tomar un archivo fuente 
+  HTML (por ejemplo, esta página) y convertirlo en un archivo de texto legible 
+  por un editor de texto puro. 
+  <li>La información se le indicará en línea de comandos. La sintaxis será:<p><em>
+      CONVIERTE &lt;archivo1&gt; &lt;archivo2&gt;</em></p>
+    <p>Donde el archivo1 será el fuente en ancho fijo, y en el archivo2 se guardará la
+    información convertida a un archivo delimitado.</p>
+  <li>
+    <p>               
+    Las reglas básicas de conversión serán:</p></li>
+  <UL>
+  <li>
+    <p>           El texto en la sección
+    &lt;HEAD&gt; será descartado, incluyendo el título</p>
+  <li>
+    <p>       Todo el texto en la sección &lt;BODY&gt; se copiará
+    tal cual, sin tags de formato.</p>
+  <li>
+    <p>     Los saltos de línea y enter que se tengan en el
+    origen se eliminarán en el destino</p>
+  <li>
+    <p>Los tags &lt;p&gt; y &lt;br&gt; serán los únicos con una interpretación especial, ya que se convertirán en la combinación Salto de
+    Línea/Enter (caracteres 10 y 13 ASCII)</p></li></UL>
+</ul>
+
+<ul>
+  <li>Deberán usar la interrupción 21h para el manejo de 
+  archivos. 
+  <li>Se recomienda analizar el problema como una máquina de estados, lo que lo simplifica bastante.</li>
+</ul>
+</body>
+</html>

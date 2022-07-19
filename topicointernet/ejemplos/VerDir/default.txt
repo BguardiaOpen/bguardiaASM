@@ -1,0 +1,72 @@
+<%@ Language=VBScript %>
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+</HEAD>
+<BODY>
+<%
+ Dim fs, d, dc, s, n
+
+on error resume next
+
+    Set fs = Server.CreateObject("Scripting.FileSystemObject")
+    For Each drive in fs.Drives
+    
+        s = drive.DriveLetter & ":\" 
+        if drive.isReady then
+		  Select Case drive.DriveType
+			Case 0: t = "Unknown"
+		    Case 1: t = "Removable"
+			Case 2: t = "Fixed"
+			Case 3: t = "Network"
+			Case 4: t = "CD-ROM"
+			Case 5: t = "RAM Disk"
+		  End Select
+			If drive.DriveType = 3 Then
+				n = drive.ShareName
+			Else
+		        n = drive.VolumeName
+	        End If
+			s = s & t & " - " & n
+			
+		Response.Write s & "<br>"
+
+			Set Root = drive.RootFolder
+			
+			Response.Write "<blockquote>"
+			for each Folder in Root.Subfolders
+				'Response.Write Folder.Name & "<br>"
+				MuestraFolder Folder, 1
+			next
+			Response.Write "</blockquote>"				
+
+	else
+		Response.Write s & "<br>"
+			
+        end if
+'        s = s &amp; n &amp; vbCrLf
+    Next
+%>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>
+<%
+Sub MuestraFolder(UnFolder, Nivel)
+	Response.Write UnFolder.Name & "<br>"
+	'if Err.number<>0 then
+	'	Response.Write "<b>Permiso Denegado</b>" & Err.number & "<br>"
+	'end if
+	if Nivel<2 then
+	Response.Write "<blockquote>"
+	for each Folder in UnFolder.Subfolders
+		MuestraFolder Folder, Nivel + 1
+		if Err.number<>0 then
+			Response.Write "<b>" & Err.Number & " - " & Err.Description & "</b><br>"
+			Err.Clear
+		end if
+	next
+	Response.Write "</blockquote>"
+	end if
+End Sub
+%>

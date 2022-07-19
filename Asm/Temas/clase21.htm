@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Interfaz entre C y Ensamblador</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #21 </h1>
+
+<h1 align="center">Interfaz entre C y Ensamblador </h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase20.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv13.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 13</a></td>
+    <td><p align="center"><a href="../Temas/clase22.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer las técnicas y herramientas necesarias para ligar rutinas entre un lenguaje de
+    alto nivel, y Ensamblador. </li>
+  <li>Reconocer las ventajas de los programas &quot;híbridos&quot; entre lenguajes, y saber
+    cuando aplicar las técnicas en el desarrollo de sistemas. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h3>Por qué combinar </h3>
+
+<h4>Ventajas de combinar lenguajes </h4>
+
+<ul>
+  <li>Realizar el trabajo fuerte en un lenguaje de alto nivel, lo que facilita la
+    programación global. </li>
+  <li>Conseguir la máxima eficiencia en los módulos críticos, usando el lenguaje de más
+    bajo nivel. </li>
+  <li>Al combinar lenguajes, se puede obtener una combinación óptima entre eficiencia y
+    facilidad de programación, en cada sección del programa. </li>
+</ul>
+
+<h4>Requerimientos&nbsp;para combinar lenguajes </h4>
+
+<ul>
+  <li>Se requiere tener un conocimiento profundo de ambos lenguajes y su interacción. </li>
+  <li>Se requiere un análisis apropiado para seleccionar óptimamente cuándo usar cuál de
+    los lenguajes, de manera que se obtengan sus beneficios y no al contrario. </li>
+</ul>
+
+<h3>Ligado de módulos múltiples </h3>
+
+<h4>Herramientas </h4>
+
+<p>Cada módulo se compila o ensambla por separado, obteniendo el archivo objeto (.OBJ) </p>
+
+<p>Se incluyen todos los módulos al construir el ejecutable, en el proceso de ligado. </p>
+
+<p>Se requiere una estructura que defina la interfaz entre los distintos módulos </p>
+
+<h3>Creación de un ejecutable con módulos múltiples </h3>
+
+<h4>En ensamblador </h4>
+
+<p><code>TASM uno</code> </p>
+
+<p><code>TASM dos</code> </p>
+
+<p><code>TLINK uno dos, resultado</code> </p>
+
+<h4>C con ensamblador </h4>
+
+<p><code>TASM uno</code> </p>
+
+<p><code>TCC -c dos</code> </p>
+
+<p><code>TLINK uno dos,resultado</code> </p>
+
+<p>Como se puede ver de los ejemplos que tenemos arriba, el proceso es similar; se crean
+varios objetos, ensamblando o compilando (con la bandera -c); y luego, el TLINK se encarga
+de ligar los módulos en un ejecutable. </p>
+
+<p>Normalmente, el segundo caso se puede hacer en forma tal que el compilador de
+C&nbsp;llame al TLINK automáticamente (lo que es más conveniente, pues requeriremos
+menos parámetros que no mostré en el ejemplo de arriba): </p>
+
+<p><code>TASM uno</code> </p>
+
+<p><code>TCC -Eresultado.exe dos.c uno.obj</code> </p>
+
+<h3>Requisitos para la unión </h3>
+
+<h4>Características del .ASM </h4>
+
+<ul>
+  <li>Usar un modelo de memoria compatible con el archivo .C; preferiblemente, el mismo </li>
+  <li>Iniciar el fuente con la directiva DOSSEG, que indica al ensamblador que ordene los
+    segmentos en la forma estándar en lenguajes de alto nivel. </li>
+  <li>Definición &quot;externa&quot; o &quot;pública&quot; de las variables que se van a
+    compartir </li>
+  <li>Directivas EXTERN, PUBLIC y GLOBAL </li>
+  <li>Manejo correcto de parámetros de funciones, por medio del uso de la pila acorde al
+    &quot;orden C&quot; de parámetros, y al modelo de memoria </li>
+</ul>
+
+<h3>Variables Compartidas </h3>
+
+<h4>Características generales </h4>
+
+<ul>
+  <li>Las variables definidas por un compilador de &quot;C&quot; internamente se preceden por
+    un subguión (_) </li>
+  <li>Las variables compartidas por distintos módulos deben ser definidas en &quot;C&quot;
+    como globales, no estáticas (automáticas). </li>
+  <li>Se debe usar la opción apropiada en el ensamblador para que sea &quot;sensitivo&quot; a
+    mayúsculas/minúsculas, como es el caso de &quot;C&quot; (/ml en TASM) </li>
+</ul>
+
+<h4>PUBLIC y EXTRN </h4>
+
+<p>Toda variable o función que esté definida en el módulo actual, y deba ser usada por
+otro módulo, se declara como PUBLIC </p>
+
+<p>Sintaxis: </p>
+
+<p><code>PUBLIC Simbolo</code> </p>
+
+<p>Toda variable o función definida en otro módulo, que se vaya a usar en el actual, </p>
+
+<p>se declara como EXTRN </p>
+
+<p>Sintaxis: </p>
+
+<p><code>EXTRN Simbolo:Tipo</code> </p>
+
+<h4>Tipos válidos </h4>
+
+<p>Para su uso en EXTRN 
+
+<ol>
+  <li>BYTE - Equivale a &quot;char&quot; de &quot;C&quot; </li>
+  <li>WORD - Equivale a &quot;int&quot;, &quot;short&quot; o &quot;enum&quot; de
+    &quot;C&quot;. También se usa para sustituir a los apuntadores cortos (near *) </li>
+  <li>DWORD - Equivale a &quot;long&quot; de &quot;C&quot;. También se usa para
+    &quot;float&quot;, y para los apuntadores largos (far *) </li>
+  <li>QWORD - Equivale a 8 bytes, como &quot;double&quot; en &quot;C&quot;. </li>
+</ol>
+
+<h4>Reglas para el manejo de parámetros de &quot;C&quot; </h4>
+
+<p>Como los parámetros se colocan en la pila, se hace &quot;push&quot; de sus valores, de
+derecha a izquierda; es decir, el último parámetro está más abajo en la pila. </p>
+
+<p>El valor de retorno de una función se coloca en: 
+
+<ul>
+  <li>AL, si es de tamaño byte </li>
+  <li>AX, si es de tamaño word (o near *) </li>
+  <li>DX:AX, si es double word (o far *) </li>
+</ul>
+
+<p>Vean los programas de ejemplo del Speaker para clarificar el uso de los parámetros.</p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Manuales de Turbo Assembler, Turbo C, Borland C, Turbo Pascal. </li>
+  <li>Waite's Group Turbo Assembler Programming Bible. </li>
+  <li>Ejemplos de combinar C con Ensamblador <ul>
+      <li>Programa que usa el Speaker <ul>
+          <li><a href="../programa/speaker.asm">SPEAKER.ASM: Librería para Manejo del Speaker </a></li>
+          <li><a href="../programa/speaker.h">SPEAKER.H: Encabezados para usarla desde C </a></li>
+          <li><a href="../programa/pruspeak.c">PRUSPEAK.C: Programa para probar el uso desde C </a></li>
+          <li><a href="../programa/makespk">MAKEFILE para el conjunto </a></li>
+        </ul>
+      </li>
+      <li>Programa que muestra gráficos en modo 13h <ul>
+          <li><a href="../programa/liga.asm">LIGA.ASM: Funciones en Ensamblador para gráficos en modo
+            13h </a></li>
+          <li><a href="../programa/liga.h">LIGA.H: Encabezados para usarla desde C </a></li>
+          <li><a href="../programa/liga-c.c">LIGA-C.C: Programa para probar el uso desde C </a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ma 2-Jul-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-1998</em></p>
+</body>
+</html>

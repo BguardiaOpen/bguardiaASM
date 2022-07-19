@@ -1,0 +1,23 @@
+<html>
+<head>
+<script language="javascript">
+<!--
+
+function CambiaImagen(miImagen) {
+	miImagen.src = '../../images/8086.gif';
+}
+
+function CambiaLiga() {
+	Liga.outerHTML = '<img onmouseover="CambiaImagen(this);" src="../../images/386.jpg">';
+}
+
+//-->
+
+</script>
+
+</head>
+<body>
+<a href="javascript:CambiaLiga();" id=Liga>Presiona aqui para aparecer la imagen</a>
+
+</body>
+</html>

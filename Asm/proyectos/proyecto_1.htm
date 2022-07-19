@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<title>Proyecto 1</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#0000FF">
+
+<h2>Proyecto 1, semestre <span lang="en-us">2002-11</span></h2>
+
+<h3 align="center"><span lang="es-mx">Cuatro en Línea</span></h3>
+
+<p>Fecha de entrega: <span lang="en-us">Martes 12 de Marzo de 2002</span>; 19:00 horas (no se acepta
+más tarde)</p>
+
+<p>Qué hay que entregar: revisen las <a href="../politicv.htm">políticas</a> del curso...</p>
+
+<p>En equipo de dos personas
+
+<ul>
+  <li>El programa dibujará un<span lang="es-mx"> tablero de 7 columnas por 6 
+  renglones.</span></li>
+  <li><span lang="es-mx">Se juega entre dos jugadores, uno tiene las fichas 
+  &quot;blancas&quot; y otro las &quot;negras&quot;</span></li>
+  <li><span lang="es-mx">Se juega por turnos, primero las blancas, luego las 
+  negras y nuevamente las blancas.</span></li>
+  <li><span lang="es-mx">El programa se manejará usando las teclas 1-7, que 
+  indican la columna donde el jugador actual va a tirar.</span></li>
+  <li><span lang="es-mx">Al presionar una tecla, se deberá poner una ficha en la 
+  columna correspondiente, la cual &quot;cae&quot; hasta la posición libre más alta.</span></li>
+  <li><span lang="es-mx">El objetivo del juego es poner cuatro fichas del mismo 
+  color en línea, horizontal, vertical o diagonal. (más o menos similar al 
+  gato).</span></li>
+  <li><span lang="es-mx">El programa deberá anunciar al ganador en cuanto 
+  consiga poner 4 en línea.</span></li>
+  <li><span lang="es-mx">El programa deberá estar en un ciclo que permita jugar 
+  otra vez.</span></li>
+  <li><span lang="es-mx">Para el desarrollo utilizar Ensamblador puro de 80x86, 
+  con interrupciones (principalmente 10h, 21h y 16h, según se requieran)</span></li>
+</ul>
+
+<p><span lang="es-mx">Ejemplos del juego:</span></p>
+<table border="0" cellpadding="10" cellspacing="10" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
+  <tr>
+    <td width="50%">
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
+      <tr>
+        <td><span lang="es-mx">1</span></td>
+        <td><span lang="es-mx">2</span></td>
+        <td><span lang="es-mx">3</span></td>
+        <td><span lang="es-mx">4</span></td>
+        <td><span lang="es-mx">5</span></td>
+        <td><span lang="es-mx">6</span></td>
+        <td><span lang="es-mx">7</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+      </tr>
+    </table>
+    <br>
+    <span lang="en-us">Despu</span><span lang="es-mx">és de tirar 6 fichas c/u 
+    (ejemplo de base)</span></td>
+    <td width="50%">
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3">
+      <tr>
+        <td><span lang="es-mx">1</span></td>
+        <td><span lang="es-mx">2</span></td>
+        <td><span lang="es-mx">3</span></td>
+        <td><span lang="es-mx">4</span></td>
+        <td><span lang="es-mx">5</span></td>
+        <td><span lang="es-mx">6</span></td>
+        <td><span lang="es-mx">7</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+      </tr>  
+    </table>
+    <p><span lang="es-mx">Juega el azul en la columna 5</span></p>
+
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber4">
+      <tr>
+        <td><span lang="es-mx">1</span></td>
+        <td><span lang="es-mx">2</span></td>
+        <td><span lang="es-mx">3</span></td>
+        <td><span lang="es-mx">4</span></td>
+        <td><span lang="es-mx">5</span></td>
+        <td><span lang="es-mx">6</span></td>
+        <td><span lang="es-mx">7</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+      </tr>
+    </table>
+    <p><span lang="es-mx">Juega el morado en la columna 6 (cooperando)</span></p>
+    </td>
+    <td width="50%">
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber5">
+      <tr>
+        <td><span lang="es-mx">1</span></td>
+        <td><span lang="es-mx">2</span></td>
+        <td><span lang="es-mx">3</span></td>
+        <td><span lang="es-mx">4</span></td>
+        <td><span lang="es-mx">5</span></td>
+        <td><span lang="es-mx">6</span></td>
+        <td><span lang="es-mx">7</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/pazul.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+        <td><img border="0" src="../../images/plila.gif" width="14" height="14"></td>
+      </tr>
+    </table>
+    <p><span lang="es-mx">Y así el azul gana (muy fácilmente)</span></td>
+  </tr>
+</table>
+
+</body>
+</html>

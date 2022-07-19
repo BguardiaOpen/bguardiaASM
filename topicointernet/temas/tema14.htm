@@ -1,0 +1,189 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Tema 14 - ActiveX</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<p><font color="#ff0000" size="5" face="Arial"><b>Tema 14 - ActiveX</b></font></p>
+
+<p><font size="5" face="Arial"><b></b></font>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Objetivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Comprender el papel del est&aacute;ndar ActiveX de Microsoft como un 
+    modelo de programaci&oacute;n por componentes y su aplicaci&oacute;n a 
+    Internet, Intranet y Extranet.</font></p>
+    <ul>
+        <li><font color="#000000" face="Arial">Controles ActiveX</font>
+        <li><font color="#000000" face="Arial">Componentes ActiveX del lado del servidor</font>
+        <li><font color="#000000" face="Arial">Aspectos de seguridad</font></li>
+    </ul>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Controles ActiveX</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Concepto:</STRONG></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><FONT face=Arial>Son ejecutables nativos de una 
+    plataforma (generalmente Windows) que siguen la interfase COM para el 
+    llamado de objetos, implementando por lo tanto objetos que se pueden 
+    utilizar desde el navegador (o fuera de &eacute;l) por lenguajes de script, 
+    Java o aplicaciones tradicionales.</FONT></p>
+    <p><FONT face=Arial></FONT><FONT face=Arial>Lo que los 
+    hace &quot;controles&quot; a diferencia de otras tecnolog&iacute;as ActiveX, 
+    es que pueden ser &quot;incluidos&quot; en un documento ActiveX, por 
+    ejemplo, en una p&aacute;gina Web; y que pueden &quot;bajarse&quot; de un 
+    servidor, instal&aacute;ndose autom&aacute;ticamente.</FONT></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Aplicaciones:</font></STRONG></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><FONT face=Arial>Nos permiten aumentar las 
+    capacidades de acceso a recursos del cliente, entre otros ejemplos:</p>
+    <UL>
+        <LI><font color="#000000" face="Arial" ></font><FONT 
+        face=Arial>Interfases m&aacute;s ricas e intuitivas.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Comunicaciones por sockets 
+        y HTTP, sin limitante del servidor al que nos podemos 
+        conectar.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Uso de archivos e 
+        impresoras, por ejemplo para reportes bien dise&ntilde;ados, o para 
+        exportarlos a distintos formatos (GIF, PDF, entre 
+        otros).</FONT></FONT></LI></UL>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Ventajas:</STRONG></font></p>
+    <p><font color="#000000" face="Arial" >Podemos desarrollarlos en distintos lenguajes, tales como Visual Basic 
+    y Visual C++.</font></p>
+    <p><font color="#000000" face="Arial" >Podemos utilizarlos para incrementar las capacidades del cliente, 
+    mucho m&aacute;s all&aacute; de lo que permiten los applets de 
+    Java.</font></p>
+    <p><font color="#000000" face="Arial" ></font><FONT face=Arial>Adem&aacute;s, al igual que los applets y a 
+    diferencia de los plug-ins de Netscape, se bajan directamente del servidor 
+    lo que evita un proceso manual de instalaci&oacute;n para el usuario. La 
+    instalaci&oacute;n es autom&aacute;tica e &quot;inteligente&quot; en el 
+    sentido de mantener la &uacute;ltima versi&oacute;n.</FONT></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Desventajas:</STRONG></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><FONT face=Arial>Est&aacute;n limitados a ser 
+    utilizados en Internet Explorer, y hay que desarrollar distintas versiones 
+    para soportar distintas plataformas; por ello, generalmente s&oacute;lo 
+    podemos usarlos en contextos limitados, como una Intranet o Extranet, donde 
+    podemos reglamentar qu&eacute; plataforma se utiliza.</FONT></p>
+    <p><FONT face=Arial></FONT><FONT face=Arial>La 
+    seguridad es un problema importante, pues si el usuario los autoriza (por 
+    ejemplo, desactivando por error la seguridad de su navegador), el ActiveX 
+    puede hacer lo que quiera con la computadora cliente, por poner algunos 
+    ejemplos da&ntilde;inos:</FONT></p>
+    <UL>
+        <LI><FONT face=Arial>Dar shutdown</FONT></LI>
+        <LI><FONT face=Arial>Formatear el disco</FONT></LI>
+        <LI><FONT face=Arial>Instalar un virus</FONT></LI>
+        <LI><FONT face=Arial>Transmitir el directorio de tu m&aacute;quina a un 
+        servidor pirata donde se examine, y si se descubre informaci&oacute;n 
+        interesante (generalmente privada), transmitirla 
+        tambi&eacute;n.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Enviar correos con tu 
+        identidad y desde tu m&aacute;quina, por ejemplo un &quot;spamming&quot; 
+        a todos los que est&eacute;n en tu libreta de direcciones.</FONT></LI></UL>
+    <p><FONT face=Arial></FONT><FONT face=Arial>Netscape 
+    tiene un soporte equivalente conocido como &quot;plug-ins&quot;, que son 
+    programas independientes y por ello est&aacute;n disponibles en diversas 
+    plataformas; sin embargo, su programaci&oacute;n es dif&iacute;cil 
+    tambi&eacute;n, y tienen los mismos riesgos de seguridad.</FONT></p>
+    <p><FONT face=Arial></FONT><FONT face=Arial>Existen 
+    &quot;plug-ins&quot; para dar soporte a ActiveX dentro de Netscape, sin 
+    embargo no son 100% compatibles con el c&oacute;digo desarrollado para 
+    Explorer, y en mi experiencia, son inestables.</FONT></p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Componentes ActiveX del lado del 
+servidor</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Concepto:</STRONG></font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><FONT face=Arial>Ya los vimos en un tema 
+    anterior, son implementaciones de objetos siguiendo la interfase COM que 
+    pueden ser llamadas por el c&oacute;digo en nuestras p&aacute;ginas ASP, lo 
+    que permite aumentar las capacidades del servidor Web.</FONT></p>
+    <p><FONT face=Arial></FONT><FONT face=Arial>En 
+    particular son de nuestro inter&eacute;s el control de otras aplicaciones 
+    (OLE Automation), y el desarrollo espec&iacute;fico de componentes que 
+    formen salidas HTML (que cumplen una funci&oacute;n similar a ASP, pero son 
+    m&aacute;s r&aacute;pidos al ser compilados).</FONT></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Aplicaciones:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><FONT face=Arial>Podemos utilizarlos para 
+    extender de diversas maneras las capacidades de ASP, entre otros muchos 
+    ejemplos:&acute;</FONT></p>
+    <UL>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Conexi&oacute;n a bases de 
+        datos</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Generaci&oacute;n de 
+        gr&aacute;ficas en el servidor</FONT></LI>
+        <LI><FONT face=Arial>Conexi&oacute;n del servidor con otros servidores, 
+        por ejemplo env&iacute;o de correo, recepci&oacute;n y conversi&oacute;n 
+        de HTML de otro servidor.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Autorizaci&oacute;n de 
+        tarjetas de cr&eacute;dito y otros medios de pago en </FONT><FONT 
+        face=Arial>el comercio electr&oacute;nico.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Creaci&oacute;n de archivos 
+        en el servidor, inclusive en formatos complejos como archivos Word y 
+        Excel.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Compilaci&oacute;n remota: 
+        si el servidor cuenta con un compilador, puede ejecutarse a 
+        trav&eacute;s de una p&aacute;gina.</FONT></LI>
+        <LI><FONT face=Arial></FONT><FONT face=Arial>Administraci&oacute;n 
+        remota de un servidor, conectando p&aacute;ginas ASP a objetos que 
+        configuren distintos aspectos del servidor.</FONT></LI></UL>
+    <P><FONT face=Arial></FONT><FONT face=Arial>En general, estamos apenas 
+    iniciando la exploraci&oacute;n de las posibilidades de estas 
+    tecnolog&iacute;as.</FONT></P>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Ventajas:</font></STRONG></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"></font><FONT face=Arial>Se tiene un control completo 
+    sobre los recursos disponibles para el servidor. Esto nos genera capacidades 
+    que originalmente no fueron dise&ntilde;adas para Web.</FONT></p>
+    <p><FONT face=Arial></FONT><FONT face=Arial>No hay 
+    tantos problemas de seguridad, pues el c&oacute;digo &quot;peligroso&quot; 
+    puede ser controlado por los desarrolladores y administradores de la 
+    aplicaci&oacute;n Web; no se &quot;baja&quot; de un servidor que puede no 
+    ser confiable; y no causa desconfianza en el cliente, pues no se le requiere 
+    hacer nada en su computadora.</FONT></p>
+    <p><font color="#000000" face="Arial" >Podemos utilizar otros lenguajes (Visual Basic, Visual C++) para 
+    desarrollar componentes del lado del servidor que facilitan el desarrollo de 
+    nuevas capacidades, as&iacute; como aumentar el desempe&ntilde;o y la 
+    escalabilidad de aplicaciones Internet. Por ello, en general son mucho 
+    m&aacute;s eficientes que las p&aacute;ginas ASP simples, de modo que son 
+    una alternativa l&oacute;gica para aumentar el desempe&ntilde;o de un 
+    sistema en Internet.</font></p>
+    <p><font color="#000000" face="Arial" ></font><FONT face=Arial>Inclusive pueden ser mucho m&aacute;s 
+    eficientes que los Servlets, si bien no m&aacute;s que un ISAPI o 
+    NSAPI.</FONT></p>
+    <p><font color="#000000" size="3" face="Arial,Helv"><STRONG>Desventajas:</STRONG></font></p>
+    <p><FONT face=Arial>No son tan f&aacute;ciles de 
+    desarrollar ni de instalar en el servidor (no basta un FTP y listo); si no 
+    tenemos el control del mismo (por ejemplo, el servidor es alojado), a veces 
+    simplemente no tenemos la posibilidad de usarlos.</FONT></p>
+    <p><FONT face=Arial></FONT><FONT face=Arial>Son 
+    tecnolog&iacute;a &quot;propietaria&quot;, utilizables en el servidor IIS de 
+    Microsoft pero no en otros servidores, a diferencia de los 
+    &quot;servlets&quot; que son utilizables en distintas plataformas de 
+    servidor Web.</FONT></p>
+</blockquote>
+
+<p><font color="#000000" size="3" face="Arial,Helv"><b></b></font>&nbsp;<font color="#006600" size="5" face="Arial"><b>Bibliograf&iacute;a y 
+Referencias</b></font></p>
+
+<blockquote>
+    <blockquote>
+        <blockquote>
+            <p>&nbsp;</p>
+    <p><FONT face=Arial><A 
+            href="http://www.activex.org">http://www.activex.org</A></FONT></p>
+    <p><FONT face=Arial><A 
+            href="http://www.microsoft.com/activex">http://www.microsoft.com/activex</A></FONT></p>
+    <p>&nbsp;</p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+</body>
+</html>

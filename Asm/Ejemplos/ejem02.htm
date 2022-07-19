@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Ejemplos de la Sesión 1</title>
+<!-- Created by AOLpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#00FF00" vlink="#0000FF">
+
+<h2>Ejemplos </h2>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"></p>
+
+<h3>Números sin signo: </h3>
+
+<p>10011000b = 98 hexadecimal (1001=9, 1000=8). </p>
+
+<p>10011000b = 128+16+8 = 152 (decimal) </p>
+
+<p>9A0Bh = 9 * 4096 + 10 (A) * 256 + 0 * 16 + 11 (B) = <br>
+36864 + 2560 + 11 = 39435. </p>
+
+<p>9A0Bh = 1001 1010 0000 1011 binario. </p>
+
+<p>1500 decimal a hexadecimal: <br>
+1500 / 16 = 93 y sobran 12. El sobrante (12) es el dígito C. <br>
+93 / 16 = 5 y sobran 13. El sobrante (13) es el dígito D. <br>
+5 / 16 = 0 y sobran 5. En realidad ya no se necesitaba. <br>
+1500 = 5DCh. </p>
+
+<p>1500 decimal a binario: <br>
+1500 / 2 = 750 y sobran <strong>0 </strong><br>
+750 / 2 = 375 y sobran<strong> 0 </strong><br>
+375 / 2 = 187 y sobra<strong> 1 </strong><br>
+187 / 2 = 93 y sobra <strong>1 </strong><br>
+93 / 2 = 46 y sobra <strong>1 </strong><br>
+46 / 2 = 23 y sobran <strong>0 </strong><br>
+23 / 2 = 11 y sobra <strong>1</strong> <br>
+11 / 2 = 5 y sobra <strong>1</strong> <br>
+5 / 2 = 2 y sobra<strong> 1 </strong><br>
+2 / 2 = <strong>1</strong> y sobra<strong> 0 </strong><br>
+Con esto, vemos que 1500 = 10111011100b. (Lee los dígitos de
+abajo arriba). </p>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"></p>
+
+<h3>Números con signo</h3>
+
+<p>-5 en binario 8 bits con signo:</p>
+
+<p>5 decimal a binario: </p>
+
+<p>5 / 2 = 2 y sobra <strong>1</strong></p>
+
+<p>2 / 2 = <strong>1</strong> y sobra <strong>0</strong></p>
+
+<p>Así que el 5 positivo es 101b (leer dígitos de abajo hacia
+arriba)</p>
+
+<p>Para hacerlo negativo, debemos tomar los 8 bits y hacer el
+complemento a 2:</p>
+
+<table border="0">
+    <tr>
+        <td width="50%">5 positivo a 8 bits: </td>
+        <td width="50%">00000101b = 05h</td>
+    </tr>
+    <tr>
+        <td width="50%">Complemento a 1:</td>
+        <td width="50%">11111010b = FAh</td>
+    </tr>
+    <tr>
+        <td width="50%">Le sumamos 1: </td>
+        <td width="50%">11111011b = FB h</td>
+    </tr>
+</table>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"></p>
+
+<h3>Representación</h3>
+
+<p>Se desea hacer un juego donde el jugador recorre una pista de
+carreras. Para ello, el juego contará con mapas las pistas más
+famosas del mundo, de manera que el conductor recorra la pista
+con sus curvas tal como aquellos de Fórmula 1.</p>
+
+<p>¿Cómo se puede representar una pista, de manera que
+describamos la información necesaria para hacer el juego?</p>
+
+<h5>Solución:</h5>
+
+<p>Hay muchas maneras; lo importante es comprender que la pista
+debe &quot;estirarse&quot; para convertirse en un objeto lineal,
+que se pueda acomodar en la memoria unidimensional.</p>
+
+<p>Desde el punto de vista del conductor, podríamos describir la
+pista en una forma relativa, donde se recorre cierta cantidad de
+metros en línea recta, y después de eso se puede tomar una
+curva a la izquierda o a la derecha, la que cambia la dirección
+del auto en &quot;n&quot; grados, y si suponemos una curva
+uniforme, ese cambio de &quot;n&quot; grados ocurre en X metros.
+Si vemos esto en conjunto, puede ocurrírsenos una
+representación para cada segmento de la pista:</p>
+
+<table border="1" width="100%">
+    <tr>
+        <th align="left">Tipo de Segmento</th>
+        <th align="left">Distancia</th>
+        <th align="left">Ángulo</th>
+    </tr>
+    <tr>
+        <td>Recta, Curva a la Derecha o a la Izquierda</td>
+        <td>metros que mide el segmento</td>
+        <td>Grados (-180° a +180°) en que se cambia la
+        dirección</td>
+    </tr>
+</table>
+
+<p>Con esto, nada más tenemos que analizar ahora como
+representar cada uno de los datos de cada segmento:</p>
+
+<ul>
+    <li>El Tipo de Segmento puede ser un caracter, 'R' cuando sea
+        recta, 'D' cuando sea curva a la derecha, e 'I' cuando
+        sea a la izquierda.</li>
+    <li>La distancia puede ser un entero de 16 bits sin signo; no
+        requerimos distancias negativas, y con 65536 metros
+        parece suficiente. Podría ser de 8 bits, pero 255 metros
+        me pareció que podría resultar insuficiente para muchas
+        rectas.</li>
+    <li>El ángulo sería un entero de 16 bits con signo, que es
+        lo mínimo suficiente para representar el rango
+        requerido.</li>
+</ul>
+
+<p>De esta manera, cada segmento de la pista requeriría 5 bytes
+para representarse (1 por el tipo de segmento, 2 por la
+distancia, y 2 por el ángulo).</p>
+
+<p>Si una pista se puede describir con 8 segmentos, ocuparía 40
+bytes; si requiere 125 segmentos, ocuparía 625 bytes; y así,
+según que tantas curvas alternativas tenga la pista.</p>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Tema 15 - Tendencias futuras</title>
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+<p><font color="#ff0000" size="5" face="Arial"><b>Tema 15 - Tendencias futuras</b></font></p>
+
+<p>&nbsp;</p>
+
+<p><font color="#006600" size="5" face="Arial"><b>Objetivos</b></font></p>
+
+<blockquote>
+    <p><font color="#000000" face="Arial">Conocer generalidades sobre algunas tecnolog&iacute;as emergentes o 
+    a&uacute;n no estandarizadas en el desarrollo Web.</font></p>
+    <ul>
+        <li><font color="#000000" face="Arial">XML y XSL.</font>
+        <li><font color="#000000" face="Arial"></font><FONT face=Arial>Biz Talk.</FONT></li>
+        <li><font color="#000000" face="Arial"></font><FONT face=Arial>Style Sheets.</FONT></li>
+    </ul>
+    <p>&nbsp;</p>
+</blockquote><font color="#006600" size="5" face="Arial"><b>
+
+<p><font color="#006600" size="5" face="Arial"><b>Style Sheets</b></font></p></b>
+
+</font>
+
+<blockquote>
+    <p><b><font color="#000000" size="3" face="Arial,Helv">Justificación</font></b><font color="#006600" size="5" face="Arial"><b><font color="#000000" size="3" face="Arial,Helv">:</font></b></p>
+    </font>
+    <blockquote>
+      <p><font color="#000000" size="3" face="Arial,Helv">Cuando se quiere aplicar un formato uniforme a un sitio Web, si ya es mayor de unas cuantas páginas, es
+      bastante tardado modificar el diseño y adaptarlo a algo nuevo, utilizando HTML puro y tradicional (versión 3 y anteriores...)</font></p>
+      <p><font color="#000000" size="3" face="Arial,Helv">Por otro lado, muchas veces deseamos darle formato a elementos tales como la información en una tabla; y se
+      vuelve exageradamente tedioso cuando hay muchos elementos.</font></p>
+      <p><font color="#000000" size="3" face="Arial,Helv">Por ejemplo, para conseguir la siguiente tabla:</font></p>
+      <div align="center">
+        <center>
+        <table border="1" cellpadding="0" cellspacing="0">
+        <tr>
+        <td><font face="Arial" size="1" color="#FF0000">Dato 1</font></td>
+        <td><font face="Arial" size="1" color="#FF0000">Dato 2</font></td>
+        </tr>
+        <tr>
+        <td><font face="Arial" size="1" color="#FF0000">Dato 3</font></td>
+        <td><font face="Arial" size="1" color="#FF0000">Dato 4</font></td>
+        </tr>
+        </table>
+        </center>
+      </div>
+    <p><font color="#000000" size="3" face="Arial,Helv">El código que se necesita es:</font></p>
+      <font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;table border=</font><font SIZE="1" COLOR="#000000">&quot;1&quot;</font><font SIZE="1" COLOR="#0000c0"> cellpadding=</font><font SIZE="1" COLOR="#000000">&quot;0&quot;</font><font SIZE="1" COLOR="#0000c0">
+      cellspacing=</font><font SIZE="1" COLOR="#000000">&quot;0&quot;</font><font SIZE="1" COLOR="#0000c0">&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;tr&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;td&gt;&lt;font face=</font><font SIZE="1" COLOR="#000000">&quot;Arial&quot;</font><font SIZE="1" COLOR="#0000c0"> size=</font><font SIZE="1" COLOR="#000000">&quot;1&quot;</font><font SIZE="1" COLOR="#0000c0">
+      color=</font><font SIZE="1" COLOR="#000000">&quot;#FF0000&quot;</font><font SIZE="1" COLOR="#0000c0">&gt;</font><font SIZE="1" COLOR="#000000">Dato 1</font><font SIZE="1" COLOR="#0000c0">&lt;/font&gt;&lt;/td&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;td&gt;&lt;font face=</font><font SIZE="1" COLOR="#000000">&quot;Arial&quot;</font><font SIZE="1" COLOR="#0000c0"> size=</font><font SIZE="1" COLOR="#000000">&quot;1&quot;</font><font SIZE="1" COLOR="#0000c0">
+      color=</font><font SIZE="1" COLOR="#000000">&quot;#FF0000&quot;</font><font SIZE="1" COLOR="#0000c0">&gt;</font><font SIZE="1" COLOR="#000000">Dato 2</font><font SIZE="1" COLOR="#0000c0">&lt;/font&gt;&lt;/td&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;/tr&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;tr&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;td&gt;&lt;font face=</font><font SIZE="1" COLOR="#000000">&quot;Arial&quot;</font><font SIZE="1" COLOR="#0000c0"> size=</font><font SIZE="1" COLOR="#000000">&quot;1&quot;</font><font SIZE="1" COLOR="#0000c0">
+      color=</font><font SIZE="1" COLOR="#000000">&quot;#FF0000&quot;</font><font SIZE="1" COLOR="#0000c0">&gt;</font><font SIZE="1" COLOR="#000000">Dato 3</font><font SIZE="1" COLOR="#0000c0">&lt;/font&gt;&lt;/td&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;td&gt;&lt;font face=</font><font SIZE="1" COLOR="#000000">&quot;Arial&quot;</font><font SIZE="1" COLOR="#0000c0"> size=</font><font SIZE="1" COLOR="#000000">&quot;1&quot;</font><font SIZE="1" COLOR="#0000c0">
+      color=</font><font SIZE="1" COLOR="#000000">&quot;#FF0000&quot;</font><font SIZE="1" COLOR="#0000c0">&gt;</font><font SIZE="1" COLOR="#000000">Dato 4</font><font SIZE="1" COLOR="#0000c0">&lt;/font&gt;&lt;/td&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;/tr&gt;
+      </p>
+      </font><font SIZE="1" COLOR="#000000">
+      <p>
+      </font><font SIZE="1" COLOR="#0000c0">&lt;/table&gt;
+      </p>
+      </font>
+    <p><font color="#000000" size="3" face="Arial,Helv">Nótese la repetición en el tag de Font que le está aplicando las pripiedades a cada una de las celdas.</font></p>
+      <p><font color="#000000" size="3" face="Arial,Helv">Si todas las celdas de una página tienen el mismo estilo, y hay muchas (como en una tabla de calificaciones),
+      se vuelve tedioso además de ineficiente.</font></p>
+    </blockquote>
+    <p><b><font color="#000000" size="3" face="Arial,Helv">Concepto</font><font color="#000000" size="3" face="Arial,Helv">:</font></b></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Las hojas de estilo (Style Sheets) están basadas en un tag especial y nuevo a HTML 4.0 (&lt;style&gt;), el cual
+    contendrá información sobre el formato que se desea aplicar para determinados Tags posteriores.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Puede incluirse una definición de estilo como parte del HTML en sí mismo:</font></p>
+    <pre>        &lt;style type=&quot;text/css&quot;&gt;&lt;!--
+			.byline { margin-top: 5px }
+			.subheadline { margin-bottom: 6px }
+			.textfield { font-weight: bold; border: solid 1px #000000 }
+			a { color: #cc0000; text-decoration: none }
+			a:active { color: #cc3300 }
+			a:visited { color: #cc0000 }
+			font.reg10 { font-size: 10px; font-family: verdana, arial, helvetica }
+			font.reg12 { font-size: 12px; font-family: verdana, arial, helvetica }
+			font.reg9 { font-size: 9px; font-family: verdana, arial, helvetica }
+			input { font-size: 10px; font-family: verdana, arial, helvetica }
+			select { font-size: 10px; font-family: verdana, arial, helvetica }
+			table { font-family: verdana, arial, helvetica }
+			textarea { font-size: 10px; font-family: verdana, arial, helvetica; border: solid 1px #000000 }--&gt;
+	&lt;/style&gt;</pre>
+    <p><font color="#000000" size="3" face="Arial,Helv">Por ejemplo, esta definición de estilo controla la tipografía y tamaños de ligas, fuente regular, campos de
+    entrada y selección, así como un textarea.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Por otro lado, define el color de los links lo que permite controlar que no se use el color azul que por defecto
+    tiene un link, ni el rojo cuando ya está visitada. En el ejemplo, el link es un rojo intenso que baja de intensidad al pasar el ratón sobre la liga (hover) y queda
+    rojo aún después de visitar la liga (no cambia de color como una liga regular).</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Pero cuando se desea difundirla en todo un sitio, es mucho más sencillo hacer una referencia a un archivo que
+    contenga la definición de estilo (al que generalmente se denomina con la extensión .css)</font></p>
+    <font color="#006600" size="5" face="Arial">
+    <p><font color="#000000" size="3" face="Arial,Helv"><b>Aplicaciones:</b></font></p>
+    </font>
+    <p><font color="#000000" size="3" face="Arial,Helv">Los paquetes actuales de diseño de páginas generalmente ya permiten el uso de Style Sheets en forma
+    semiautomática, lo que facilita la aplicación de un diseño, tipografía, colores y estilos de texto similares para todo un sitio Web.&nbsp;</font></p>
+    <font color="#006600" size="5" face="Arial">
+    <p><font color="#000000" size="3" face="Arial,Helv"><b>Ventajas:</b></font></p>
+    </font><p><font color="#000000" size="3" face="Arial,Helv">Permiten realizar efectos visuales que normalmente no se podrían hacer sin ellas; además de simplificar
+    la aplicación de un formato uniforme a una página o inclusive un sitio Web.</font></p>
+    <font color="#006600" size="5" face="Arial">
+    <p><font color="#000000" size="3" face="Arial,Helv"><b>Desventajas:</b></font></p>
+    </font><p><font color="#000000" size="3" face="Arial,Helv">Solamente son soportadas por Netscape 4.0 en adelante y Explorer 4.0 en adelante (3.0 parcialmente). De
+    modo que si un porcentaje importante de los usuarios no cuentan con navegadores modernos, no disfrutarán de los beneficios.</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Sin embargo, por la forma en que se definen los Tags en HTML el incluir un style sheet no afecta a los usuarios
+    &quot;tradicionales&quot;; simplemente hay que cuidar que nuestro sitio sea visible aún sin contar con los Style Sheets.</font></p>
+</blockquote><font color="#006600" size="5" face="Arial"><b>
+
+<p>&nbsp;</p>
+
+<p>XML y XSL</b></font></P>
+
+<blockquote>
+    <p><font color="#000000" size="3" face="Arial,Helv">Concepto:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Aplicaciones:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Ventajas:</font></p>
+    <p><font color="#000000" size="3" face="Arial,Helv">Desventajas:</font></p>
+    <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+
+<p><font color="#006600" size="5" face="Arial"><b>Bibliograf&iacute;a y Referencias</b></font></p>
+
+<blockquote>
+    <p>&nbsp;</p>
+</blockquote>
+</body>
+</html>

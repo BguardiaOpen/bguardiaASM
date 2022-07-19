@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Manejo de video por acceso directo a memoria</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF" link="#0000FF" vlink="#0000FF" alink="#0000FF">
+
+<h1 align="center">Tema #24 </h1>
+
+<h1 align="center">Manejo de video por acceso directo a memoria </h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase23.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv15.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 15</a></td>
+    <td><p align="center"><a href="../Temas/clase25.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer la técnica de programación de gráficos a&nbsp;través del acceso directo a
+    memoria de video. </li>
+  <li>Utilizar esta técnica para la programación eficiente de gráficas. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<h2>Manejo de video por acceso directo a memoria </h2>
+
+<hr>
+
+<p>Conceptos Generales </p>
+
+<h4>Organización de la memoria </h4>
+
+<dl>
+  <dt>En modo texto (1 y 3), la pantalla se representa en memoria a través de 2 bytes para
+    cada caracter en la pantalla: </dt>
+  <dd>Byte de caracter: contiene el código ASCII </dd>
+  <dd>Byte de atributo: contiene el código del color de fondo y frente, además del parpadeo </dd>
+  <dt>En modo gráfico, un pixel se representa por los bits necesarios para representar su
+    color. </dt>
+  <dd>En un modo monocromático, 1 bit = 1 pixel </dd>
+  <dd>En modo 16 colores (12h), 4 bits = 1 pixel </dd>
+  <dd>En modo 256 colores (13h), 8 bits = 1 byte = 1 pixel </dd>
+</dl>
+
+<hr>
+
+<p>Modo Texto (03h) </p>
+
+<h4>Organización en memoria </h4>
+
+<ul>
+  <li>La zona de memoria donde se encuentra inicia a partir del segmento 0B800h </li>
+  <li>Ocupa 4000 bytes (80 caracteres por renglón x 25 renglones x 2 bytes por caracter) </li>
+  <li>Los bytes con desplazamientos &quot;pares&quot; (0, 2, 4, ...) representan los
+    caracteres; y los nones los atributos. </li>
+  <li>Ejemplo: El caracter en la coordenada (10, 10) se encuentra en el desplazamiento:<br>
+    (10 + 10 x 80) x 2 = 1620 </li>
+  <li>Y su atributo se encuentra en el desplazamiento 1621 </li>
+  <li>El modo 1h se organiza en forma similar; solamente hay que considerar que sólo son 40
+    columnas, lo que cambia la fórmula para calcular el desplazamiento. </li>
+  <li>Hay que considerar el manejo de las páginas. Todo lo anterior, aplica para la página
+    0; las páginas siguientes empiezan con un desplazamiento, de 0800h (2048 decimal)&nbsp;en
+    el caso de modo 1h; y de 1000h (4096 decimal) en el caso de modo 3h; es decir, que en el
+    caso del modo 80x25 se desperdician 96 bytes entre cada página; y&nbsp;48 en el caso del
+    modo 40x25. </li>
+</ul>
+
+<hr>
+
+<p>Modo Gráfico (13h) </p>
+
+<h4>Organización en memoria </h4>
+
+<ul>
+  <li>Inicia a partir del segmento 0A000h </li>
+  <li>Ocupa 64000 bytes (320 columnas x 200 renglones x 1 byte por pixel) </li>
+  <li>Simplemente, cada byte representa el color del pixel que corresponde. </li>
+  <li>El cálculo del desplazamiento se hace en forma similar:<br>
+    Desplazamiento(x,y) = x + y *320 </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ul>
+  <li>PC Interno, Michael Tisher </li>
+  <li>Libros de programación del video VGA. </li>
+</ul>
+
+<p align="left"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<p align="center">Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Lu 16-Sep-96 </em><br>
+<em>Última actualización: Do 16-Feb-97</em> </p>
+</body>
+</html>

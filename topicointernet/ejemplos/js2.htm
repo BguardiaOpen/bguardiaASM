@@ -1,0 +1,32 @@
+<html>
+
+<head>
+<title>Ejemplo 2 de Java Script</title>
+</head>
+<script language="JavaScript">
+<!-- Inicia el comentario para que no se vea el código en navegadores que no soporten Java Script.
+// Aquí se pregunta el nombre, igual que en el caso anterior
+var Nombre=prompt("Bienvenido a nuestra página. ¿Cómo te llamas?", "");
+var Numero1=Math.round(Math.random()*10);
+var Numero2=Math.round(Math.random()*10);
+var Cadena="Cuanto es " + Numero1 + " por " + Numero2
+var Respuesta=prompt(Cadena, "0");
+// aquí se pone doble slash para que esto sea un comentario de Java Script -->
+</script>
+
+
+<body background="js2.htm#FFFFF">
+<script language="JavaScript">
+<!-- Inicia el comentario
+if (Respuesta == Numero1*Numero2) { // Recuerden, la comparación es con == como en C
+	document.writeln("<H3>¡tu respuesta es correcta, " + Nombre +"!</h3>");
+	}
+else {
+	document.writeln("<H3>Lo siento. Tu respuesta es incorrecta, " + Nombre +".");
+	document.writeln("La respuesta correcta era " + Numero1*Numero2 +"</h3>");
+	}
+// aquí se pone doble slash para que esto sea un comentario de Java Script -->
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<script language="javascript">
+<!--
+
+function valnum(campo) {
+	if (campo.value == '')
+		campo.value = '0';
+
+	numero = parseInt(campo.value);
+
+	if (isNaN(numero)) {
+		alert("El dato debe ser numérico");
+		campo.focus();
+		return false;
+		}
+
+	numero = numero + ''; // truco sucio
+
+	if (numero == campo.value)
+		return true;
+	
+	alert("El dato debe ser numérico");
+	campo.focus();
+	return false;
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<form>
+N&uacute;mero 1: 
+<input type="text" name="Numero1"
+	onblur="return valnum(this);">
+<br>
+N&uacute;mero 2: 
+<input type="text" name="Numero1"
+	onblur="return valnum(this);">
+<br>
+N&uacute;mero 3:
+<input type="text" name="Numero1"
+	onblur="return valnum(this);">
+<br>
+
+</form>
+</body>
+</html>

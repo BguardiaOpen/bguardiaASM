@@ -1,0 +1,475 @@
+<html>
+
+<head>
+
+<title>Tema 5 - Uso de variables y estructuras de control en ASP</title>
+</head>
+
+<body>
+<p><img SRC="../../images/luces.gif" HEIGHT="40" WIDTH="671"> </p>
+<p>
+<font color="#FF0000" face="Arial" size="5">Tema 5 - Uso de variables y
+estructuras de control en ASP</font><font FACE="Arial" SIZE="5"> </p>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objetivos</p>
+
+<blockquote>
+  </font></b><font face="Arial" color="#000000"><p>Introducir al alumno en la programación
+  de scripts del lado del servidor, utilizando ASP.</p>
+  <p>Conocer y entender el funcionamiento del intérprete ASP y la creación de páginas
+  dinámicas con el mismo.</font><i></p>
+  </i><p><font face="Arial" color="#000000">Conocer el manejo de las herramientas de
+  desarrollo para ASP (Visual Interdev).</font></p>
+  <p><font face="Arial" color="#000000">Conocer los requerimientos para procesar páginas
+  ASP.</font></p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>&nbsp;</p>
+
+<p>Sintaxis básica de ASP</p>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  </font><p></b></font><font FACE="Arial" SIZE="3" COLOR="#000000">Recordando de la <a href="tema4.htm">clase pasada</a>, vimos que ASP es uno de los modelos para facilitar la
+  programación, interpretando código en el lado del servidor.</p>
+  </font><p><font FACE="Arial" SIZE="3" COLOR="#000000">Para escribir un script del lado del
+  servidor, originalmente se pensó en una extensión al tag SCRIPT, consistente en indicar
+  dónde se ejecuta; sin embargo esto tiene el riesgo de exponer el código fuente del
+  script al cliente, lo cual es una desventaja para muchos sistemas. Por ello, existe la
+  opción de hacerlo con un tag especial, que no se envía con el HTML que recibe el
+  cliente, que es &lt;% ... %&gt;. Por ejemplo, el código del ejemplo anterior, puede
+  escribirse en las dos formas que se muestran a continuación:</font></p>
+  <div align="center"><center><table border="1" cellpadding="2" width="100%">
+    <tr>
+      <td width="50%">&lt;SCRIPT RUNAT=&quot;SERVER&quot; LANGUAGE=&quot;VBSCRIPT&quot;&gt;<p>&lt;/SCRIPT&gt;</td>
+      <td width="50%">&lt;%<p>%&gt;</td>
+    </tr>
+  </table>
+  </center></div><p>&nbsp;</p>
+  <font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+</blockquote>
+</font><b>
+
+<blockquote>
+  <font FACE="Arial,Helv" COLOR="#000000" SIZE="3"><blockquote>
+    <p>&nbsp;</p>
+  </blockquote>
+  </font>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600">
+
+<p>Ejemplos de páginas dinámicas</p>
+
+<blockquote>
+  </font></b><ul>
+    <li><font face="Arial,Helv" color="#000000" size="2"><a href="../Ejemplos/asp1.asp">Página
+      que genera un documento dinámicamente, contando del lado del servidor</a>.</font></li>
+    <li><a href="../Ejemplos/asp2.asp"><font face="Arial,Helv" color="#000000" size="2">Página
+      que incluye la fecha y hora en que fue generada; al ser procesado el script ASP en el
+      servidor, será la hora del servidor y no del cliente.</font></a></li>
+    <li><a href="../Ejemplos/asp3.asp"><font face="Arial,Helv" color="#000000" size="2">Página
+      que se adapta a la hora del día para dar un mensaje de bienvenida al cliente.</font></a></li>
+  </ul>
+  <font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+</blockquote>
+<b>
+
+<p>&nbsp;</p>
+
+<p></font><font FACE="Arial" COLOR="#006600" SIZE="5">Bases del lenguaje VBScript</p>
+
+<blockquote>
+  </font></b><ul>
+    <li><font face="Arial">El lenguaje VB Script es insensitivo a mayúsculas y minúsculas; es
+      decir, se puede escribir con cualquier combinación de éstas sin que represente ninguna
+      diferencia. Esto aplica tanto a variables como instrucciones.</font></li>
+    <li><font face="Arial">Las instrucciones se teclean una por cada línea; si se requieren dos
+      en la misma línea (no se recomienda por legibilidad), se separan con dos puntos (:). Si
+      una instrucción es demasiado larga, se puede continuar una línea terminándola con
+      subguión (_). Ejemplo:</font></li>
+  </ul>
+  <blockquote>
+    <blockquote>
+      <p><em><font face="Arial">Call Procedimiento (Argumento1, Argumento2, Argumento3,
+      Argumento4, _<br>
+      &nbsp;&nbsp;&nbsp; Argumento5, Argumento6, Argumento7, Argumento8, Argumento9) </font></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><font face="Arial">Las instrucciones más utilizadas incluyen las siguientes:</font></li>
+  </ul>
+</blockquote>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3"><b><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td nowrap>Instrucción y sintaxis</td>
+    <td>Descripción</td>
+  </tr>
+  <tr>
+    </b><td nowrap>If <i>condición </i>Then<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    [ElseIf <i>condición</i> Then<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]] . . .<br>
+    [Else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]]<br>
+    End If</td>
+    <td>Permite evaluar una condición y ejecutar los bloques de instrucciones de acuerdo al
+    cumplimiento de la misma. Si la condición se cumple, ejecuta el bloque que sigue al Then.
+    Si no se cumple, es posible evaluar otra condición dentro del mismo If, utilizando
+    ElseIf; pueden usarse tantos como se desee. Si no se cumplió la condición básica y en
+    su caso ninguna de las colocadas en ElseIf, se ejecuta el bloque que sigue a Else
+    (opcional).<br>
+    Ejemplo:<pre><em>&lt;%
+Hora=Hour(Now)
+if Hora&lt;5 then
+%&gt;
+&lt;h3&gt;¡¡Feliz madrugada!!&lt;/h3&gt;
+&lt;%elseif Hora&lt;12 then%&gt;
+&lt;h3&gt;¡¡Buenos días!!&lt;/h3&gt;
+&lt;%elseif Hora&lt;18 then%&gt;
+&lt;h3&gt;¡¡Buenas tardes!!&lt;/h3&gt;
+&lt;%else%&gt;
+&lt;h3&gt;¡¡Buenas noches!!&lt;/h3&gt;
+&lt;%end if%&gt;</em></pre>
+    </td>
+    <b>
+  </tr>
+  <tr>
+    <td nowrap></b>Select Case <i>expresión</i><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[Case<i> valor1</i><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bloque1] . . .<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[Case<i> valor2 [,valor3...]</i><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bloque2] . . .<br>
+    ...<b><br>
+    </b>&nbsp;&nbsp;&nbsp;&nbsp;[Case Else<i> </i><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bloque else]<br>
+    End Select </td>
+    <td>Permite (al igual que <em>switch </em>en lenguaje C) realizar un conjunto de
+    comparaciones contra la misma expresión, y de acuerdo a ello ejecutar distintos bloques
+    de código.</td>
+  </tr>
+  <tr>
+    <td nowrap>Rem Comentario</td>
+    <td>Permite colocar un comentario. Rem puede ser sustituido por una comilla sencilla '</td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap><b>Do </b>[{<b>While</b> | <b>Until</b>} <i>condición</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<b>Exit</b> <b>Do</b>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    <b>Loop</b> </td>
+    <td>Permite realizar un ciclo mientras (<em>while</em>) se cumpla una condición, o hasta
+    (<em>until</em>) se cumpla otra.<p>Podemos salir anticipadamente del ciclo utilizando <em>Exit
+    Do</em>.</td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap><b>For</b> <i>contador</i> <b>=</b> <i>inicio</i><b> To</b> fin [<b>Step</b>
+    <i>cuanto</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<b>Exit For</b>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    <b>Next</b></td>
+    <td>Permite realizar un ciclo llevando un contador numérico; éste se incrementa por
+    defecto de 1 en 1, pero puede variar en otro incremento gracias a la opción Step.<p>Podemos
+    salir anticipadamente del ciclo utilizando <em>Exit For</em>.</td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap><b>While</b> <i>condición</i><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    <b>Wend</b></td>
+    <td>Permite realizar un ciclo mientras se cumpla una condición.</td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap>[<b>Public</b> | <b>Private</b>] <b>Function</b> nombre [<b>(</b><i>arglist</i><b>)</b>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[nombre <b>=</b> <i>expresión</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<b>Exit Function</b>] <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[nombre <b>=</b> <i>expresión</i>]<br>
+    <b>End Function</b> </td>
+    <td>Permite dar un nombre a un bloque de instrucciones, puede recibir parámetros y
+    regresar un resultado. Ejemplo:<pre><em>Function Cubo(Numero)
+	Cubo=Numero*Numero*Numero
+End Function</em></pre>
+    <pre>Podemos salir de la función sin ejecutar todas sus instrucciones, utilizando <em>Exit Function.</em></pre>
+    </td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap>[<b>Public</b> | <b>Private</b>] <b>Sub</b> <i>nombre</i>[<b>(</b><i>arglist</i><b>)</b>]
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<b>Exit Sub</b>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[<i>bloque</i>]<br>
+    <b>End Sub</b> </td>
+    <td>Permite dar un nombre a un bloque de instrucciones, puede recibir parámetros pero no
+    regresa un resultado. <pre>Podemos salir de la subrutina sin ejecutar todas sus instrucciones, utilizando <em>Exit Sub.</em></pre>
+    </td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap>[<b>Call</b>] <i>nombre</i> [<i>arglist</i>]</td>
+    <td>Esta instrucción llama a una subrutina, pasándole opcionalmente sus parámetros.</td>
+    <b>
+  </tr>
+  <tr>
+    </b><td nowrap><b>Dim</b> <i>nombrevariable</i>[<b>(</b>[<i>indices</i>]<b>)</b>]<br>
+    [<b>, </b><i>nombrevariable</i>[<b>(</b>[<i>indices</i>]<b>)</b>]] <b>. . .</b></td>
+    <td>Declara una o varias variables; solamente se indican los nombres de las variables que
+    se van a usar y en su caso, de ser arreglos, su tamaño. Pueden ser de varias dimensiones.
+    </td>
+    <b>
+  </tr>
+  <tr>
+    <td nowrap>Option Explicit </td>
+    </b><td>Forza al script a requerir que todas las variables sean declaradas (con Dim) antes
+    de ser usadas. Por defecto pueden usarse sin declararse.</td>
+    <b>
+  </tr>
+  <tr>
+    <td nowrap>On Error Resume Next</td>
+    </b><td>En caso de un error de ejecución, se genera un mensaje en la página ASP; pero
+    usando On error, no se generará, lo que mejora la interfase; sin embargo, en tal caso el
+    código deberá contar con mecanismos para validar los posibles errores durante la
+    ejecución.</td>
+    <b>
+  </tr>
+</table>
+</center></div>
+
+<p></font><font FACE="Arial" COLOR="#006600" SIZE="5">Manejo de variables y funciones
+disponibles</p>
+
+<blockquote>
+  <p></font></b><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">Todas las variables en
+  VBScript son de tipo Variant, que se adapta automáticamente a los tipos enteros,
+  numéricos de punto flotante, fechas, o cadenas. Sin embargo, existen funciones que
+  permiten convertir entre tipos o que requieren un tipo específico de dato variante.</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <p></font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">La instrucción de asignación
+  se aplica con el signo igual (=), y simplemente requiere construcciones del tipo:</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <blockquote>
+    <p><em><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">Variable = Expresión</font></em></p>
+  </blockquote>
+  <p></font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">En una expresión pueden
+  participar constantes, variables, funciones predefinidas y funciones definidas por el
+  usuario (con <em>Function</em>). Los operadores y funciones más utilizados se mencionan a
+  continuación:</font><font FACE="Arial" COLOR="#006600" SIZE="5"></p>
+  <div align="center"><center><table border="1" cellpadding="2">
+    </font>
+    <tr>
+      <th colspan="2"><font face="Arial">Funciones numéricas y matemáticas</font></th>
+    </tr>
+    <tr>
+      <font FACE="Arial" size="4"><th><font color="#000000">Función/operador y sintaxis</font></font></th>
+      <th><font color="#000000" face="Arial">Descripción</font></th>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 + Var2</font></td>
+      <td><font face="Arial">Suma simple</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 - Var2</font></td>
+      <td><font face="Arial">Resta</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 * Var2</font></td>
+      <td><font face="Arial">Multiplicación</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 / Var2</font></td>
+      <td><font face="Arial">División</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 mod Var2</font></td>
+      <td><font face="Arial">Residuo de la división entera</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 &gt; Var2</font></td>
+      <td><font face="Arial">Comparar si una expresión es mayor a la otra</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 &lt; Var2</font></td>
+      <td><font face="Arial">Menor que</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 &gt;= Var2</font></td>
+      <td><font face="Arial">Mayor o igual</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 &lt;= Var2</font></td>
+      <td><font face="Arial">Menor o igual</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Var1 = Var2</font></td>
+      <td><font face="Arial">Comparación o asignación, según el contexto</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Abs(Var)</font></td>
+      <td><font face="Arial">Valor absoluto</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Sin(Var)</font></td>
+      <td><font face="Arial">Seno de un ángulo (en radianes)</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Cos(Var)</font></td>
+      <td><font face="Arial">Coseno de un ángulo (en radianes)</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Tan(Var)</font></td>
+      <td><font face="Arial">Tangente de un ángulo (en radianes)</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Atn(Var)</font></td>
+      <td><font face="Arial">Arcotangente de un número (resultado en radianes)</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Int(Var)</font></td>
+      <td><font face="Arial">Parte entera</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Round(Var, [Digitos])</font></td>
+      <td><font face="Arial">Redondeo de un número, por defecto, a entero; opcionalmente, a <em>Digitos
+      </em>cifras decimales.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Atn(Var)</font></td>
+      <td><font face="Arial">Arcotangente de un número (resultado en radianes)</font></td>
+    </tr>
+    <tr>
+      <th colspan="2"><font face="Arial">Funciones de conversión de tipos</font></th>
+    </tr>
+    <tr>
+      <td><font face="Arial">CInt(Var)</font></td>
+      <td><font face="Arial">Convierte a tipo entero normal</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">CLng(Var)</font></td>
+      <td><font face="Arial">Convierte a tipo entero largo</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">CDbl(Var)</font></td>
+      <td><font face="Arial">Convierte a tipo punto flotante (doble precisión)</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">CDate(Var)</font></td>
+      <td><font face="Arial">Convierte a tipo fecha/hora</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">CStr(Var)</font></td>
+      <td><font face="Arial">Convierte a tipo cadena</font></td>
+    </tr>
+    <tr>
+      <th colspan="2"><font face="Arial">Funciones de fechas</font></th>
+    </tr>
+    <tr>
+      <td><font face="Arial">Date</font></td>
+      <td><font face="Arial">Devuelve la fecha actual.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Time</font></td>
+      <td><font face="Arial">Devuelve la hora actual.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Now</font></td>
+      <td><font face="Arial">Devuelve la fecha y hora actuales del sistema.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Day(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Month(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Weekday(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Year(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Hour(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Minute(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Second(Fecha)</font></td>
+      <td><font face="Arial">&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">DateAdd(Intervalo, Cantidad, Fecha)</font></td>
+      <td><font face="Arial">Agrega tantos (Intervalo) como indique cantidad a la fecha. Esto
+      puede incluir días (Intervalo=&quot;d&quot;), años (&quot;yyyy&quot;), horas
+      (&quot;h&quot;) ,etcétera.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">DateDiff(Fecha1, Fecha2)</font></td>
+      <td><font face="Arial">Genera la diferencia (como si fuera fecha, en días, meses, años,
+      ...) entre dos fechas</font></td>
+    </tr>
+    <tr>
+      <th colspan="2"><font face="Arial">Funciones de cadena</font></th>
+    </tr>
+    <tr>
+      <td><font face="Arial">InStr(Inicio, Cadena1, Cadena2)</font></td>
+      <td><font face="Arial">Devuelve la posición de la <em>Cadena2 </em>dentro de la <em>Cadena1</em>
+      si la empezamos a analizar en la posición <em>Inicio</em>.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Left(Cadena, n)</font></td>
+      <td><font face="Arial">Devuelve los primeros n caracteres (a la izquierda) de la cadena.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Right(Cadena, n)</font></td>
+      <td><font face="Arial">Devuelve los últimos n caracteres (a la derecha) de la cadena.</font></td>
+    </tr>
+    <tr>
+      <td><font face="Arial">Mid(Cadena, Inicio, n)</font></td>
+      <td><font face="Arial">Devuelve los n caracteres a partir de la posición de inicio, en la
+      cadena.</font></td>
+    </tr>
+  </table>
+  </center></div><b>
+</blockquote>
+<font FACE="Arial" COLOR="#006600" SIZE="5">
+
+<p>&nbsp;</p>
+
+<p>Bibliografía y Referencias</p>
+
+<blockquote>
+  </font></b><font FACE="Arial,Helv" COLOR="#000000" SIZE="3"><font color="#000000" face="Arial"><p>Programación en CGI con Perl 5</p>
+  <blockquote>
+    </font><font face="Arial" color="#000000" size="2"><p>Prentice Hall</p>
+    <p>ISBN 84-89660-71-9</font></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><font FACE="Arial" COLOR="#000000" SIZE="3">Libro de Texto: Programming Active Server
+  Pages</p>
+  <blockquote>
+    </font><font face="Arial" color="#000000" size="2"><p></font>Microsoft Press/McGraw Hill<font face="Arial" color="#000000" size="2"></p>
+    <p></font>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</font>
+</body>
+</html>

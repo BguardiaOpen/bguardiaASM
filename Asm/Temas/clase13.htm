@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title> Manejo básico del Teclado</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #13 </h1>
+
+<h1 align="center">Manejo básico del Teclado usando BIOS </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase12.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Sesiones/sv09.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+        Sesión 9</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase14.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Conocer los servicios de BIOS que nos permiten manejar el
+        teclado, a más bajo nivel que DOS; especialmente, el
+        manejo del teclado sin requerir de espera. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h2>Servicios de la Interrupción 16h </h2>
+
+<ul>
+    <li><a href="#LeerCaracter">Leer un carácter</a> </li>
+    <li><a href="#Keypressed">Checar si se ha tecleado un
+        carácter</a> </li>
+    <li><a href="#ObtenerEstado">Obtener el Estado del Teclado</a>
+    </li>
+</ul>
+
+<hr>
+
+<h2><a name="LeerCaracter">Servicio 00h: Leer un carácter</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>Ninguno </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>AL = Código ASCII de la tecla presionada </li>
+    <li>AH = Scan-Code de la tecla presionada </li>
+</ul>
+
+<p>Esta función es similar al <a href="clase11.htm#Entrada">servicio
+1 de la interrupción 21h</a>; solamente que en una sola llamada
+regresa los caracteres extendidos, sin requerir llamar dos veces.
+En este caso, el código ASCII en AL será 0, y&nbsp;el Scan-Code
+nos indica un valor que identifica la tecla especial. </p>
+
+<p>Si se desea obtener un cáracter ASCII, no tiene caso revisar
+el Scan-Code. </p>
+
+<p>Ya que el servicio de mapeo de teclados en otros idiomas (por
+ejemplo, español) no es parte de BIOS sino de DOS, hay que tener
+cuidado, ya que BIOS indicará los códigos del teclado sin tomar
+en cuenta que se tenga instalado otro tipo de teclado, es decir,
+como si se tuviera teclado en inglés. </p>
+
+<hr>
+
+<h2><a name="Keypressed">Servicio 01h: Checar si hay un carácter
+disponible</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>Ninguno </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>Bandera de Cero prendida, si no hay caracteres
+        disponibles en el teclado; y continúa la ejecución. </li>
+    <li>Bandera de Cero apagada, si hay un carácter; en ese
+        caso: <ul>
+            <li>AL = Código ASCII de la tecla presionada </li>
+            <li>AH = Scan-Code de la tecla presionada </li>
+        </ul>
+    </li>
+</ul>
+
+<p>Esta función tiene un problema en su manejo: deja el
+carácter leído en la cola del teclado, por lo cual se requiere
+llamar después de ella al servicio 0 para poder seguir leyendo
+caracteres. </p>
+
+<hr>
+
+<h2><a name="ObtenerEstado">Servicio 02h: Obtener el estado del
+teclado</a> </h2>
+
+<p>Parámetros: </p>
+
+<ul>
+    <li>Ninguno </li>
+</ul>
+
+<p>Regresa: </p>
+
+<ul>
+    <li>AL = Byte de estado del teclado. </li>
+</ul>
+
+<p>Esta función indica si están presionadas las teclas de
+control, en forma de banderas, de acuerdo a la siguiente tabla: </p>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td>Bit </td>
+        <td>Significado </td>
+    </tr>
+    <tr>
+        <td>7 </td>
+        <td>Modo Insert </td>
+    </tr>
+    <tr>
+        <td>6 </td>
+        <td>Bloqueo de mayúsculas (<em>Caps Lock</em>) </td>
+    </tr>
+    <tr>
+        <td>5 </td>
+        <td>Bloqueo de números(<em>Num Lock</em>) </td>
+    </tr>
+    <tr>
+        <td>4 </td>
+        <td>Bloqueo de desplazamiento (<em>Scroll Lock</em>) </td>
+    </tr>
+    <tr>
+        <td>3 </td>
+        <td>Alt </td>
+    </tr>
+    <tr>
+        <td>2 </td>
+        <td>Control </td>
+    </tr>
+    <tr>
+        <td>1 </td>
+        <td>Shift Izquierdo </td>
+    </tr>
+    <tr>
+        <td>0 </td>
+        <td>Shift Derecho </td>
+    </tr>
+</table>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ul>
+    <li>PC Interno, Michael Tischer </li>
+    <li>Manuales de Interrupciones, por ejemplo el apéndice C
+        del libro de texto. </li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por
+Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+    bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
+<em>Última actualización: Do 16-Feb-97</em> </p>
+</body>
+</html>

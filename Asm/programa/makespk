@@ -1,0 +1,3 @@
+pruspeak.exe: speaker.asm pruspeak.c
+        tasm speaker /zi /ml
+        bcc pruspeak.c speaker.obj

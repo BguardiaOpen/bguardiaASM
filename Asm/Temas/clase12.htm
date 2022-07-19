@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Errores Comunes en Ensamblador</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #12 </h1>
+
+<h1 align="center">Errores Comunes en Ensamblador </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase11.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase13.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Conocer y entender&nbsp;los errores que más comúnmente
+        se cometen en el uso del lenguaje ensamblador. </li>
+    <li>Conocer las técnicas para evitarlos. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<h3>Invertir operandos </h3>
+
+<p>En el MOV, ADD, SUB e instrucciones similares, es fácil
+pensar en el orden contrario al debido. Por ejemplo, la
+instrucción: </p>
+
+<blockquote>
+    <p>MOV AL, BL </p>
+</blockquote>
+
+<p>Podría ser interpretada como &quot;MOVer el valor en AL a
+BL&quot;, cuando su significado es exactamente el contrario:
+&quot;MOVer el valor de BL a&nbsp;AL&quot;. Hay que recordar que
+el destino está siempre a la izquierda. </p>
+
+<h3>Olvidar el uso de los operandos en MUL y DIV </h3>
+
+<p>Es común asumir que la multiplicación tomará al último
+registro que se cargó, y después al parámetro indicado; pero
+siempre se toma como multiplicador AX o AH; y el resultado
+siempre queda en DX:AX o AX, respectivamente. Por ello, el
+código parece lógico pero no se obtiene el resultado esperado.
+Por ejemplo, un programador puede suponer erróneamente que este
+código multiplicará 10 por 20: </p>
+
+<blockquote>
+    <p>MOV DL, 20 </p>
+    <p>MOV CL, 10 </p>
+    <p>MUL DL </p>
+</blockquote>
+
+<h3>Olvidar inicializar DX al dividir. </h3>
+
+<p>De la misma forma que en la multiplicación, en la división
+es fácil pensar que divido un word entre otro, como el código
+siguiente: </p>
+
+<blockquote>
+    <p>; Dividir 1000h ente 5: </p>
+    <p>MOV AX, 1000h </p>
+    <p>MOV BX, 5 </p>
+    <p>DIV BX </p>
+</blockquote>
+
+<p>Sin embargo, cuando el divisor es un Word, la instrucción DIV
+asume que el dividendo está no sólo en AX, sino en DX:AX. Por
+ello, si por suerte DX tuviera 0 al ejecutar el código pasado,
+aparentemente el programa funcionaría bien y sacaría el
+resultado esperado; pero en otro caso, el resultado sería mucho
+mayor de lo planeado, e inclusive podría causar un
+&quot;overflow&quot;, como se explica más adelante. </p>
+
+<h3>Dividir inadvertidamente entre 0. </h3>
+
+<p>Esto causa un error de &quot;overflow&quot; o desbordamiento
+de división;&nbsp;en&nbsp;ciertos sistemas, se
+muestra&nbsp;&quot;división entre 0&quot;. Pero en los otros
+casos, el error no aclara lo que pasó. Desafortunadamente, este
+error termina el programa inmediatamente, por lo que es muy
+notorio. Se arregla por medio de una validación apropiada, que
+evite la división en caso de que el divisor sea 0 y&nbsp;avise
+al usuario de la manera apropiada a la aplicación. </p>
+
+<h3>Tener un resultado demasiado grande en la división. </h3>
+
+<p>Se muestra un error de &quot;overflow&quot; o desbordamiento
+de división, o inclusive, &quot;división entre 0&quot;, cuando
+el operando no es un 0. La causa es que la división define sus
+operandos en forma equivalente a la multiplicación, por lo cual
+el resultado puede no caber en el registro definido para el
+destino. </p>
+
+<p>Por ejemplo, suponer que se desea dividir el valor 2000h entre
+20h: </p>
+
+<blockquote>
+    <p>MOV AX, 2000h ; En AX se coloca el 2000h (perfectamente
+    válido, pues es un Word) </p>
+    <p>MOV BL, 20h ; En BL se coloca el 20h (válido, es un byte)
+    </p>
+    <p>DIV BL ; Esto causa el error!!! </p>
+</blockquote>
+
+<p>Al dividir 2000h entre 20h, nos da 100h. El problema es que
+cuando el parámetro de DIV es un byte, se asume que el dividendo
+es un Word en AX, y que el resultado (cociente) será un byte que
+quedará en AL, así como el residuo en AH. En este caso, el
+cociente no cabe en un byte; de ahí el overflow. </p>
+
+<p>Para resolver este problema, hay varias opciones: </p>
+
+<ul>
+    <li>Si se desea dividir word entre byte, o word entre word,
+        podemos extender el Word a&nbsp;Double Word, y el divisor
+        a Word, para que funcione. En el ejemplo anterior, en vez
+        de AX=2000h, se puede poner DX=0 y AX=2000h; y en vez de
+        dividir entre BL=20h, dividir entre BX=0020h. Con ello,
+        el resultado quedaría en AX=0100h, donde cabe sin
+        problema. </li>
+    <li>Si se desea dividir entre una potencia de 2, se puede
+        hacer mediante corrimientos. </li>
+    <li>En otro caso, cuando no se pueda aplicar ninguno de los
+        anteriores, hay que implementar un algoritmo de
+        división, paso a paso. </li>
+</ul>
+
+<h3>Perder el valor de un registro al llamar una función, y no
+restaurarlo. </h3>
+
+<p>Al ver la ocupación de un registro, si llamamos a un
+procedimiento, es fácil visualizar que el registro &quot;no ha
+cambiado&quot;, sin ver que dentro del procedimiento pudo haber
+sido usado. Por ello, conviene documentar todos los
+procedimientos, para que al llamarlos tomemos las precauciones
+(respaldar los registros), necesarias. </p>
+
+<h3>Olvidar definir la pila, u&nbsp;ocupar demasiado espacio de
+pila. </h3>
+
+<p>Cuando se realizan procedimientos recursivos, o se llama a
+funciones tales como las de VESA del BIOS, se requiere una
+cantidad de pila superior a la estándar; con lo que se puede
+invadir memoria que no se reservó, causando la destrucción del
+código, de los datos o de otros programas en memoria.
+Normalmente, esto presentará como síntoma el bloquear la
+máquina. </p>
+
+<p>Hay que recordar que consume el&nbsp;recurso de la pila en las
+siguientes circunstancias: </p>
+
+<ul>
+    <li>Al usar PUSH (liberando con POP) </li>
+    <li>Al llamar procedimientos (instrucción CALL) </li>
+    <li>Al llamar interrupciones (instrucción INT) </li>
+</ul>
+
+<h3>No colocar el RET al final de un procedimiento. </h3>
+
+<p>A diferencia de un lenguaje de alto nivel, los procedimientos
+son solamente una abstracción que etiqueta un bloque de código.
+Al ser pseudoinstrucciones, el procesador no reconoce realmente
+los procedimientos, por lo que si no colocamos un RET, se hará
+fetch de la siguiente instrucción, así que la ejecución
+continuará con el siguiente procedimiento; lo cual normalmente
+no es lo que se deseaba. </p>
+
+<h3>Tener distinto número de PUSH y POPs en un procedimiento,
+con lo que la pila no queda balanceada. </h3>
+
+<p>En particular, los procedimientos usan la pila para el CALL y
+RET, por lo que este problema causa generalmente que se bloquee
+la máquina. Sin embargo, en ocasiones el resultado es que se
+continúa ejecutando el programa, en un sitio inesperado; por
+ejemplo, en el Turbo Debugger vemos que un RET en vez de regresar
+al punto donde se llamó al procedimiento, vuelve a&nbsp;ejecutar
+el procedimiento o ejecuta otra sección del programa.. </p>
+
+<h3>Hacer un salto condicional cuando la bandera ya ha sido
+alterada. </h3>
+
+<p>Las instrucciones aritméticas y lógicas afectan las
+banderas, las cuales son usadas para evaluar el salto
+condicional. Por ejemplo, este código no funcionaría: </p>
+
+<blockquote>
+    <p>CMP CX, 0 </p>
+    <p>INC CX </p>
+    <p>JE SalSiFue0 </p>
+</blockquote>
+
+<p>Esto podría hacer un programador que quiere
+&quot;compilar&quot; una instrucción tal como: </p>
+
+<blockquote>
+    <p>if&nbsp;(CX++) </p>
+</blockquote>
+
+<p>Donde se desea checar si es 0, primero, incrementar y luego
+ejecutar lo que haya en el if. Pero el resultado de la
+comparación (la bandera de cero), es alterado por el INC, es
+decir, se refiere al resultado del incremento y ya no al de la
+comparación, cuando se ejecuta el salto. </p>
+
+<p>Se recomienda usar los saltos condicionales inmediatamente
+después de la instrucción que checó la condición, o causó el
+efecto en la bandera que se está checando. </p>
+
+<p>La principal excepción a esta recomendación se da cuando
+queremos checar varias condiciones respecto a la misma
+comparación; aquí conviene tomar en cuenta que los saltos NO
+alteran las banderas, por lo que podemos eficientar el código. </p>
+
+<h3>Olvidar llamar a DOS para terminar el programa. </h3>
+
+<p>A diferencia de un lenguaje de alto nivel, el programa no
+termina automáticamente; por lo que en el momento que queramos
+terminarlo, debemos llamar a la función exit de DOS,
+representada por el servicio 4Ch de la interrupción 21h. </p>
+
+<p>Resumiendo: las directivas END y ENDP no generan código,
+necesario para terminar el programa. </p>
+
+<h3>Olvidar establecer el segmento de datos apropiadamente. </h3>
+
+<p>En este caso, suele observarse el síntoma de que se imprime
+basura en pantalla, en vez de los mensajes deseados. </p>
+
+<p>Por eso, se recomienda siempre iniciar el programa con las
+instrucciones: </p>
+
+<blockquote>
+    <p>MOV AX, @data </p>
+    <p>MOV DS, AX </p>
+</blockquote>
+
+<h3>Escribir inadvertidamente información en el lugar que no
+corresponde. </h3>
+
+<p>Como la memoria la accesamos por dirección, al igual que
+cuando usamos apuntadores en C, podemos escribir en memoria que
+no era la que se quería escribir. Por ejemplo, si a&nbsp;una
+cadena se le reservan 10 bytes en memoria, y&nbsp;después
+escribimos 20 caracteres en la cadena, ocupamos los 10 que nos
+corresponden pero invadimos los 10 siguientes, con lo que
+generalmente destruimos los valores de las variables que estén
+definidas después de la cadena. </p>
+
+<p>Inclusive podemos destruir código de esta forma, al accesar
+la memoria del código como si fuera de variables. </p>
+
+<h3>Escribir datos en la base inapropiada </h3>
+
+<p>Por ejemplo, al llamar a DOS, se intenta llamar a la
+interrupción 21h, y&nbsp;se olvida poner la <strong>h</strong>
+de hexadecimal. Con esto, se llama a la interrupción 21 decimal,
+equivalente a&nbsp;15 hexadecimal, la cual no soporta los
+servicios de DOS sino los de otros servicios de BIOS, con lo
+que&nbsp;puede trabarse el programa o&nbsp;más comúnmente no
+hacer nada, pues el&nbsp;servicio 9 y los más comunes de la INT
+21h no están definidos en la 15h. Sin embargo, en este caso no
+obtenemos el efecto deseado (imprimir, accesar un archivo,
+etcétera). </p>
+
+<h3>Usar un salto condicional equivocado </h3>
+
+<p>Específicamente, es muy común usar JG o un&nbsp;salto
+similar&nbsp;cuando se quiere comparar dos números, y saltar
+cuando el resultado de la comparación es &quot;el primero mayor
+que el segundo&quot;. Pero, si los operandos son números sin
+signo, esto puede causar problemas, pues un número muy grande
+será interpretado como &quot;menor&quot;, ya que se tomará como
+negativo. </p>
+
+<p>Hay que recordar que se usan: </p>
+
+<ul>
+    <li>JA, JB, JAE, JBE, para operandos sin tomar en cuenta
+        el&nbsp;signo. </li>
+    <li>JG, JL, JGE, JLE, para operandos tomando en cuenta
+        el&nbsp;signo. </li>
+</ul>
+
+<p>Otros errores comunes del mismo tipo son: </p>
+
+<ul>
+    <li>Lógica invertida: usar el salto si fueron diferentes,
+        cuando se quería saltar si eran iguales. Aquí conviene
+        ver la sesión de &quot;técnicas de programación&quot;,
+        para ver cómo hacer la equivalencia de la lógica de
+        Ensamblador con la lógica de un lenguaje de alto nivel. </li>
+    <li>No considerar el caso de igualdad; este también es un
+        error común en los lenguajes de alto nivel. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<p>Guía del Usuario de Turbo Assembler, Versión 2.0 </p>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por
+Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ju 12-Sep-96 </em><br>
+<em>Última actualización: Do 16-Feb-97</em> </p>
+</body>
+</html>

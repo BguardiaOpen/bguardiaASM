@@ -1,0 +1,67 @@
+<%@ Language=VBScript %>
+<%
+Matricula = Request("Matricula")
+
+Set Conn = Server.CreateObject("ADODB.Connection")
+
+Conn.Open "Driver={Microsoft Access Driver (*.mdb)};DBQ=C:\materias.mdb"
+
+SQL1 = "select Nombre,Carrera from Alumnos where Matricula = " & Matricula
+Set DatosAlumno = Conn.Execute(SQL1)
+
+'SQL = "select ClaveMateria, Calificacion from Calificaciones"
+'SQL = SQL & " where Matricula = " & Matricula
+SQL = "select Materias.ClaveMateria, Nombre, Calificacion from Materias,Calificaciones"
+SQL = SQL & " where Matricula = " & Matricula
+SQL = SQL & " and Materias.ClaveMateria = Calificaciones.ClaveMateria"
+
+Set Resultado = Conn.Execute(SQL)
+%>
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+</HEAD>
+<BODY>
+
+<%
+if DatosAlumno.EOF or Resultado.EOF then
+%>
+No hay calificaciones para el alumno <%=Matricula%>
+<%
+else
+%>
+<P>
+<TABLE BORDER>
+<TR>
+<TD COLSPAN="2">
+Calificaciones de <%=DatosAlumno("Nombre")%>&nbsp;
+<%=DatosAlumno("Carrera")%>
+</TD>
+</TR>
+<TR>
+<TH>Materia</TH>
+<TH>Nombre</TH>
+<TH>Calificaci&oacute;n</TH>
+</TR>
+<%
+do while not Resultado.EOF
+%>
+<TR>
+<TD><%=Resultado("ClaveMateria")%></TD>
+<TD><%=Resultado("Nombre")%></TD>
+<TD><%=Resultado("Calificacion")%></TD>
+</TR>
+<%
+	Resultado.MoveNext
+loop
+%>
+</TABLE>
+</P>
+<%
+end if
+
+Conn.Close
+%>
+
+</BODY>
+</HTML>

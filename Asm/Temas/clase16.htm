@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title> Manejo de archivos</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #16 </h1>
+
+<h1 align="center">Manejo básico de Archivos usando DOS </h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase15.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv10.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 10</a></td>
+    <td><p align="center"><a href="../Temas/clase17.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer los servicios de DOS que nos permiten manejar archivos, bajo el esquema de los <em>handles</em>
+    o descriptores de archivos. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h3>Conceptos Generales del manejo de archivos a bajo nivel, por DOS </h3>
+
+<ul>
+  <li>La estructura del sistema de archivos es jerárquica <ul>
+      <li>Un directorio raíz </li>
+      <li>Subdirectorios en directorio raíz y en subdirectorios </li>
+    </ul>
+  </li>
+  <li>DOS tiene una tabla de archivos, donde mantiene la información global de cada uno. </li>
+  <li>La cantidad de archivos abiertos se establece con la línea FILES del CONFIG.SYS; de
+    esta manera, al arrancar, el sistema reserva el espacio necesario para la tabla </li>
+  <li>Se llena una entrada de la tabla al abrir un archivo; y se libera al cerrarlo. </li>
+  <li>Todas las funciones sobre archivos se accesan usando el identificador dentro de la tabla
+    de archivos de DOS. </li>
+  <li>Dos métodos: por <em>FCB</em>s y por &quot;<em>handle</em>&quot; entero </li>
+  <li><em>FCB</em>: Estructuras de control de archivos, como las usadas en &lt;stdio.h&gt;
+    (tipo FILE) en &quot;C&quot;. </li>
+  <li>Descriptor o <em>Handle</em>: es de más bajo nivel; corresponde a &quot;io.h&quot;, es
+    decir, funciones como &quot;open&quot;, &quot;write&quot;, &quot;read&quot;, etc. </li>
+  <li>El handle se obtiene al abrir el archivo. </li>
+  <li>Todas las cadenas usadas por estos servicios son ASCIIZ <ul>
+      <li>Estilo &quot;C&quot;, cadenas de caracteres ASCII con un caracter 0 como delimitador, al
+        final. </li>
+    </ul>
+  </li>
+</ul>
+
+<h3>PRINCIPALES SERVICIOS DE LA INTERRUPCIÓN 21h PARA EL MANEJO DE ARCHIVOS </h3>
+
+<ul>
+  <li><a href="#Directorios">Manejo de directorios</a> </li>
+  <li><a href="#Crear">Crear archivo</a> </li>
+  <li><a href="#abrir">Abrir archivo</a> </li>
+  <li><a href="#Leer">Leer del archivo</a> </li>
+  <li><a href="#Escribir">Escribir en el archivo</a> </li>
+  <li><a href="#Seek">Posicionarse en el archivo</a> </li>
+  <li><a href="#Cerrar">Cerrar el archivo</a> </li>
+  <li><a href="#Borrar">Borrar un archivo</a> </li>
+  <li><a href="#Errores">Códigos de error</a> </li>
+</ul>
+
+<hr size="20">
+
+<h2><a name="Directorios">Servicios 39h, 3Ah, 3Bh: Manejo de directorios</a> </h2>
+
+<p>Servicio 39h: Crear subdirectorio (mkdir o md) </p>
+
+<p>Servicio 3Ah: Eliminar subdirectorio (rmdir o rd) </p>
+
+<p>Servicio 3Bh: Cambiar el directorio actual (chdir o cd) </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>DS:DX = Apuntador al nombre (incluyendo trayectoria). </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Cualquier error se indica activando CF, e indicando en AX el código del error. Si CF
+está apagada, no existió ningún error. </p>
+
+<p>Ejemplo: </p>
+
+<p><code>.model small</code> </p>
+
+<p><code>.stack 100h</code> </p>
+
+<p><code>.data</code> </p>
+
+<p><code>NombreDirectorio DB 'C:\EJEMPLO' , 0</code> </p>
+
+<p><code>.code</code> </p>
+
+<p><code>... ; Código de inicialización, etc.</code> </p>
+
+<p><code>LEA DX, NombreDirectorio</code> </p>
+
+<p><code>MOV AH, 39h ; Servicio MD</code> </p>
+
+<p><code>INT 21h</code> </p>
+
+<p><code>MOV AH, 3Bh ; Cambia al directorio</code> </p>
+
+<p><code>INT 21h</code> </p>
+
+<hr size="10">
+
+<h2><a name="Crear">Servicio 3Ch: Crear archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>fopen </code>de C, con modo &quot;w..&quot; </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>DS:DX = Apuntador al nombre del archivo ASCIIZ </li>
+  <li>CX= Atributo con que se debe crear (sólo lectura, escondido, de sistema, copia de
+    respaldo). <ul>
+      <li>0&nbsp;= Atributo normal. </li>
+      <li>El atributo se codifica con bits. </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 y en AX el descriptor o <em>handle</em>. </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Abrir">Servicio 3Dh: Abrir archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>fopen </code>de C, con modo &quot;r..&quot; </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>DS:DX = Apuntador al nombre del archivo ASCIIZ </li>
+  <li>AL = Modo de acceso <ul>
+      <li>0 = lectura (&quot;rb&quot;); 1 = escritura (&quot;rb+&quot; sin permitir leer); 2 =
+        lectura/escritura (&quot;rb+&quot;) </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 y en AX el descriptor o <em>handle</em>. </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Leer">Servicio 3Fh: Leer del archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>fread </code>de C </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>BX = descriptor del archivo, obtenido con los servicios 3Dh ó 3Eh </li>
+  <li>DS:DX =Apuntador al buffer de datos </li>
+  <li>CX =Número de bytes a leer </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 y en AX el número de bytes leídos. Si AX =0, significa que
+    hemos llegado al fin del archivo. </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Escribir">Servicio 40h: Escribir en el archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>fwrite </code>de C </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>BX = descriptor del archivo, obtenido con los servicios 3Dh ó 3Eh </li>
+  <li>DS:DX =Apuntador al buffer de datos </li>
+  <li>CX =Número de bytes a escribir </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 y en AX el número de bytes escritos </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Seek">Servicio 42h: Posicionarse en el archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>fseek </code>de C </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>AL = &quot;whence&quot;, origen para el desplazamiento <ul>
+      <li>0 = SEEK_SET: a partir del inicio del archivo </li>
+      <li>1 = SEEK_CUR: a partir de la posición actual </li>
+      <li>2 = SEEK_END: a partir del final del archivo </li>
+    </ul>
+  </li>
+  <li>CX:DX - Desplazamiento, en bytes. Es un número de 32 bits sin signo, cuya parte alta
+    está en CX y la baja en DX. </li>
+  <li>BX = descriptor del archivo, obtenido con los servicios 3Dh ó 3Eh </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 y en DX:AX la nueva posición, respecto al inicio </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Cerrar">Servicio 3Eh: Cerrar el archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>fclose </code>de C </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>BX = descriptor del archivo, obtenido con los servicios 3Dh ó 3Eh </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Borrar">Servicio 41h: Borrar un archivo</a> </h2>
+
+<p>Equivale a&nbsp;<code>unlink </code>de C </p>
+
+<p>El archivo no debe estar abierto. </p>
+
+<p>Parámetros: 
+
+<ul>
+  <li>DS:DX = Apuntador al nombre del archivo ASCIIZ </li>
+</ul>
+
+<p>Regresa: </p>
+
+<p>Usa CF y AX para el manejo de errores; 
+
+<ul>
+  <li>En caso de éxito, CF=0 </li>
+  <li>En caso de error, CF=1 y&nbsp;en AX el código de error. </li>
+</ul>
+
+<hr size="10">
+
+<h2><a name="Errores">Códigos de error</a> </h2>
+
+<p>0 = Sin error. </p>
+
+<p>1 = Función inválida </p>
+
+<p>2 = Archivo no encontrado. </p>
+
+<p>3 = Trayectoria no encontrada. </p>
+
+<p>4 = Tabla de archivos llena </p>
+
+<p>5 = Acceso denegado </p>
+
+<p>6 = Descriptor inválido </p>
+
+<p>0Ch = Código de acceso inválido </p>
+
+<p>0Fh = Unidad de disco inválida </p>
+
+<p>10h = No se puede remover el directorio actual </p>
+
+<p>11h = No se puede renombrar entre drives distintos </p>
+
+<p>12h = No hay más archivos al buscar el siguiente. </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>Todos los manuales de interrupciones </li>
+  <li>Libro de Texto, capítulo 19; apéndices B y C. </li>
+</ol>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Ejemplos</a> </h2>
+
+<ul>
+  <li><a href="../programa/mitype.asm">Type o&nbsp;Cat </a>(mostrar un&nbsp;archivo en pantalla) </li>
+  <li><a href="../programa/micopy.asm">Copy</a> (crear un archivo destino y colocarle la
+    información leída de un archivo fuente) </li>
+  <li><a href="../programa/numera.asm">Numera</a> (Lee un archivo de texto y lo despliega en la
+    salida estándar, con las líneas numeradas) </li>
+  <li><a href="../programa/compare.asm">Comparador de archivos </a></li>
+</ul>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"></p>
+
+<p align="center">Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Do 30-Jun-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-98</em></p>
+</body>
+</html>

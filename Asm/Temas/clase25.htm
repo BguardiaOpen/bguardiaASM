@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Manejo del Ratón</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF" vlink="#0000FF" alink="#0000FF">
+
+<h1 align="center">Tema #25 </h1>
+
+<h1 align="center">Manejo del Ratón </h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase24.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv16.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 16</a></td>
+    <td><p align="center"><a href="../Sesiones/sv17.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer los servicios de la interrupción 33h para el manejo del ratón, mediante el
+    sistema de &quot;polling&quot;, es decir, muestreo del estado. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<h3 align="center">Manejo del Ratón </h3>
+
+<ul>
+  <li><a href="#introduccion">Introducción</a> </li>
+  <li><a href="#servicios">Tabla de servicios</a> </li>
+</ul>
+
+<hr>
+
+<h2><a name="introduccion">Introducción</a> </h2>
+
+<p>El ratón es controlado, en general, a través de los distintos servicios de la
+interrupción 33h. Dicha interrupción normalmente no es ocupada, sino hasta que se carga
+el driver del ratón, que es proporcionado por el fabricante del hardware. Existen
+funciones para controlar su activación, mostrar el cursor en modo texto o gráfico,
+detectar las coordenadas donde se encuentra y el estado de los botones. Dichas funciones
+son llamadas siguiendo el esquema normal de llamadas a interrupción. </p>
+
+<hr>
+
+<h3><a name="servicios">Servicios</a> </h3>
+
+<table border="1">
+  <tr>
+    <th>Servicio </th>
+    <th>Descripción </th>
+    <th>Entrada </th>
+    <th>Salida </th>
+    <th>Comentarios </th>
+  </tr>
+  <tr>
+    <td>0000h </td>
+    <td>Inicializa el driver del ratón </td>
+    <td>AX = 0000h </td>
+    <td>AX = FFFFh, en éxito<br>
+    BX = Número de botones del ratón <p>AX = 0000h, en error (no hay driver instalado) </td>
+    <td>Esta función debe llamarse antes de cualquier otra, para ver si están disponibles
+    las funciones del driver del ratón. </td>
+  </tr>
+  <tr>
+    <td>0001h </td>
+    <td>Activa el cursor del ratón<br>
+    (lo muestra) </td>
+    <td>AX = 0001h </td>
+    <td>No tiene </td>
+    <td>Esta función permite que el usuario visualize el cursor, sea de texto o gráfico, con
+    el cual se guía para apuntar los objetos en la pantalla. </td>
+  </tr>
+  <tr>
+    <td>0002h </td>
+    <td>Esconde el cursor del ratón<br>
+    (lo desactiva) </td>
+    <td>AX = 0002h </td>
+    <td>No tiene </td>
+    <td>Esta función desactiva la visualización del ratón; esto es particularmente
+    importante en el modo gráfico, al momento de pintar, pues si no se desactiva el cursor
+    del ratón, éste borrará parte de la información pintada. Si se requiere estrictamente
+    que el cursor se visualize, conviene hacer una desactivación y activación rápida. </td>
+  </tr>
+  <tr>
+    <td>0003h </td>
+    <td>Obtener posición del ratón y estado de los botones </td>
+    <td>AX = 0003h </td>
+    <td><a href="#estado">BX = Estado de los botones del ratón. <br>
+    </a>CX = Coordenada horizontal (X) donde se encuentra el apuntador. <br>
+    DX = Coordenada vertical (Y) donde se encuentra el apuntador. <br>
+    </td>
+    <td>Esta función nos permite averigüar en dónde se localiza el cursor en el momento
+    actual, y si los botones están o no presionados. </td>
+  </tr>
+  <tr>
+    <td>0004h </td>
+    <td>Ajusta la posición del ratón </td>
+    <td>AX = 0004h <br>
+    CX = Coordenada horizontal (X). <br>
+    DX = Coordenada vertical (Y). </td>
+    <td>&nbsp;</td>
+    <td>Esta función nos permite colocar al cursor del ratón en una posición determinada,
+    como ocurre cuando se busca dar una opción por defecto al usuario, o restringir el área
+    de movilidad del cursor a una ventana <a href="#ventana">(ver funciones 7 y 8) </a><p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>0007h </td>
+    <td>Restringe la zona de movilidad horizontal del apuntador </td>
+    <td>AX = 0007h <br>
+    CX = Coordenada mínima horizontal (X). <br>
+    DX = Coordenada máxima horizontal (X). </td>
+    <td>&nbsp;</td>
+    <td>Esta función nos permite, en combinación con la 08h, restringir la movilidad del
+    cursor del ratón a una ventana; en particular, con esta función definimos una franja
+    horizontal donde el usuario puede mover al ratón; al llegar a los límites, el cursor ya
+    no avanza más. </td>
+  </tr>
+  <tr>
+    <td>0008h </td>
+    <td>Restringe la zona de movilidad vertical del apuntador </td>
+    <td>AX = 0008h <br>
+    CX = Coordenada mínima vertical (Y). <br>
+    DX = Coordenada máxima vertical (Y). </td>
+    <td>&nbsp;</td>
+    <td>Esta función nos permite, en combinación con la 07h, restringir la movilidad del
+    cursor del ratón a una ventana; en particular, con esta función definimos una franja
+    vertical donde el usuario puede mover al ratón; al llegar a los límites, el cursor ya no
+    avanza más. </td>
+  </tr>
+</table>
+
+<h4><a name="estado">Codificación del estado de los botones del ratón.</a> </h4>
+
+<p>Los ratones normalmente cuentan con dos botones, si bien algunos soportan hasta tres;
+la mayor parte de las aplicaciones no le dan significado al tercero; en el caso de los
+ratones de dos botones, muchos drivers interpretan al caso de ambos botones presionados
+como el presionar el botón medio. 
+
+<ul>
+  <li>Bit 0 = 1 si está presionado el botón izquierdo<br>
+  </li>
+  <li>Bit 1 = 1 si está presionado el botón derecho<br>
+  </li>
+  <li>Bit 2 = 1 si está presionado el botón medio<br>
+  </li>
+  <li>Bits 3-15 = No usados </li>
+</ul>
+
+<h3>Errores comunes en el manejo del ratón</h3>
+
+<blockquote>
+  <p><em><strong><font face="Arial">El error más común, consiste en poner el número de
+  servicio en AH, como estamos acostumbrados al usar otras interrupciones; pero,
+  desafortunadamente, en esta interrupción HAY QUE PONERLO en AX.</font></strong></em></p>
+</blockquote>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>PC Interno, versión 2.0, de Michael Tischer. Ya lo tenemos en Biblioteca del Campus. </li>
+  <li>Microsoft Mouse Reference, también está en Biblioteca. </li>
+</ol>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  f<a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Lu 16-Sep-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-1998</em></p>
+</body>
+</html>

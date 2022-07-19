@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<!-- Created by AOLpress/1.2 -->
+<title>Proyecto 2 - 9901</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#0000ff">
+
+<h2>Proyecto 2 Lenguaje Ensamblador</h2>
+
+<h2 align="center"><span lang="en-us">Visor de archivos (Hexdump)</span></h2>
+
+<p>Fecha de entrega: <span lang="en-us">4 de noviembre </span>de 200<span lang="en-us">2</span>, 19:00 horas. </p>
+
+<p>En equipo de dos personas <strong>máximo </strong>     . 
+
+<ul>
+  <li>El objetivo del programa será tomar un archivo <span lang="en-us">binario 
+  y presentarlo en pantalla byte por byte, hexadecimal.</span>. 
+  <li>La información se le indicará en línea de comandos. La sintaxis será:<p><em>
+      <span lang="es-mx">HEXDUMP </span>&lt;archivo&gt;</em></p>
+    <p>Donde <span lang="es-mx">el </span>parámetro será la trayectoria y 
+    nombre de<span lang="es-mx"> un archivo, el que vamos a desplegar en 
+    pantalla.</span></p>
+  <li>
+    <p>               
+    Las reglas  serán:</p></li>
+  <UL>
+  <li>
+    <p>           <span lang="en-us">Se presentarán 16 bytes del archivo por 
+    cada línea (o menos si es el final del archivo)</span></p>
+  <li>
+    <p>           <span lang="en-us">Para presentarlos, se presentarán 16 
+    columnas con el byte en hexadecimal; y 16 columnas con el equivalente ASCII 
+    del archivo. Los bytes que no tengan una presentación apropiada en ASCII, se 
+    presentarán con un punto (&quot;.&quot;)</span></p>
+  <li><span lang="es-mx">Ejemplo: un archivo de 4 bytes que contenga la palabra 
+  &quot;HOLA&quot; y luego un salto de línea</span></li>
+  </UL>
+    <p><span lang="es-mx">48 4F 4C 41 20 4D 55 4E 44 4F 0D 0A .. .. .. .. HOLA 
+    MUNDO..</span><p>&nbsp;<li><span lang="en-us">En el ejemplo, los números 48 
+  a 41 representan los códigos ASCII, en hexadecimal, de las letras 'HOLA', el 
+  20 es el ASCII del espacio, 4D a 4F los códigos de 'MUNDO', el 0D es el ASCII 
+  en hexadecimal del Retorno de carro, y el 0A el ASCII en hexadecimal del salto 
+  de línea. Los puntos suspensivos que le siguen representan los espacios que se 
+  dejan para completar 16 bytes.</span></li>
+  </ul>
+
+<ul>
+  <li>Deberán usar la interrupción 21h para el manejo de 
+  archivos. 
+  <li><span lang="es-mx">Deberá manejarse un archivo de Cualquier tamaño (como 
+  los ejemplos de clase), especialmente pruébenlo con al menos un archivo mayor 
+  a 64 Kb y con trayectorias largas de archivos.</span></ul>
+</body>
+</html>

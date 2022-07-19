@@ -1,0 +1,10 @@
+goal: ex3-1.exe ex3-2.exe ex3-3.exe
+ex3-1.exe: ex3-2.asm
+        tasm ex3-1 /zi
+        tlink ex3-1 /v
+ex3-2.exe: ex3-2.asm
+        tasm ex3-2 /zi
+        tlink ex3-2 /v
+ex3-3.exe: ex3-3.asm
+        tasm ex3-3 /zi
+        tlink ex3-3 /v

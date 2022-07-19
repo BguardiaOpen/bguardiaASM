@@ -1,0 +1,256 @@
+<html>
+
+<head>
+
+<title>Tema 4 - Modelos de ejecución en el servidor</title>
+</head>
+
+<body>
+<p><img SRC="../../images/luces.gif" HEIGHT="40" WIDTH="671"> </p>
+<p><font color="#FF0000" face="Arial" size="5">Tema 4 - Modelos de Ejecución en el
+servidor</font><font FACE="Arial" SIZE="5"> 
+
+<ul>
+  <li><h4></font><font face="Arial" color="#FF0000" size="2">CGI, NSAPI, ISAPI, ASP</font><font FACE="Arial" SIZE="5"></h4>
+  </li>
+</ul>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Objetivos</p>
+
+<blockquote>
+  </font></b><font face="Arial" color="#000000"><p>Introducir al alumno en las tecnologías
+  más usadas para generar contenido dinámico a través de programas que residen en el
+  servidor.</p>
+  <p>Conocer y entender el funcionamiento del protocolo CGI y cómo se intercala dentro del
+  modelo general del WWW.</font><i></p>
+  </i><p><font face="Arial" color="#000000">Explicar las ventajas y desventajas de los
+  modelos de ejecución en el servidor.</font></p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>&nbsp;</p>
+
+<p>Paradigma de programación CGI</p>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<blockquote>
+  </font><p></b></font><font FACE="Arial" SIZE="3" COLOR="#000000">Hemos seguido la
+  evolución del Web en cuanto a la forma en que podemos generar información y ejecutar
+  código.</p>
+  <p>La primera opción fue que el cliente interpreta solamente HTML, para desplegar
+  información, y toda la interactividad se encuentra en ligas, en la obtención de un
+  documento por el servidor y su envío al cliente.</p>
+  <p align="center"><img src="../../images/Internet/InteraccionClienteServidor.gif" alt="Figura 1" width="1198" height="898"></p>
+  <p>Vimos posteriormente el uso de scripts del lado del cliente, que permiten la ejecución
+  de un código pequeño en el lado del cliente, útil para validación y para aumentar la
+  interactividad del lado del cliente, es decir de la capa de interfase con el usuario.</p>
+  <p align="center"><img src="../../images/Internet/JavaScript.gif" alt="Figura 2" width="1198" height="898"></p>
+  <p>Del mismo modo, surgió un protocolo que permite a un programa en el servidor,
+  interactuar con el servidor Web, con lo que podemos formar páginas Web en forma
+  dinámica; sólo que en este caso, la interactividad aumenta del lado del servidor.</p>
+  <p>CGI significa: Common Gateway Interface</p>
+  <p>Los CGI&#146;s son programas del lado del servidor, los cuales realizan tareas en el
+  servidor, como por ejemplo: acceso a bases de datos y regresan al cliente, información
+  utilizando el protocolo HTTP</font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3"></p>
+  <p align="center"><img src="../../images/Internet/CGI.gif" alt="Figura 3" width="1198" height="898"></p>
+</blockquote>
+
+<blockquote>
+  <font FACE="Arial" SIZE="5" COLOR="#006600"><font face="Arial" color="#000000"><p>Ventajas:</p>
+  <blockquote>
+    </font><font FACE="Arial" SIZE="2" COLOR="#000000"><p>Ofrece mayor interactividad a las
+    páginas HTML, las cuales por su propia naturaleza son estáticas.</p>
+    <p>Son independientes del Browser que las solicita</p>
+  </blockquote>
+  </font><font face="Arial" color="#000000"><p>Desventajas:</p>
+  <blockquote>
+    </font></font><p>Sobrecarga de trabajo para el servidor.</p>
+    <p></font><font FACE="Arial,Helv" COLOR="#000000" size="2">Un mal CGI puede ocasionar
+    problemas de seguridad o performance al servidor</font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3"><b></p>
+  </blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <font FACE="Arial" SIZE="5" COLOR="#006600"><font FACE="Arial" COLOR="#000000"><p></b>Es
+  un paradigma, no un lenguaje de programación</p>
+  <blockquote>
+    </font><font FACE="Arial" SIZE="2" COLOR="#000000"><p>Esto significa que no es necesario
+    aprender un lenguaje de programación específico para hacer CGI&#146;s, sino adoptar un
+    enfoque de programación donde el cliente se comunica con el servidor<b></p>
+  </blockquote>
+  </font><font FACE="Arial" COLOR="#000000"><p></b>Los CGI&#146;s se programan en:</p>
+  <blockquote>
+    </font></font><ul>
+      <li>Lenguajes compilados como Pascal, C, etc.</li>
+      <li>Lenguajes interpretados: Perl, scripts de shell, etc.</li>
+    </ul>
+    <font FACE="Arial" SIZE="5" COLOR="#006600"><b><font FACE="Arial" SIZE="2" COLOR="#000000">
+  </blockquote>
+  </font><font FACE="Arial" COLOR="#000000"><p></b>La dinámica es la misma:</p>
+  <blockquote>
+    </font><font FACE="Arial" SIZE="2" COLOR="#000000"><p>El CGI recibe cabeceras de HTTP y
+    datos; realiza una acción y genera otras cabeceras de HTTP y/o código HTML como
+    respuesta.</font></font></p>
+    <p><b>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</font><font FACE="Arial" SIZE="5" COLOR="#006600">
+
+<p>Métodos Post y Get</p>
+
+<blockquote>
+  </font></b><font FACE="Arial" SIZE="3" COLOR="#000000"><p></font><font FACE="Arial,Helv" COLOR="#000000" size="2">Además de los URLs correspondientes a las páginas que desea
+  localizar, el cliente </font><font FACE="Arial" COLOR="#000000" SIZE="2">puede
+  opcionalmente enviar datos al servidor, para especificarle lo que desea y la manera como
+  espera que el servidor le responda. Por ejemplo, al llenar una forma HTML, los datos que
+  se encuentran en dicha forma se envían al servidor.</p>
+  <p>Dichos datos se describen en parejas variable/valor.</p>
+  <p>Los dos principales métodos (no los únicos) que acepta el servidor son:</p>
+  <blockquote>
+    </font><font size="1" face="Arial" color="#000000"><b><p>Método Post</p>
+    <p>Método Get</p>
+  </blockquote>
+  </b></font><font FACE="Arial" COLOR="#000000" SIZE="2"><p>La diferencia entre éstos
+  métodos reside en la manera como transfieren los datos.</font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3"></p>
+</blockquote>
+<font FACE="Arial" SIZE="5" COLOR="#006600"><b>
+
+<p>&nbsp;</p>
+
+<p>Método Get</p>
+
+<blockquote>
+  </b></font><p></font><font FACE="Arial" COLOR="#000000" SIZE="2">Envía los datos
+  codificados con el URL.</p>
+  <p>Cualquier información de la ruta junto con las datos antes señalados, se colocan en
+  variables de ambiente (Query_String)</font><font FACE="Arial,Helv" COLOR="#000000" size="2"></p>
+  <p></font><font face="Arial" color="#000000" size="2">Ejemplo:</font><font FACE="Arial,Helv" COLOR="#000000" size="2"></p>
+  <p>&nbsp;&nbsp; </font><small>http://200.38.94.1/cgi-bin/msg.cgi?tipo=1&amp;pin=5432101&amp;msg=Hola</small><font FACE="Arial,Helv" COLOR="#000000" size="2"></p>
+  <p></font><font face="Arial" color="#000000" size="2">Cuando se ejecuta un programa CGI
+  desde el servidor Web, éste toma la información de las variables de ambiente, a través
+  de las llamadas correspondientes al sistema operativo (en C, con la función de librería <em>getenv</em>)</font></p>
+</blockquote>
+
+<p><font FACE="Arial" SIZE="5" COLOR="#006600">Método Post</font></p>
+
+<blockquote>
+  <p><font FACE="Arial,Helv" COLOR="#000000" size="2">Este método también codifica sus
+  datos como URL, pero los envía después de enviar todas las cabeceras de solicitud al
+  servidor.</p>
+  </font><font face="Arial" color="#000000" size="2"><p>Incluye la longitud del contenido de
+  la cabecera para que el servidor conozca la cantidad de datos a recibir.</font><font FACE="Arial,Helv" COLOR="#000000" size="2"></p>
+  <p>Cuando se ejecuta un programa CGI desde el servidor Web, éste toma la información de<font face="Arial" color="#000000" size="2"> su entrada estándar.</font></font></p>
+  <font FACE="Arial,Helv" COLOR="#000000" size="2">
+</blockquote>
+</font><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<p><b>&nbsp;</p>
+
+<p></font><font FACE="Arial" SIZE="5" COLOR="#006600">Resumen: CGI</p>
+
+<blockquote>
+  <p></font></b><font FACE="Arial,Helv" COLOR="#000000" SIZE="3">Para construir una
+  aplicación CGI, requeriremos:</p>
+  <p>a) Configurar apropiadamente el Web server, en particular en el aspecto seguridad, para
+  permitir que ejecute al programa CGI.</p>
+  <p>b) Nuestro programa CGI, programado en cualquier lenguaje, tomará datos de variables
+  de ambiente (método GET) o de su entrada estándar (método POST), si es necesario; se
+  ejecutará, realizando cualquier proceso que se desee (comunicación con otros sistemas,
+  cálculos, acceso a bases de datos...) y como salida producirá un documento, generalmente
+  HTML (aunque puede ser GIF, etcétera) con las cabeceras del protocolo HTTP. Este
+  documento lo enviará al servidor Web a través de su salida estándar.<b></p>
+  </font><font FACE="Arial" SIZE="5" COLOR="#006600">
+</blockquote>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<p></font>NSAPI/ISAPI</p>
+
+<blockquote>
+  <p></font></b><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">La principal desventaja del
+  uso de CGI, está en que cuando hay muchos clientes accediendo al sitio Web, se arranca un
+  nuevo proceso para cada instancia de ejecución del programa CGI. Es decir, dado que el
+  servidor es un sistema multiusuario, cada usuario del servidor Web requiere su propia
+  memoria para ejecutar el programa CGI correspondiente.</p>
+  </font><p><font face="Arial,Helv" size="3" color="#000000">Una alternativa lógica, cuando
+  hay suficientes clientes, es que el programa externo al servidor Web se
+  &quot;levante&quot; una sola vez, y espere requerimientos del Web Server para
+  contestarlos. Esto se traduce en que varios clientes sean atendidos por el mismo programa,
+  lo que puede causar un cierto tiempo de espera; sin embargo, en el caso común, en el cual
+  la ejecución del proceso es rápida en relación al costo de levantar nuevos procesos (y
+  barata contra el consumo de memoria correspondiente, que cuando empieza a requerir <em>swap
+  </em>al disco duro hace mucho más lento todo el servidor Web), es mucho más eficiente.</font></p>
+  <p><font face="Arial,Helv" size="3" color="#000000">El primer paradigma para hacer esto
+  consiste en crear un programa que se comunica con el servidor Web a través de funciones
+  de librería (un <em>API </em>o <em>Application Programming Interface</em>, propio del
+  servidor Web). Los primeros en elegir este paradigma fueron Netscape, con su Netscape
+  FastTrak Enterprise Server; y Microsoft, con el Internet Information Server en su primera
+  versión. Naturalmente, crearon librerías similares en su funcionamiento pero diferentes
+  en su implementación, incluyendo las funciones del API. A la de Netscape se le conoce
+  como NSAPI (<em>Netscape Server API</em>), y a la de Microsoft como ISAPI (<em>Internet
+  Server API</em>)</font></p>
+  <p><font face="Arial,Helv" size="3" color="#000000">Las aplicaciones que requieren un alto
+  desempeño y las extensiones al servidor Web se programan generalmente en C, siguiendo
+  este paradigma.</font></p>
+  <p><font face="Arial,Helv" size="3" color="#000000">&nbsp;</font></p>
+  <b><font FACE="Arial" SIZE="5" COLOR="#006600">
+</blockquote>
+<font FACE="Arial,Helv" COLOR="#000000" SIZE="3">
+
+<p></font>Modelos de intérprete anexo al Web Server (servidor de aplicaciones).</p>
+
+<blockquote>
+  <p></font></b><font FACE="Arial,Helv" SIZE="3" COLOR="#000000">El uso de NSAPI e ISAPI, si
+  bien resuelve los problemas de eficiencia, a cambio de ellos resulta relativamente
+  complejo en su programación; prácticamente está limitado al lenguaje C, y requiere
+  conocimientos profundos de la arquitectura del servidor Web.</p>
+  </font><p><font face="Arial,Helv" size="3" color="#000000">En un esfuerzo por aumentar la
+  productividad, surge un paradigma alternativo que combina la eficiencia de ejecutarse en
+  el Web Server con la facilidad de programación de scripts, a cambio de un cierto costo
+  por interpretarse en vez de compilarse. Por ello, son más fáciles de programar y de
+  probar que un programa NSAPI o ISAPI, funcionan en un ambiente limitado y por consiguiente
+  más seguro; a cambio de ello, se pierde un cierto grado de desempeño (el cual no es tan
+  afectado por el número de clientes como ocurría con CGI), por la interpretación de los
+  scripts; y de poder, al no contar con el acceso a todos los recursos del sistema que
+  corresponde a un programa en C.</font></p>
+  <p><font face="Arial,Helv" size="3" color="#000000">Generalmente, se implementan creando
+  un programa que utiliza NSAPI o ISAPI, pero contiene un intérprete de scripts.</font></p>
+  <font FACE="Arial" SIZE="5" COLOR="#006600"><p></font><font face="Arial,Helv" size="3" color="#000000">Ejemplos: <a href="http://www.microsoft.com/asp">Active Server Pages</a>
+  (Microsoft, disponible con Internet Information Server a partir de la versión 3.0 -
+  1997), <a href="http://www.nwfusion.com">Cold Fusion</a> (un tercer proveedor, que
+  proporciona su producto para extender distintos Web Servers, desde 1997), Servlets
+  (realizados en Java, soportados por diversos Web Servers en sus versiones recientes, a
+  partir de 1998).</font><b><font FACE="Arial" SIZE="5" COLOR="#006600"></p>
+  <p></font></b><font face="Arial,Helv" size="3" color="#000000">Entre los lenguajes en que
+  se puede programar siguiendo este paradigma, se incluyen:</font><font FACE="Arial" SIZE="5" COLOR="#006600"><ul>
+    <li></font><font face="Arial,Helv" size="3" color="#000000">VBScript (soportado por ASP)</font><font FACE="Arial" SIZE="5" COLOR="#006600"></li>
+    <li></font><font face="Arial,Helv" size="3" color="#000000">Java Script (soportada por
+      Netscape Server y ASP)</font><font FACE="Arial" SIZE="5" COLOR="#006600"></li>
+    <li></font><font face="Arial,Helv" size="3" color="#000000">Java (servidores de Servlets)</font><font FACE="Arial" SIZE="5" COLOR="#006600"></li>
+    <li></font><a href="http://www.perl.org"><font face="Arial,Helv" size="3" color="#000000">Perl</font></a><font FACE="Arial" SIZE="5" COLOR="#006600"></li>
+    <li></font><font face="Arial,Helv" size="3" color="#000000">Python.</font><b><font FACE="Arial" SIZE="5" COLOR="#006600"></li>
+  </ul>
+</blockquote>
+
+<p>Bibliografía y Referencias</p>
+
+<blockquote>
+  </font></b><font FACE="Arial,Helv" COLOR="#000000" SIZE="3"><font FACE="Arial" COLOR="#000000"><p>Programación en CGI con Perl 5</p>
+  <blockquote>
+    </font><font face="Arial" color="#000000" size="2"><p>Prentice Hall</p>
+    <p>ISBN 84-89660-71-9</font></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><font FACE="Arial" COLOR="#000000" SIZE="3">Libro de Texto: Programming Active Server
+  Pages</p>
+  <blockquote>
+    </font><font face="Arial" color="#000000" size="2"><p></font>Microsoft Press/McGraw Hill<font face="Arial" color="#000000" size="2"></p>
+    <p></font>&nbsp;</p>
+  </blockquote>
+</blockquote>
+</font>
+</body>
+</html>

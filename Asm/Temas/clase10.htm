@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Entrada/Salida Básica y Programación Estructurada</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #10 </h1>
+
+<h1 align="center">Entrada/Salida Básica y Programación
+Estructurada </h1>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><p align="center"><a href="clase09.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        Clase Anterior</a> </p>
+        </td>
+        <td><p align="center"><a href="../Temas/clase11.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        Clase Siguiente</a> </p>
+        </td>
+    </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+    <tr>
+        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        </td>
+        <td><h2><a href="#teoria">Teoría </a></h2>
+        </td>
+        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        </td>
+    </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+    <li>Que el alumno conozca las técnicas básicas para recibir
+        entrada del teclado y&nbsp;enviar salida a pantalla. </li>
+    <li>Que el alumno conozca el concepto de procedimientos, y
+        los aplique en su programación. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<p>Entrada y Salida </p>
+
+<h4>Técnicas básicas </h4>
+
+<hr>
+
+<p>Técnicas </p>
+
+<p>Toda entrada y salida es, finalmente, a través de los puertos
+</p>
+
+<h4>Desventajas: </h4>
+
+<ul>
+    <li>Dependencia del hardware. </li>
+    <li>Dificultad de programación </li>
+</ul>
+
+<h4>Alternativa: </h4>
+
+<ul>
+    <li>Usar los servicios del sistema operativo (DOS y BIOS) </li>
+</ul>
+
+<h4>Ventajas: </h4>
+
+<ul>
+    <li>El sistema se ocupa de las particularidades del hardware.
+    </li>
+    <li>Se programa como llamadas a funciones. </li>
+</ul>
+
+<hr>
+
+<p><a name="Entrada">Entrada y salida de un caracter</a> </p>
+
+<p>Se realiza por medio de los servicios de la interrupción 21h
+(DOS) </p>
+
+<p>El número de servicio se indica en AH </p>
+
+<ul>
+    <li>Servicio 8: Obtener caracter (equivale a getch en
+        &quot;C&quot; o readkey en Pascal), sin eco en pantalla. </li>
+    <li>Servicio 1: Obtener caracter con eco en pantalla. </li>
+    <li>Servicio 2: Imprimir caracter (equivale a un printf con
+        formato %c) </li>
+</ul>
+
+<h4>Instrucciones para leer un caracter </h4>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><code>MOV AH, 1 ; Numero de servicio</code> <p><code>INT
+        21h ; Realiza la operación</code> </p>
+        </td>
+    </tr>
+</table>
+
+<p>Regresa en AL el código ASCII del caracter leído </p>
+
+<h4>Instrucciones para escribir un caracter </h4>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><code>MOV DL, 'A' ; Se carga el caracter deseado en
+        DL</code> <p><code>MOV AH, 2 ; Numero de servicio</code> </p>
+        <p><code>INT 21h ; Se imprime el caracter</code> </p>
+        </td>
+    </tr>
+</table>
+
+<p>Como se puede ver, en DL se le pasa como parámetro el
+caracter a escribir en pantalla. </p>
+
+<h3>Salida de una cadena </h3>
+
+<dl>
+    <dt>Servicio 9 de la interrupción 21h </dt>
+    <dd>DS:DX apuntan al inicio de la cadena a imprimir </dd>
+    <dd>La cadena termina con un byte 24h ('$') </dd>
+    <dd>No regresa nada </dd>
+</dl>
+
+<h4>Ejemplo </h4>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td><code>.data</code> <p><code>Variable DB 'Hola mundo'</code>
+        </p>
+        <p><code>.code</code> </p>
+        <p><code>...</code> </p>
+        <p><code>MOV AH, 9 ; Número de servicio</code> </p>
+        <p><code>MOV DX, OFFSET Variable</code> </p>
+        <p><code>INT 21h</code> </p>
+        <p><code>...</code> </p>
+        </td>
+    </tr>
+</table>
+
+<h3>Programación Estructurada </h3>
+
+<p>Un principio básico de la programación es el dividir un
+problema grande en problemas cada vez más pequeños. En un
+lenguaje de alto nivel, esto implica codificar procedimientos y
+funciones; de la misma manera lo haremos en ensamblador, mediante
+el uso apropiado de los siguientes comandos: </p>
+
+<h4>Instrucciones </h4>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td>CALL etiqueta </td>
+        <td>Guarda en la pila el&nbsp;IP actual; hace un JMP a la
+        etiqueta, alterando de esa manera el IP; pero puede
+        regresar, cuando encuentre un RET. </td>
+    </tr>
+    <tr>
+        <td>RET </td>
+        <td>Regresa el valor de IP, sacándolo de la pila; el
+        efecto es&nbsp;que el programa continúa su ejecución en
+        la&nbsp;instrucción posterior al CALL. </td>
+    </tr>
+</table>
+
+<h4>Directivas </h4>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td>etiqueta PROC </td>
+        <td>Marca el punto donde hay una&nbsp;etiqueta especial,
+        asociada a un procedimiento. Para todos los efectos de
+        control de programa, es exactamente lo mismo usar PROC
+        que una&nbsp;etiqueta simple; se&nbsp;puede hacer tanto
+        JMP como CALL a la etiqueta;&nbsp;pero es más clara la
+        intención del programador, de separar funciones. </td>
+    </tr>
+    <tr>
+        <td>etiqueta ENDP </td>
+        <td>Delimita el final de un procedimiento. Esta es la
+        otra diferencia significativa con una etiqueta simple;
+        obliga al programador a indicar qué rango de
+        instrucciones forman una función o procedimiento
+        específica. </td>
+    </tr>
+</table>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por
+Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+    <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Ju 5-Sep</em><br>
+<em>Última actualización: Do 16-Feb-97</em> </p>
+</body>
+</html>

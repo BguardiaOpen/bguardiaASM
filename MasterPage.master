@@ -1,0 +1,31 @@
+<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Sitio de prueba VS 2005</title>
+    <link rel="stylesheet" type="text/css" href="Clases.css" />
+</head>
+<body style="font-family: Arial">
+    <div>
+        <asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em"
+            PathSeparator=" : ">
+            <PathSeparatorStyle Font-Bold="True" ForeColor="#5D7B9D" />
+            <CurrentNodeStyle ForeColor="#333333" />
+            <NodeStyle Font-Bold="True" ForeColor="#7C6F57" />
+            <RootNodeStyle Font-Bold="True" ForeColor="#5D7B9D" />
+        </asp:SiteMapPath>
+        <br />
+        <br />
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+    <p></p>
+    <address>
+    &copy; Derechos reservados <a href="mailto:bguardia@sinergia-web.com.mx">Bruno Guardia Robles</a>, 1994-2006</address>
+    <address>
+    <a href="Notice.aspx">Nota legal del sitio</a>
+    </address>
+</body>
+</html>

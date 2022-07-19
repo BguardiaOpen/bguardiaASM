@@ -1,0 +1,160 @@
+<html>
+
+<head>
+
+<title>Proyecto 3: Aplicación Distribuida</title>
+<link REL="stylesheet" TYPE="text/css" href="../../Clases.css">
+</head>
+
+<body>
+
+<h1>Desarrollo <span lang="en-us">de Aplicaciones Avanzadas en </span>Internet</h1>
+
+<h1><span lang="es-mx">Tercer </span>Proyecto Parcial<span lang="en-us">,</span> <span lang="en-us"> 
+ Aplicación distribuida</span></h1>
+
+<p>&nbsp;</p>
+
+<h3>Proyecto <span lang="es-mx">en 
+equipos de 3 ó 4 personas</span>.</h3>
+
+<p>Se entregará el&nbsp;<span lang="es-mx">11 </span>de <span lang="es-mx">
+noviembre </span>del 2003. <span lang="es-mx">S</span>e 
+deberá entrega<span lang="es-mx">r electrónicamente 
+(por correo electrónico, en la cuenta del Campus, no Hotmail por favor) un 
+archivo .ZIP </span>con <span lang="es-mx">todos </span>los
+archivos <span lang="es-mx">del proyecto, incluyendo documentación, y en su caso el URL 
+donde está publicado; podrá revisarse en algún momento su ejecución, en máquinas 
+definidas por los alumnos.</span></p>
+
+<p>
+ <span lang="es-mx">     Existen dos opciones de proyecto 
+a elegir, un sistema de foros de discusión (Newsgroups) distribuido usando HTTP, 
+o un juego virtual.</span></p>
+
+<p><span lang="es-mx">Deberá cumplir las siguientes especificaciones:</span></p>
+
+<p><span lang="es-mx"><STRONG>Foros de 
+discusión</STRONG>    </span></p>
+
+<ul>
+  <li><span lang="es-mx">  El objetivo del&nbsp; proyecto será proporcionar 
+  una interfase Web a los usuarios, para intercambiar ideas en forma de 
+  "tópicos" y "mensajes" posteados en los "foros de discusión"</span>
+  <li><span lang="es-mx">    Deberá poder accederse desde 
+  cualquier navegador conectado, preferentemente sin preferencia de marca aunque se considera aceptable 
+  el uso de DHTML para una interfaz más completa.</span>
+  <li><span lang="es-mx"> Se contará con una arquitectura distribuida, ya 
+  que podrán tenerse varios servidores de Newsgroups, cada uno&nbsp;con su propia base 
+  de datos, que intercambien y repliquen mensajes entre sí.</span><li><span lang="es-mx">
+          Desde el punto de vista de 
+  la base de datos de foros distribuidos, será una aplicación 
+  de arquitectura Peer to Peer, en la cual cada nodo contendrá algunos newsgroups 
+  propios, y otros réplica de otro nodo.</span><li><span lang="es-mx">
+           Se intercambiarán regularmente los mensajes 
+  entre todos los servidores que contengan un newsgroup dado, de 
+  tal modo que se unan las aportaciones de todos los servidores en la 
+  copia central y de ahí se distribuyan.</span></li>
+  <span lang="es-mx"><li><span lang="es-mx">   
+        La información por&nbsp; tanto 
+  está particionada en los distintos servidores, donde el administrador de cada servidor podrá dar de 
+  alta y baja los foros deseados.</span></li><li>
+  La base de datos contendrá primordialmente dos 
+  tablas: la de foros, con un ID del foro (único entre todos los servidores) y su título, así como el 
+  nombre o IP del servidor "primario" que se toma como el "dueño" de dicho 
+  foro; y la de mensajes, que contendrá los textos "posteados" por los usuarios, con su 
+  identificador (único entre servidores), el correo electrónico del usuario que lo envía, 
+  el texto, y el ID del mensaje al que contesta si es parte 
+  de un "hilo" de discusión.</span><li>
+  <span lang="es-mx">         
+                
+                 
+              
+     Los foros de discusión pueden o no ser moderados (o 
+  ambos), al gusto del desarrollador.</span><li><span lang="es-mx">La interfase con el usuario 
+  será Web (HTML) generado dinámicamente, sea por JSPs o Servlets.</span><li><span lang="es-mx">La comunicación 
+  entre servidores para la replicación puede ser por medio de Sockets a bajo 
+  nivel, o HTTP (clase 
+  URL o similares, o bien por medio de Web Services)</span><li>
+  <span lang="es-mx">El proyecto estará realizado completamente en lenguajes 
+  HTML, Java Script y Java..</span></li></ul>
+
+<p><span lang="es-mx"><STRONG>Juego 
+virtual</STRONG>    </span></p>
+
+<ul>
+  <li><span lang="es-mx">El objetivo 
+  del&nbsp; proyecto será permitir que los participantes jueguen en tiempo más o menos real, 
+  con una interfase Web, desde computadoras conectadas al servidor central del juego 
+  (que puede o no ser uno de los participantes).</span>
+  <li>Algunos posibles juegos (basados en turnos y por ello 
+  más simples para el modelo) son:</li>
+  <UL>
+  <li>Dominó (2 a 4 jugadores por partida, opción de 
+    enfrentamiento directo o por parejas, N partidas simultáneas)
+ 
+  <li>Ajedrez (2 jugadores por partida, N partidas 
+    simultáneas)
+ 
+  <li>Turista (2 a 6 jugadores por partida, N partidas 
+    simultáneas)
+ 
+  <li>Juegos de conquista, ej. Civilization (2 a N 
+    jugadores por partida, N partidas simultáneas)</li></UL><li><span lang="es-mx">
+                
+            
+      Es posible pero debe cuidarse por su mayor dificultad, 
+  realizar juegos no basados en turnos como:</span></li>
+  <UL><li><span lang="es-mx">
+                
+           Carreras 
+  de autos o motos "lado a lado" (2 a 4 jugadores por partida, 
+  las partidas simultáneas podrían requerir múltiples servidores)</span></li></UL><li><span lang="es-mx">
+                
+       El primer jugador que desee 
+  iniciar una partida "creará" la partida, dándole un nombre o ID con el 
+  cual se podrán integrar los otros participantes.</span><li><span lang="es-mx">
+                
+            
+           Un jugador podrá integrarse 
+  como "observador" de una partida, sin participar.</span><li><span lang="es-mx">
+                
+            
+          Será una aplicación de arquitectura 
+  Cliente/Servidor, con un servidor maestro del juego.</span><li>
+  <span lang="es-mx">La base de 
+  datos contendrá las tablas propias de la información de estado de cualquier juego (por ejemplo en el 
+  dominó, las fichas de cada jugador, las fichas tiradas, y los puntos positivos o 
+  negativos acumulados), los puntajes (con historial), los participantes y la máquina desde la que se 
+  "firman" al sistema; deberá soportar múltiples juegos (es decir, el servidor deberá 
+  ser capaz de contener la información central de dos o N juegos que 
+  estén jugando simultáneamente los jugadores)</span><li><span lang="es-mx">La interfase 
+  con el usuario será Web generado dinámicamente, sea por JSPs o Servlets; es 
+  conveniente el uso de Applets para la interfase final a detalle, 
+  considerando que no se debe requerir que sean applets "firmados".</span><li>La interfase permitirá a los usuarios consultar 
+  reportes del desempeño o historia de lo jugado.<li>
+  <span lang="es-mx">El proyecto estará realizado completamente en lenguajes 
+  HTML, Java Script y Java.</span></li></ul>
+
+<p><span lang="es-mx">Se considerarán </span>los siguientes aspectos: 
+
+<ul>
+  <li><span lang="es-mx">Interfaz simple y eficiente.</span><li>
+  <span lang="es-mx">Tolerancia a fallas, de tal modo que en caso de perderse la 
+  conexión con otra sucursal, se pueda aceptar pagos y posteriormente se realice la aplicación del 
+  mismo transmitiéndolo por la red.</span><li>
+  <span lang="es-mx">Uso de JDBC</span><li>
+  <span lang="es-mx">Uso de Servlets o JSP</span><li>
+  <span lang="es-mx">Uso de Sockets para la comunicación entre servidores</span><li>
+  <span lang="es-mx">Factores extra: implementación de la comunicación sobre 
+  HTTP; uso de objetos distribuidos.</span><li>
+  <span lang="es-mx">Diseño de la arquitectura distribuida apropiadamente</span></li>
+</ul>
+
+<p>Deberá funcionar y verse correctamente <span lang="es-mx">tanto </span>en <span lang="es-mx">Internet </span>
+Explorer<span lang="es-mx"> como Netscape versiones recientes.</span></p>
+
+<p>
+<span lang="es-mx">    </span>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+  <!-- Created by AOLpress/1.2 -->
+  <TITLE>Dudas Comunes en la sesi&oacute;n 2</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" TEXT="#000000" LINK="#00ff00" VLINK="#0000FF">
+<H2>
+  Dudas Comunes (Representaci&oacute;n de Datos)
+</H2>
+<P>
+<OL>
+  <LI>
+    <EM>&#191;Cu&aacute;l es la relaci&oacute;n entre los tipos de datos en C
+    y la representaci&oacute;n vista?</EM><BR>
+    R: Se est&aacute; examinando la representaci&oacute;n desde un punto de vista
+    general, de bases te&oacute;ricas. La evoluci&oacute;n de los tipos de datos
+    se basa en las arquitecturas de procesadores, lo que tiene mucho que ver
+    con Ensamblador. En particular, C toma algunos de esos tipos b&aacute;sicos,
+    aunque pueden variar seg&uacute;n la arquitectura.<BR>
+    <EM>char</EM> es un entero de 8 bits, con signo; <EM>unsigned char</EM>,
+    cuando es entero de 8 bits sin signo.<BR>
+    <EM>short</EM> es un entero de 16 bits, con signo;<EM> unsigned short</EM>,
+    cuando es entero de 16 bits sin signo.<BR>
+    <EM>long</EM>&nbsp;es un entero de 32 bits, con signo;<EM> unsigned long</EM>,
+    cuando es entero de 32 bits sin signo.<BR>
+    No es recomendable usar <EM>int</EM>, por portabilidad,&nbsp;ya que var&iacute;a
+    seg&uacute;n la arquitectura; en DOS o Windows 3.11 o&nbsp;anterior, equivale
+    a 16 bits; mientras que en Windows 95, NT, y la generalidad de ambientes
+    UNIX, es de 32 bits.
+  <LI>
+    <EM>&#191;C&oacute;mo convertir un valor decimal con parte fraccionaria,
+    a base binaria?</EM><BR>
+    R: El&nbsp;secreto est&aacute; en usar potencias negativas. Para
+    la&nbsp;conversi&oacute;n en partes enteras, se tienen que restar las potencias
+    positivas del 2; en las fraccionarias, con las potencias negativas. Por ejemplo,
+    2.5 es f&aacute;cil de convertir: es 2^1 + 2^-1, con lo que equivale a
+    10.1<SUB>2</SUB>. Puede&nbsp;ser pr&aacute;ctico convertir primero la parte
+    entera, en&nbsp;la forma convencional; y&nbsp;al final dejar la parte
+    fraccionaria&nbsp;Cuando es un n&uacute;mero m&aacute;s dif&iacute;cil, por
+    ejemplo, 0.2555, la t&eacute;cnica es multiplicarlo varias veces por dos;
+    la parte entera se va convirtiendo en un d&iacute;gito de salida.<BR>
+    Por ejemplo, vamos a sacar el valor del 0.2555 en base binaria:<BR>
+    0.2555 x 2 = 0.511; tomamos el 0 como el d&iacute;gito antes del punto.<BR>
+    0.511 x 2 =&nbsp;1.022; tomamos el 1, es el d&iacute;gito despu&eacute;s
+    del punto.<BR>
+    0.022 x&nbsp;2 = 0.044, tomamos el 0 como el siguiente d&iacute;gito.<BR>
+    0.044 x 2 =&nbsp;0.088, tomamos el 0 como el siguiente d&iacute;gito.<BR>
+    0.088 x 2 = 0.176, tomamos el 0 como el siguiente d&iacute;gito.<BR>
+    0.176 x 2 = 0.352, tomamos el 0 como el siguiente d&iacute;gito.<BR>
+    0.352 x 2 = 0.704, tomamos el 0 como el siguiente d&iacute;gito.<BR>
+    0.704 x 2 = 1.408, tomamos el 1 como el siguiente d&iacute;gito.<BR>
+    <BR>
+    Y as&iacute; sucesivamente; con la precisi&oacute;n que llegamos, podemos
+    decir que 0.2555 =&nbsp;0.1000001<SUB>2</SUB>.
+  <LI>
+    <EM>&#191;C&oacute;mo se convierte r&aacute;pido un n&uacute;mero&nbsp;binario
+    entero, a decimal?</EM><BR>
+    R: El&nbsp;mejor truco que conozco es tener una tabla mental de las potencias
+    de 2; que ser&iacute;an en un n&uacute;mero de 8 bits: 128, 64, 32, 16, 8,
+    4, 2, 1. As&iacute;, dentro del rango de 8 bits puedo tener un n&uacute;mero
+    como 160:<BR>
+    160 &gt; 128: eso quiere decir 160 / 128 = 1 y sobran 32. Esto da que el
+    primer bit de los 8 es 1 (s&iacute; hay 128)<BR>
+    32 &lt; 64: eso quiere decir 32/64 = 0 y sobran 32. Segundo bit 0.<BR>
+    32 = 32: eso quiere decir 32/32 = 1 y no sobra nada: Tercer bit 1 y los
+    dem&aacute;s 0.<BR>
+    Por tanto, 160 se escribir&aacute; 10100000<SUB>2</SUB>.&nbsp;
+  <LI>
+    <EM>&#191;Por qu&eacute; se usa la notaci&oacute;n de complemento a 2, en
+    vez de simplemente destinar un bit al signo y&nbsp;dedicar los dem&aacute;s
+    a la magnitud? &#191;No ser&iacute;a m&aacute;s eficiente y simple?</EM><BR>
+    R: Tal vez le ahorrar&iacute;a un poco de trabajo a la gente cuando convierte.
+    Pero est&aacute; dise&ntilde;ada para las computadoras; usando la notaci&oacute;n
+    de complemento a 2, la operaci&oacute;n de suma y resta se unifican. Para
+    probarlo, basta con que intentes sumar de acuerdo al algoritmo de suma binaria,
+    un n&uacute;mero positivo con uno negativo, que est&eacute;n en notaci&oacute;n
+    de complemento a 2. Por otro lado, de todos modos se requiere un programa
+    para hacer la&nbsp;conversi&oacute;n del n&uacute;mero binario, en
+    representaci&oacute;n interna de la m&aacute;quina, al formato que los humanos
+    podemos visualizar.<BR>
+    <BR>
+    <STRONG><FONT SIZE=+1>ENVIADAS POR ALUMNOS</FONT></STRONG><BR>
+  <LI>
+    <EM>Aportaci&oacute;n de un alumno, sobre c&oacute;mo entender el rango de
+    los n&uacute;meros enteros de acuerdo al n&uacute;mero de bits.</EM><BR>
+    Cuando tengo <EM>n</EM> bits, puedo formar los numeros desde 0 hasta (2^n)-1
+    pero seria bueno aclarara que en codigo BINARIO. Ahora, como yo lo entendi
+    mejor fue pensando en decimal: Si tengo 2 bits por ejemplo, puedo formar
+    los numeros desde el 0 hasta el (10^2)-1 es decir (10^n)-1 donde n es el
+    numero de bits y eso nos da 99 que efectivamente es el numero mas grande
+    en decimal que puedo representar con 2 bits y el 00 el mas chico. Lo mismo
+    ocurre en binario.
+  <LI>
+    <EM>&#191;Qu&eacute; es un word?</EM><BR>
+    En base a lenguajes como Pascal, generalmente hablamos de datos tipo
+    <EM>word</EM>, cuando nuestros datos ocupan 16 bits; equivaldr&iacute;a al
+    <EM>short </EM>de C, o al <EM>integer</EM> o <EM>word </EM>de Pascal. Como
+    veremos m&aacute;s adelante, un <EM>word</EM> en los temas de&nbsp;ensamblador
+    de Intel tambi&eacute;n lo usaremos como el tipo de datos que ocupa
+    2&nbsp;bytes.
+  <LI>
+    Si se tienen 16 bits para representar punto flotante, 12 para la mantisa
+    y 4 para el exponente y cada uno puede tener signo, por qu&eacute; el rango
+    valido para el exponente es de -8 a 7 pero no lo es para la mantisa la cantidad
+    que va de -(2 a la 11) hasta (2 a la 11).
+  <LI>
+    <EM>Ya que existen numeros que necesitan un espacio mayor de 1 byte para
+    ser almacenados, como 2 &oacute; 4 bytes (short o long) &#191;Como se almacena
+    el numero en la memoria, es decir si en los primeros bytes se guanda la parte
+    m&aacute;s significativa del numero o si empieza por la parte menos
+    significativa? </EM><BR>
+    Como vimos en clase, se almacena en orden distinto seg&uacute;n el procesador.
+    Si es un Intel, se almacena primero la parte menos significativa; en un Motorola,
+    se almacena primero la m&aacute;s significativa. Al primer caso se le llama
+    <EM>"big-endian"</EM>, y al segundo, <EM>"little-endian"</EM>.
+  <LI>
+    <EM>No entendi bien cuando quieres restar numeros y te queda un negativo,
+    como por ejemplo: 13-10= -3. Seg&uacute;n yo seria algo asi como:<BR>
+    mov ax,13<BR>
+    mov bx,10<BR>
+    sub bx,ax<BR>
+    pero el resultado, &#191;c&oacute;mo lo pone?</EM><BR>
+    En BX quedar&aacute; un -3, el cual se almacena como complemento a 2. Si
+    lo checamos, para sacar el complemento se hace:<BR>
+    <BR>
+    Original: 3 = 0000000000000011 binario<BR>
+    Complemento a 1: C = 1111111111111100 binario<BR>
+    Complemento a 2: C = 1111111111111101 binario = FFFD hexadecimal.<BR>
+    <BR>
+    De manera que quedar&aacute; almacenado un FFFD hexadecimal, que es la
+    representaci&oacute;n del -3; como dices, depende de c&oacute;mo lo uses
+    su interpretaci&oacute;n como positivo o negativo.
+  <LI>
+</OL>
+</BODY></HTML>

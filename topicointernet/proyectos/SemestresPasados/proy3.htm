@@ -1,0 +1,577 @@
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Proyecto 3: Sistema de Información en Internet</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h1>Desarrollo en Internet</h1>
+
+<h1>Proyecto 3: Sistema de Información en Internet.</h1>
+
+<h3>Equipos de 2-3 personas.</h3>
+
+<p>El objetivo del proyecto será proporcionar al usuario un
+conjunto de servicios a través de formas interactivas e
+información situada en una base de datos.</p>
+
+<p>Entre las opciones de proyecto, que se sortearán o asignarán
+entre los equipos durante la clase, se tendrán las siguientes: </p>
+
+<ul>
+    <li><a href="../semestrespasados/proy3.htm#hotel">Sistema de información y reservaciones
+        hoteleras</a>.</li>
+    <li><a href="../semestrespasados/proy3.htm#Aereo">Sistema de información y reservaciones
+        de boletos aéreos.</a></li>
+    <li><a href="../semestrespasados/proy3.htm#bolsa">Bolsa de Trabajo por Internet.</a></li>
+    <li><a href="../semestrespasados/proy3.htm#clasificados">Anuncios clasificados por
+        Internet.</a></li>
+</ul>
+
+<h3><a name="hotel"><em>Sistema de reservaciones hoteleras</em></a></h3>
+
+<p>Este sistema contará con los módulos que permitirán: </p>
+
+<ul>
+    <li>Buscar un cuarto disponible para cierta fecha o fechas
+        consecutivas.</li>
+    <li>Reservarlo y ponerlo a nombre de un cliente.</li>
+    <li>Cancelar una reservación.</li>
+</ul>
+
+<p>Para esto, la base de datos (puedes <a href="../semestrespasados/hotel.mdb">bajarla</a>)
+se podrá accesar en el servidor mediante el DSN
+&quot;hotel&quot;, y contará con las siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Clientes</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCliente</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que identifica de
+        manera única al cliente; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">Nombre</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Cadena que permite capturar el nombre
+        completo del cliente.</td>
+    </tr>
+    <tr>
+        <td width="33%">Direccion</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Cadena que permite capturar la dirección
+        del cliente.</td>
+    </tr>
+    <tr>
+        <td width="33%">RFC</td>
+        <td width="33%">Texto(13)</td>
+        <td width="34%">RFC para emitir factura</td>
+    </tr>
+    <tr>
+        <td width="33%">Compania</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Nombre de la compañía del cliente.</td>
+    </tr>
+    <tr>
+        <td width="33%">Telefonos</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Teléfonos del cliente.</td>
+    </tr>
+</table>
+</center></div>
+
+<p><em></em>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Tarifas</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDTarifa</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Identificador para las referencias de
+        otras tablas a la tarifa; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreTarifa</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Nombre con el que se conoce y pide la
+        tarifa; ej &quot;Sencillo&quot;, &quot;Doble&quot;,
+        &quot;Suite&quot;...</td>
+    </tr>
+    <tr>
+        <td width="33%">ValorNoche</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Costo base por noche, en pesos</td>
+    </tr>
+    <tr>
+        <td width="33%">DescuentoAuto</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Máximo descuento autorizado, en pesos,
+        que se aplica a discreción del que reserva.</td>
+    </tr>
+</table>
+</center></div>
+
+<p><em></em>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Cuartos</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCuarto</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número del cuarto que lo identifica en
+        forma única dentro del hotel; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">Capacidad</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número de personas que pueden alojarse
+        en dicho cuarto</td>
+    </tr>
+    <tr>
+        <td width="33%">Exterior</td>
+        <td width="33%">Sí/No (Booleano)</td>
+        <td width="34%">Si tiene vista hacia afuera o no</td>
+    </tr>
+    <tr>
+        <td width="33%">TipoTarifa</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Referencia a la tarifa que aplica por
+        noche en este cuarto (ver tabla de Tarifas)</td>
+    </tr>
+</table>
+</center></div>
+
+<p><em></em>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Reservaciones</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCuarto</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Número del cuarto que lo identifica en
+        forma única dentro del hotel</td>
+    </tr>
+    <tr>
+        <td width="33%">Fecha</td>
+        <td width="33%">Fecha/Hora</td>
+        <td width="34%">Día para el que se aparta el cuarto.
+        Junto con el anterior, forma la llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCliente</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Referencia a la tabla de clientes.</td>
+    </tr>
+    <tr>
+        <td width="33%">Tarifa</td>
+        <td width="33%">Moneda</td>
+        <td width="34%">Tarifa acordada (sale de tarifa base, y
+        puede tener un valor entre esta y la misma menos el
+        descuento)</td>
+    </tr>
+    <tr>
+        <td width="33%">FormaPago</td>
+        <td width="33%">Texto(10)</td>
+        <td width="34%">Indica si es en efectivo (EFEC), tarjeta
+        (TARJ) o cheque (CHEQUE)</td>
+    </tr>
+    <tr>
+        <td width="33%">NumTarjeta</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">En caso de que sea por tarjeta, aquí se
+        registra el número de la misma.</td>
+    </tr>
+</table>
+</center></div>
+
+<p><em></em>&nbsp;</p>
+
+<h3><a name="Aereo"><em>Sistema de reservaciones de boletos
+aéreos</em></a></h3>
+
+<p>Este sistema contará con los módulos que permitirán: </p>
+
+<ul>
+    <li>Buscar los horarios y días disponibles para volar de una
+        ciudad a otra.</li>
+    <li>Reservar un boleto para cierta fecha.</li>
+    <li>Cancelar una reservación.</li>
+</ul>
+
+<p>Para esto, la base de datos se podrá accesar en el servidor
+mediante el DSN &quot;lineaaerea&quot;, y contará con las
+siguientes tablas y campos:</p>
+
+<p>&nbsp;</p>
+
+<h3><a name="bolsa"><em>Bolsa de Trabajo</em></a></h3>
+
+<p>Este sistema contará con los módulos que permitirán: </p>
+
+<ul>
+    <li>Registrarse cuando se busca trabajo, describiendo las
+        habilidades principales y la experiencia laboral.</li>
+    <li>Como empresa, buscar un candidato que cumpla cierto
+        criterio.</li>
+</ul>
+
+<p>Para esto, la base de datos (puedes <a href="../semestrespasados/bolsa.mdb">bajarla</a>)
+se podrá accesar en el servidor mediante el DSN
+&quot;bolsa&quot;, y contará con las siguientes tablas y campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Candidatos</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCandidato</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que identifica de
+        manera única al candidato; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreCompleto</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Cadena que permite capturar el nombre del
+        candidato</td>
+    </tr>
+    <tr>
+        <td width="33%">Direccion</td>
+        <td width="33%">Texto(100)</td>
+        <td width="34%">Generales del usuario</td>
+    </tr>
+    <tr>
+        <td width="33%">TelefonoCasa</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Generales del usuario</td>
+    </tr>
+    <tr>
+        <td width="33%">TelefonoOficina</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Generales del usuario</td>
+    </tr>
+    <tr>
+        <td width="33%">EMail</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Dirección de correo para contactarlo</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>ExperienciaLaboral</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">ID</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que identifica de
+        manera única al registro; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCandidato</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Referencia al candidato</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreEmpresa</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Empresa en la que trabajó</td>
+    </tr>
+    <tr>
+        <td width="33%">FechaInicio</td>
+        <td width="33%">Fecha/Hora</td>
+        <td width="34%">Fecha en que inició labores en dicha
+        empresa</td>
+    </tr>
+    <tr>
+        <td width="33%">FechaFin</td>
+        <td width="33%">Fecha/Hora</td>
+        <td width="34%">Fecha en que terminó labores en dicha
+        empresa</td>
+    </tr>
+    <tr>
+        <td width="33%">Puesto</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Título del puesto que tenía</td>
+    </tr>
+    <tr>
+        <td width="33%">DescripcionPuesto</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Qué hacía en dicho puesto</td>
+    </tr>
+</table>
+</center></div>
+
+<p><em></em>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Habilidades</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDHabilidad</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que identifica de
+        manera única la habilidad.</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreHabilidad</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Nombre de la habilidad, ej
+        &quot;Inglés&quot;</td>
+    </tr>
+    <tr>
+        <td width="33%">Tipo</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Indicador de formato: 1=Porcentaje (por
+        ejemplo, Inglés es tipo porcentaje pues se maneja 0-100%
+        de dominio); 2=Verdadero o Falso (habilidad que se tiene
+        o no se tiene); 3=Años de experiencia.</td>
+    </tr>
+</table>
+</center></div>
+
+<p><em></em>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Habilidades</strong>Candidatos&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDHabilidad</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Relación con la habilidad.</td>
+    </tr>
+    <tr>
+        <td width="33%">IDCandidato</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Relación con el candidato.</td>
+    </tr>
+    <tr>
+        <td width="33%">Valor</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Indica el valor de esa habilidad para ese
+        candidato; por ejemplo si la habilidad fuera la 1
+        (inglés); dado que el tipo de la habilidad 1 es
+        porcentaje, aquí estaría el valor del porcentaje. Si la
+        habilidad fuera la 3 (disponibilidad para viajar) el
+        valor sería 0 si no hay y 1 si la hay; etc.</td>
+    </tr>
+</table>
+</center></div>
+
+<h3><a name="clasificados"><em>Anuncios Clasificados</em></a></h3>
+
+<p>Este sistema contará con los módulos que permitirán: </p>
+
+<ul>
+    <li>Navegar por las secciones y sus anuncios, buscando
+        información. Esto se presentará a todos los visitantes,
+        estén registrados o no.</li>
+    <li>Registrarse como usuario para poner anuncios.</li>
+    <li>Agregar un anuncio en una sección existente. Esta
+        opción requerirá estar registrado como usuario.</li>
+    <li>Quitar un anuncio, siempre y cuando sea el usuario que lo
+        puso.</li>
+</ul>
+
+<p>Para esto, la base de datos (puedes <a href="../semestrespasados/clasificados.mdb">bajarla</a>)
+se podrá accesar en el servidor mediante el DSN
+&quot;clasificados&quot;, y contará con las siguientes tablas y
+campos:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Usuarios</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDUsuario</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que identifica de
+        manera única al usuario; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreUsuario</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Cadena que permite capturar el nombre que
+        usará el usuario para registrarse en el sistema (alias)</td>
+    </tr>
+    <tr>
+        <td width="33%">ClaveUsuario</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Password usado para registrarse</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreReal</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Nombre exigido al usuario para que el
+        encargado del sistema sepa quién publica la
+        información.</td>
+    </tr>
+    <tr>
+        <td width="33%">DireccionReal</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Generales del usuario</td>
+    </tr>
+    <tr>
+        <td width="33%">TelefonoReal</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Generales del usuario</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Secciones</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDSeccion</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que identifica de
+        manera única a la sección; es llave.</td>
+    </tr>
+    <tr>
+        <td width="33%">NombreSección</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Nombre de la sección; ej. &quot;Venta de
+        automóviles&quot;, &quot;Venta de equipo de
+        cómputo&quot;, etc.</td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" width="100%">
+    <tr>
+        <th colspan="3" width="100%">Tabla de &quot;<strong>Anuncios</strong>&quot;</th>
+    </tr>
+    <tr>
+        <td width="33%">Nombre del campo</td>
+        <td width="33%">Tipo</td>
+        <td width="34%">Descripción</td>
+    </tr>
+    <tr>
+        <td width="33%">IDAnuncio</td>
+        <td width="33%">Autonumérico</td>
+        <td width="34%">Consecutivo automático que sirve como
+        llave</td>
+    </tr>
+    <tr>
+        <td width="33%">IDSeccion</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Referencia a la sección en la que va a
+        salir.</td>
+    </tr>
+    <tr>
+        <td width="33%">TextoAnuncio</td>
+        <td width="33%">Texto(50)</td>
+        <td width="34%">Texto que sale en el anuncio.</td>
+    </tr>
+    <tr>
+        <td width="33%">Telefono</td>
+        <td width="33%">Texto(8)</td>
+        <td width="34%">Teléfono que acompaña al texto</td>
+    </tr>
+    <tr>
+        <td width="33%">FechaColocado</td>
+        <td width="33%">Fecha/Hora</td>
+        <td width="34%">Fecha y hora en la que se registró el
+        anuncio en el sistema</td>
+    </tr>
+    <tr>
+        <td width="33%">FechaVigencia</td>
+        <td width="33%">Fecha/Hora</td>
+        <td width="34%">Fecha y hora en la que se retirará
+        automáticamente el anuncio del sistema. Máxima vigencia
+        de 2 semanas.</td>
+    </tr>
+    <tr>
+        <td width="33%">UsuarioPublica</td>
+        <td width="33%">Numérico</td>
+        <td width="34%">Referencia al usuario que publicó el
+        anuncio.</td>
+    </tr>
+</table>
+</center></div>
+</body>
+</html>

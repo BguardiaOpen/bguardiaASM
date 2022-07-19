@@ -1,0 +1,530 @@
+<html>
+
+<head>
+
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 5.0">
+<title>Tema 2 - Diseño de páginas estáticas</title>
+</head>
+
+<body>
+
+<p><img SRC="../../images/luces.gif" width="671" height="40"> <br>
+<font SIZE="+2" COLOR="#FF0000" FACE="Arial"><b>Tema 2 - Diseño de páginas estáticas</b></font>
+
+<ul>
+  <h4><font SIZE="-1" COLOR="#FF0000" FACE="Arial"><b>Utilizando Front Page y HTML</b></font></h4>
+</ul>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>Objetivos</b></font> </p>
+
+<blockquote>
+  <font COLOR="#000000" FACE="Arial"><p>Introducir al alumno en el desarrollo de páginas
+  HTML, apoyándose en Front Page.</font> </p>
+  <p><font COLOR="#000000" FACE="Arial">Conocer y entender el funcionamiento de las páginas
+  y sus principales &quot;<i>tags&quot;</i></font></p>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Descripción de HTML</b></font> </p>
+
+<blockquote>
+  <font COLOR="#000000" FACE="Arial"><p>HTML (Hyper Text Markup Languaje)</font> </p>
+  <p><font COLOR="#000000" FACE="Arial">Son documentos texto con extensión .htm o .html</font>
+  </p>
+  <p><font COLOR="#000000" FACE="Arial">HTML es un 'pseudo-lenguaje' compuesto
+  principalmente de <i>'tags'. </i>Los tags son como etiquetas que idican una instrucción a
+  ser ejecutada.</font> <br>
+  &nbsp; </p>
+  <p><font COLOR="#000000" FACE="Arial">Carece de estructuras de control tales como ciclos o
+  condicionales y manejo de variables</font> </p>
+  <p><font COLOR="#000000" FACE="Arial">No es sensitivo a Mayúsculas</font> </p>
+  <p><font COLOR="#000000" FACE="Arial">Se pueden anidar tags dentro de otros, pero es
+  conveniente anidarlos correctamente</font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><i><p>&lt;tag1&gt; &lt;tag2&gt; ...
+    &lt;/tag2&gt;&lt;/tag1&gt;</i></font></p>
+  </blockquote>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Tags</b></font> </p>
+
+<blockquote>
+  <font COLOR="#000000" FACE="Arial"><p>Los tags poseen la siguiente sintaxis:</font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>&lt;tag</b> <i>parametros=valores</i><b>&gt;</b>
+    contenido <b>&lt;/tag&gt;</b></font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">Algunos 'tags' sólo abren mientras que
+    existen otros que requieren un tag para abrir y otro para cerrar.</font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">Algunos, además de la característica
+    anterior, utilizan parámetros opcionales.</font></p>
+  </blockquote>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Ejemplos de Tags</b></font> </p>
+
+<blockquote>
+  <font COLOR="#000000" FACE="Arial"><b><u><p>Ejemplo de tag que abre y cierra:
+  &lt;b&gt;&lt;/b&gt;</u></b></font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><p>El tag: &lt;b&gt;&lt;/b&gt; realiza un
+    formateo de texto y presenta en negritas el texto encerrado en él en el browser.</font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">Ejemplo: &quot;Este texto está en
+    &lt;b&gt;negrita&lt;/b&gt;, ¿no es fácil?&quot;</font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">El resultado: &quot;Este texto está en <b>negrita</b>,
+    ¿no es fácil?&quot;</font></p>
+  </blockquote>
+  <font COLOR="#000000" FACE="Arial"><b><u><p>Ejemplo de tag que sólo abre: &lt;hr&gt;</u></b></font>
+  </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><p>El tag &lt;hr&gt; dibuja una línea
+    horizontal (horizontal rule) en la página Web.</font> <br>
+    </p>
+    <hr SIZE="19" NOSHADE WIDTH="100%">
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp; </p>
+  <p><font COLOR="#000000" FACE="Arial"><b><u>Ejemplo de tag con parámetros: &lt;font&gt;
+  &lt;/font&gt;</u></b></font> <br>
+  &nbsp; </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><p>El Tag &lt;font&gt;&lt;/font&gt; utiliza
+    parámetros para modificar las características del texto encerrado, como color o fuente.</font>
+    </p>
+    <p><font SIZE="-2" COLOR="#000000" FACE="Arial">&lt;font
+    color=&quot;#ff0000&quot;&gt;Rojo&lt;/font&gt; &lt;font
+    color=&quot;#0000ff&quot;&gt;Azul&lt;/font&gt; &lt;font
+    color=&quot;#00ff00&quot;&gt;Verde&lt;/font&gt;</font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">El resultado: </font><font SIZE="-1" FACE="Arial" COLOR="#FF0000">Rojo</font><font SIZE="-1" COLOR="#000000" FACE="Arial"> </font><font SIZE="-1" FACE="Arial" COLOR="#3333CC">Azul </font><font COLOR="#006600" SIZE="-1" FACE="Arial">Verde</font></p>
+  </blockquote>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Estructura de un documento HTML</b></font>
+</p>
+
+<p align="center"><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Estructura general de un
+documento HTML</b></font> </p>
+<div align="center"><center>
+
+<table BORDER="0" CELLPADDING="2" WIDTH="100%">
+  <tr>
+    <td WIDTH="20%"><pre><font SIZE="+2" COLOR="#006600" FACE="Arial">&lt;HTML&gt;</font></pre>
+    <pre><font SIZE="+0" COLOR="#000000" FACE="Arial">&lt;</font><font SIZE="+2" COLOR="#006600" FACE="Arial">HEAD&gt;</font></pre>
+    <pre>&lt;TITLE&gt;<font SIZE="+0" COLOR="#000000" FACE="Arial">Mi primer HTML&lt;/TITLE&gt;&nbsp;</font></pre>
+    <pre><font SIZE="+0" COLOR="#000000" FACE="Arial">&lt;/HEAD&gt;</font></pre>
+    <pre><font SIZE="+2" COLOR="#006600" FACE="Arial">&lt;BODY&gt;</font><font SIZE="+0" COLOR="#000000" FACE="Arial">Esto es el cuerpo de mi documento&lt;/BODY&gt;&nbsp;</font></pre>
+    <pre><font SIZE="+0" COLOR="#000000" FACE="Arial">&lt;/HTML&gt;</font></pre>
+    </td>
+    <td ALIGN="LEFT" VALIGN="TOP" WIDTH="80%"><font SIZE="-1" COLOR="#000000" FACE="Arial">A
+    la izquierda, vemos un documento HTML básico. Se observa el uso de Tags (etiquetas), las
+    cuales se forman a través de una palabra reservada, la que describe cada elemento del
+    documento, y va encerrada entre los símbolos de mayor y menor. Ejemplos de tags en el
+    documento son: <i>&lt;HTML&gt;</i>, <i>&lt;HEAD&gt;</i>, y <i>&lt;BODY&gt;</i>.</font>&nbsp;
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>La mayoría de los Tags van por
+    parejas: uno que abre y uno que cierra; el segundo se señala por el mismo comando o
+    palabra reservada, precedida por una diagonal (slash): /</b></font>&nbsp; </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">Los cuatro tags que hay en este ejemplo
+    son: HTML, que contiene a todo el documento HTML; es decir, todo el texto entre
+    &lt;HTML&gt; y &lt;/HTML&gt; es lo que forma propiamente el documento.</font>&nbsp; </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">El documento HTML se divide en dos
+    secciones básicas: el encabezado (HEAD) y el cuerpo (BODY). En el encabezado se describe
+    información general del documento, útil para indexarlo. Por ejemplo, el tag TITLE
+    delimita el título del documento, que generalmente aparece en la barra superior del
+    navegador.</font>&nbsp; </p>
+    <p><img SRC="image9L2.JPG" width="507" height="31">&nbsp; </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">Por último, el texto que aparece en la
+    zona principal del navegador, será el que se encuentre entre los tags que abren y cierran
+    BODY.</font>&nbsp; </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial">HTML no es sensitivo a
+    mayúsculas/minúsculas, ni tampoco a saltos de línea o espacios intermedios.</font></td>
+  </tr>
+</table>
+</center></div>
+
+<p>&nbsp; </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Formateo de texto</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>&lt;HTML&gt; &lt;HEAD&gt;
+  &lt;TITLE&gt;... &lt;/TITLE&gt; &lt;BODY&gt;... &lt;/BODY&gt; &lt;/HTML&gt;</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Los principales tags para formateo de
+  texto son:</b></font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>&lt;b&gt;&lt;/b&gt; (bold) El texto
+    encerrado en ellos se presenta en negritas:</b></font> </p>
+    <blockquote>
+      <p><img SRC="image0U2.JPG" width="34" height="27"><font COLOR="#000000" FACE="Arial" SIZE="-2"><b>&nbsp;&nbsp;</b></font><font SIZE="-1" COLOR="#000000" FACE="Arial"> Hola
+      &lt;b&gt;mundo&lt;/b&gt; cruel = Hola<b> mundo </b>cruel</font></p>
+    </blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>&lt;i&gt;&lt;/i&gt; (italic) El texto
+    encerrado sepresenta italizado</b></font> </p>
+    <blockquote>
+      <p><img SRC="image0U2.JPG" width="34" height="27"><font COLOR="#000000" FACE="Arial" SIZE="-2"><b>&nbsp; </b></font><font SIZE="-1" COLOR="#000000" FACE="Arial">Hola
+      &lt;i&gt;mundo&lt;/i&gt; cruel = Hola <i>mundo</i> cruel</font></p>
+    </blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>Se pueden anidar los anteriores para
+    presentar texto italizado en bold:</b></font> </p>
+    <blockquote>
+      <p><img SRC="image0U2.JPG" HEIGHT="34" WIDTH="43"><font COLOR="#000000" FACE="Arial" SIZE="-2"><b> </b></font><font SIZE="-1" COLOR="#000000" FACE="Arial">Hola
+      &lt;i&gt;&lt;b&gt;mundo&lt;/b&gt;&lt;/i&gt; cruel = Hola<b> <i>mundo</i> </b>cruel</font> </p>
+      <p>Los tags &lt;i&gt; y &lt;b&gt; pueden ir en diferente orden</p>
+    </blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>&lt;u&gt;&lt;/u&gt; (underline)
+    presenta texto subrayado</b></font> </p>
+    <blockquote>
+      <p><img SRC="image0U2.JPG" HEIGHT="34" WIDTH="43"><font SIZE="-1" COLOR="#000000" FACE="Arial"><b> </b>Hola &lt;u&gt;mundo&lt;/u&gt; cruel = Hola <u>mundo</u> cruel</font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p align="center">Los cambios de línea se
+  hacen a través del tag &lt;br&gt;</b></font> <img SRC="imageG4K.JPG" width="53" height="74"> <font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Los cambios de línea dobles o
+  párrafos se hacen con &lt;p&gt; <i>párrafo</i> &lt;/p&gt;</b></font> 
+  <img SRC="imageTJ1.JPG" width="53" height="74"> &nbsp; </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Se pueden crear encabezados en tamaños
+  predeterminados con &lt;H<i>x</i>&gt;Encabezado&lt;/H<i>x</i>&gt;</b></font> </p>
+  <h1><font COLOR="#000099">encabezado 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;H1&gt;encabezado
+  1 &lt;/H1&gt;</font></h1>
+  <h2><font COLOR="#000099">encabezado
+  2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;H2&gt; encabezado 2 &lt;/H2&gt;</font></h2>
+  <h3><font COLOR="#000099">encabezado
+  3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;H3&gt; encabezado 3 &lt;/H3&gt;</font></h3>
+  <h4><font COLOR="#000099">encabezado
+  4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;H4&gt; encabezado 4 &lt;/H4&gt;</font></h4>
+  <h5><font COLOR="#000099">encabezado
+  5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;H5&gt; encabezado 5 &lt;/H5&gt;</font></h5>
+  <h6><font COLOR="#000099">encabezado
+  6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;H6&gt; encabezado 6 &lt;/H6&gt;</font></h6>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>Donde <i>x </i>es un número del 1 al 6
+    (1 mayor, 6 el menor.)</b></font></p>
+  </blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>&lt;center&gt;&lt;/center&gt; El texto
+  encerrado, se presenta centrado en la pantalla</b></font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>También se puede conseguir el mismo
+    efecto por medio del tag &lt;p align=&quot;center&quot;&gt;&lt;/p&gt;</b></font></p>
+  </blockquote>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p align="center">&nbsp;</b></font>&nbsp;<img SRC="imageN7R.JPG" width="73" height="38"> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Inserción de Imágenes</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>Se utiliza el tag &lt;img&gt;, el cual
+  posee un parámetro obligatorio (src=) y varios opcionales (alt,border,height,width,
+  ismap, align)</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Es un tag que no cierra</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Sintaxis:</b></font> </p>
+  <blockquote>
+    <b><font COLOR="#000000" FACE="Arial" SIZE="-2"><p>&lt;</font><font SIZE="-2" FACE="Arial" COLOR="#800080">img </font><font SIZE="-2" FACE="Arial" COLOR="#FF0000">src=&quot;</font><font SIZE="-2" FACE="Arial" COLOR="#0000FF">../../images/386.jpg</font><font SIZE="-2" FACE="Arial" COLOR="#FF0000">&quot; width=&quot;</font><font SIZE="-2" FACE="Arial" COLOR="#0000FF">32</font><font SIZE="-2" FACE="Arial" COLOR="#FF0000">&quot; height=&quot;</font><font SIZE="-2" FACE="Arial" COLOR="#0000FF">32</font><font SIZE="-2" FACE="Arial" COLOR="#FF0000">&quot; alt=&quot;</font><font SIZE="-2" FACE="Arial" COLOR="#0000FF">Chip</font><font SIZE="-2" FACE="Arial" COLOR="#FF0000">&quot;</font><font SIZE="-1" COLOR="#000000" FACE="Arial">&gt;&nbsp;<img SRC="../../images/ASM/386.jpg" ALT="Chip" width="32" height="32"></font></b> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>El URL (relativo) donde se encuentra el
+    gráfico a presentar es &quot;../images/386.jpg&quot;, el cual puede ser formato
+    Compuserve (.GIF) o formato JPEG, que son dos formatos estándares y que permiten reducir
+    en gran medida la transmisión de la información por la red, a través de la compresión.</b></font>
+    </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>Las opciones se refieren a:</b></font> <br>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    a. alt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =</b></font> <br>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    b. border&nbsp; = contorno de la imagen</b></font> <br>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    c. height&nbsp; =&nbsp;&nbsp; alto (en cuanto a tamaño)</b></font> <br>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    d. width&nbsp;&nbsp; =&nbsp;&nbsp; ancho (en cuanto a tamaño)</b></font> <br>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    e. ismap&nbsp;&nbsp; =</b></font> <br>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    f. align&nbsp;&nbsp;&nbsp;&nbsp; =</b></font></p>
+  </blockquote>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Inserción de Ligas de Hipertexto</b></font>
+</p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>El vehículo principal para brincar de
+  una página HTML a otra es la liga de hipertexto</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>El tag encargado de dicha acción es:</b></font>
+  </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>&lt;a href=&quot;URL&quot;&gt; texto o
+    imágenes&lt;/a&gt;</b></font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>El URL es la dirección hacia donde se
+    ejecuta la acción:</b></font> </p>
+    <blockquote>
+      <b><font SIZE="-2" COLOR="#000000" FACE="Arial"><p></font><font SIZE="+2" COLOR="#000000" FACE="Arial">Ejemplos:</font></b> </p>
+      <div align="center"><center><table border="0" cellpadding="2" width="100%">
+        <tr>
+          <td width="50%"><font SIZE="-2" COLOR="#000000" FACE="Arial"><b>&lt;a
+          href=&quot;http://www.sinergia-web.com.mx/documento.html&quot;&gt;</b></font></td>
+          <td width="50%"><font COLOR="#000099">&nbsp;</font><b><font SIZE="+1" COLOR="#000099">¡</font><font SIZE="+1"><blink><a HREF="http://www.sinergia-web.com.mx/documento.html">Ve a la página
+          de Sinergia!</a></blink></font></b> <a HREF="http://www.sinergia-web.com.mx/documento.html">
+          <img SRC="logoCh.gif" width="100" height="49"></a> &nbsp; </td>
+        </tr>
+        <tr>
+          <td width="50%"><font SIZE="-2" COLOR="#000000" FACE="Arial"><b>&lt;a
+          href=&quot;mailto:bguardia@sinergia-web.com.mx&quot;&gt;</b></font> </td>
+          <td width="50%">&nbsp; <a HREF="mailto:bguardia@sinergia-web.com.mx">Mándame un mail....</a>
+          </td>
+        </tr>
+        <tr>
+          <td width="50%"><font SIZE="-2" COLOR="#000000" FACE="Arial"><b>&lt;a
+          href=&quot;ftp://ftp.sinergia-web.com.mx&quot;&gt;</b></font></td>
+          <td width="50%"><a href="ftp://ftp.sinergia-web.com.mx"><font SIZE="-2" COLOR="#000000" FACE="Arial"><b>ftp://ftp.sinergia-web.com.mx</b></font></a></td>
+        </tr>
+        <tr>
+          <td width="50%"></td>
+          <td width="50%"></td>
+        </tr>
+      </table>
+      </center></div>
+    </blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>Lo que encierran los tags se presenta
+    en el browser, subrayado (en texto) o con un margen (imágenes)</p>
+    <p><span lang="en-us">Una imagen puede ser tambi</span><span lang="es-mx">én 
+    una liga tratándose como &quot;Mapa&quot;, en cuyo caso se definen figuras como &quot;hotspots&quot;, 
+    es decir, secciones de la imagen que funcionan como ligas diferentes. Esto 
+    se trata en clase con más detalle pero pueden ver el
+    <a href="../ejemplos/EjemploMapa.htm">Ejemplo</a></span></b></font></p>
+  </blockquote>
+</blockquote>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Creación de Tablas</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>En HTML es posible crear tablas por
+  medio del tag &lt;table&gt;&lt;/table&gt;</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>&lt;tr&gt;&lt;/tr&gt; define los
+  renglones</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>&lt;td&gt;&lt;/td&gt; las celdas
+  (columnas dentro de cada renglón)</b></font> </p>
+  <p>&nbsp;</p>
+</blockquote>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>Crearemos una tabla de 2 renglones x 3
+  columnas. A la izquierda se ve el código que la crea, a la derecha cómo queda.</b></font></p>
+  <div align="center"><center><table border="0" cellpadding="2" width="100%">
+    <tr>
+      <td width="50%"><font COLOR="#000000" FACE="Arial" size="1">&lt;table border&gt;</font><small><small><small>
+      </small></small></small><p><font COLOR="#000000" FACE="Arial" size="1">&lt;tr&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;2,1&lt;/td&gt;&lt;td&gt;3,1&lt;/td&gt;&lt;/tr&gt;</font><small><small><small>
+      </small></small></small></p>
+      <p><font COLOR="#000000" FACE="Arial" size="1">&lt;tr&gt;&lt;td&gt;1,2&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;td&gt;3,2&lt;/td&gt;&lt;/tr&gt;</font><small><small><small>
+      </small></small></small></p>
+      <p><font COLOR="#000000" FACE="Arial" size="1">&lt;/table&gt;</font></td>
+      <td width="50%"><table BORDER="1" WIDTH="87%">
+        <tr>
+          <td><p align="center">1,1 </td>
+          <td><p align="center">2,1 </td>
+          <td><p align="center">3,1 </td>
+        </tr>
+        <tr>
+          <td><p align="center">1,2 </td>
+          <td><p align="center">2,2 </td>
+          <td><p align="center">3,2 </td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  </center></div>
+</blockquote>
+
+<p align="center">&nbsp; </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Creación de Frames</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>Es posible abrir varias ventanas
+  separadas (con páginas web diferentes) en una misma ventana, se llaman frames.</b></font>
+  </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Se necesita un documento HTML (que
+  carece de &lt;body&gt;&lt;/body&gt;) que posea la definción del frame</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Los tags a utilizarse son:</b></font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>&lt;frameset&gt;&lt;/frameset&gt;</b></font>
+    </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&lt;frame&gt;</b></font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>&lt;noframes&gt;</b></font></p>
+  </blockquote>
+</blockquote>
+
+<p align="center"><img SRC="imageV79.JPG" width="150" height="140"><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Un ejemplo es la página del Curso, en
+la parte superior tiene un frame de título y en la inferior otro para el contenido. Si
+checas el código fuente de esta página, verás que corresponde a los frames.</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Utilización de Formularios</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>Los formularios permiten captar
+  información de un usuario que esté explorando la página.</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>Los formularios comprenden:</b></font> </p>
+</blockquote>
+
+<form method="POST" action="tema2.htm">
+  <input type="hidden" name="secreto" value="esto no se ve!"><div align="center"><center><table BORDER="0" CELLPADDING="2" WIDTH="100%">
+    <tr>
+      <th><font SIZE="-1" COLOR="#000000" FACE="Arial">Tipo de campo</font></th>
+      <th nowrap><font SIZE="-1" COLOR="#000000" FACE="Arial">Ejemplo de código</font></th>
+      <th><font SIZE="-1" COLOR="#000000" FACE="Arial">Ejemplo de apariencia</font></th>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Campos de texto&nbsp;</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">text</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">T2</font><font SIZE="1" COLOR="#ff0000">&quot; size=&quot;</font><font SIZE="1" COLOR="#0000ff">20</font><font SIZE="1" COLOR="#ff0000">&quot; value=&quot;</font><font SIZE="1" COLOR="#0000ff">Escribe
+      aquí y abajo</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;</font></td>
+      <td><input type="text" name="T2" size="20" value="Escribe aquí y abajo"></td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Campos de password</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">password</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">T1</font><font SIZE="1" COLOR="#ff0000">&quot; size=&quot;</font><font SIZE="1" COLOR="#0000ff">20</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;</font></td>
+      <td><input type="password" name="T1" size="20"></td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Campos ocultos (un campo de texto que no
+      se ve)</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">hidden</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">secreto</font><font SIZE="1" COLOR="#ff0000">&quot; size=&quot;</font><font SIZE="1" COLOR="#0000ff">20</font><font SIZE="1" COLOR="#ff0000">&quot; value=&quot;</font><font SIZE="1" COLOR="#0000ff">esto no
+      se ve!</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;</font></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Áreas de Texto</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">textarea
+      </font><font SIZE="1" COLOR="#ff0000">rows=&quot;</font><font SIZE="1" COLOR="#0000ff">2</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">S1</font><font SIZE="1" COLOR="#ff0000">&quot; cols=&quot;</font><font SIZE="1" COLOR="#0000ff">20</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;Escriba un texto<br>
+      aquí de varios renglones&lt;<font SIZE="1" COLOR="#800080">/textarea</font>&gt;</font></td>
+      <td><textarea rows="2" name="S1" cols="20">Escriba un texto
+aquí de varios renglones</textarea></td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Botones de radio</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">radio</font><font SIZE="1" COLOR="#ff0000">&quot; value=&quot;</font><font SIZE="1" COLOR="#0000ff">Si</font><font SIZE="1" COLOR="#ff0000">&quot; checked name=&quot;</font><font SIZE="1" COLOR="#0000ff">Radio1</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;Sí o<br>
+      &amp;nbsp;<br>
+      &lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">radio</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">Radio1</font><font SIZE="1" COLOR="#ff0000">&quot; value=&quot;</font><font SIZE="1" COLOR="#0000ff">No</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;No</font></td>
+      <td><input type="radio" value="V1" checked name="R1">Sí o&nbsp;<input type="radio" name="R1" value="V2">No</td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Listas de opciones</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">select
+      </font><font SIZE="1" COLOR="#ff0000">name=&quot;</font><font SIZE="1" COLOR="#0000ff">Lista</font><font SIZE="1" COLOR="#ff0000">&quot; size=&quot;</font><font SIZE="1" COLOR="#0000ff">2</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;<br>
+      &lt;<font SIZE="1" COLOR="#800080">option </font><font SIZE="1" COLOR="#ff0000">value=&quot;</font><font SIZE="1" COLOR="#0000ff">Opcion 1</font><font SIZE="1" COLOR="#ff0000">&quot;</font>&gt;Opcion
+      1&lt;<font SIZE="1" COLOR="#800080">/option</font>&gt;<br>
+      &lt;<font SIZE="1" COLOR="#800080">option </font><font SIZE="1" COLOR="#ff0000">value=&quot;</font><font SIZE="1" COLOR="#0000ff">Opcion2</font><font SIZE="1" COLOR="#ff0000">&quot;</font>&gt;Opcion2&lt;<font SIZE="1" COLOR="#800080">/option</font>&gt;<br>
+      &lt;<font SIZE="1" COLOR="#800080">/select</font>&gt;</font></td>
+      <td><select name="Lista" size="2">
+        <option value="Opcion 1">Opcion 1</option>
+        <option value="Opcion2">Opcion2</option>
+      </select>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">CheckBoxes</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">checkbox</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">C1</font><font SIZE="1" COLOR="#ff0000">&quot; value=&quot;</font><font SIZE="1" COLOR="#0000ff">ON</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;</font></td>
+      <td><input type="checkbox" name="C1" value="ON">Marque aquí</td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Botones normales</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">submit</font><font SIZE="1" COLOR="#ff0000">&quot; value=&quot;</font><font SIZE="1" COLOR="#0000ff">Enviar</font><font SIZE="1" COLOR="#ff0000">&quot; name=&quot;</font><font SIZE="1" COLOR="#0000ff">B1</font><font SIZE="1" COLOR="#ff0000">&quot;</font><font SIZE="1" COLOR="#000000">&gt;</font></td>
+      <td><input type="submit" value="Enviar" name="B1"></td>
+    </tr>
+    <tr>
+      <td><font SIZE="-1" COLOR="#000000" FACE="Arial">Botones gráficos</font></td>
+      <td nowrap><font SIZE="1" COLOR="#000000">&lt;</font><font SIZE="1" COLOR="#800080">input </font><font SIZE="1" COLOR="#ff0000">type=&quot;</font><font SIZE="1" COLOR="#0000ff">image</font><font SIZE="1" COLOR="#ff0000">&quot; src=&quot;</font><font SIZE="1" COLOR="#0000ff">../../images/bien.gif</font><font SIZE="1" COLOR="#ff0000">&quot; <br>
+      name=&quot;</font><font SIZE="1" COLOR="#0000ff">I1</font><font SIZE="1" COLOR="#ff0000">&quot;
+      width=&quot;</font><font SIZE="1" COLOR="#0000ff">85</font><font SIZE="1" COLOR="#ff0000">&quot;
+      height=&quot;</font><font SIZE="1" COLOR="#0000ff">31</font><font SIZE="1" COLOR="#ff0000">&quot;<br>
+      alt=&quot;<font SIZE="1" COLOR="#0000ff">Presione aqui si está de acuerdo</font>&quot;<font SIZE="1" COLOR="#000000">&gt;</font></font></td>
+      <td>
+      <input type="image" src="../../images/bien.gif" name="I1" alt="Presione aqui si está de acuerdo" width="85" height="31"></td>
+    </tr>
+  </table>
+  </center></div><p>&nbsp;</p>
+</form>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Utilización de Formularios</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>El formulario se encierra entre los
+  tags &lt;form&gt; y &lt;/form&gt;</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>No se pueden anidar formularios dentro
+  de otros formularios</b></font> </p>
+  <p><font SIZE="+2" COLOR="#000000" FACE="Arial"><b>El tag &lt;form&gt;, posee como
+  parámetros, el método como se enviará al servidor la información (post/get) y el
+  programa CGI, ASP ó ISAPI al que se le envían los datos</b></font> (más de esto en la
+  sesión 4) </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>Si no se indica el método, se tomará
+    por defecto, el método GET.</b></font></p>
+  </blockquote>
+</blockquote>
+<font SIZE="+2" COLOR="#006600" FACE="Arial"><b>
+
+<p>&nbsp;</b></font> </p>
+
+<p><font SIZE="+2" COLOR="#006600" FACE="Arial"><b>Bibliografía y Referencias</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>HTML 3.2 Soluciones Instantáneas</b></font>
+  </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>Prentice Hall Hispanoamericana</b></font>
+    </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>ISBN-968-880-939-X</b></font></p>
+  </blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>HTML 3.2 and CGI Unleashed</b></font> </p>
+  <blockquote>
+    <font SIZE="-1" COLOR="#000000" FACE="Arial"><b><p>John December / SAM's Net</b></font> </p>
+    <p><font SIZE="-1" COLOR="#000000" FACE="Arial"><b>ISBN 1-57521-177-7</b></font></p>
+  </blockquote>
+  <b><font SIZE="+2" COLOR="#000000" FACE="Arial"><address>
+    </font></b><font COLOR="#000000" face="Arial"><a href="http://www.developer.com/reference/r_library.html">http://www.developer.com/reference/r_library.html</a></font>
+  </address>
+  <address>
+    <font COLOR="#000000" face="Arial"><a href="http://www.netscape.com">http://www.netscape.com</a></font>
+  </address>
+  <address>
+    <font face="Arial"><a href="http://www.developer.com/reference/library/1575210932/ewtoc.html">http://www.developer.com/reference/library/1575210932/ewtoc.html</a></font>
+  </address>
+  <address>
+    <font face="Arial"><a href="http://www.microsoft.com/latam/msdnlat/">http://www.microsoft.com/latam/msdnlat/</a></font>
+  </address>
+  <address>
+    <font face="Arial"><a href="http://www.microsoft.com/sitebuilder">http://www.microsoft.com/sitebuilder</a></font>
+  </address>
+</blockquote>
+
+<p><font size="+2" color="#006600" face="Arial"><b>Créditos</b></font> </p>
+
+<blockquote>
+  <font SIZE="+2" COLOR="#000000" FACE="Arial"><b><p>Página por Karla de la Torre y <a href="mailto:bguardia@sinergia-web.com.mx">Bruno Guardia</a>.</b></font></p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Ejercicios de la sesión 4</title>
+<!-- Created by AOLpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#00FF00" vlink="#0000FF">
+
+<h2>Ejercicios (Arquitectura de PCs)</h2>
+
+<p>No son para entregar, sólo para practicar y discutir. </p>
+
+<ol>
+    <li>Enumerar los registros principales del procesador,
+        divididos por categorías.</li>
+    <li>Indica con qué registros de 8 bits cuenta el procesador.</li>
+    <li>Investiga las limitaciones de los registros de segmentos.</li>
+    <li>Explica por qué se dice que el 8086 es un procesador de
+        16 bits.</li>
+    <li>¿Qué puedes deducir en cuanto a los registros de
+        propósito general del 80386, dado que este procesador es
+        de 32 bits?</li>
+    <li>Si por lo demás fueran iguales, ¿cuánto sería más
+        rápido un programa que haga un uso intensivo de memoria,
+        ejecutado en un 80386 DX, a 40 Mhz., en relación al
+        mismo programa en un 8086, a 5 Mhz.? ¿cuánto en
+        relación a correrlo en un 80386 SX a 20 Mhz.? ¿Cuánto
+        más rápido en un Pentium de 120 Mhz.? Explica tu
+        respuesta.</li>
+    <li>¿Que procesador sería más rápido: un 386SX a 40 Mhz.
+        o un 386 DX a 25 Mhz.? ¿por qué?; y, entre un 80486DX a
+        50 Mhz. y un 80486SX a 50 Mhz., ¿qué tanta diferencia
+        habría en velocidad, y en qué circunstacias? ¿por
+        qué?</li>
+    <li>En forma similar al ejercicio de las sesiones 1 y 2
+        (simulación de Fetch), simula lo que ocurre paso a paso
+        con cada componente del procesador, si se ejecuta el
+        siguiente código; suponiendo que el código está en la
+        localidad lógica de memoria 1200h:1000h, dibuja cómo
+        queda esa sección de memoria, y explica los valores de
+        los registros en tu ejecución simulada:</li>
+</ol>
+
+<blockquote>
+    <p>MOV AX, 5</p>
+    <p>MOV BX, 10</p>
+    <p>ADD AX, BX</p>
+    <p>MOV CX, AX</p>
+</blockquote>
+
+<p><strong>Segmentación:</strong></p>
+
+<ol>
+    <li>Calcula la dirección física que corresponde a la
+        dirección lógica 3DEFh:4235h</li>
+    <li>Encuentra tres direcciones lógicas que correspondan a la
+        dirección física 98765h</li>
+    <li>Indica con qué rango de segmentos podemos accesar la
+        dirección física 01234h</li>
+    <li>Realiza un programa en pseudocódigo que recorra la
+        memoria completamente, generando las direcciones físicas
+        de 00000h a FFFFFh, en forma de Segmento y
+        Desplazamiento, sin saltar ninguna y sin repetir.</li>
+</ol>
+</body>
+</html>

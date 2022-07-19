@@ -1,0 +1,207 @@
+<html>
+
+<head>
+
+<title>Proyecto 1: Aplicación Cliente Internet</title>
+<link REL="stylesheet" TYPE="text/css" href="../../Clases.css">
+</head>
+
+<body>
+
+<h1>Desarrollo <span lang="en-us">de Aplicaciones Avanzadas en </span>Internet</h1>
+
+<h1>Primer Proyecto Parcial: <span lang="en-us">Aplicación dinámica del lado del 
+cliente</span></h1>
+
+<h3>Proyecto <span lang="es-mx">en equipos de 2 personas</span>.</h3>
+
+<p>Se entregará el&nbsp;<span lang="es-mx">3 </span>de <span lang="es-mx">
+septiembre </span>del 200<span lang="es-mx">2</span>. <span lang="es-mx">S</span>e deberá publicar en 
+<span lang="es-mx">algún </span>servidor<span lang="es-mx">, por ejemplo 
+&quot;www.brinkster.com&quot; o </span>"paginas.ccm.itesm.mx"; <span lang="es-mx">
+adicionalmente se deberá </span>entrega<span lang="es-mx">r electrónicamente un 
+archivo .ZIP </span>con los
+archivos <span lang="es-mx">del proyecto</span>.</p>
+
+<p><span lang="es-mx">Se considerarán </span>los siguientes aspectos: 
+
+<ul>
+  <li><span lang="es-mx">Interfase compleja (imitando capacidades avanzadas de 
+  GUIs no soportadas por HTML tradicional), utilizando dibujos acordes a la 
+  especificación.</span><li><span lang="es-mx">Todas las aplicaciones requieren 
+  uso de imágenes GIF o JPEG para botones, fichas, cartas, formatos o iconos. No 
+  se calificará la calidad de diseño, pero sí se requerirá hacer algo de 
+  producción gráfica.</span><li>Barra de navegación<span lang="es-mx"> 
+  y efectos especiales en los menúes</span><li><span lang="es-mx">Uso de Style 
+  Sheets para generar interfase consistente</span><li><span lang="es-mx">Incluir 
+  al menos 4 páginas HTML independientes y con funciones distintas</span><li>
+  <span lang="es-mx">Uso exclusivo de tecnologías del lado del cliente, nada que 
+  dependa de ejecución en el servidor; tampoco se permite el uso de Applets de 
+  Java.</span></li>
+</ul>
+
+<p>Deberá funcionar y verse correctamente en <span lang="es-mx">Internet </span>
+Explorer.<span lang="es-mx">5 o superior</span></p>
+<p><span lang="es-mx">De acuerdo al equipo, se realizará el proyecto 
+correspondiente; los equipos se numeran de 1 a N, y los proyectos de A a D.</span></p>
+<h3><span lang="es-mx">Proyectos</span></h3>
+<p><span lang="es-mx">A - <a href="#Maraton">Juego de Maratón</a></span></p>
+<p><span lang="es-mx">B - <a href="#Veintiuno">Blackjack (Veintiuno)</a></span></p>
+<p><span lang="es-mx">C - <a href="#Impuestos">Declaración de impuestos</a></span></p>
+<p><span lang="es-mx">D -</span> <span lang="es-mx"><a href="#Agenda">Agenda semanal</a></span></p>
+<h3><span lang="es-mx">Equipos - Proyecto que les tocó por sorteo (no se puede 
+ya cambiar ni equipo ni proyecto)</span></h3>
+<ol>
+  <li><span lang="es-mx">José Jaimes Damacio - A</span></li>
+  <li><span lang="es-mx">Luis Manuel Aceves y Adrián Arturo Guzmán - B</span></li>
+  <li><span lang="es-mx">José García y Waldo Elorza - C</span></li>
+  <li><span lang="es-mx">Juan Carlos Cantú y Félix Ayala - D</span></li>
+  <li><span lang="es-mx">Ana Laura Martínez y Juan Martín Carrillo - A</span></li>
+  <li><span lang="es-mx">Claudia Guerrero y Jorge Juárez - B</span></li>
+  <li><span lang="es-mx">David García y Miguel Vera - C</span></li>
+  <li><span lang="es-mx">Octavio Delgado y Gerson García - D</span></li>
+  <li><span lang="es-mx">Raúl Kojima y Rodrigo Jiménez - A</span></li>
+  <li><span lang="es-mx">Hans Burkart y Rafael Castro - B</span></li>
+  <li><span lang="es-mx">Kenat Ferrer y Rodrigo Romay - C</span></li>
+  <li><span lang="es-mx">Christelle Navarrete y Héctor Mendivil - D</span></li>
+  <li><span lang="es-mx">Claudia David y Martín Schmiedel - A</span></li>
+  <li><span lang="es-mx">Ana Torres y Jesús Suárez - B</span></li>
+  <li><span lang="es-mx">Daniela Altamirano y Lorena Dávila - C</span></li>
+  <li><span lang="es-mx">Alfonso Estrada y Alejandro Guízar - D</span></li>
+  <li><span lang="es-mx">Emmanuel Cruz y Guillermo Flores - A</span></li>
+</ol>
+<h4><span lang="es-mx"><a name="Maraton">Especificaciones del Juego de Maratón</a></span></h4>
+<ul>
+  <li><span lang="es-mx">El tablero de juego contará con 20 casillas, iniciando 
+  todos los jugadores en la casilla 1</span></li>
+  <li><span lang="es-mx">El juego podrá tener de 2 a 4 jugadores (se preguntará 
+  al inicio)</span></li>
+  <li><span lang="es-mx">Se deberá solicitar el nombre de cada jugador</span></li>
+  <li><span lang="es-mx">Cada jugador tendrá una ficha con color distintivo</span></li>
+  <li><span lang="es-mx">Los jugadores irán jugando por turnos ordenadamente</span></li>
+  <li><span lang="es-mx">El objetivo del juego es llegar a la meta antes que los 
+  otros jugadores; así que cuando uno de los jugadores llegue (o rebase) a la 
+  casilla 20, el juego termina declarándolo ganador</span></li>
+  <li><span lang="es-mx">Cuando le toca el turno a un jugador, se &quot;tirará&quot; un 
+  dado, el cual dará un número al azar de 1 a 6; al verse caer el dado, se 
+  presentará la pregunta correspondiente a una &quot;tarjeta&quot; al azar, de la sección 
+  correspondiente al dado (hay seis secciones o materias de preguntas)</span></li>
+  <li><span lang="es-mx">Si contesta correctamente, avanzará 1 casilla; si lo 
+  hace incorrectamente, se pasa la oportunidad a uno de los otros jugadores (al 
+  azar), el cual tiene la oportunidad de avanzar 2 casillas si la contesta 
+  adecuadamente; después de tomar esta oportunidad, se continúan los turnos en 
+  donde se habían quedado (no hay oportunidad a otro jugador).</span></li>
+  <li><span lang="es-mx">Se deberán cargar preguntas en un archivo .JS que 
+  defina los arreglos; para poder jugar, se necesitarán al menos 20 preguntas de 
+  cada una de las 6 secciones, por lo que se aceptarán repeticiones aunque será 
+  mejor si tienen preguntas suficientes para evitarlas.</span></li>
+  <li><span lang="es-mx">No se vale compartir código ni preguntas entre los 
+  equipos que hacen el mismo proyecto. Así que no se basen en copiar preguntas 
+  del juego de mesa, en ninguna de sus versiones, para evitar un parecido 
+  excesivo</span></li>
+</ul>
+<h4><span lang="es-mx"><a name="Veintiuno">Especificaciones del BlackJack 
+(Veintiuno)</a></span></h4>
+<ul>
+  <li><span lang="es-mx">Se contará con 1 a 4 jugadores, que juegan contra la 
+  &quot;casa&quot;.</span></li>
+  <li><span lang="es-mx">Cada jugador empiezan con $10 &quot;virtuales&quot;; la casa no 
+  tiene límite de ganancias ni pérdidas, por lo que no se lleva su cuenta.</span></li>
+  <li><span lang="es-mx">Se tiene un &quot;mazo&quot; de 48 cartas, divididas en 4 &quot;palos&quot; 
+  (espadas, diamantes, tréboles y picas); cada uno de estos cuenta con 13 
+  cartas, numeradas A (as), 2, 3, 4, 5, 6, 7, 8, 9, 10, J , Q, K</span></li>
+  <li><span lang="es-mx">El objetivo es sumar lo más cercano a 21, pero sin 
+  pasarse. Teniendo 21 exactos se gana; en caso de que tanto la casa como un 
+  jugador tenga 21, si uno lo tiene con dos cartas y otro con tres gana el de 
+  dos cartas; en otro caso el empate implica que no se gana ni pierde dinero.</span></li>
+  <li><span lang="es-mx">Las cartas valen por su número, excepto el As que es 
+  comodín y vale 1 ú 11 según convenga; las cartas J, Q, K valen 10 cualquiera 
+  de ellos. Así que ejemplos de Blackjack (21) son AJ, AK, AK, A 10, 10 J A.</span></li>
+  <li><span lang="es-mx">La &quot;casa&quot; reparte una carta al azar a cada jugador, que 
+  no se ve; y una segunda en la segunda vuelta, que sí se ve. También la casa 
+  obtiene 2 cartas. </span></li>
+  <li><span lang="es-mx">El jugador, según lo que ve, puede pedir otra carta o 
+  no. En el momento que lo decide, tiene que indicar cuánto de su dinero apuesta 
+  (desde $1 hasta lo que tenga en total); aún si no quiere otra carta, tiene que 
+  apostar algo siempre.</span></li>
+  <li><span lang="es-mx">Cada jugador decide si desea &quot;abrir&quot; su carta escondida 
+  o no; pero si decide abrir la escondida, tiene que pedir otra para que al 
+  menos una no se vea.</span></li>
+  <li><span lang="es-mx">Al terminar una vuelta de apuestas, la casa toma las 
+  mismas decisiones que los jugadores, pero no puede decidir apuestas; pero 
+  tiene que aceptar las de los jugadores.</span></li>
+  <li><span lang="es-mx">Se puede hacer otra vuelta de pedir cartas, en este 
+  caso un jugador puede decidir salirse y ya no volver a apostar, en tal caso 
+  pierde su apuesta pero ya no tiene que seguir apostando hasta que se vuelva a 
+  iniciar la repartición.</span></li>
+  <li><span lang="es-mx">La casa no pide más cartas una vez que su suma vista es 
+  mayor a 16. Un jugador sí puede arriesgarse a ello.</span></li>
+  <li><span lang="es-mx">Una vez que se cierran las apuestas y cartas, se 
+  muestran todas las cartas y se calcula el total de cada jugador. Cada jugador 
+  se compara contra la casa, si el jugador tiene más gana la apuesta y se 
+  incrementa su dinero en tanto como apostó; si se pasa de 21 y la casa no, se 
+  pierde la apuesta; si ambos pasan de 21 o empatan en puntos salvo los casos 21 
+  en dos cartas contra tres, quedan tablas. Esto se repite para todos los 
+  jugadores.</span></li>
+  <li><span lang="es-mx">Estas son reglas básicas, es conveniente extenderlas 
+  para usar variantes más avanzadas del juego</span></li>
+</ul>
+<p>&nbsp;</p>
+<h4><span lang="es-mx"><a name="Impuestos">Especificaciones de la Declaración de 
+Impuestos</a></span></h4>
+<ul>
+  <li><span lang="es-mx">En una primera pantalla, el usuario deberá capturar su 
+  nombre y RFC</span></li>
+  <li><span lang="es-mx">En las siguientes pantallas, el usuario podrá elegir de 
+  un menú, si se capturan Ingresos o Egresos, o si ya está listo para la 
+  Declaración</span></li>
+  <li><span lang="es-mx">En los ingresos, se capturará los datos Número de 
+  Recibo, Nombre del Cliente, RFC del Cliente y Base Honorarios, y se calcularán 
+  automáticamente IVA (Base de Honorarios por 15%), Subtotal (Base + IVA), 
+  Retención ISR (10% de la Base), Retención IVA (10% de la Base) y Total 
+  (Subtotal - Retención ISR - Retención IVA). Con estos datos se presentará el 
+  recibo simulado; el usuario podrá confirmar que es correcto, en cuyo caso se 
+  agregará a la tabla de Ingresos; o corregir la Base hasta que esté satisfecho; 
+  o cancelar, en cuyo caso podrá regresar al menú sin alterar los datos</span></li>
+  <li><span lang="es-mx">En los egresos, se capturarán Nombre del Proveedor y 
+  Cantidad; se calculará automáticamente IVA (15% de la Cantidad) y Total 
+  (Cantidad + IVA). Con estos datos se presentará una factura simulada, el 
+  usuario podrá confirmarlo o no bajo reglas similares al anterior</span></li>
+  <li><span lang="es-mx">Al término de la captura de ingresos y egresos, cuando 
+  el usuario esté listo para la Declaración, se generará un resumen de Ingresos 
+  (tabla con cada ingreso y la sumatoria de cada una de las cantidades que lo 
+  componen), otro de Egresos (tabla con cada egreso y las sumatorias de 
+  Cantidad, IVA y Total); y un Formato de Declaración (de preferencia basado en 
+  el real) el cual contendrá los totales de impuestos, ingresos y egresos, y en 
+  base a ellos hará los cálculos necesarios para determinar los impuestos a 
+  pagar. </span></li>
+  <li><span lang="es-mx">Se usará la tabla de cálculo &quot;Honorarios mensuales&quot;, 
+  disponible en <a href="http://www.sat.gob.mx">http://www.sat.gob.mx</a>, la 
+  cual deberá ingresarse en un archivo separado .JS que pueda actualizarse cada 
+  3 meses con la ley</span></li>
+</ul>
+<p>&nbsp;</p>
+<h4><span lang="es-mx"><a name="Agenda">Especificaciones de la Agenda Semanal</a></span></h4>
+<ul>
+  <li><span lang="es-mx">Cubrirá una semana, de lunes a domingo, de 8 a 21 hrs.</span></li>
+  <li><span lang="es-mx">El usuario capturará la fecha inicial (Día, Mes y Año), 
+  que corresponderá al lunes; y se presentará la agenda como una tabla </span>c<span lang="es-mx">on 
+  los 7 días a partir del indicado; si hay cambio de mes, se deberá reflejar</span>;<span lang="es-mx"> 
+  si el año es bisiesto y el 29 de febrero cae en la semana, se deberá reflejar.</span></li>
+  <li><span lang="es-mx">El usuario podrá agregar y eliminar citas al 
+  calendario, hasta que tenga su semana organizada, en cuyo caso podrá 
+  imprimirla en dos formatos: Como calendario; y como lista de citas ordenadas 
+  por tiempo.</span></li>
+  <li><span lang="es-mx">Cada cita deberá tener una hora de inicio (que puede 
+  ser cualquiera en el rango, con intervalos de media hora)</span>,<span lang="es-mx"> 
+  una duración (en medias horas), una descripción, y una categoría</span></li>
+  <li><span lang="es-mx">Las categorías serán definidas dinámicamente por el 
+  usuario, teniendo 3 de base: Clase, Trabajo y Personal. Cada categoría deberá 
+  distinguirse por un color particular.</span></li>
+  <li><span lang="es-mx">Al definir la agenda, se irá mostrando la tabla con la 
+  semana completa, en donde se verán las celdas correspondientes con la 
+  descripción y color apropiado a su categoría</span></li>
+  <li><span lang="es-mx">No se debe aceptar empalme de citas.</span></li>
+</ul>
+</body>
+</html>

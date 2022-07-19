@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Ejemplos de la Sesión 4</title>
+<!-- Created by AOLpress/1.2 -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#0000FF">
+
+<h2>Ejemplos </h2>
+
+<ol>
+    <li><em>Sumar dos números de 32 bits.</em><br>
+        Se requiere usar el concepto del Carry. Supongamos que un
+        número de 32 bits se encuentra repartido en AX (la parte
+        alta) y&nbsp;BX (la parte baja); y el otro, entre CX
+        y&nbsp;DX. Queremos que el resultado quede en AX con BX.
+        Las dos instrucciones, con sus respectivos comentarios,
+        están a continuación:<br>
+        <br>
+        <code>ADD BX, DX<br>
+        ; Suma las partes bajas. No toma en cuenta el carry, si
+        es que existía (estamos iniciando una operación
+        independiente)<br>
+        ADC AX, CX<br>
+        ; Suma las partes altas, pero considerando el carry que
+        pudo haber en la suma de las bajas.</code> </li>
+    <li><em>Explicar por qué un corrimiento a la izquierda
+        equivale a multiplicar por dos:</em><br>
+        Esto se puede explicar visualmente; supongamos el número
+        binario de 8 bits:<br>
+        <code>00000011</code><br>
+        que equivale a 3 decimal. Si hacemos un corrimiento a la
+        izquierda, quiere decir que todos los bits se hacen un
+        lugar a la izquierda, insertando un 0 por la derecha y
+        descartando el último bit (el más significativo), que
+        se va al <em>Carry Flag</em>:<br>
+        <code>00000110</code><br>
+        Como se puede ver, el resultado equivale a 6 decimal;
+        así que parece que la regla se cumple.<br>
+        Podemos observar que insertar un 0 por la derecha, es
+        justo lo que hacemos para multiplicar por 10; pero esto
+        en base decimal. Aquí, usando bits, es como usar base
+        binaria; y multiplicar por 10 en esta base, es
+        exactamente lo mismo que lo que conocemos como
+        multiplicar por 2, en base binaria. </li>
+    <li><em>Tengo X pesos, donde X es un número entero entre 1 y
+        100. Construir una sección de código en Ensamblador que
+        indique la combinación mínima de monedas de $1, $5, $10
+        y $20 necesaria para cubrir esa cantidad. Para ello,
+        dejar los valores en CL, CH, DL y DH, respectivamente.
+        Suponer que X&nbsp;se encuentra al inicio en AL</em><br>
+        El algoritmo consiste en dividir sucesivamente, entre 20,
+        10 y&nbsp;5:<br>
+        <code>; Primero, dividir AL entre 20:<br>
+        MOV AH, 0 ; Para que AX completo valga lo mismo que AL<br>
+        MOV BL, 20 ; Cantidad a dividir<br>
+        DIV BL ; Divide AX / 20<br>
+        ; El cociente queda en AL, el residuo en AH<br>
+        MOV CL, AL ; Número de monedas de $20<br>
+        MOV AL, AH ; Para seguir dividiendo<br>
+        MOV AH, 0 ; Para que AX completo valga lo mismo que AL<br>
+        MOV BL, 10 ; Cantidad a dividir<br>
+        DIV BL ; Divide AX / 10<br>
+        ; El cociente queda en AL, el residuo en AH<br>
+        MOV CH, AL ; Número de monedas de $10<br>
+        MOV AL, AH ; Para seguir dividiendo<br>
+        MOV AH, 0 ; Para que AX completo valga lo mismo que AL<br>
+        MOV BL, 5 ; Cantidad a dividir<br>
+        DIV BL ; Divide AX / 5<br>
+        ; El cociente queda en AL, el residuo en AH<br>
+        MOV DL, AL ; Número de monedas de $5<br>
+        MOV DH, AH ; Número de monedas de $1</code> </li>
+</ol>
+
+<p>También conviene ver entre los programas que hay como
+referencia; entre los apropiados al tema están:</p>
+
+<ol>
+    <li><a href="../programa/hello.asm">Hola Mundo </a></li>
+    <li><a href="../programa/cesar.asm">Clave César </a></li>
+    <li><a href="../programa/fibo.asm">Serie de Fibonacci </a></li>
+</ol>
+</body>
+</html>

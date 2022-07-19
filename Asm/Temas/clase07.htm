@@ -1,0 +1,575 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Instrucciones básicas</title>
+</head>
+
+<body background="../../images/fondo-uv.gif" bgcolor="#FFFFFF">
+
+<h1 align="center">Tema #7 </h1>
+
+<h1 align="center">Instrucciones básicas </h1>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="center"><a href="clase06.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Temas/clase08.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+<div align="center"><center>
+
+<table border="0">
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><img src="../../images/waveline.gif" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer las instrucciones sencillas más usadas en Lenguaje Ensamblador de la familia
+    80x86. </li>
+  <li>Comprender los efectos de estas instrucciones en el estado del procesador. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="teoria">Teoría</a> </h2>
+
+<h2>Grupos de instrucciones </h2>
+
+<ul>
+  <li><a href="#Memoria">Manejo de memoria </a></li>
+  <li><a href="#aritmetica">Instrucciones aritméticas</a> </li>
+  <li><a href="#booleana">Operaciones lógicas (booleanas)</a> </li>
+  <li><a href="#shifts">Manejo de bits (rotaciones y desplazamientos): </a></li>
+  <li><a href="#jumps">Evaluación de condiciones y saltos </a></li>
+  <li><a href="#subs">Uso de procedimientos/subrutinas </a></li>
+  <li><a href="#directivas">Principales directivas (TASM) </a></li>
+</ul>
+
+<hr>
+
+<h2><a name="Memoria">Manejo de memoria:</a> </h2>
+
+<table border="1" cellpadding="4" units="pixels">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+  </tr>
+  <tr>
+    <td>MOV </td>
+    <td>destino, fuente </td>
+    <td>destino = fuente </td>
+  </tr>
+  <tr>
+    <td>PUSH </td>
+    <td>fuente </td>
+    <td>[SS:SP] = fuente; SP += sizeof(destino) </td>
+  </tr>
+  <tr>
+    <td>POP </td>
+    <td>destino </td>
+    <td>SP -= sizeof(destino) ; destino = [SS:SP] </td>
+  </tr>
+  <tr>
+    <td>XCHG </td>
+    <td>op1, op2 </td>
+    <td>temp = op1; op1 = op2; op2 = temp </td>
+  </tr>
+</table>
+
+<h3 align="center">Comentarios </h3>
+
+<ul>
+  <li>MOV acepta distintos modos de direccionamiento; las principales limitantes que tiene
+    son: <ul>
+      <li>Destino y fuente no pueden ser, ambos, referencias a memoria; al menos uno de ellos debe
+        ser un registro o una constante. </li>
+      <li>El destino no puede ser una constante, debe ser un registro o una referencia a memoria. </li>
+      <li>Los registros de segmento solamente pueden usarse junto con un registro de uso general. </li>
+      <li>Destino y fuente deben tener el mismo &quot;tipo&quot; (ambos referencias a bytes, o a
+        word, pero no uno a byte y otro a word). </li>
+    </ul>
+  </li>
+  <li>PUSH y POP requieren operandos de tamano Word. En 8086/88 tiene que ser un registro o
+    una localidad de memoria; en 80286 y superiores, la mejora principal es que PUSH ya se
+    puede hacer sobre una constante. </li>
+  <li>XCHG tiene las mismas características que MOV, con la única excepción de que no
+    acepta constantes de ninguno de los dos lados. </li>
+</ul>
+
+<hr>
+
+<h2><a name="aritmetica">Instrucciones aritméticas: </a></h2>
+
+<table border="1">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+    <th>Resultados </th>
+  </tr>
+  <tr>
+    <td>ADD </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 + op2 </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>SUB </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 - op2 </td>
+  </tr>
+  <tr>
+    <td>ADC </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 + op2 + Carry </td>
+  </tr>
+  <tr>
+    <td>SBB </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 - op2 - Carry </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>INC </td>
+    <td>op1 </td>
+    <td>op1 ++; </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>DEC </td>
+    <td>op1 </td>
+    <td>op1 --; </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>MUL </td>
+    <td>op1 </td>
+    <td>Si op1 es tipo byte: </td>
+    <td>AX = AL * op1 </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Si op1 es tipo word: </td>
+    <td>(DX:AX) = AX * op1 </td>
+  </tr>
+  <tr>
+    <td>DIV </td>
+    <td>op1 </td>
+    <td>Si op1 es tipo byte: </td>
+    <td>AL = AX / op1 </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>AH = AX % op1 </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Si op1 es tipo word: </td>
+    <td>AX = (DX : AX) / op1 </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>DX = (DX : AX) % op1 </td>
+  </tr>
+  <tr>
+    <td>NEG </td>
+    <td>op1 </td>
+    <td>op1 = - op1 </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2><a name="shifts">Manejo de bits (rotaciones y desplazamientos): </a></h2>
+
+<table border="1">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+  </tr>
+  <tr>
+    <td>SHL </td>
+    <td>op1, cuenta </td>
+    <td>op1 &lt;&lt;= cuenta </td>
+  </tr>
+  <tr>
+    <td>SHR </td>
+    <td>op1, cuenta </td>
+    <td>op1 &gt;&gt;= cuenta </td>
+  </tr>
+  <tr>
+    <td>SAR </td>
+    <td>op1, cuenta </td>
+    <td>(no hay equivalente) </td>
+  </tr>
+  <tr>
+    <td>ROL </td>
+    <td>op1, cuenta </td>
+    <td>(no hay equivalente) </td>
+  </tr>
+  <tr>
+    <td>ROR </td>
+    <td>op1, cuenta </td>
+    <td>(no hay equivalente) </td>
+  </tr>
+</table>
+
+<p>En todas las instrucciones de rotación/desplazamiento de bits, cuenta puede ser 1 o
+bien CX. </p>
+
+<hr>
+
+<h2><a name="booleana">Operaciones lógicas (booleanas): </a></h2>
+
+<table border="1">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+  </tr>
+  <tr>
+    <td>AND </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 &amp; op2 </td>
+  </tr>
+  <tr>
+    <td>OR </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 | op2 </td>
+  </tr>
+  <tr>
+    <td>XOR </td>
+    <td>op1, op2 </td>
+    <td>op1 = op1 ^ op2 </td>
+  </tr>
+  <tr>
+    <td>NOT </td>
+    <td>op1</td>
+    <td>op1 = ~op1 </td>
+  </tr>
+</table>
+
+<hr>
+
+<h2><a name="jumps">Evaluación de condiciones y saltos </a></h2>
+
+<table border="1">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+  </tr>
+  <tr>
+    <td>JMP </td>
+    <td>etiqueta </td>
+    <td>&nbsp;</td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>CMP </td>
+    <td>op1, op2 </td>
+    <td>&nbsp;</td>
+    <td>(no hay equivalente) </td>
+  </tr>
+  <tr>
+    <th>Comparaciones sin signo </th>
+  </tr>
+  <tr>
+    <td>JB/JNAE </td>
+    <td>etiqueta </td>
+    <td>if (op1 &lt; op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNB/JAE </td>
+    <td>etiqueta </td>
+    <td>if (op1 &gt;= op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JBE/JNA </td>
+    <td>etiqueta </td>
+    <td>if (op1 &lt;= op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNBE/JA </td>
+    <td>etiqueta </td>
+    <td>if (op1 &gt; op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JE/JZ </td>
+    <td>etiqueta </td>
+    <td>if (op1 == op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNE/JNZ </td>
+    <td>etiqueta </td>
+    <td>if (op1 != op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <th>Comparaciones con signo </th>
+  </tr>
+  <tr>
+    <td>JL/JNGE </td>
+    <td>etiqueta </td>
+    <td>if (op1 &lt; op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNL/JGE </td>
+    <td>etiqueta </td>
+    <td>if (op1 &gt;= op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JLE/JNG </td>
+    <td>etiqueta </td>
+    <td>if (op1 &lt;= op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNLE/JG </td>
+    <td>etiqueta </td>
+    <td>if (op1 &gt; op2) /* con un CMP */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JP/JPE </td>
+    <td>etiqueta </td>
+    <td>if (PF) /* Parity flag */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNP/JPO </td>
+    <td>etiqueta </td>
+    <td>if (! PF) </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JS </td>
+    <td>etiqueta </td>
+    <td>if (SF) /* Sign flag */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNS </td>
+    <td>etiqueta </td>
+    <td>if (! SF) </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JC </td>
+    <td>etiqueta </td>
+    <td>if (CF) /* Carry flag */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNC </td>
+    <td>etiqueta </td>
+    <td>if (! CF) </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JO </td>
+    <td>etiqueta </td>
+    <td>if (OF) /* Overflow flag */ </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+  <tr>
+    <td>JNO </td>
+    <td>etiqueta </td>
+    <td>if (! OF) </td>
+    <td>goto &lt;etiqueta&gt; </td>
+  </tr>
+</table>
+
+<hr>
+
+<h2><a name="subs">Uso de procedimientos/subrutinas </a></h2>
+
+<table border="1">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+  </tr>
+  <tr>
+    <td>CALL </td>
+    <td>etiqueta </td>
+    <td>Llamada a función </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>PUSH IP </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>PUSH CS ; Sólo si es llamada larga (CALL FAR) </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>JMP etiqueta </td>
+  </tr>
+  <tr>
+    <td>RET </td>
+    <td>(ninguno) </td>
+    <td>return </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>POP IP-temp </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>POP CS-temp ; Sólo si es llamada larga (RETF) </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>JMP&nbsp;CS-temp:IP-temp </td>
+  </tr>
+</table>
+
+<hr>
+
+<h2><a name="directivas">Principales directivas (TASM) </a></h2>
+
+<h3>¿Qué es una directiva? </h3>
+
+<p>Cuando un mnemónico o palabra reservada&nbsp;de ensamblador se va a traducir a
+lenguaje máquina (código de operación del procesador), para su posterior ejecución por
+parte del CPU, se le llama instrucción. </p>
+
+<p>Pero también existen mnemónicos o palabras reservadas del Lenguaje Ensamblador, que
+no se convierten a lenguaje de máquina, es decir, no son instrucciones propias del
+lenguaje de máquina del procesador. Sin embargo, son necesarias para controlar el proceso
+de Ensamblado; le dicen al Ensamblador cuáles son las secciones del programa, cómo
+definir las variables, y cómo estructurar el programa, entre otras aplicaciones. A estas
+palabras, que el Ensamblador reconocerá pero no son instrucciones, les llamamos &quot;<em>Directivas</em>&quot;.
+</p>
+
+<hr>
+
+<p>De segmentos (simplificadas): </p>
+
+<p>Se les considera simplificadas, pues antiguamente se usaban directivas mucho más
+complejas para realizar la misma función. Aún se requieren esas directivas, pero sólo
+en los casos donde se accesarán múltiples segmentos; inclusive en Turbo Assembler,
+solamente cuando hay más de dos segmentos de datos. Por ello, no las veremos en el curso,
+pues es muy rara su aplicación, y estas son más sencillas de entender y usar. 
+
+<ul>
+  <li><code>.model &lt;modelo de memoria&gt;</code><br>
+    Nos indica qué modelo de memoria se usará para ensamblar este programa. Este concepto se
+    verá más adelante en el curso.<br>
+    Para las aplicaciones comunes, usaremos siempre el modelo <em>small</em>. De esta manera,
+    un programa fuente iniciará con la directiva &quot;<code>.model small</code>&quot; </li>
+  <li><code>.stack &lt;tamaño en bytes&gt;</code><br>
+    Le indica al ensamblador cuánto espacio deberá reservar para la pila del sistema. Como
+    hay funciones básicas que usan la pila, aunque nosotros no la usemos explícitamente,
+    debe dejarse un espacio razonable.<br>
+    Para la generalidad de las aplicaciones, basta reservar unos 256 bytes (100h). Por ello,
+    generalmente veremos a los programas fuentes tener la directiva &quot;<code>.stack 100h</code>&quot;
+  </li>
+  <li><code>.data</code><br>
+    Esta directiva indica dónde inicia la definición de las variables. Generalmente, esta
+    zona de memoria se asociará al registro DS; de hecho, se considera que es la definición
+    del contenido y&nbsp;espacio reservado para el segmento de datos por defecto. </li>
+  <li><code>.code</code><br>
+    Esta directiva indicará al ensamblador dónde inicia el código. A partir de ella, se
+    encontrarán las instrucciones propiamente dichas. </li>
+</ul>
+
+<hr>
+
+<p>Para uso de procedimientos: 
+
+<ul>
+  <li><code>&lt;etiqueta&gt; PROC {NEAR/FAR}</code><br>
+    Asocia una etiqueta a un procedimiento. Por ejemplo, si ponemos:<br>
+    <code>Principal PROC</code><br>
+    esto definirá el punto de inicio del procedimiento llamado &quot;Principal&quot;.<br>
+    NEAR o FAR son parámetros opcionales, que por el momento omitiremos, revisando su uso en
+    el tema de Modelos de Memoria. </li>
+  <li><code>&lt;etiqueta&gt; ENDP</code><br>
+    Cierra un procedimiento, debe estar balanceado con un PROC para abrirlo. </li>
+  <li><code>END {etiqueta}</code><br>
+    Cierra un módulo de programa. Esta directiva le indica al Ensamblador que ignore
+    cualquier cosa que venga después; es como decirle que ahí acabó el archivo con el
+    código fuente.<br>
+    El parámetro (opcional) &quot;etiqueta&quot; indica en qué procedimiento iniciará la
+    ejecución del programa. Así como en Pascal el programa inicia siempre en el <code>begin</code>
+    principal, y&nbsp;en C iniciará en la función<code> main</code>, sin importar su
+    localización, en Ensamblador usaremos esta directiva para indicar dónde iniciar el
+    programa. Por ejemplo:<br>
+    <code>END Principal</code><br>
+    indica al Ensamblador que la ejecución iniciará en el procedimiento o&nbsp;etiqueta
+    Principal.<br>
+    En caso de omitirse el parámetro opcional, la ejecución se inicia en la primera
+    instrucción después de la directiva <code>.code</code>. </li>
+</ul>
+
+<hr>
+
+<p>Definición de constantes </p>
+
+<p><code>&lt;identificador&gt; EQU &lt;expresión&gt;</code><br>
+Define una constante llamada como el identificador, en una forma similar al <code>#define </code>de
+C. Es decir, cada vez que se encuentre el identificador en el programa fuente, se
+sustituirá (como texto) por la expresión indicada en el <code>EQU</code>. </p>
+
+<p><code>&lt;identificador&gt; = &lt;expresión&gt;</code><br>
+Es similar al <code>EQU</code>, solamente que en este caso podrá&nbsp;variarse
+(redefinirse) la sustitución que corresponde al identificador. </p>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="biblio">Bibliografía</a> </h2>
+
+<p>Capítulo 4 del Libro de Texto </p>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx"><img src="../../images/mail.gif" alt="Correo" border="0" width="32" height="32"> bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Lu 26-Ago-96 </em><br>
+<em>Última actualización: Do 9-Feb-97</em> </p>
+</body>
+</html>

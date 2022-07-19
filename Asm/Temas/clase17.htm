@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<title>Manejo de la Línea de Comandos de DOS</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1 align="center">Tema #17 </h1>
+
+<h1 align="center">Manejo de la Línea de Comandos de DOS </h1>
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td><p align="Center"><a href="clase16.htm"><img border="0" src="../../images/anterior.gif" alt="Sesión Anterior" width="32" height="32"><br>
+    Clase Anterior</a> </td>
+    <td><p align="center"><a href="../Sesiones/sv10.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
+    Sesión 10</a></td>
+    <td><p align="Center"><a href="../Temas/clase18.htm"><img border="0" src="../../images/sigue.gif" alt="Sesión Siguiente" width="32" height="32"><br>
+    Clase Siguiente</a> </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table>
+  <tr>
+    <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+    </td>
+    <td><h2><a href="#teoria">Teoría </a></h2>
+    </td>
+    <td><h2><a href="#biblio">Bibliografía </a></h2>
+    </td>
+  </tr>
+</table>
+</center></div></div>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+
+<ul>
+  <li>Conocer las técnicas y herramientas necesarias para analizar la lìnea de comandos que
+    recibe un programa al ejecutarse desde DOS. </li>
+</ul>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Teoría</a> </h2>
+
+<p>Cuando se ejecuta un programa desde DOS, la cadena que es escrita por el usuario se
+conoce como &quot;línea de comandos&quot;. El intérprete de comandos (generalmente, el
+COMMAND.COM), se encarga de almacenar esta información en el PSP (<em>Program Segment
+Prefix</em>), de donde los programas pueden aprovecharla. </p>
+
+<p>Específicamente, la línea de comandos se encuentra como una cadena &quot;tipo
+Pascal&quot; a partir del desplazamiento 80h dentro del segmento de PSP. Por tanto, la
+información está organizada como lo indica la figura: </p>
+
+<p>Para la figura, se toma el ejemplo de la línea de comandos: </p>
+
+<p><strong>C:\&gt;</strong> PROGRAMA parametro </p>
+
+<table border="1" cellpadding="2">
+  <tr>
+    <td>Desplazamiento </td>
+    <td>Contenido<br>
+    (Hexadecimal) </td>
+    <td>Significado </td>
+  </tr>
+  <tr>
+    <td>80h </td>
+    <td>0Bh </td>
+    <td>En decimal, 11; es decir, la cadena es de 11 caracteres. </td>
+  </tr>
+  <tr>
+    <td>81h </td>
+    <td>20h </td>
+    <td>Espacio después de la palabra PROGRAMA </td>
+  </tr>
+  <tr>
+    <td>82h </td>
+    <td>70h </td>
+    <td>p (ASCII) </td>
+  </tr>
+  <tr>
+    <td>83h-8Ah </td>
+    <td>61h 72h 61h ... 6Fh </td>
+    <td>arametro </td>
+  </tr>
+  <tr>
+    <td>8Bh </td>
+    <td>0Dh </td>
+    <td>En decimal, 13; es&nbsp;decir, el ASCII del Enter con el que termina la cadena. </td>
+  </tr>
+</table>
+
+<p>Una vez que conocemos el formato básico de la línea de comandos, el problema se
+divide en dos: 
+
+<ol>
+  <li>Obtener el segmento del PSP </li>
+  <li>Usar el conocimiento sobre los desplazamientos, para construir funciones que exploran la
+    línea de comandos; es decir, codificar un análisis de léxico y sintaxis. </li>
+</ol>
+
+<p>Para obtener el segmento, existen dos formas principales: 
+
+<ul>
+  <li><a href="#PSP">Usar el Servicio 62h de la Interrupción 21h</a> </li>
+  <li>Cuando el programa inicia, DOS usa el segmento de datos para apuntar al PSP; por tanto,
+    antes de inicializar el segmento de datos, podemos utilizar el valor que tiene al inicio
+    del programa para accesar la línea de comandos. </li>
+</ul>
+
+<hr>
+<a name="PSP">
+
+<p>INT 21h, Servicio 62h: Obtener Segmento P</a>SP </p>
+
+<h3>Parámetros: </h3>
+
+<table cellpadding="2">
+  <tr>
+    <td>AH = 62h </td>
+    <td>(Número del Servicio) </td>
+  </tr>
+</table>
+
+<h3>Regresa: </h3>
+
+<table cellpadding="2">
+  <tr>
+    <td>BX </td>
+    <td>Valor del segmento del PSP; generalmente, se copia a ES antes de usarse. </td>
+  </tr>
+</table>
+
+<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+
+<h2><a name="objetivo">Bibliografía</a> </h2>
+
+<ol>
+  <li>PC Interno, de Michael Tischer. </li>
+  <li><a href="../programa/param2.asm">Ejemplo de programa que muestra cómo usar la línea de
+    comandos</a></li>
+  <li><a href="../programa/compare.asm">Ejemplo de Comparar archivos, usa línea de comandos</a></li>
+</ol>
+
+<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por Bruno Guardia R. </p>
+<div align="center"><center>
+
+<address>
+  <a href="mailto:bguardia@campus.ccm.itesm.mx" name="mailto:bguardia@campus.ccm.itesm.mx"><img border="0" src="../../images/mail.gif" alt="Correo" width="32" height="32">
+  bguardia@itesm.mx </a>
+</address>
+</center></div>
+
+<p align="center"><em>Creada: Lu 21-Oct-96 </em><br>
+<em>Última actualización: Mi 1º-Abr-98</em> </p>
+</body>
+</html>

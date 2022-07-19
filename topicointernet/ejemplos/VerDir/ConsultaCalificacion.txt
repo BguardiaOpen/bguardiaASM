@@ -1,0 +1,19 @@
+<%@ Language=VBScript %>
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+</HEAD>
+<BODY>
+<h3>Consulta de boletas</h3>
+<P>
+<FORM method="POST" action="boleta.asp">
+Dame tu matr&iacute;cula: 
+<input type="text" name="Matricula" size="8">
+<br>
+<input type="submit" value="Consultar boleta">
+</FORM>
+
+</P>
+
+</BODY>
+</HTML>
