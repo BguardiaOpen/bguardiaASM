@@ -2,7 +2,7 @@
 
 This used to be my classes web site, circa 2005. I started the first version of it in 1994, when it was a basic, minimal, ugly web page, with links to Word Perfect Presentations (competitor of Power Point)
 
-It later evolved to a proper HTML web site, supporting Netscape 2.0 and the initial version of Internet Explorer. Later I started building a bit of ASP, then migrated to .Net. If you are curious to sample how it looked, you can take a look at the [Internet archive wayback machine] (https://web.archive.org/web/20010224104912/http:/www.sinergia-web.com.mx/clases/default.htm)
+It later evolved to a proper HTML web site, supporting Netscape 2.0 and the initial version of Internet Explorer. Later I started building a bit of ASP, then migrated to .Net. If you are curious to sample how it looked, you can take a look at this version from the **Internet archive wayback machine**: https://web.archive.org/web/20010224104912/http:/www.sinergia-web.com.mx/clases/default.htm
 
 The initial version in this repo is a backup from 2005; I stopped hosting the website around 2008, then got inspired by the [Some Assembly Required](https://github.com/hackclub/some-assembly-required) repo (thanks [Hugo Garcia](https://github.com/orgs/socialrewind/people/HugoGaMo) for the reference), to share it and modernize to make it more usable leveraging Github capabilities
 
