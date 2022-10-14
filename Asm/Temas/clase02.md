@@ -10,10 +10,10 @@ Tema #2
 =======
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase01.htm)
+Clase Anterior](clase01.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase03.htm)
+Clase Siguiente](../Temas/clase03.md)
 
 [Teoría](#teoria)
 -----------------

@@ -7,10 +7,10 @@ Uso de las herramientas y estructura general del programa
 =========================================================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase08.htm)
+Clase Anterior](clase08.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase10.htm)
+Clase Siguiente](../Temas/clase10.md)
 
 [Objetivos Específicos](#objetivo)
 ----------------------------------

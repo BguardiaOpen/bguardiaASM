@@ -7,10 +7,10 @@ Representaci y Tipos de Datos
 ===============================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase03.htm)
+Clase Anterior](clase03.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase05.htm)
+Clase Siguiente](../Temas/clase05.md)
 
 [Objetivos específicos](#objetivo)
 ----------------------------------

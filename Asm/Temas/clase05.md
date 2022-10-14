@@ -10,10 +10,10 @@ Arquitectura de la Familia de Procesadores 80x86
 ================================================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase04.htm)
+Clase Anterior](clase04.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase06.htm)
+Clase Siguiente](../Temas/clase06.md)
 
 [Objetivos específicos](#objetivo)
 ----------------------------------

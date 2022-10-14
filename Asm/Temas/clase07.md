@@ -7,10 +7,10 @@ Instrucciones básicas
 =====================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase06.htm)
+Clase Anterior](clase06.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase08.htm)
+Clase Siguiente](../Temas/clase08.md)
 
 [Objetivos Específicos](#objetivo)
 ----------------------------------

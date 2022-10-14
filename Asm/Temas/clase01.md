@@ -12,7 +12,7 @@ Tema #1
 ![](../../images/waveline.gif)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Siguiente Clase](../Temas/clase02.htm)
+Siguiente Clase](clase02.md)
 
 Objetivos Específicos
 ---------------------

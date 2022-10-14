@@ -7,10 +7,10 @@ Bases de Microcomputadoras
 ==========================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase02.htm)
+Clase Anterior](clase02.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase04.htm)
+Clase Siguiente](../Temas/clase04.md)
 
 [Objetivos específicos](#objetivo)
 ----------------------------------

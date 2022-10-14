@@ -7,10 +7,10 @@ Organización de la Memoria en PC
 ================================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase05.htm)
+Clase Anterior](clase05.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase07.htm)
+Clase Siguiente](../Temas/clase07.md)
 
 [Objetivos Específicos](#objetivo)
 ----------------------------------

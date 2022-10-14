@@ -7,10 +7,10 @@ Modos de direccionamiento
 =========================
 
 [![Sesión Anterior](../../images/anterior.gif)  
-Clase Anterior](clase07.htm)
+Clase Anterior](clase07.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Temas/clase09.htm)
+Clase Siguiente](../Temas/clase09.md)
 
 [Objetivos Específicos](#objetivo)
 ----------------------------------
