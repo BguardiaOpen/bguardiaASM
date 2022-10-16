@@ -12,18 +12,18 @@ Clase Anterior](clase08.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase10.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer el uso de las herramientas básicas para programar en lenguaje Ensamblador en 8086 y familia.
@@ -31,18 +31,18 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Manejo de las Herramientas
 
-*   [TASM](#TASM)
-*   [TLINK](#TLINK)
-*   [MAKE](#MAKE)
-*   [TD](#TD)
-*   [TPROF](#TPROF)
+*   [TASM](#tasm-ensamblador)
+*   [TLINK](#tlink-linker)
+*   [MAKE](#make-reglas-de-construcción)
+*   [TD](#td-depuración)
+*   [TPROF](#tprof-pruebas-de-eficiencia)
 
-[Estructura general de un programa](#Estructura)
+[Estructura general de un programa](#estructura-general-de-un-programa)
 
 * * *
 
@@ -158,7 +158,7 @@ Se ejecuta un ambiente amigable de menos; al igual que el depurador, requiere de
 
 * * *
 
-Estructura general de un programa
+## Estructura general de un programa
 =================================
 
 Todo programa fuente en ensamblador contará con cuatro secciones básicas:
@@ -175,7 +175,7 @@ Esta directiva permite poner un título al programa en ensamblador, es similar a
 
 .model <modelo>
 
-Indica el [modelo de memoria](../Temas/clase22.htm) que se va a utilizar. Esto lo veremos con más profundidad al final del curso; por el momento, simplemente pondremos el modelo _small_, que es el más usual y que es apropiado para casi todas las actividades del curso.
+Indica el [modelo de memoria](../Temas/clase22.md) que se va a utilizar. Esto lo veremos con más profundidad al final del curso; por el momento, simplemente pondremos el modelo _small_, que es el más usual y que es apropiado para casi todas las actividades del curso.
 
 * * *
 
@@ -185,7 +185,7 @@ Indica cuánto espacio se reservará para la pila del sistema. Se requiere este 
 
 * * *
 
-Datos y variables:
+## Datos y variables:
 
 #### .data
 
@@ -193,7 +193,7 @@ Con esta directiva, indicamos al ensamblador donde iniciaremos las definiciones 
 
 * * *
 
-<variable> DB <contenido>
+## <variable> DB <contenido>
 
 Esta directiva permite definir espacio de variables, en unidades de bytes. Si por ejemplo, se requiere una variable de tipo char Bandera, con valor inicial de 0, se definiría:
 
@@ -209,7 +209,7 @@ No siempre se requiere indicar un nombre de variable, especialmente en arreglos:
 
 * * *
 
-<variable> DW <contenido>
+## <variable> DW <contenido>
 
 Esta directiva, similar a la anterior, permite definir espacio para un Word. (variable que ocupa 2 bytes o 16 bits). Aplican todos los comentarios de la misma.
 
@@ -231,11 +231,11 @@ Esta directiva, combinada con DB o DW, permite llenar un arreglo con un valor re
 
 * * *
 
-código:
+## código:
 
 #### .code
 
-Con esta directiva, se indica al ensamblador que termina la definición de datos, e inicia la definición del código. Después de esta sección, se inicia la secuencia de instrucciones y [procedimientos](../Temas/clase10.htm) que forman el programa.
+Con esta directiva, se indica al ensamblador que termina la definición de datos, e inicia la definición del código. Después de esta sección, se inicia la secuencia de instrucciones y [procedimientos](../Temas/clase10.md) que forman el programa.
 
 El código casi siempre tendrá dos elementos importantes:
 
@@ -256,20 +256,21 @@ Para regresar a DOS, tendremos que hacer uso del mecanismo de interrupciones. Po
 
 * * *
 
-Final del programa:
+## Final del programa:
 
 Una vez que terminamos con las instrucciones, el ensamblador requiere saber cuándo dejar de ensamblar. Para ello, requiere de la directiva _END_, que hace dos cosas: indicar al ensamblador que deje de traducir; e indicarle si se desea que el programa inicie su ejecución en un punto distinto al principio del código.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 Capítulo 4, libro de texto.
 
 Manuales de TASM o MASM.
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

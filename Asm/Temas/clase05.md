@@ -15,49 +15,51 @@ Clase Anterior](clase04.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase06.md)
 
-[Objetivos específicos](#objetivo)
+[Objetivos específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
+
 ---------------------
 
-*   Conocer los componentes más importantes de la línea de procesadores Intel 80x86.
-*   Entender el funcionamiento general de los mismos.
-*   Conocer los elementos que podemos usar del procesador a través de software
-*   Conocer el funcionamiento del acceso a memoria y puertos.
+* Conocer los componentes más importantes de la línea de procesadores Intel 80x86.
+* Entender el funcionamiento general de los mismos.
+* Conocer los elementos que podemos usar del procesador a través de software
+* Conocer el funcionamiento del acceso a memoria y puertos.
 
 ![](../../images/waveline.gif)
 
-Teoría
+# Teoría
+
 ------
 
 Historia de los Procesadores Intel
 ----------------------------------
 
-[Arquitectura](#arq)
+[Arquitectura](#arquitectura)
 
 ### Familia "80x86"
 
-*   [8086](#8086)
-*   [8088](#8086)
-*   [80186](#80186)
-*   [80286](#80186)
-*   [80386](#80386)
-*   [80486](#80486)
-*   [Pentium](#Pentium)
-*   [Pentium Pro](#PentiumPro)
+* [8086](#80868088)
+* [8088](#80868088)
+* [80186](#8018680286)
+* [80286](#8018680286)
+* [80386](#80386)
+* [80486](#80486)
+* [Pentium](#pentium)
+* [Pentium Pro](#pentium-pro)
 
 * * *
 
-8086/8088
+### 8086/8088
 
 #### Nace la industria de PC compatibles
 
@@ -81,8 +83,7 @@ Disminuye el tráfico en el bus, al permitir separarlo en dos partes: una para u
 Diferencia 8086/8088: el tamaño de la cola (6 vs.4 bytes)
 
 * * *
-
-80186/80286
+### 80186/80286
 
 #### Se requiere más poder de cómputo
 
@@ -104,7 +105,7 @@ Facilita sistemas multitarea, al proporcionar memoria separada por proceso
 
 * * *
 
-80386
+### 80386
 
 _El tamaño de palabra se extiende a 32 bits_
 
@@ -131,7 +132,7 @@ Internamente maneja 32 bits; pero sus conexiones externas son de 16 bits
 
 * * *
 
-80486
+### 80486
 
 #### Aún más poder
 
@@ -153,7 +154,7 @@ Agiliza la ejecución
 
 * * *
 
-PENTIUM
+### PENTIUM
 
 #### Intel busca mantener su posición, con nueva tecnología
 
@@ -173,7 +174,7 @@ _Doble cola de prefetch_
 
 * * *
 
-PENTIUM PRO
+### PENTIUM PRO
 
 #### ¿Cómo competir con Workstations, a menor precio?
 
@@ -189,14 +190,15 @@ _Arriba de 200 Mhz._
 
 ![](../../images/waveline.gif)
 
-Arquitectura
+## Arquitectura
+
 ------------
 
 El procesador 8086 original introdujo nuevos conceptos en la arquitectura de los procesadores para microcomputadoras:
 
-*   [Arquitectura en Pipeline](#Pipeline)
-*   [Bus de datos de 16 bits.](#BusDatos)
-*   [Bus de direcciones de 20 bits](#BusDirecciones)
+* [Arquitectura en Pipeline](#arquitectura-en-pipeline)
+* [Bus de datos de 16 bits.](#bus-de-datos-de-16-bits)
+* [Bus de direcciones de 20 bits](#bus-de-direcciones-de-20-bits)
 
 Vamos a explorar sus principales componentes, y cómo se implementaron estos adelantos tecnológicos, a continuación:
 
@@ -210,7 +212,7 @@ Los procesadores previos al 8086, estaban limitados en su desempeño por la nece
 
 Resumiendo, un alto porcentaje del tiempo, el procesador estaba ocupado haciendo _Fetch_, cuando su función debiera ser ejecutar las instrucciones. La capacidad de ejecutar instrucciones sólo se ocupaba en un bajo porcentaje.
 
-Para solucionar esto, Intel desarrolló la arquitectura en _pipeline_ del _Fetch/Execute_, en la cual simplemente se divide la tarea en dos secciones: una encargada del _Fetch_ ([BIU](#BIU), y otra del Execute ([EU](#EU)). De esta manera, existen circuitos separados para cada función, los cuales trabajan en paralelo. Si bien el proceso aún es secuencial, solamente al principio se requiere desperdiciar tiempo en el _Fetch_. A partir de ahí, _Fetch_ va adelante del _Execute_, y trae instrucciones al procesador mientras este ejecuta las anteriores.
+Para solucionar esto, Intel desarrolló la arquitectura en _pipeline_ del _Fetch/Execute_, en la cual simplemente se divide la tarea en dos secciones: una encargada del _Fetch_ ([BIU](#biu-bus-interface-unit), y otra del Execute ([EU](#eu-execution-unit)). De esta manera, existen circuitos separados para cada función, los cuales trabajan en paralelo. Si bien el proceso aún es secuencial, solamente al principio se requiere desperdiciar tiempo en el _Fetch_. A partir de ahí, _Fetch_ va adelante del _Execute_, y trae instrucciones al procesador mientras este ejecuta las anteriores.
 
 ### Bus de datos de 16 bits
 
@@ -228,18 +230,18 @@ El BIU es la parte del 8086 que se encarga de hacer el _Fetch_; es decir, su fun
 
 Contiene los siguientes elementos:
 
-1.  [Los registros de segmentos](#Segmentos)
-2.  [La cola de prefetch](#Prefetch)
-3.  [El generador de direcciones físicas](#Sumador)
-4.  [El Bus C](#BusC)
+1. [Los registros de segmentos](#registros-de-segmentos)
+2. [La cola de prefetch](#cola-de-prefetch)
+3. [El generador de direcciones físicas](#generador-de-direcciones-físicas)
+4. [El Bus C](#bus-c)
 
 Su funcionamiento es de la manera siguiente:
 
 #### Registros de segmentos
 
-Estos registros son localidades de 16 bits dedicados a las funciones de acceso a memoria. Se decidió, como se describirá más adelante al analizar el mecanismo de [segmentación](#Segmentacion), dividir el Megabyte de memoria al que puede accesar un 8086, en 65536 partes (segmentos), iniciadas cada 1 Mb / 65536 = 16 bytes. Así, podemos en general decir que los registros de segmentos nos van a indicar qué sección de memoria seleccionamos.
+Estos registros son localidades de 16 bits dedicados a las funciones de acceso a memoria. Se decidió, como se describirá más adelante al analizar el mecanismo de [segmentación](#existen-4-registros-de-segmentos), dividir el Megabyte de memoria al que puede accesar un 8086, en 65536 partes (segmentos), iniciadas cada 1 Mb / 65536 = 16 bytes. Así, podemos en general decir que los registros de segmentos nos van a indicar qué sección de memoria seleccionamos.
 
-Existen 4 registros de segmentos:
+### Existen 4 registros de segmentos:
 
 ##### DS: Data Segment (Segmento de Datos)
 
@@ -259,13 +261,13 @@ Este registro nos permite seleccionar una sección de 64 Kb., que no está desti
 
 #### Cola de prefetch
 
-Ya que el [BIU](#BIU) trabaja en paralelo con el [EU](#EU), requieren de un mecanismo para comunicarse. Esto se logra con una cola, estructura de datos que permite que el EU obtenga instrucciones para ejecutar en el mismo orden en que el BIU las colocó en la misma. Así, el EU puede solicitar instrucciones en cuanto está listo para ejecutar la siguiente, sin importar en qué paso está el BIU en la obtención de instrucciones; y viceversa, el BIU puede continuar su búsqueda de instrucciones, depositando la que acaba de obtener en la cola, sin importar si el EU en este momento está ocupado ejecutando.
+Ya que el [BIU](#biu-bus-interface-unit) trabaja en paralelo con el [EU](#eu-execution-unit), requieren de un mecanismo para comunicarse. Esto se logra con una cola, estructura de datos que permite que el EU obtenga instrucciones para ejecutar en el mismo orden en que el BIU las colocó en la misma. Así, el EU puede solicitar instrucciones en cuanto está listo para ejecutar la siguiente, sin importar en qué paso está el BIU en la obtención de instrucciones; y viceversa, el BIU puede continuar su búsqueda de instrucciones, depositando la que acaba de obtener en la cola, sin importar si el EU en este momento está ocupado ejecutando.
 
 #### Generador de direcciones físicas
 
 Como las direcciones son de 20 bits, y los registros que nos permiten accesarlas son de 16, se requiere de 2 registros para que en combinación formen la dirección.
 
-Esta combinación está basada en la [arquitectura segmentada](#Segmentacion) que veremos más adelante. La función del generador de direcciones físicas consiste en realizar esa combinación, para lo cual contiene la circuitería necesaria para calcular la fórmula:
+Esta combinación está basada en la [arquitectura segmentada](#pending) que veremos más adelante. La función del generador de direcciones físicas consiste en realizar esa combinación, para lo cual contiene la circuitería necesaria para calcular la fórmula:
 
 _Dirección Fisica = Segmento \* 0010h + Desplazamiento_
 
@@ -279,27 +281,27 @@ El EU es la parte del 8086 que
 
 Contiene los siguientes elementos:
 
-1.  [Unidad de control](#UnidadControl)
-2.  [Registros de propósito general](#PropositoGral)
-3.  [Registros de índice](#Indices)
-4.  [ALU](#ALU)
-5.  [Registro de Banderas](#Banderas)
-6.  [Bus A](#BusA)
+1. [Unidad de control](#unidad-de-control)
+2. [Registros de propósito general](#registros-de-propósito-general)
+3. [Registros de índice](#registros-de-índice)
+4. [ALU](#alu-unidad-aritmética-lógica)
+5. [Registro de Banderas](#registro-de-banderas)
+6. [Bus A](#bus-a)
 
 #### Unidad de Control
 
 Es la sección del procesador que contiene la lógica de funcionamiento del mismo; es decir, esta circuitería gobierna el comportamiento de los distintos elementos en el procesador, coordinando los procesos de _Fetch_ y _Execute_, así como las distintas microoperaciones necesarias para la ejecución. Por tanto, tiene dos funciones principales:
 
-*   Generar la secuencia de estados del procesador, lo que logra gracias a la ejecución del microcódigo.
-*   Decodificar las instrucciones, determinando así los pasos para su ejecución.
+* Generar la secuencia de estados del procesador, lo que logra gracias a la ejecución del microcódigo.
+* Decodificar las instrucciones, determinando así los pasos para su ejecución.
 
 #### Registros de Propósito general
 
 Son 4 registros de 16 bits, que el programador usará para una diversidad de funciones. Tienen varias característica en común:
 
-*   Pueden ejecutar la mayoría de las operaciones del procesador, incluyendo la generalidad de las instrucciones aritméticas y lógicas, salvo la multiplicación y división.
-*   Se dividen lógicamente en 2 registros de 8 bits cada uno, llamados parte alta y parte baja; refiriéndose el registro de parte baja a los bits 0-7 (menos significativos) y la parte alta a los bits 8-15 (más significativos). Se conocen como el registro L (parte baja) y H (parte baja), precedidos por la letra que identifica al registro. Por ejemplo, AX se divide en AH y AL.
-*   Pueden conectarse a los registros de segmentos; de hecho, siempre se hará acceso a los registros de segmento a través de un registro de propósito general, o de la pila.
+* Pueden ejecutar la mayoría de las operaciones del procesador, incluyendo la generalidad de las instrucciones aritméticas y lógicas, salvo la multiplicación y división.
+* Se dividen lógicamente en 2 registros de 8 bits cada uno, llamados parte alta y parte baja; refiriéndose el registro de parte baja a los bits 0-7 (menos significativos) y la parte alta a los bits 8-15 (más significativos). Se conocen como el registro L (parte baja) y H (parte baja), precedidos por la letra que identifica al registro. Por ejemplo, AX se divide en AH y AL.
+* Pueden conectarse a los registros de segmentos; de hecho, siempre se hará acceso a los registros de segmento a través de un registro de propósito general, o de la pila.
 
 Los 4 registros tienen su nombre propio y ciertas especializaciones:
 
@@ -307,37 +309,37 @@ Los 4 registros tienen su nombre propio y ciertas especializaciones:
 
 Este registro es el más usado, siendo de propósito general; y tiene ciertas especializaciones, de ahí su nombre:
 
-*   Es el único que puede ser usado como multiplicando en la multiplicación
-*   Es el único que puede ser usado como dividendo en la división
-*   Es el parámetro que selecciona los distintos servicios del Sistema Operativo, usados mediante el mecanismo de Interrupciones.
+* Es el único que puede ser usado como multiplicando en la multiplicación
+* Es el único que puede ser usado como dividendo en la división
+* Es el parámetro que selecciona los distintos servicios del Sistema Operativo, usados mediante el mecanismo de Interrupciones.
 
 ### BX: Registro de Base
 
 Este registro, además de las característica generales de los registros de propósito general, se especializa
 
-*   en el acceso a memoria en combinación con los registros de índice, especialmente para el manejo de arreglos.
+* en el acceso a memoria en combinación con los registros de índice, especialmente para el manejo de arreglos.
 
 ### CX: Registro de Contador
 
 Este registro, como su nombre indica, será ampliamente usado como contador. Puede ser usado como cualquier registro de propósito general, pero tiene capacidades especiales para ser usado en instrucciones:
 
-*   de manejo de ciclos
-*   como contador en los corrimientos
-*   de manejo de memoria y strings
+* de manejo de ciclos
+* como contador en los corrimientos
+* de manejo de memoria y strings
 
 ### DX: Registro de Datos
 
 Este registro de propósito general tiene como especializaciones:
 
-*   Formar con AX números de 32 bits, siendo en este caso la parte más significativa.
-*   El acceso a puertos. Las instrucciones IN y OUT, que permiten dicho acceso, requerirán en ciertos casos que el número de puerto está en DX.
+* Formar con AX números de 32 bits, siendo en este caso la parte más significativa.
+* El acceso a puertos. Las instrucciones IN y OUT, que permiten dicho acceso, requerirán en ciertos casos que el número de puerto está en DX.
 
 #### Registros de índice
 
 Estos registros, de 16 bits, son muy similares a los de propósito general, pero no tienen todas las capacidades de los mismos; en particular:
 
-*   No pueden conectarse directamente con los registros de segmentos.
-*   No pueden verse como dos registros de 8 bits (parte alta y parte baja).
+* No pueden conectarse directamente con los registros de segmentos.
+* No pueden verse como dos registros de 8 bits (parte alta y parte baja).
 
 Ahora bien, tienen sus propias habilidades. Específicamente, están diseñados para combinarse con los registros de segmento, ser usados como desplazamientos y así intervenir en el acceso a memoria. Se les usa, por ello, para el acceso a arreglos o como apuntadores.
 
@@ -351,17 +353,17 @@ Este registro se especializa en el acceso a bytes o words dentro del segmento de
 
 Este registro se especializa en el acceso a bytes o words dentro del segmento de datos o el extra; existen instrucciones que lo toman por defecto como el registro que en combinación con el ES apunta a una localidad de memoria que se va a escribir, por lo cual toma su nombre.
 
-### BP: Base Pointer, o apuntador a la Base de la Pila.
+### BP: Base Pointer, o apuntador a la Base de la Pila
 
 Este registro es usado para accesar, dentro del segmento de pila, la información. Principalmente nos permite determinar cuando hay un _underflow_, es decir, cuando se quiere sacar más información de la pila que la que se ha colocado en ella; y el acceso a variables locales y parámetros.
 
-### SP: Stack Pointer, o apuntador al tope de la Pila.
+### SP: Stack Pointer, o apuntador al tope de la Pila
 
 Este registro también está siempre asociado al manejo de la pila. Su función especial es marcar el tope de la pila, y por tanto, indica en qué localidad de memoria se localiza la información de la pila; se incrementa cuando se hace un POP, con lo que apunta al siguiente elemento en la pila; y se decrementa al hacer un PUSH, con lo que controla el acceso a la memoria de la pila.
 
 #### ALU: Unidad Aritmética-Lógica
 
-Este componente, como su nombre indica, contiene la circuiteréa necesaria para realizar las diversas operaciones aritméticas y lógicas. Recibe sus operandos por el Bus A, y genera los resultados regresándolos al mismo bus. Una particularidad que es importante recalcar es su conexión al [registro de banderas](#Banderas), por lo cual todas las operaciones aritméticas y lógicas, de acuerdo a su resultado, lo alterarán.
+Este componente, como su nombre indica, contiene la circuiteréa necesaria para realizar las diversas operaciones aritméticas y lógicas. Recibe sus operandos por el Bus A, y genera los resultados regresándolos al mismo bus. Una particularidad que es importante recalcar es su conexión al [registro de banderas](#registro-de-banderas), por lo cual todas las operaciones aritméticas y lógicas, de acuerdo a su resultado, lo alterarán.
 
 #### Registro de Banderas
 
@@ -389,7 +391,7 @@ Se prende cuando el resultado de la última operación realizada en el ALU gener
 
 ##### DF: Bandera de dirección
 
-A diferencia de las anteriores, esta bandera no se prende como resultado del ALU, sino que el programador la usa para controlar la dirección del acceso mediante apuntadores, especialmente en las [instrucciones de strings](../Temas/clase15.htm).
+A diferencia de las anteriores, esta bandera no se prende como resultado del ALU, sino que el programador la usa para controlar la dirección del acceso mediante apuntadores, especialmente en las [instrucciones de strings](../Temas/clase15.md).
 
 ##### IF: Bandera de interrupción
 
@@ -403,23 +405,26 @@ Este bus es el camino por el que viajan los datos dentro de la unidad de ejecuci
 
 Cuando Intel extendió el bus de direcciones, de 16 a 20 bits, se encontró con el problema de cómo asociar los registros con las direcciones de memoria. Para lograrlo, aplicó un concepto ya usado antes en mainframes, conocido como segmentación; en este modelo, se usan dos registros para seleccionar una localidad de memoria:
 
-*   **Registro de Segmento**: indica en qué segmento (región o sección) de la memoria se encontrará la localidad deseada.
-*   **Registro de Desplazamiento**: indica en qué desplazamiento, es decir, dirección relativa respecto al inicio de la sección, se encontrará la localidad deseada.
+* **Registro de Segmento**: indica en qué segmento (región o sección) de la memoria se encontrará la localidad deseada.
+* **Registro de Desplazamiento**: indica en qué desplazamiento, es decir, dirección relativa respecto al inicio de la sección, se encontrará la localidad deseada.
 
 En el caso del 8086, los registros son de 16 bits, con lo que un registro de segmento puede tomar 65536 valores distintos; además, un registro de desplazamiento puede tomar los mismos valores. De ahí las siguientes propiedades:
 
-*   Un segmento inicia cada 16 bytes de memoria; de esta manera, a cada sección de 16 bytes de la memoria se le llama _"párrafo"_.
-*   Dos segmentos de memoria llegan a tener sobreposición; de manera que una misma localidad de memoria puede accesarse en distintas formas. Exactamente, en ¡4096 formas distintas!
-*   La ventaja de esta sobreposición, que complica el manejo, es que se desperdicia menos memoria entre código y datos, que están en segmentos distintos; si los segmentos no se sobrepusieran, desperdiciaríamos por ejemplo 63 Kb. si nuestros datos ocuparan 1 Kb, para completar el segmento. En cambio, con el esquema de segmentación con sobreposición, pueden inclusive no desperdiciarse bytes.
+* Un segmento inicia cada 16 bytes de memoria; de esta manera, a cada sección de 16 bytes de la memoria se le llama _"párrafo"_.
+* Dos segmentos de memoria llegan a tener sobreposición; de manera que una misma localidad de memoria puede accesarse en distintas formas. Exactamente, en ¡4096 formas distintas!
+* La ventaja de esta sobreposición, que complica el manejo, es que se desperdicia menos memoria entre código y datos, que están en segmentos distintos; si los segmentos no se sobrepusieran, desperdiciaríamos por ejemplo 63 Kb. si nuestros datos ocuparan 1 Kb, para completar el segmento. En cambio, con el esquema de segmentación con sobreposición, pueden inclusive no desperdiciarse bytes.
 
 ![](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
+
 ------------
 
-*   Libro de texto, capítulos 3 y 5.
+* Libro de texto, capítulos 3 y 5.
 
-![](../../images/waveline.gif) Página por Bruno Guardia R.
+![](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

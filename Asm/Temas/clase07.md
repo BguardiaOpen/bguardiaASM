@@ -12,512 +12,763 @@ Clase Anterior](clase06.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase08.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
+
 ---------------------
 
-*   Conocer las instrucciones sencillas más usadas en Lenguaje Ensamblador de la familia 80x86.
-*   Comprender los efectos de estas instrucciones en el estado del procesador.
+* Conocer las instrucciones sencillas más usadas en Lenguaje Ensamblador de la familia 80x86.
+* Comprender los efectos de estas instrucciones en el estado del procesador.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
+
 ------
 
 Grupos de instrucciones
 -----------------------
 
-*   [Manejo de memoria](#Memoria)
-*   [Instrucciones aritméticas](#aritmetica)
-*   [Operaciones lógicas (booleanas)](#booleana)
-*   [Manejo de bits (rotaciones y desplazamientos):](#shifts)
-*   [Evaluación de condiciones y saltos](#jumps)
-*   [Uso de procedimientos/subrutinas](#subs)
-*   [Principales directivas (TASM)](#directivas)
+
+  - [Manejo de memoria](#manejo-de-memoria)
+  - [Instrucciones aritméticas](#instrucciones-aritméticas)
+  - [Operaciones lógicas (booleanas)](#operaciones-lógicas-booleanas)
+- [Manejo de bits (rotaciones y desplazamientos)](#manejo-de-bits-rotaciones-y-desplazamientos)
+
+- [Evaluación de condiciones y saltos](#evaluación-de-condiciones-y-saltos)
+- [Uso de procedimientos/subrutinas](#uso-de-procedimientossubrutinas)
+- [Principales directivas (TASM)](#principales-directivas-tasm)
+    
 
 * * *
 
-Manejo de memoria:
+## Manejo de memoria
+
 ------------------
 
-Instrucción
+<table border="1" cellpadding="4" units="pixels">
 
-Operandos
+<tbody>
 
-Función equivalente en "C"
+<tr>
 
-MOV
+<th>Instrucción</th>
 
-destino, fuente
+<th>Operandos</th>
 
-destino = fuente
+<th>Función equivalente en "C"</th>
 
-PUSH
+</tr>
 
-fuente
+<tr>
 
-\[SS:SP\] = fuente; SP += sizeof(destino)
+<td>MOV</td>
 
-POP
+<td>destino, fuente</td>
 
-destino
+<td>destino = fuente</td>
 
-SP -= sizeof(destino) ; destino = \[SS:SP\]
+</tr>
 
-XCHG
+<tr>
 
-op1, op2
+<td>PUSH</td>
 
-temp = op1; op1 = op2; op2 = temp
+<td>fuente</td>
+
+<td>[SS:SP] = fuente; SP += sizeof(destino)</td>
+
+</tr>
+
+<tr>
+
+<td>POP</td>
+
+<td>destino</td>
+
+<td>SP -= sizeof(destino) ; destino = [SS:SP]</td>
+
+</tr>
+
+<tr>
+
+<td>XCHG</td>
+
+<td>op1, op2</td>
+
+<td>temp = op1; op1 = op2; op2 = temp</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 ### Comentarios
 
-*   MOV acepta distintos modos de direccionamiento; las principales limitantes que tiene son:
-    *   Destino y fuente no pueden ser, ambos, referencias a memoria; al menos uno de ellos debe ser un registro o una constante.
-    *   El destino no puede ser una constante, debe ser un registro o una referencia a memoria.
-    *   Los registros de segmento solamente pueden usarse junto con un registro de uso general.
-    *   Destino y fuente deben tener el mismo "tipo" (ambos referencias a bytes, o a word, pero no uno a byte y otro a word).
-*   PUSH y POP requieren operandos de tamano Word. En 8086/88 tiene que ser un registro o una localidad de memoria; en 80286 y superiores, la mejora principal es que PUSH ya se puede hacer sobre una constante.
-*   XCHG tiene las mismas características que MOV, con la única excepción de que no acepta constantes de ninguno de los dos lados.
+* MOV acepta distintos modos de direccionamiento; las principales limitantes que tiene son:
+  * Destino y fuente no pueden ser, ambos, referencias a memoria; al menos uno de ellos debe ser un registro o una constante.
+  * El destino no puede ser una constante, debe ser un registro o una referencia a memoria.
+  * Los registros de segmento solamente pueden usarse junto con un registro de uso general.
+  * Destino y fuente deben tener el mismo "tipo" (ambos referencias a bytes, o a word, pero no uno a byte y otro a word).
+* PUSH y POP requieren operandos de tamano Word. En 8086/88 tiene que ser un registro o una localidad de memoria; en 80286 y superiores, la mejora principal es que PUSH ya se puede hacer sobre una constante.
+* XCHG tiene las mismas características que MOV, con la única excepción de que no acepta constantes de ninguno de los dos lados.
 
 * * *
 
-Instrucciones aritméticas:
+## Instrucciones aritméticas
+
 --------------------------
 
-Instrucción
+<table border="1">
 
-Operandos
+<tbody>
 
-Función equivalente en "C"
+<tr>
 
-Resultados
+<th>Instrucción</th>
 
-ADD
+<th>Operandos</th>
 
-op1, op2
+<th>Función equivalente en "C"</th>
 
-op1 = op1 + op2
+<th>Resultados</th>
 
- 
+</tr>
 
-SUB
+<tr>
 
-op1, op2
+<td>ADD</td>
 
-op1 = op1 - op2
+<td>op1, op2</td>
 
-ADC
+<td>op1 = op1 + op2</td>
 
-op1, op2
+<td> </td>
 
-op1 = op1 + op2 + Carry
+</tr>
 
-SBB
+<tr>
 
-op1, op2
+<td>SUB</td>
 
-op1 = op1 - op2 - Carry
+<td>op1, op2</td>
 
- 
+<td>op1 = op1 - op2</td>
 
-INC
+</tr>
 
-op1
+<tr>
 
-op1 ++;
+<td>ADC</td>
 
- 
+<td>op1, op2</td>
 
-DEC
+<td>op1 = op1 + op2 + Carry</td>
 
-op1
+</tr>
 
-op1 --;
+<tr>
 
- 
+<td>SBB</td>
 
-MUL
+<td>op1, op2</td>
 
-op1
+<td>op1 = op1 - op2 - Carry</td>
 
-Si op1 es tipo byte:
+<td> </td>
 
-AX = AL \* op1
+</tr>
 
- 
+<tr>
 
- 
+<td>INC</td>
 
-Si op1 es tipo word:
+<td>op1</td>
 
-(DX:AX) = AX \* op1
+<td>op1 ++;</td>
 
-DIV
+<td> </td>
 
-op1
+</tr>
 
-Si op1 es tipo byte:
+<tr>
 
-AL = AX / op1
+<td>DEC</td>
 
- 
+<td>op1</td>
 
- 
+<td>op1 --;</td>
 
- 
+<td> </td>
 
-AH = AX % op1
+</tr>
 
- 
+<tr>
 
- 
+<td>MUL</td>
 
-Si op1 es tipo word:
+<td>op1</td>
 
-AX = (DX : AX) / op1
+<td>Si op1 es tipo byte:</td>
 
- 
+<td>AX = AL * op1</td>
 
- 
+</tr>
 
- 
+<tr>
 
-DX = (DX : AX) % op1
+<td> </td>
 
-NEG
+<td> </td>
 
-op1
+<td>Si op1 es tipo word:</td>
 
-op1 = - op1
+<td>(DX:AX) = AX * op1</td>
 
- 
+</tr>
 
-* * *
+<tr>
 
-Manejo de bits (rotaciones y desplazamientos):
+<td>DIV</td>
+
+<td>op1</td>
+
+<td>Si op1 es tipo byte:</td>
+
+<td>AL = AX / op1</td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td>AH = AX % op1</td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td>Si op1 es tipo word:</td>
+
+<td>AX = (DX : AX) / op1</td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td>DX = (DX : AX) % op1</td>
+
+</tr>
+
+<tr>
+
+<td>NEG</td>
+
+<td>op1</td>
+
+<td>op1 = - op1</td>
+
+<td> </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Manejo de bits (rotaciones y desplazamientos)
+
 ----------------------------------------------
 
-Instrucción
+<table border="1">
 
-Operandos
+<tbody>
 
-Función equivalente en "C"
+<tr>
 
-SHL
+<th>Instrucción</th>
 
-op1, cuenta
+<th>Operandos</th>
 
-op1 <<= cuenta
+<th>Función equivalente en "C"</th>
 
-SHR
+</tr>
 
-op1, cuenta
+<tr>
 
-op1 >>= cuenta
+<td>SHL</td>
 
-SAR
+<td>op1, cuenta</td>
 
-op1, cuenta
+<td>op1 <<= cuenta</td>
 
-(no hay equivalente)
+</tr>
 
-ROL
+<tr>
 
-op1, cuenta
+<td>SHR</td>
 
-(no hay equivalente)
+<td>op1, cuenta</td>
 
-ROR
+<td>op1 >>= cuenta</td>
 
-op1, cuenta
+</tr>
 
-(no hay equivalente)
+<tr>
+
+<td>SAR</td>
+
+<td>op1, cuenta</td>
+
+<td>(no hay equivalente)</td>
+
+</tr>
+
+<tr>
+
+<td>ROL</td>
+
+<td>op1, cuenta</td>
+
+<td>(no hay equivalente)</td>
+
+</tr>
+
+<tr>
+
+<td>ROR</td>
+
+<td>op1, cuenta</td>
+
+<td>(no hay equivalente)</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 En todas las instrucciones de rotación/desplazamiento de bits, cuenta puede ser 1 o bien CX.
 
 * * *
 
-Operaciones lógicas (booleanas):
+## Operaciones lógicas (booleanas)
+
 --------------------------------
 
-Instrucción
+<table border="1">
 
-Operandos
+<tbody>
 
-Función equivalente en "C"
+<tr>
 
-AND
+<th>Instrucción</th>
 
-op1, op2
+<th>Operandos</th>
 
-op1 = op1 & op2
+<th>Función equivalente en "C"</th>
 
-OR
+</tr>
 
-op1, op2
+<tr>
 
-op1 = op1 | op2
+<td>AND</td>
 
-XOR
+<td>op1, op2</td>
 
-op1, op2
+<td>op1 = op1 & op2</td>
 
-op1 = op1 ^ op2
+</tr>
 
-NOT
+<tr>
 
-op1
+<td>OR</td>
 
-op1 = ~op1
+<td>op1, op2</td>
 
-* * *
+<td>op1 = op1 | op2</td>
 
-Evaluación de condiciones y saltos
+</tr>
+
+<tr>
+
+<td>XOR</td>
+
+<td>op1, op2</td>
+
+<td>op1 = op1 ^ op2</td>
+
+</tr>
+
+<tr>
+
+<td>NOT</td>
+
+<td>op1</td>
+
+<td>op1 = ~op1</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Evaluación de condiciones y saltos
+
 ----------------------------------
 
-Instrucción
+<table border="1">
 
-Operandos
+<tbody>
 
-Función equivalente en "C"
+<tr>
 
-JMP
+<th>Instrucción</th>
 
-etiqueta
+<th>Operandos</th>
 
- 
+<th>Función equivalente en "C"</th>
 
-goto <etiqueta>
+</tr>
 
-CMP
+<tr>
 
-op1, op2
+<td>JMP</td>
 
- 
+<td>etiqueta</td>
 
-(no hay equivalente)
+<td> </td>
 
-Comparaciones sin signo
+<td>goto <etiqueta></td>
 
-JB/JNAE
+</tr>
 
-etiqueta
+<tr>
 
-if (op1 < op2) /\* con un CMP \*/
+<td>CMP</td>
 
-goto <etiqueta>
+<td>op1, op2</td>
 
-JNB/JAE
+<td> </td>
 
-etiqueta
+<td>(no hay equivalente)</td>
 
-if (op1 >= op2) /\* con un CMP \*/
+</tr>
 
-goto <etiqueta>
+<tr>
 
-JBE/JNA
+<th>Comparaciones sin signo</th>
 
-etiqueta
+</tr>
 
-if (op1 <= op2) /\* con un CMP \*/
+<tr>
 
-goto <etiqueta>
+<td>JB/JNAE</td>
 
-JNBE/JA
+<td>etiqueta</td>
 
-etiqueta
+<td>if (op1 < op2) /* con un CMP */</td>
 
-if (op1 > op2) /\* con un CMP \*/
+<td>goto <etiqueta></td>
 
-goto <etiqueta>
+</tr>
 
-JE/JZ
+<tr>
 
-etiqueta
+<td>JNB/JAE</td>
 
-if (op1 == op2) /\* con un CMP \*/
+<td>etiqueta</td>
 
-goto <etiqueta>
+<td>if (op1 >= op2) /* con un CMP */</td>
 
-JNE/JNZ
+<td>goto <etiqueta></td>
 
-etiqueta
+</tr>
 
-if (op1 != op2) /\* con un CMP \*/
+<tr>
 
-goto <etiqueta>
+<td>JBE/JNA</td>
 
-Comparaciones con signo
+<td>etiqueta</td>
 
-JL/JNGE
+<td>if (op1 <= op2) /* con un CMP */</td>
 
-etiqueta
+<td>goto <etiqueta></td>
 
-if (op1 < op2) /\* con un CMP \*/
+</tr>
 
-goto <etiqueta>
+<tr>
 
-JNL/JGE
+<td>JNBE/JA</td>
 
-etiqueta
+<td>etiqueta</td>
 
-if (op1 >= op2) /\* con un CMP \*/
+<td>if (op1 > op2) /* con un CMP */</td>
 
-goto <etiqueta>
+<td>goto <etiqueta></td>
 
-JLE/JNG
+</tr>
 
-etiqueta
+<tr>
 
-if (op1 <= op2) /\* con un CMP \*/
+<td>JE/JZ</td>
 
-goto <etiqueta>
+<td>etiqueta</td>
 
-JNLE/JG
+<td>if (op1 == op2) /* con un CMP */</td>
 
-etiqueta
+<td>goto <etiqueta></td>
 
-if (op1 > op2) /\* con un CMP \*/
+</tr>
 
-goto <etiqueta>
+<tr>
 
-JP/JPE
+<td>JNE/JNZ</td>
 
-etiqueta
+<td>etiqueta</td>
 
-if (PF) /\* Parity flag \*/
+<td>if (op1 != op2) /* con un CMP */</td>
 
-goto <etiqueta>
+<td>goto <etiqueta></td>
 
-JNP/JPO
+</tr>
 
-etiqueta
+<tr>
 
-if (! PF)
+<th>Comparaciones con signo</th>
 
-goto <etiqueta>
+</tr>
 
-JS
+<tr>
 
-etiqueta
+<td>JL/JNGE</td>
 
-if (SF) /\* Sign flag \*/
+<td>etiqueta</td>
 
-goto <etiqueta>
+<td>if (op1 < op2) /* con un CMP */</td>
 
-JNS
+<td>goto <etiqueta></td>
 
-etiqueta
+</tr>
 
-if (! SF)
+<tr>
 
-goto <etiqueta>
+<td>JNL/JGE</td>
 
-JC
+<td>etiqueta</td>
 
-etiqueta
+<td>if (op1 >= op2) /* con un CMP */</td>
 
-if (CF) /\* Carry flag \*/
+<td>goto <etiqueta></td>
 
-goto <etiqueta>
+</tr>
 
-JNC
+<tr>
 
-etiqueta
+<td>JLE/JNG</td>
 
-if (! CF)
+<td>etiqueta</td>
 
-goto <etiqueta>
+<td>if (op1 <= op2) /* con un CMP */</td>
 
-JO
+<td>goto <etiqueta></td>
 
-etiqueta
+</tr>
 
-if (OF) /\* Overflow flag \*/
+<tr>
 
-goto <etiqueta>
+<td>JNLE/JG</td>
 
-JNO
+<td>etiqueta</td>
 
-etiqueta
+<td>if (op1 > op2) /* con un CMP */</td>
 
-if (! OF)
+<td>goto <etiqueta></td>
 
-goto <etiqueta>
+</tr>
 
-* * *
+<tr>
 
-Uso de procedimientos/subrutinas
+<td>JP/JPE</td>
+
+<td>etiqueta</td>
+
+<td>if (PF) /* Parity flag */</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JNP/JPO</td>
+
+<td>etiqueta</td>
+
+<td>if (! PF)</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JS</td>
+
+<td>etiqueta</td>
+
+<td>if (SF) /* Sign flag */</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JNS</td>
+
+<td>etiqueta</td>
+
+<td>if (! SF)</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JC</td>
+
+<td>etiqueta</td>
+
+<td>if (CF) /* Carry flag */</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JNC</td>
+
+<td>etiqueta</td>
+
+<td>if (! CF)</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JO</td>
+
+<td>etiqueta</td>
+
+<td>if (OF) /* Overflow flag */</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+<tr>
+
+<td>JNO</td>
+
+<td>etiqueta</td>
+
+<td>if (! OF)</td>
+
+<td>goto <etiqueta></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Uso de procedimientos/subrutinas
+
 --------------------------------
 
-Instrucción
+<table border="1">
+  <tr>
+    <th>Instrucción </th>
+    <th>Operandos </th>
+    <th>Función equivalente en &quot;C&quot; </th>
+  </tr>
+  <tr>
+    <td>CALL </td>
+    <td>etiqueta </td>
+    <td>Llamada a función </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>PUSH IP </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>PUSH CS ; Sólo si es llamada larga (CALL FAR) </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>JMP etiqueta </td>
+  </tr>
+  <tr>
+    <td>RET </td>
+    <td>(ninguno) </td>
+    <td>return </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>POP IP-temp </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>POP CS-temp ; Sólo si es llamada larga (RETF) </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>JMP&nbsp;CS-temp:IP-temp </td>
+  </tr>
+</table>
 
-Operandos
 
-Función equivalente en "C"
+## Principales directivas (TASM)
 
-CALL
-
-etiqueta
-
-Llamada a función
-
- 
-
- 
-
-PUSH IP
-
- 
-
- 
-
-PUSH CS ; Sólo si es llamada larga (CALL FAR)
-
- 
-
- 
-
-JMP etiqueta
-
-RET
-
-(ninguno)
-
-return
-
- 
-
- 
-
-POP IP-temp
-
- 
-
- 
-
-POP CS-temp ; Sólo si es llamada larga (RETF)
-
- 
-
- 
-
-JMP CS-temp:IP-temp
-
-* * *
-
-Principales directivas (TASM)
 -----------------------------
 
 ### ¿Qué es una directiva?
@@ -532,29 +783,29 @@ De segmentos (simplificadas):
 
 Se les considera simplificadas, pues antiguamente se usaban directivas mucho más complejas para realizar la misma función. Aún se requieren esas directivas, pero sólo en los casos donde se accesarán múltiples segmentos; inclusive en Turbo Assembler, solamente cuando hay más de dos segmentos de datos. Por ello, no las veremos en el curso, pues es muy rara su aplicación, y estas son más sencillas de entender y usar.
 
-*   `.model <modelo de memoria>`  
+* `.model <modelo de memoria>`  
     Nos indica qué modelo de memoria se usará para ensamblar este programa. Este concepto se verá más adelante en el curso.  
     Para las aplicaciones comunes, usaremos siempre el modelo _small_. De esta manera, un programa fuente iniciará con la directiva "`.model small`"
-*   `.stack <tamaño en bytes>`  
+* `.stack <tamaño en bytes>`  
     Le indica al ensamblador cuánto espacio deberá reservar para la pila del sistema. Como hay funciones básicas que usan la pila, aunque nosotros no la usemos explícitamente, debe dejarse un espacio razonable.  
     Para la generalidad de las aplicaciones, basta reservar unos 256 bytes (100h). Por ello, generalmente veremos a los programas fuentes tener la directiva "`.stack 100h`"
-*   `.data`  
+* `.data`  
     Esta directiva indica dónde inicia la defnición de las variables. Generalmente, esta zona de memoria se asociará al registro DS; de hecho, se considera que es la defnición del contenido y espacio reservado para el segmento de datos por defecto.
-*   `.code`  
+* `.code`  
     Esta directiva indicará al ensamblador dónde inicia el código. A partir de ella, se encontrarán las instrucciones propiamente dichas.
 
 * * *
 
-Para uso de procedimientos:
+## Para uso de procedimientos
 
-*   `<etiqueta> PROC {NEAR/FAR}`  
+* `<etiqueta> PROC {NEAR/FAR}`  
     Asocia una etiqueta a un procedimiento. Por ejemplo, si ponemos:  
     `Principal PROC`  
     esto definirá el punto de inicio del procedimiento llamado "Principal".  
     NEAR o FAR son parámetros opcionales, que por el momento omitiremos, revisando su uso en el tema de Modelos de Memoria.
-*   `<etiqueta> ENDP`  
+* `<etiqueta> ENDP`  
     Cierra un procedimiento, debe estar balanceado con un PROC para abrirlo.
-*   `END {etiqueta}`  
+* `END {etiqueta}`  
     Cierra un módulo de programa. Esta directiva le indica al Ensamblador que ignore cualquier cosa que venga después; es como decirle que ahí acabó el archivo con el código fuente.  
     El parámetro (opcional) "etiqueta" indica en qué procedimiento iniciará la ejecución del programa. Así como en Pascal el programa inicia siempre en el `begin` principal, y en C iniciará en la función `main`, sin importar su localización, en Ensamblador usaremos esta directiva para indicar dónde iniciar el programa. Por ejemplo:  
     `END Principal`  
@@ -563,7 +814,7 @@ Para uso de procedimientos:
 
 * * *
 
-Definición de constantes
+## Definición de constantes
 
 `<identificador> EQU <expresión>`  
 Define una constante llamada como el identificador, en una forma similar al `#define` de C. Es decir, cada vez que se encuentre el identificador en el programa fuente, se sustituirá (como texto) por la expresión indicada en el `EQU`.
@@ -573,12 +824,14 @@ Es similar al `EQU`, solamente que en este caso podrá variarse (redefinirse) l
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
+
 ------------
 
 Capítulo 4 del Libro de Texto
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif)
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

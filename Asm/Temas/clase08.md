@@ -12,18 +12,18 @@ Clase Anterior](clase07.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase09.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer el concepto de modos de direccionamiento y acceso a memoria.
@@ -33,7 +33,7 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Modos de direccionamiento
@@ -131,72 +131,136 @@ La diferencia es el segmento sobre el que trabajan por defecto:
 ### Tabla de combinaciones posibles
 
 De acuerdo a lo que se ha visto, y a la regla de que no se permiten dos accesos a memoria en la misma instrucción, se pueden combinar en la siguiente forma:
+<table border="1" cellpadding="0" cellspacing="0">
 
-Modo  
-destino
+<tbody>
 
-Modo  
-Fuente
+<tr>
 
-Registro
+<th>Modo  
+destino</th>
 
-Inmediato
+<th>Modo  
+Fuente</th>
 
-Directo
+<th>Registro</th>
 
-Indirecto
+<th>Inmediato</th>
 
-Indexado
+<th>Directo</th>
 
-Registro
+<th>Indirecto</th>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+<th>Indexado</th>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+</tr>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+<tr>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+<th colspan="2">Registro</th>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
-
-Inmediato
-
-No se puede tener inmediato a la izquierda  
-(¿Dónde se depositaría la información?)
-
-Directo
+<td> 
 
 ![bien.gif (2262 bytes)](../../images/bien.gif)
 
+</td>
+
+<td>
+
 ![bien.gif (2262 bytes)](../../images/bien.gif)
+
+</td>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)
+
+</td>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)
+</td>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)
+</td>
+
+</tr>
+
+<tr>
+
+<th colspan="2" align="center">Inmediato</th>
+
+<td colspan="5" align="center">No se puede tener inmediato a la izquierda  
+(¿Dónde se depositaría la información?)</td>
+
+</tr>
+
+<tr>
+
+<th colspan="2">Directo</th>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)</td>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)</td>
+
+<td colspan="3" rowspan="3">
 
 Estas combinaciones no se pueden  
 (serían dos accesos a memoria  
 en la misma instrucción)
 
-Indirecto
+</td>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+</tr>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+<tr>
 
-Indexado
+<th colspan="2">Indirecto</th>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+<td>
 
-![bien.gif (2262 bytes)](../../images/bien.gif)
+![bien.gif (2262 bytes)](../../images/bien.gif)</td>
 
-![Línea de separación](../../images/waveline.gif)
+<td>
 
-Bibliografía
+![bien.gif (2262 bytes)](../../images/bien.gif)</td>
+
+</tr>
+
+<tr>
+
+<th colspan="2">Indexado</th>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)</td>
+
+<td>
+
+![bien.gif (2262 bytes)](../../images/bien.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+## Bibliografía
 ------------
 
 Manual de Turbo Assembler, versión 2.0
 
 Un poco, capítulo 10 del libro de texto (tiene un enfoque distinto)
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

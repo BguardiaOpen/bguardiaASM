@@ -12,35 +12,35 @@ Clase Anterior](clase10.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase12.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer los servicios de BIOS que nos permiten manejar texto con control de cursor y colores, así como los modos gráficos y pintar pixels en ellos.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 PRINCIPALES SERVICIOS DE LA INTERRUPCIÓN 10h
 
-*   [Ajuste del modo de video](#Modo)
-*   [Limpiar pantalla](#scroll)
-*   [Ajuste de la página activa de video](#Activa)
-*   [Manejo de texto](#Texto)
-    *   [Ajuste del cursor](#Cursor)
-    *   [Posicionamiento del cursor](#gotoxy)
+*   [Ajuste del modo de video](#servicio-00h-ajustar-el-modo-de-video)
+*   [Limpiar pantalla](#servicio-06h-desplaza-una-ventana-hacia-arriba)
+*   [Ajuste de la página activa de video](#servicio-05h-cambia-la-página-activa-de-video)
+*   [Manejo de texto](#servicios-para-manejo-de-texto)
+    *   [Ajuste del cursor](#servicio-01h-ajustar-el-tipo-o-tamaño-del-cursor)
+    *   [Posicionamiento del cursor](#servicio)
     *   [Obtener la configuración del cursor](#wherexy)
     *   [Desplazar una ventana, hacia arriba](#scroll)
     *   [Desplazar una ventana, hacia abajo](#scroll)
@@ -52,7 +52,7 @@ PRINCIPALES SERVICIOS DE LA INTERRUPCIÓN 10h
 
 * * *
 
-Servicio 00h: Ajustar el modo de video
+## Servicio 00h: Ajustar el modo de video
 --------------------------------------
 
 Parámetros:
@@ -74,7 +74,7 @@ Esta función cambia el modo en que opera la tarjeta controladora de video. En p
 
 * * *
 
-Servicio 05h: Cambia la página activa de video
+## Servicio 05h: Cambia la página activa de video
 ----------------------------------------------
 
 Parámetros:
@@ -93,12 +93,12 @@ El rango de AL debe ir entre 0 y el número de páginas que soporte el modo actu
 
 * * *
 
-Servicios para manejo de texto
+## Servicios para manejo de texto
 ------------------------------
 
 * * *
 
-Servicio 01h: Ajustar el tipo o tamaño del cursor
+## Servicio 01h: Ajustar el tipo o tamaño del cursor
 -------------------------------------------------
 
 Parámetros:
@@ -114,7 +114,7 @@ Esta función ajusta el tipo de cursor que yo deseo usar. Por ejemplo, un cursor
 
 * * *
 
-Servicio 02h: Posiciona el cursor dentro de la pantalla
+## Servicio 02h: Posiciona el cursor dentro de la pantalla
 -------------------------------------------------------
 
 Parámetros:
@@ -131,7 +131,7 @@ Esta función coloca el cursor en la posición especificada. Equivale a que hici
 
 * * *
 
-Servicio 03h: Obtiene la configuración del cursor
+## Servicio 03h: Obtiene la configuración del cursor
 -------------------------------------------------
 
 Parámetros:
@@ -149,10 +149,10 @@ Esta función complementa las dos anteriores, permitiéndonos conocer que forma 
 
 * * *
 
-Servicio 06h: Desplaza una ventana hacia arriba
+## Servicio 06h: Desplaza una ventana hacia arriba
 -----------------------------------------------
 
-Servicio 07h: Desplaza una ventana hacia abajo
+## Servicio 07h: Desplaza una ventana hacia abajo
 
 **Ambos servicios permiten el borrado de pantalla.**
 
@@ -179,7 +179,7 @@ Ambos servicios operan exclusivamente sobre la página activa de video.
 
 * * *
 
-Servicio 08h: Toma un caracter y su atributo, de la posicion actual del cursor en pantalla
+## Servicio 08h: Toma un caracter y su atributo, de la posicion actual del cursor en pantalla
 ------------------------------------------------------------------------------------------
 
 Parámetros:
@@ -197,7 +197,7 @@ Nos permite averigúar el contenido de la pantalla, posiblemente antes de modifi
 
 * * *
 
-Servicio 09h: Coloca un caracter y su atributo, en la posicion actual del cursor en pantalla
+## Servicio 09h: Coloca un caracter y su atributo, en la posicion actual del cursor en pantalla
 --------------------------------------------------------------------------------------------
 
 Parámetros:
@@ -215,12 +215,12 @@ Esta función pinta el caracter indicado, con el atributo indicado, en la posici
 
 * * *
 
-Servicios para manejo de gráficos
+## Servicios para manejo de gráficos
 ---------------------------------
 
 * * *
 
-Servicio 0Dh: Toma el color de un pixel, de la posicion indicada en pantalla
+## Servicio 0Dh: Toma el color de un pixel, de la posicion indicada en pantalla
 ----------------------------------------------------------------------------
 
 Parámetros:
@@ -239,7 +239,7 @@ Nos permite averigüar el contenido de la pantalla de gráficos, posiblemente an
 
 * * *
 
-Servicio 0Ch: Coloca un pixel en la posición indicada en pantalla
+## Servicio 0Ch: Coloca un pixel en la posición indicada en pantalla
 -----------------------------------------------------------------
 
 Parámetros:
@@ -259,7 +259,7 @@ Equivale a funciones de librería de Pascal y C, como dot(CX, DX, AL)
 
 * * *
 
-Glosario
+## Glosario
 --------
 
 *   Atributo de pantalla: Es la combinación de colores que corresponde a un caracter. Se codifica en 8 bits:
@@ -288,14 +288,15 @@ Glosario
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 Capítulo15, libro de texto.
 
 Manuales de interrupciones, por ejemplo el apéndice C del libro de texto.
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

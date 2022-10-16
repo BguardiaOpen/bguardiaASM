@@ -12,18 +12,18 @@ Clase Anterior](clase09.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase11.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Que el alumno conozca las técnicas básicas para recibir entrada del teclado y enviar salida a pantalla.
@@ -31,7 +31,7 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Entrada y Salida
@@ -142,7 +142,7 @@ Delimita el final de un procedimiento. Esta es la otra diferencia significativa 
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 ![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.

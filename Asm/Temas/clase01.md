@@ -21,7 +21,8 @@ Objetivos Específicos
 *   Conocer las reglas del juego ([políticas](../politica.htm))
 *   Conocer los libros y bibliografía que se va a usar.
 
-![](../../images/waveline.gif) Página por Bruno Guardia R.
+![](../../images/waveline.gif) 
+### Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

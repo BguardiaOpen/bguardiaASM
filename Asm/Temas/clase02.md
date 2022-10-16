@@ -15,10 +15,10 @@ Clase Anterior](clase01.md)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase03.md)
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 [Resumen](#resumen)
@@ -29,16 +29,17 @@ Clase Siguiente](../Temas/clase03.md)
 Objetivos Específicos
 ---------------------
 
-*   Entender los conceptos de:
-    *   Lenguaje de máquina
-    *   Lenguaje ensamblador
-    *   Lenguajes de alto, medio y bajo nivel
-*   Conocer la historia y [evolución](#evolucion) de los lenguajes computacionales
-*   Reconocer la importancia, [ventajas](#ventajas) y desventajas del uso del Lenguaje Ensamblador
+* Entender los conceptos de:
+  * Lenguaje de máquina
+  * Lenguaje ensamblador
+  * Lenguajes de alto, medio y bajo nivel
+* Conocer la historia y [evolución](#evolución-de-los-lenguajes-computacionales) de los lenguajes computacionales
+* Reconocer la importancia, [ventajas](#ventajas-y-desventajas-del-lenguaje-ensamblador) y desventajas del uso del Lenguaje Ensamblador
 
 ![](../../images/waveline.gif)
 
-Teoría
+### Teoría
+
 ------
 
 ### Conceptos básicos
@@ -141,15 +142,15 @@ Una vez que hemos visto la evolución de los lenguajes, cabe preguntarse: ¿En e
 El proceso de evolución trajo consigo algunas desventajas, que ahora veremos como las ventajas de usar el Lenguaje Ensamblador, respecto a un lenguaje de alto nivel:
 
 1. [Velocidad](#velocidad)
-2. [Eficiencia de tamaño](#tamano)
+2. [Eficiencia de tamaño](#tamaño)
 3. [Flexibilidad](#flexibilidad)
 
 Por otro lado, al ser un lenguaje más primitivo, el Ensamblador tiene ciertas desventajas respecto a los lenguajes de alto nivel:
 
-1. [Tiempo de programación](#tiempo)
-2. [Programas fuente grandes](#fuentegrande)
-3. [Peligro de afectar recursos inesperadamente](#afectar)
-4. [Falta de portabilidad](#portabilidad)
+1. [Tiempo de programación](#tiempo-de-programación)
+2. [Programas fuente grandes](#programas-fuente-grandes)
+3. [Peligro de afectar recursos inesperadamente](#peligro-de-afectar-recursos-inesperadamente)
+4. [Falta de portabilidad](#falta-de-portabilidad)
 
 #### Velocidad
 
@@ -201,13 +202,17 @@ Como ya se mencionó, existe un lenguaje ensamblador para cada máquina; por ell
 
 ![](../../images/waveline.gif)
 
-Bibliografía
+### Bibliografía
+
 ------------
 
 1. Capítulo 1 del Libro de Texto
 2. Capítulo 4, Guía del Usuario del Turbo Assembler
 
-![](../../images/waveline.gif)Resumen
+![](../../images/waveline.gif)
+
+### Resumen
+
 -------------------------------------
 
 El protocolo con el que un microprocesador interpreta al contenido de la memoria como instrucciones, es llamado lenguaje de máquina.
@@ -223,17 +228,19 @@ Existen lenguajes que combinan la abstracción de los lenguajes de alto nivel co
 En nuestro curso examinaremos el Lenguaje Ensamblador de la familia 80x86 de procesadores Intel. La justificación de usar cualquier Lenguaje Ensamblador, está en analizar sus ventajas o desventajas para una aplicación dada. Las principales ventajas que tenemos son:
 
 1. [Velocidad](#velocidad)
-2. [Eficiencia de tamaño](#tamano)
+2. [Eficiencia de tamaño](#tamaño)
 3. [Flexibilidad](#flexibilidad)
 
 Las principales desventajas son:
 
-1.  [Tiempo de programación](#tiempo)
-2.  [Programas fuente grandes](#fuentegrande)
-3.  [Peligro de afectar recursos inesperadamente](#afectar)
-4.  [Falta de portabilidad](#portabilidad)
+1. [Tiempo de programación](#tiempo-de-programación)
+2. [Programas fuente grandes](#programas-fuente-grandes)
+3. [Peligro de afectar recursos inesperadamente](#peligro-de-afectar-recursos-inesperadamente)
+4. [Falta de portabilidad](#falta-de-portabilidad)
 
-![](../../images/waveline.gif) Página por Bruno Guardia R.
+![](../../images/waveline.gif)
+
+### Página por Bruno Guardia R
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 
