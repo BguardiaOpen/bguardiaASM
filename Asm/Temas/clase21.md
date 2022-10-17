@@ -15,18 +15,18 @@ Sesión 13](../Sesiones/sv13.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase22.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer las técnicas y herramientas necesarias para ligar rutinas entre un lenguaje de alto nivel, y Ensamblador.
@@ -34,7 +34,7 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 ### Por qué combinar
@@ -143,7 +143,7 @@ Vean los programas de ejemplo del Speaker para clarificar el uso de los parámet
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  Manuales de Turbo Assembler, Turbo C, Borland C, Turbo Pascal.
@@ -159,7 +159,9 @@ Bibliografía
         *   [LIGA.H: Encabezados para usarla desde C](../programa/liga.h)
         *   [LIGA-C.C: Programa para probar el uso desde C](../programa/liga-c.c)
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

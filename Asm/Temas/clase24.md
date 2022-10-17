@@ -15,18 +15,18 @@ Sesión 15](../Sesiones/sv15.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase25.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer la técnica de programación de gráficos a través del acceso directo a memoria de video.
@@ -34,7 +34,7 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Manejo de video por acceso directo a memoria
@@ -89,7 +89,7 @@ Modo Gráfico (13h)
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 *   PC Interno, Michael Tisher
@@ -97,7 +97,7 @@ Bibliografía
 
 ![Línea de separación](../../images/waveline.gif)
 
-Página por Bruno Guardia R.
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

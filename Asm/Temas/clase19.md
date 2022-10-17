@@ -13,34 +13,34 @@ Sesión 11](../Sesiones/sv11.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase20.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer las instrucciones especiales de la familia 80x86, especialmente diseñadas para el manejo eficiente de ciclos.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 ### Instrucciones de ciclos
 
 Las instrucciones de ciclos son muy particulares de la familia 80x86, son instrucciones de mayor nivel que combinan la funcionalidad de varias instrucciones de las ya vistas; con ello, se reduce el FETCH para un proceso particular, por lo que estas instrucciones generalmente se usan para conseguir una mayor eficiencia del código, sea en tamaño o velocidad.
 
-*   [JCXZ](#JCXZ)
-*   [LOOP](#LOOP)
-*   [LOOPE/LOOPNE](#LOOPE)
+*   [JCXZ](#jcxz)
+*   [LOOP](#loop)
+*   [LOOPE/LOOPNE](#loopeloopne)
 
 * * *
 
@@ -140,13 +140,15 @@ Al igual que LOOP, estas instrucciones no afectan las banderas
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  Libros de referencia.
 2.  Libro de texto, solamente en la referencia de instrucciones, pp. 499-500
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

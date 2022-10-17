@@ -26,7 +26,7 @@ Clase Siguiente](../Temas/clase23.md)
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Comprender el concepto de Modelos de Memoria, y como nace de la arquitectura segmentada del manejo de la memoria en los procesadores 80x86.
@@ -35,7 +35,7 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Modelos de memoria
@@ -46,19 +46,20 @@ Este concepto nace de la arquitectura segmentada de los procesadores Intel de la
 
 Veremos como maneja un compilador de "C" este concepto, dando a las variables el espacio necesario. Para ello, se presenta un ejemplo de un programa mínimo en "C", y porciones seleccionadas del código que genera en los distintos modelos de memoria. Por cuestiones de espacio, se muestran solamente los más representativos.
 
-*   [Modelo Corto](#corto)
+*   [Modelo Corto](#modelo-corto)
 
-*   [Modelo Compacto](#compacto)
+*   [Modelo Compacto](#modelo-compacto)
 
-*   [Modelo Largo](#largo)
+*   [Modelo Largo](#modelo-largo)
 
 * * *
 
-`/* Modelo corto */`
+## `/* Modelo corto */`
 
 `/* Programa de prueba, en "C" */`
 
 `char *Temporal;`
+
 
 `char Arreglo[64000];`
 
@@ -244,7 +245,7 @@ También vemos algunas características generales de "C": todos los símbolos se
 
 * * *
 
-`/* Modelo compacto */`
+## `/* Modelo compacto */`
 
 `DGROUP group _DATA,_BSS`
 
@@ -414,7 +415,7 @@ En este caso, podemos ver que el código sigue siendo "near", pero los datos aho
 
 * * *
 
-`/* Modelo Largo */`
+## `/* Modelo Largo */`
 
 `PRUEBA_TEXT segment byte public 'CODE'`
 
@@ -568,13 +569,15 @@ En este último caso, vemos que ahora también el código es largo, por lo que t
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  Manuales de Turbo Assembler, Turbo C, Borland C.
 2.  La serie de libros de referencia de Herbert Schildt: "Manual de Referencia de Turbo C" en sus distintas versiones.
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

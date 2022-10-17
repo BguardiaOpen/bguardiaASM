@@ -15,18 +15,18 @@ Sesión 9](../Sesiones/sv09.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase16.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Comprender el concepto de apuntadores.
@@ -35,67 +35,228 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 > ### ¿Qué es un apuntador?
 > 
 > Existen diversos problemas en los cuales se requiere referenciar un dato. Por ejemplo, si tenemos la información de los alumnos de Ensamblador y sus calificaciones:
 
-**Matrícula**
+<table cellspacing="0" border="0" cellpadding="3" width="336">
 
-**Nombre**
+<tbody>
 
-**Carrera**
+<tr>
 
-123456
+<td width="121">
 
-Juan
+**<font face="Helv" size="3" color="#000000">Matrícula</font>**
 
-ISC
+</td>
 
-654321
+<td width="115">
 
-Luis
+**<font face="Helv" size="3" color="#000000">Nombre</font>**
 
-ISE
+</td>
 
-333111
+<td width="76">
 
-Pepe
+**<font face="Helv" size="3" color="#000000">Carrera</font>**
 
-IEC
+</td>
 
-**Matrícula**
+</tr>
 
-**Parcial**
+<tr>
 
-**Calificación**
+<td width="121">
 
-123456
+<font face="Helv" size="2" color="#000000">123456</font>
 
-1
+</td>
 
-80
+<td width="115">
 
-123456
+<font face="Helv" size="2" color="#000000">Juan</font>
 
-2
+</td>
 
-93
+<td width="76">
 
-654321
+<font face="Helv" size="2" color="#000000">ISC</font>
 
-1
+</td>
 
-87
+</tr>
 
-333111
+<tr>
 
-1
+<td width="121">
 
-69
+<font face="Helv" size="2" color="#000000">654321</font>
 
+</td>
+
+<td width="115">
+
+<font face="Helv" size="2" color="#000000">Luis</font>
+
+</td>
+
+<td width="76">
+
+<font face="Helv" size="2" color="#000000">ISE</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="121">
+
+<font face="Helv" size="2" color="#000000">333111</font>
+
+</td>
+
+<td width="115">
+
+<font face="Helv" size="2" color="#000000">Pepe</font>
+
+</td>
+
+<td width="76">
+
+<font face="Helv" size="2" color="#000000">IEC</font>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+
+
+<table cellspacing="0" border="0" cellpadding="3" width="335">
+
+<tbody>
+
+<tr>
+
+<td width="120">
+
+**<font face="Helv" size="3" color="#000000">Matrícula</font>**
+
+</td>
+
+<td width="83">
+
+**<font face="Helv" size="3" color="#000000">Parcial</font>**
+
+</td>
+
+<td width="108">
+
+**<font face="Helv" size="3" color="#000000">Calificación</font>**
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="120">
+
+<font face="Helv" size="2" color="#000000">123456</font>
+
+</td>
+
+<td width="83">
+
+<font face="Helv" size="2" color="#000000">1</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">80</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="120">
+
+<font face="Helv" size="2" color="#000000">123456</font>
+
+</td>
+
+<td width="83">
+
+<font face="Helv" size="2" color="#000000">2</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">93</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="120">
+
+<font face="Helv" size="2" color="#000000">654321</font>
+
+</td>
+
+<td width="83">
+
+<font face="Helv" size="2" color="#000000">1</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">87</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="120">
+
+<font face="Helv" size="2" color="#000000">333111</font>
+
+</td>
+
+<td width="83">
+
+<font face="Helv" size="2" color="#000000">1</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">69</font>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
  
 
 > Por ejemplo, la primera tabla describe la relación entre los alumnos, su nombre y su carrera. Mientras que la segunda, describe la relación entre los alumnos y sus calificaciones.
@@ -104,52 +265,196 @@ IEC
 > 
 > En el ejemplo de arriba, la relación es eficiente y minimiza el gasto de memoria; pero existen problemas en los que la relación requiere demasiada memoria, además de un algoritmo de búsqueda que requerirá más tiempo para ejecutarse. Por ejemplo:
 > 
-> **Nombre**
-> 
-> **Carrera**
-> 
-> Juan Pablo Contreras Luna
-> 
-> ISC
-> 
-> Luis Alberto Gutiérrez de GomezLanda
-> 
-> ISE
-> 
-> José de Jesús Echeverría de los Monteros
-> 
-> IEC
-> 
-> **Nombre**
-> 
-> **Parcial**
-> 
-> **Calificación**
-> 
-> Juan Pablo Contreras Luna
-> 
-> 1
-> 
-> 80
-> 
-> Juan Pablo Contreras Luna
-> 
-> 2
-> 
-> 93
-> 
-> José de Jesús Echeverría de los Monteros
-> 
-> 1
-> 
-> 87
-> 
-> Luis Alberto Gutiérrez de GomezLanda
-> 
-> 1
-> 
-> 69
-> 
+<table cellspacing="0" border="0" cellpadding="3" width="472">
+
+<tbody>
+
+<tr>
+
+<td width="335">
+
+**<font face="Helv" size="2" color="#000000">Nombre</font>**
+
+</td>
+
+<td width="1">
+
+**<font face="Helv" size="2" color="#000000">Carrera</font>**
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">Juan Pablo Contreras Luna</font>
+
+</td>
+
+<td width="1">
+
+<font face="Helv" size="2" color="#000000">ISC</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">Luis Alberto Gutiérrez de GomezLanda</font>
+
+</td>
+
+<td width="1">
+
+<font face="Helv" size="2" color="#000000">ISE</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">José de Jesús Echeverría de los Monteros</font>
+
+</td>
+
+<td width="1">
+
+<font face="Helv" size="2" color="#000000">IEC</font>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+ 
+<table cellspacing="0" border="0" cellpadding="3" width="522">
+
+<tbody>
+
+<tr>
+
+<td width="335">
+
+**<font face="Helv" size="2" color="#000000">Nombre</font>**
+
+</td>
+
+<td width="55">
+
+**<font face="Helv" size="2" color="#000000">Parcial</font>**
+
+</td>
+
+<td width="108">
+
+**<font face="Helv" size="2" color="#000000">Calificación</font>**
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">Juan Pablo Contreras Luna</font>
+
+</td>
+
+<td width="55">
+
+<font face="Helv" size="2" color="#000000">1</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">80</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">Juan Pablo Contreras Luna</font>
+
+</td>
+
+<td width="55">
+
+<font face="Helv" size="2" color="#000000">2</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">93</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">José de Jesús Echeverría de los Monteros</font>
+
+</td>
+
+<td width="55">
+
+<font face="Helv" size="2" color="#000000">1</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">87</font>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="335">
+
+<font face="Helv" size="2" color="#000000">Luis Alberto Gutiérrez de GomezLanda</font>
+
+</td>
+
+<td width="55">
+
+<font face="Helv" size="2" color="#000000">1</font>
+
+</td>
+
+<td width="108">
+
+<font face="Helv" size="2" color="#000000">69</font>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
 > En este caso, el campo común de los dos arreglos es bastante largo; por ello, la redundancia de ambos campos genera un alto consumo de memoria. Especialmente en los primeros tiempos del cómputo, cuando se empezaban a desarrollar los lenguajes de alto nivel, se tenían que buscar soluciones para hacer más eficiente el uso de la memoria; y como consecuencia, también más rápido el procesamiento. En este caso, el procesamiento resulta lento pues para encontrar la correspondencia, se tienen que hacer comparaciones de cadenas, las cuales son más costosas y requieren más accesos a memoria que, por ejemplo, la búsqueda de un entero que vimos en la sección previa (la matrícula).
 > 
 > La primera y más directa solución consiste en sustituir el campo largo, en la segunda tabla, por un entero que permita la búsqueda más eficientemente. Podríamos crear un código que identifique a cada elemento del arreglo, en forma única, como fue la matrícula en el primer ejemplo. Sin embargo, no es necesario hacerlo, pues el arreglo tiene ya un identificador para cada elemento: el índice en el arreglo. Esto hace mucho más eficiente el acceso, pues ya no requiere comparaciones sino solamente calcular, en base al índice almacenado, la localidad donde está el elemento relacionado.
@@ -166,7 +471,7 @@ IEC
 > 
 > En lenguaje C, el código sería:
 
-int Arreglo\[1000\];
+int Arreglo[1000];
 
 int Sumatoria()
 
@@ -178,13 +483,14 @@ Temp = 0;
 
 for (i = 0; i<1000; i++)
 
-Temp += Arreglo\[i\];
+Temp += Arreglo[i];
 
 return Temp;
 
 }
 
- > En este caso, estamos haciendo el recorrido de todos los elementos, y para cada elemento del arreglo se está calculando su dirección, utilizando la fórmula que vimos en el tema de "Representación de datos". Esto es ineficiente, por lo que en vez de implementar el uso del arreglo en ensamblador, usaremos un apuntador para ir a través de él. 
+ > 
+En este caso, estamos haciendo el recorrido de todos los elementos, y para cada elemento del arreglo se está calculando su dirección, utilizando la fórmula que vimos en el tema de "Representación de datos". Esto es ineficiente, por lo que en vez de implementar el uso del arreglo en ensamblador, usaremos un apuntador para ir a través de él. 
 
 .data
 
@@ -286,7 +592,7 @@ END Principal
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 *   PC Interno, Michael Tischer

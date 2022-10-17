@@ -15,35 +15,35 @@ Sesión 16](../Sesiones/sv16.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](clase26.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer los servicios de la interrupción 33h para el manejo del ratón, mediante el sistema de "polling", es decir, muestreo del estado.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 ### Manejo del Ratón
 
-*   [Introducción](#introduccion)
+*   [Introducción](#introducción)
 *   [Tabla de servicios](#servicios)
 
 * * *
 
-Introducción
+## Introducción
 ------------
 
 El ratón es controlado, en general, a través de los distintos servicios de la interrupción 33h. Dicha interrupción normalmente no es ocupada, sino hasta que se carga el driver del ratón, que es proporcionado por el fabricante del hardware. Existen funciones para controlar su activación, mostrar el cursor en modo texto o gráfico, detectar las coordenadas donde se encuentra y el estado de los botones. Dichas funciones son llamadas siguiendo el esquema normal de llamadas a interrupción.
@@ -52,98 +52,141 @@ El ratón es controlado, en general, a través de los distintos servicios de la 
 
 ### Servicios
 
-Servicio
+<table border="1">
 
-Descripción
+<tbody>
 
-Entrada
+<tr>
 
-Salida
+<th>Servicio</th>
 
-Comentarios
+<th>Descripción</th>
 
-0000h
+<th>Entrada</th>
 
-Inicializa el driver del ratón
+<th>Salida</th>
 
-AX = 0000h
+<th>Comentarios</th>
 
-AX = FFFFh, en éxito  
+</tr>
+
+<tr>
+
+<td>0000h</td>
+
+<td>Inicializa el driver del ratón</td>
+
+<td>AX = 0000h</td>
+
+<td>AX = FFFFh, en éxito  
 BX = Número de botones del ratón
 
 AX = 0000h, en error (no hay driver instalado)
 
-Esta función debe llamarse antes de cualquier otra, para ver si están disponibles las funciones del driver del ratón.
+</td>
 
-0001h
+<td>Esta función debe llamarse antes de cualquier otra, para ver si están disponibles las funciones del driver del ratón.</td>
 
-Activa el cursor del ratón  
-(lo muestra)
+</tr>
 
-AX = 0001h
+<tr>
 
-No tiene
+<td>0001h</td>
 
-Esta función permite que el usuario visualize el cursor, sea de texto o gráfico, con el cual se guía para apuntar los objetos en la pantalla.
+<td>Activa el cursor del ratón  
+(lo muestra)</td>
 
-0002h
+<td>AX = 0001h</td>
 
-Esconde el cursor del ratón  
-(lo desactiva)
+<td>No tiene</td>
 
-AX = 0002h
+<td>Esta función permite que el usuario visualize el cursor, sea de texto o gráfico, con el cual se guía para apuntar los objetos en la pantalla.</td>
 
-No tiene
+</tr>
 
-Esta función desactiva la visualización del ratón; esto es particularmente importante en el modo gráfico, al momento de pintar, pues si no se desactiva el cursor del ratón, éste borrará parte de la información pintada. Si se requiere estrictamente que el cursor se visualize, conviene hacer una desactivación y activación rápida.
+<tr>
 
-0003h
+<td>0002h</td>
 
-Obtener posición del ratón y estado de los botones
+<td>Esconde el cursor del ratón  
+(lo desactiva)</td>
 
-AX = 0003h
+<td>AX = 0002h</td>
 
-[BX = Estado de los botones del ratón.  
+<td>No tiene</td>
+
+<td>Esta función desactiva la visualización del ratón; esto es particularmente importante en el modo gráfico, al momento de pintar, pues si no se desactiva el cursor del ratón, éste borrará parte de la información pintada. Si se requiere estrictamente que el cursor se visualize, conviene hacer una desactivación y activación rápida.</td>
+
+</tr>
+
+<tr>
+
+<td>0003h</td>
+
+<td>Obtener posición del ratón y estado de los botones</td>
+
+<td>AX = 0003h</td>
+
+<td>[BX = Estado de los botones del ratón.  
 ](#estado)CX = Coordenada horizontal (X) donde se encuentra el apuntador.  
 DX = Coordenada vertical (Y) donde se encuentra el apuntador.  
+</td>
 
-Esta función nos permite averigüar en dónde se localiza el cursor en el momento actual, y si los botones están o no presionados.
+<td>Esta función nos permite averigüar en dónde se localiza el cursor en el momento actual, y si los botones están o no presionados.</td>
 
-0004h
+</tr>
 
-Ajusta la posición del ratón
+<tr>
 
-AX = 0004h  
+<td>0004h</td>
+
+<td>Ajusta la posición del ratón</td>
+
+<td>AX = 0004h  
 CX = Coordenada horizontal (X).  
-DX = Coordenada vertical (Y).
+DX = Coordenada vertical (Y).</td>
 
- 
+<td> </td>
 
-Esta función nos permite colocar al cursor del ratón en una posición determinada, como ocurre cuando se busca dar una opcin por defecto al usuario, o restringir el área de movilidad del cursor a una ventana [(ver funciones 7 y 8)](#ventana)
+<td>Esta función nos permite colocar al cursor del ratón en una posición determinada, como ocurre cuando se busca dar una opción por defecto al usuario, o restringir el área de movilidad del cursor a una ventana [(ver funciones 7 y 8)](#ventana)</td>
 
-0007h
+</tr>
 
-Restringe la zona de movilidad horizontal del apuntador
+<tr>
 
-AX = 0007h  
+<td>0007h</td>
+
+<td>Restringe la zona de movilidad horizontal del apuntador</td>
+
+<td>AX = 0007h  
 CX = Coordenada mínima horizontal (X).  
-DX = Coordenada máxima horizontal (X).
+DX = Coordenada máxima horizontal (X).</td>
 
- 
+<td> </td>
 
-Esta función nos permite, en combinación con la 08h, restringir la movilidad del cursor del ratón a una ventana; en particular, con esta función definimos una franja horizontal donde el usuario puede mover al ratón; al llegar a los límites, el cursor ya no avanza más.
+<td>Esta función nos permite, en combinación con la 08h, restringir la movilidad del cursor del ratón a una ventana; en particular, con esta función definimos una franja horizontal donde el usuario puede mover al ratón; al llegar a los límites, el cursor ya no avanza más.</td>
 
-0008h
+</tr>
 
-Restringe la zona de movilidad vertical del apuntador
+<tr>
 
-AX = 0008h  
+<td>0008h</td>
+
+<td>Restringe la zona de movilidad vertical del apuntador</td>
+
+<td>AX = 0008h  
 CX = Coordenada mínima vertical (Y).  
-DX = Coordenada máxima vertical (Y).
+DX = Coordenada máxima vertical (Y).</td>
 
- 
+<td> </td>
 
-Esta función nos permite, en combinación con la 07h, restringir la movilidad del cursor del ratón a una ventana; en particular, con esta función definimos una franja vertical donde el usuario puede mover al ratón; al llegar a los límites, el cursor ya no avanza más.
+<td>Esta función nos permite, en combinación con la 07h, restringir la movilidad del cursor del ratón a una ventana; en particular, con esta función definimos una franja vertical donde el usuario puede mover al ratón; al llegar a los límites, el cursor ya no avanza más.</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 #### Codificación del estado de los botones del ratón.
 
@@ -163,7 +206,7 @@ Los ratones normalmente cuentan con dos botones, si bien algunos soportan hasta 
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  PC Interno, versión 2.0, de Michael Tischer. Ya lo tenemos en Biblioteca del Campus.

@@ -15,25 +15,25 @@ Sesión 10](../Sesiones/sv10.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase18.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer las técnicas y herramientas necesarias para analizar la línea de comandos que recibe un programa al ejecutarse desde DOS.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Cuando se ejecuta un programa desde DOS, la cadena que es escrita por el usuario se conoce como "línea de comandos". El intérprete de comandos (generalmente, el COMMAND.COM), se encarga de almacenar esta información en el PSP (_Program Segment Prefix_), de donde los programas pueden aprovecharla.
@@ -44,40 +44,74 @@ Para la figura, se toma el ejemplo de la línea de comandos:
 
 **C:\\>** PROGRAMA parametro
 
-Desplazamiento
+<table border="1" cellpadding="2">
 
-Contenido  
-(Hexadecimal)
+<tbody>
 
-Significado
+<tr>
 
-80h
+<td>Desplazamiento</td>
 
-0Bh
+<td>Contenido  
+(Hexadecimal)</td>
 
-En decimal, 11; es decir, la cadena es de 11 caracteres.
+<td>Significado</td>
 
-81h
+</tr>
 
-20h
+<tr>
 
-Espacio después de la palabra PROGRAMA
+<td>80h</td>
 
-82h
+<td>0Bh</td>
 
-70h
+<td>En decimal, 11; es decir, la cadena es de 11 caracteres.</td>
 
-p (ASCII)
+</tr>
 
-83h-8Ah
+<tr>
 
-61h 72h 61h ... 6Fh
+<td>81h</td>
 
-arametro
+<td>20h</td>
 
-8Bh
+<td>Espacio después de la palabra PROGRAMA</td>
 
-0Dh
+</tr>
+
+<tr>
+
+<td>82h</td>
+
+<td>70h</td>
+
+<td>p (ASCII)</td>
+
+</tr>
+
+<tr>
+
+<td>83h-8Ah</td>
+
+<td>61h 72h 61h ... 6Fh</td>
+
+<td>arametro</td>
+
+</tr>
+
+<tr>
+
+<td>8Bh</td>
+
+<td>0Dh</td>
+
+<td>En decimal, 13; es decir, el ASCII del Enter con el que termina la cadena.</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 En decimal, 13; es decir, el ASCII del Enter con el que termina la cadena.
 
@@ -88,12 +122,12 @@ Una vez que conocemos el formato básico de la línea de comandos, el problema s
 
 Para obtener el segmento, existen dos formas principales:
 
-*   [Usar el Servicio 62h de la Interrupción 21h](#PSP)
+*   [Usar el Servicio 62h de la Interrupción 21h](#int-21h-servicio-62h-obtener-segmento-psp)
 *   Cuando el programa inicia, DOS usa el segmento de datos para apuntar al PSP; por tanto, antes de inicializar el segmento de datos, podemos utilizar el valor que tiene al inicio del programa para accesar la línea de comandos.
 
 * * *
 
-INT 21h, Servicio 62h: Obtener Segmento PSP
+## INT 21h, Servicio 62h: Obtener Segmento PSP
 
 ### Parámetros:
 
@@ -109,14 +143,16 @@ Valor del segmento del PSP; generalmente, se copia a ES antes de usarse.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  PC Interno, de Michael Tischer.
 2.  [Ejemplo de programa que muestra cómo usar la línea de comandos](../programa/param2.asm)
 3.  [Ejemplo de Comparar archivos, usa línea de comandos](../programa/compare.asm)
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

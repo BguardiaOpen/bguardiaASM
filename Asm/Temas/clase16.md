@@ -15,25 +15,25 @@ Sesión 10](../Sesiones/sv10.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase17.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer los servicios de DOS que nos permiten manejar archivos, bajo el esquema de los _handles_ o descriptores de archivos.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 ### Conceptos Generales del manejo de archivos a bajo nivel, por DOS
@@ -54,19 +54,19 @@ Teoría
 
 ### PRINCIPALES SERVICIOS DE LA INTERRUPCIÓN 21h PARA EL MANEJO DE ARCHIVOS
 
-*   [Manejo de directorios](#Directorios)
-*   [Crear archivo](#Crear)
-*   [Abrir archivo](#abrir)
-*   [Leer del archivo](#Leer)
-*   [Escribir en el archivo](#Escribir)
-*   [Posicionarse en el archivo](#Seek)
-*   [Cerrar el archivo](#Cerrar)
-*   [Borrar un archivo](#Borrar)
-*   [Códigos de error](#Errores)
+*   [Manejo de directorios](#servicios-39h-3ah-3bh-manejo-de-directorios)
+*   [Crear archivo](#servicio-3ch-crear-archivo)
+*   [Abrir archivo](#servicio-3dh-abrir-archivo)
+*   [Leer del archivo](#servicio-3fh-leer-del-archivo)
+*   [Escribir en el archivo](#servicio-40h-escribir-en-el-archivo)
+*   [Posicionarse en el archivo](#servicio-42h-posicionarse-en-el-archivo)
+*   [Cerrar el archivo](#servicio-3eh-cerrar-el-archivo)
+*   [Borrar un archivo](#servicio-41h-borrar-un-archivo)
+*   [Códigos de error](#códigos-de-error)
 
 * * *
 
-Servicios 39h, 3Ah, 3Bh: Manejo de directorios
+## Servicios 39h, 3Ah, 3Bh: Manejo de directorios
 ----------------------------------------------
 
 Servicio 39h: Crear subdirectorio (mkdir o md)
@@ -109,7 +109,7 @@ Ejemplo:
 
 * * *
 
-Servicio 3Ch: Crear archivo
+## Servicio 3Ch: Crear archivo
 ---------------------------
 
 Equivale a `fopen` de C, con modo "w.."
@@ -130,7 +130,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Servicio 3Dh: Abrir archivo
+## Servicio 3Dh: Abrir archivo
 ---------------------------
 
 Equivale a `fopen` de C, con modo "r.."
@@ -150,7 +150,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Servicio 3Fh: Leer del archivo
+## Servicio 3Fh: Leer del archivo
 ------------------------------
 
 Equivale a `fread` de C
@@ -170,7 +170,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Servicio 40h: Escribir en el archivo
+## Servicio 40h: Escribir en el archivo
 ------------------------------------
 
 Equivale a `fwrite` de C
@@ -190,7 +190,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Servicio 42h: Posicionarse en el archivo
+## Servicio 42h: Posicionarse en el archivo
 ----------------------------------------
 
 Equivale a `fseek` de C
@@ -213,7 +213,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Servicio 3Eh: Cerrar el archivo
+## Servicio 3Eh: Cerrar el archivo
 -------------------------------
 
 Equivale a `fclose` de C
@@ -231,7 +231,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Servicio 41h: Borrar un archivo
+## Servicio 41h: Borrar un archivo
 -------------------------------
 
 Equivale a `unlink` de C
@@ -251,7 +251,7 @@ Usa CF y AX para el manejo de errores;
 
 * * *
 
-Códigos de error
+## Códigos de error
 ----------------
 
 0 = Sin error.
@@ -280,7 +280,7 @@ Códigos de error
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  Todos los manuales de interrupciones
@@ -298,7 +298,7 @@ Ejemplos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Página por Bruno Guardia R.
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

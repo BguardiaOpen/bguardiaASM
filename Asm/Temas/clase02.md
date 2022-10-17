@@ -55,53 +55,87 @@ La solución que se tomó fue la siguiente: A cada acción que sea capaz de real
 
 Supongamos que queremos realizar la operación 5 \* 3 + 2, en la calculadora descrita arriba. En memoria, podríamos "escribir" el programa de la siguiente forma:
 
-Localidad
 
-Opcode
 
-Significado
+<table border="1">
 
-Comentario
+<tbody>
 
-0
+<tr>
 
-5
+<th>Localidad</th>
 
-5
+<th>Opcode</th>
 
-En esta localidad, tenemos el primer número de la fórmula
+<th>Significado</th>
 
-1
+<th>Comentario</th>
 
-3
+</tr>
 
-\*
+<tr>
 
-En esta localidad, tenemos el _opcode_ que representa la multiplicación.
+<td>0</td>
 
-2
+<td>5</td>
 
-3
+<td>5</td>
 
-3
+<td>En esta localidad, tenemos el primer número de la fórmula</td>
 
-En esta localidad, tenemos el segundo número de la fórmula
+</tr>
 
-3
+<tr>
 
-1
+<td>1</td>
 
-+
+<td>3</td>
 
-En esta localidad, tenemos el _opcode_ que representa la suma.
+<td>*</td>
 
-4
+<td>En esta localidad, tenemos el _opcode_ que representa la multiplicación.</td>
 
-2
+</tr>
 
-2
+<tr>
 
-En esta localidad, tenemos el último número de la fórmula
+<td>2</td>
+
+<td>3</td>
+
+<td>3</td>
+
+<td>En esta localidad, tenemos el segundo número de la fórmula</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+
+<td>1</td>
+
+<td>+</td>
+
+<td>En esta localidad, tenemos el _opcode_ que representa la suma.</td>
+
+</tr>
+
+<tr>
+
+<td>4</td>
+
+<td>2</td>
+
+<td>2</td>
+
+<td>En esta localidad, tenemos el último número de la fórmula</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 Podemos ver que con esta representación, es simple expresar las operaciones de las que es capaz el hardware (en este caso, nuestra calculadora imaginaria), en la memoria.
 

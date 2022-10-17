@@ -15,28 +15,28 @@ Sesión 9](../Sesiones/sv09.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase15.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Revisar las técnicas apropiadas para el manejo de ciclos, condiciones y arreglos.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
-Condiciones
+## Condiciones
 -----------
 
 Antes que nada, hay que analizar cuál es el funcionamiento de una condición, tal como la manejamos en un lenguaje de alto nivel.
@@ -272,13 +272,15 @@ Por ejemplo, si tenemos un arreglo de números enteros de 16 bits, vamos a recor
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 *   Libros de metodología de la programación
 *   Clases anteriores.
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

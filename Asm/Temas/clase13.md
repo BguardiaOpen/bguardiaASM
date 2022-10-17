@@ -15,37 +15,37 @@ Sesión 9](../Sesiones/sv09.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase14.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer los servicios de BIOS que nos permiten manejar el teclado, a más bajo nivel que DOS; especialmente, el manejo del teclado sin requerir de espera.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Servicios de la Interrupción 16h
 --------------------------------
 
-*   [Leer un carácter](#LeerCaracter)
-*   [Checar si se ha tecleado un carácter](#Keypressed)
-*   [Obtener el Estado del Teclado](#ObtenerEstado)
+*   [Leer un carácter](#servicio-00h-leer-un-carácter)
+*   [Checar si se ha tecleado un carácter](#servicio-01h-checar-si-hay-un-carácter-disponible)
+*   [Obtener el Estado del Teclado](#servicio-02h-obtener-el-estado-del-teclado)
 
 * * *
 
-Servicio 00h: Leer un carácter
+## Servicio 00h: Leer un carácter
 ------------------------------
 
 Parámetros:
@@ -57,7 +57,7 @@ Regresa:
 *   AL = Código ASCII de la tecla presionada
 *   AH = Scan-Code de la tecla presionada
 
-Esta función es similar al [servicio 1 de la interrupción 21h](clase11.htm#Entrada); solamente que en una sola llamada regresa los caracteres extendidos, sin requerir llamar dos veces. En este caso, el código ASCII en AL será 0, y el Scan-Code nos indica un valor que identifica la tecla especial.
+Esta función es similar al [servicio 1 de la interrupción 21h](clase11.md#servicio-01h-ajustar-el-tipo-o-tamaño-del-cursor); solamente que en una sola llamada regresa los caracteres extendidos, sin requerir llamar dos veces. En este caso, el código ASCII en AL será 0, y el Scan-Code nos indica un valor que identifica la tecla especial.
 
 Si se desea obtener un cáracter ASCII, no tiene caso revisar el Scan-Code.
 
@@ -65,7 +65,7 @@ Ya que el servicio de mapeo de teclados en otros idiomas (por ejemplo, español)
 
 * * *
 
-Servicio 01h: Checar si hay un carácter disponible
+## Servicio 01h: Checar si hay un carácter disponible
 --------------------------------------------------
 
 Parámetros:
@@ -83,7 +83,7 @@ Esta función tiene un problema en su manejo: deja el carácter leído en la col
 
 * * *
 
-Servicio 02h: Obtener el estado del teclado
+## Servicio 02h: Obtener el estado del teclado
 -------------------------------------------
 
 Parámetros:
@@ -96,51 +96,96 @@ Regresa:
 
 Esta función indica si están presionadas las teclas de control, en forma de banderas, de acuerdo a la siguiente tabla:
 
-Bit
+<table border="1" cellpadding="2">
 
-Significado
+<tbody>
 
-7
+<tr>
 
-Modo Insert
+<td>Bit</td>
 
-6
+<td>Significado</td>
 
-Bloqueo de mayúsculas (_Caps Lock_)
+</tr>
 
-5
+<tr>
 
-Bloqueo de números(_Num Lock_)
+<td>7</td>
 
-4
+<td>Modo Insert</td>
 
-Bloqueo de desplazamiento (_Scroll Lock_)
+</tr>
 
-3
+<tr>
 
-Alt
+<td>6</td>
 
-2
+<td>Bloqueo de mayúsculas (_Caps Lock_)</td>
 
-Control
+</tr>
 
-1
+<tr>
 
-Shift Izquierdo
+<td>5</td>
 
-0
+<td>Bloqueo de números(_Num Lock_)</td>
 
-Shift Derecho
+</tr>
+
+<tr>
+
+<td>4</td>
+
+<td>Bloqueo de desplazamiento (_Scroll Lock_)</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+
+<td>Alt</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td>Control</td>
+
+</tr>
+
+<tr>
+
+<td>1</td>
+
+<td>Shift Izquierdo</td>
+
+</tr>
+
+<tr>
+
+<td>0</td>
+
+<td>Shift Derecho</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 *   PC Interno, Michael Tischer
 *   Manuales de Interrupciones, por ejemplo el apéndice C del libro de texto.
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif)
+ ## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

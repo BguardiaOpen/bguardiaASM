@@ -15,10 +15,10 @@ Sesión 16](../Sesiones/sv16.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Sesiones/sv17.htm)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
 [Bibliografía](#biblio)
@@ -26,7 +26,7 @@ Clase Siguiente](../Sesiones/sv17.htm)
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer las técnicas básicas para operar programas residentes en memoria.
@@ -34,21 +34,21 @@ Objetivos Específicos
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 ### Programas residentes
 
-*   [Introducción](#introduccion)
-*   [Programas residentes/transientes](#Residentes)
-*   [Programación de TSRs](#ProgTSRs)
-*   [Interceptar una interrupción](#Interceptar)
-*   [Sustituir una interrupción](#Sustituir)
-*   [Ejemplos](#Ejemplos)
+*   [Introducción](#introducción)
+*   [Programas residentes/transientes](#programas-residentes-programas-transientes)
+*   [Programación de TSRs](#programación-de-tsrs)
+*   [Interceptar una interrupción](#interceptar-una-interrupción)
+*   [Sustituir una interrupción](#sustituir-una-interrupción)
+*   [Ejemplos](#ejemplos)
 
 * * *
 
-Introducción
+## Introducción
 ------------
 
 Todo el semestre hemos usado interrupciones para hacer llamado a servicios de DOS y BIOS; hasta ahora, principalmente las hemos visto como formas de llamar al sistema operativo.
@@ -64,7 +64,7 @@ Cuando un dispositivo requiere atención del CPU, le avisa por medio de una señ
 
 Funcionan de un modo similar a las de hardware, solamente que en vez de que un dispositivo envíe la señal, lo hace el programa utilizando la instrucción INT. Esta instrucción causa que se ejecute todo el proceso anterior, pero señalada por un programa.
 
-Programas residentes / programas transientes
+## Programas residentes / programas transientes
 --------------------------------------------
 
 La mayor parte de los programas con los que hemos trabajado son programas "transientes", es decir, se cargan en memoria, se ejecutan y al terminar su ejecución, regresan el control al sistema operativo y se eliminan de memoria.
@@ -77,7 +77,7 @@ Entre las aplicaciones de los programas residentes tenemos:
 *   Programas que esperen una combinación de teclas, para entonces realizar su acción. Por ejemplo, sacar un menú con acciones específicas.
 *   Programas que sustituyan la funcionalidad del sistema operativo. Por ejemplo, las versiones 2 a 3 de Novell Netware se cargaban despúes de DOS, y le anexaban la capacidad de acceder a unidades de red.
 
-Programación de TSRs
+## Programación de TSRs
 --------------------
 
 Para programar un TSR, utilizaremos una serie de servicios de interrupciones que nos facilitan la capacidad de dejar una sección del programa activa, así como cambiar la dirección a la que apunta una interrupción. Resumiendo, tendremos dos grandes secciones en un programa residente:
@@ -90,7 +90,7 @@ Cuando llamamos al servicio 4Ch de la INT 21h, toda la memoria que ocupó nuestr
 *   La interrupción 27h, que termina el programa y deja residente en memoria la zona indicada por DS:DX, donde DS apunta al segmento donde se encuentra el código, y DX al desplazamiento final del código que debe respetarse. De este modo, no se liberará memoria indebidamente.
 *   Servicios de la 21h, que no veremos en este curso.
 
-Interceptar una interrupción
+## Interceptar una interrupción
 ----------------------------
 
 Para que se ejecute un procedimiento que nosotros desarrollamos, en atención de una interrupción, es común usar la técnica de "interceptar", que consiste en guardar el vector anterior de interrupción, cambiarlo para que apunte a nuestro programa residente, y al final de nuestra rutina residente, llamar al vector anterior. Esto conserva la funcionalidad regular, y al mismo tiempo nos permite realizar actividades adicionales. Cabe aclarar algunas de las interrupciones importantes que no hemos comentado por no ser tan usadas en software:
@@ -103,7 +103,7 @@ Obviamente hay muchas otras, sirvan estas como ejemplo.
 
 Se pueden interceptar las interrupciones generadas por puertos seriales, paralelos, división entre 0, una instrucción inválida, etcétera.
 
-Sustituir una interrupción
+## Sustituir una interrupción
 --------------------------
 
 En ocasiones queremos reemplazar completamente el funcionamiento de una interrupción; en tal caso, sustituiremos el vector de interrupción para que apunte a nuestro código, y deberemos terminar la ejecución de nuestro procedimiento con un IRET, que permitirá regresar al punto donde se ejecutó nuestra interrupción. Por otro lado, es conveniente asegurarnos de conservar el valor de los registros (generalmente utilizando la pila) que modifiquemos, de este modo la interrupción no afecta la ejecución de otros procesos. Acciones válidas dentro de una interrupción En una interrupción podemos utilizar otros servicios, principalmente de acceso directo al hardware. Sin embargo, como DOS es un sistema operativo que no fue diseñado para ser multitarea, diversas funciones no soportan la capacidad de ser reentrantes; esto es, no pueden ser llamadas otra vez si están a medio ejecutarse. Pero como una interrupción puede ocurrir en cualquier momento, puede incluso ocurrir cuando está una función a medio ejecutarse. Por tanto, esto causaría inestabilidad del sistema. Existen dos métodos para evitar esta inestabilidad:
@@ -113,7 +113,7 @@ En ocasiones queremos reemplazar completamente el funcionamiento de una interrup
 
 Existen algunas precauciones adicionales que tomar en TSRs, sin embargo, como no siempre son requeridas, se hace la referencia al PC Interno y otros libros de la bibliografía.
 
-**Ejemplos**
+## **Ejemplos**
 ------------
 
 1.  [Programa residente muy simple](../programa/reside.asm)
@@ -121,14 +121,16 @@ Existen algunas precauciones adicionales que tomar en TSRs, sin embargo, como no
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  PC Interno, versión 5.0, de Michael Tischer. Ya lo tenemos en Biblioteca del Campus.
 2.  PC Programming Bible, Peter Norton
 3.  Libro de texto
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif)
+
+## Página por Bruno Guardia R.
 
 f [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 

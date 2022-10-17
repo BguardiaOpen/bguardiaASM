@@ -11,18 +11,18 @@
 
 <h1 align="center">Tema #15 </h1>
 
-<h1 align="center">Técnicas de programación: Apuntadores </h1>
+<h1 align="center">Tï¿½cnicas de programaciï¿½n: Apuntadores </h1>
 
 <table border="1" cellpadding="2">
     <tr>
         <td><p align="center">
-        <a href="clase14.htm"><img src="../../images/anterior.gif" alt="Sesión Anterior" border="0" width="32" height="32"><br>
+        <a href="clase14.htm"><img src="../../images/anterior.gif" alt="Sesiï¿½n Anterior" border="0" width="32" height="32"><br>
         Clase Anterior</a>
  </p>
         </td>
-        <td><a href="../Sesiones/sv09.htm"><img src="../../images/light.gif" alt="Sesión" border="0" width="40" height="40"><br>
-        Sesión 9</a> </td>
-        <td><p align="center"><a href="../Temas/clase16.htm"><img src="../../images/sigue.gif" alt="Sesión Siguiente" border="0" width="32" height="32"><br>
+        <td><a href="../Sesiones/sv09.htm"><img src="../../images/light.gif" alt="Sesiï¿½n" border="0" width="40" height="40"><br>
+        Sesiï¿½n 9</a> </td>
+        <td><p align="center"><a href="../Temas/clase16.htm"><img src="../../images/sigue.gif" alt="Sesiï¿½n Siguiente" border="0" width="32" height="32"><br>
         Clase Siguiente</a> </p>
         </td>
     </tr>
@@ -31,43 +31,44 @@
 
 <table border="0">
     <tr>
-        <td><h2><a href="#objetivo">Objetivos Específicos</a> </h2>
+        <td><h2><a href="#objetivo">Objetivos Especï¿½ficos</a> </h2>
         </td>
-        <td><h2><a href="#teoria">Teoría </a></h2>
+        <td><h2><a href="#teoria">Teorï¿½a </a></h2>
         </td>
-        <td><h2><a href="#biblio">Bibliografía </a></h2>
+        <td><h2><a href="#biblio">Bibliografï¿½a </a></h2>
         </td>
     </tr>
 </table>
 </center></div>
 
-<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+<p><img src="../../images/waveline.gif" alt="Lï¿½nea de separaciï¿½n" width="756" height="16"> </p>
 
-<h2><a name="objetivo">Objetivos Específicos</a> </h2>
+<h2><a name="objetivo">Objetivos Especï¿½ficos</a> </h2>
 
 <ul>
     <li>Comprender el concepto de apuntadores. </li>
     <li>Revisar su uso para acceder eficientemente a arreglos. </li>
-    <li>Revisar su uso para construir listas y árboles. </li>
+    <li>Revisar su uso para construir listas y ï¿½rboles. </li>
 </ul>
 
-<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+<p><img src="../../images/waveline.gif" alt="Lï¿½nea de separaciï¿½n" width="756" height="16"> </p>
 
-<h2><a name="objetivo">Teoría</a> </h2>
+<h2><a name="objetivo">Teorï¿½a</a> </h2>
 
 <blockquote>
   <font FACE="Helv" SIZE="2" COLOR="#000000">
-  <h3>¿Qué es un apuntador?</h3>
+  <h3>ï¿½Quï¿½ es un apuntador?</h3>
   <p>
-  Existen diversos problemas en los cuales se requiere referenciar un dato. Por ejemplo, si tenemos la información de los alumnos de Ensamblador y sus calificaciones:
+  Existen diversos problemas en los cuales se requiere referenciar un dato. Por ejemplo, si tenemos la informaciï¿½n de los alumnos de Ensamblador y sus calificaciones:
   </p>
   </blockquote>
 </font>
+
 <table CELLSPACING="0" BORDER="0" CELLPADDING="3" WIDTH="336">
 <tr>
 <td WIDTH="121"><b><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p ALIGN="CENTER">
-Matrícula</font></b></td>
+Matrï¿½cula</font></b></td>
 <td WIDTH="115"><b><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p ALIGN="CENTER">
 Nombre</font></b></td>
@@ -115,13 +116,13 @@ IEC</font></td>
 <tr>
 <td WIDTH="120"><b><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p ALIGN="CENTER">
-Matrícula</font></b></td>
+Matrï¿½cula</font></b></td>
 <td WIDTH="83"><b><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p ALIGN="CENTER">
 Parcial</font></b></td>
 <td WIDTH="108"><b><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p ALIGN="CENTER">
-Calificación</font></b></td>
+Calificaciï¿½n</font></b></td>
 </tr>
 <tr>
 <td WIDTH="120"><font FACE="Helv" SIZE="2" COLOR="#000000">
@@ -168,22 +169,24 @@ Calificación</font></b></td>
 69</font></td>
 </tr>
 </table>
+
+
 <font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
 &nbsp;
 </p>
 <blockquote>
   <p>
-  Por ejemplo, la primera tabla describe la relación entre los alumnos, su nombre y su carrera. Mientras que la segunda, describe la relación entre los alumnos y sus
+  Por ejemplo, la primera tabla describe la relaciï¿½n entre los alumnos, su nombre y su carrera. Mientras que la segunda, describe la relaciï¿½n entre los alumnos y sus
   calificaciones.
   </p>
   <p>
-  En este contexto, la relación entre los dos arreglos que corresponderían a las tablas en memoria, está dada</font> <font FACE="Helv" SIZE="2" COLOR="#000000">por el
-  campo de Matrícula, que es tipo entero. En general, en cualquier problema similar existirá un campo común que permite relacionar los dos arreglos.
+  En este contexto, la relaciï¿½n entre los dos arreglos que corresponderï¿½an a las tablas en memoria, estï¿½ dada</font> <font FACE="Helv" SIZE="2" COLOR="#000000">por el
+  campo de Matrï¿½cula, que es tipo entero. En general, en cualquier problema similar existirï¿½ un campo comï¿½n que permite relacionar los dos arreglos.
   </p>
   <p>
-  En el ejemplo de arriba, la relación es eficiente y minimiza el gasto de memoria; pero existen problemas en los que la relación requiere demasiada memoria, además de
-  un algoritmo de búsqueda que requerirá más tiempo para ejecutarse. Por ejemplo:
+  En el ejemplo de arriba, la relaciï¿½n es eficiente y minimiza el gasto de memoria; pero existen problemas en los que la relaciï¿½n requiere demasiada memoria, ademï¿½s de
+  un algoritmo de bï¿½squeda que requerirï¿½ mï¿½s tiempo para ejecutarse. Por ejemplo:
   </p>
 
 <blockquote>
@@ -211,14 +214,14 @@ ISC</font></td>
 <tr>
 <td WIDTH="335"><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
-Luis Alberto Gutiérrez de GomezLanda</font></td>
+Luis Alberto Gutiï¿½rrez de GomezLanda</font></td>
 <td WIDTH="1"><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
 ISE</font></td>
 </tr>
 <tr>
 <td WIDTH="335"><font FACE="Helv" SIZE="2" COLOR="#000000">
-<p>José de Jesús Echeverría de los Monteros</font></td>
+<p>Josï¿½ de Jesï¿½s Echeverrï¿½a de los Monteros</font></td>
 <td WIDTH="1"><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
 IEC</font></td>
@@ -234,7 +237,7 @@ IEC</font></td>
 Parcial</font></b></td>
 <td WIDTH="108"><b><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p ALIGN="CENTER">
-Calificación</font></b></td>
+Calificaciï¿½n</font></b></td>
 </tr>
 <tr>
 <td WIDTH="335">
@@ -264,7 +267,7 @@ Juan Pablo Contreras Luna</font></td>
 <td WIDTH="335">
 <p>
 <font FACE="Helv" SIZE="2" COLOR="#000000">
-José de Jesús Echeverría de los Monteros</font></td>
+Josï¿½ de Jesï¿½s Echeverrï¿½a de los Monteros</font></td>
 <td WIDTH="55"><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
 1</font></td>
@@ -276,7 +279,7 @@ José de Jesús Echeverría de los Monteros</font></td>
 <td WIDTH="335">
 <p>
 <font FACE="Helv" SIZE="2" COLOR="#000000">
-Luis Alberto Gutiérrez de GomezLanda</font></td>
+Luis Alberto Gutiï¿½rrez de GomezLanda</font></td>
 <td WIDTH="55"><font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
 1</font></td>
@@ -289,23 +292,23 @@ Luis Alberto Gutiérrez de GomezLanda</font></td>
 &nbsp;
 </p>
   <p>
-  En este caso, el campo común de los dos arreglos es bastante largo; por ello, la redundancia de ambos campos genera un alto consumo de memoria. Especialmente en los
-  primeros tiempos del cómputo, cuando se empezaban a desarrollar los lenguajes de alto nivel, se tenían que buscar soluciones para hacer más eficiente el uso de la
-  memoria; y como consecuencia, también más rápido el procesamiento. En este caso, el procesamiento resulta lento pues para encontrar la correspondencia, se tienen que
-  hacer comparaciones de cadenas, las cuales son más costosas y requieren más accesos a memoria que, por ejemplo, la búsqueda de un entero que vimos en la sección
-  previa (la matrícula).
+  En este caso, el campo comï¿½n de los dos arreglos es bastante largo; por ello, la redundancia de ambos campos genera un alto consumo de memoria. Especialmente en los
+  primeros tiempos del cï¿½mputo, cuando se empezaban a desarrollar los lenguajes de alto nivel, se tenï¿½an que buscar soluciones para hacer mï¿½s eficiente el uso de la
+  memoria; y como consecuencia, tambiï¿½n mï¿½s rï¿½pido el procesamiento. En este caso, el procesamiento resulta lento pues para encontrar la correspondencia, se tienen que
+  hacer comparaciones de cadenas, las cuales son mï¿½s costosas y requieren mï¿½s accesos a memoria que, por ejemplo, la bï¿½squeda de un entero que vimos en la secciï¿½n
+  previa (la matrï¿½cula).
   </p>
   <p>
-  La primera y más directa solución consiste en sustituir el campo largo, en la segunda tabla, por un entero que permita la búsqueda más eficientemente. Podríamos
-  crear un código que identifique a cada elemento del arreglo, en forma única, como fue la matrícula en el primer ejemplo. Sin embargo, no es necesario hacerlo, pues
-  el arreglo tiene ya un identificador para cada elemento: el índice en el arreglo. Esto hace mucho más eficiente el acceso, pues ya no requiere comparaciones sino
-  solamente calcular, en base al índice almacenado, la localidad donde está el elemento relacionado.
+  La primera y mï¿½s directa soluciï¿½n consiste en sustituir el campo largo, en la segunda tabla, por un entero que permita la bï¿½squeda mï¿½s eficientemente. Podrï¿½amos
+  crear un cï¿½digo que identifique a cada elemento del arreglo, en forma ï¿½nica, como fue la matrï¿½cula en el primer ejemplo. Sin embargo, no es necesario hacerlo, pues
+  el arreglo tiene ya un identificador para cada elemento: el ï¿½ndice en el arreglo. Esto hace mucho mï¿½s eficiente el acceso, pues ya no requiere comparaciones sino
+  solamente calcular, en base al ï¿½ndice almacenado, la localidad donde estï¿½ el elemento relacionado.
   </p>
   <p>
-  Aún no es la solución más eficiente, puesto que se calcula la dirección destino, cuando podría almacenarse directamente. Por tanto, si en vez del índice en el
-  arreglo guardamos la dirección de memoria donde se encuentra el elemento relacionado, no tendremos que hacer operaciones. Esto tiene además la ventaja de que permite
-  relacionar elementos que no están en un arreglo y por lo tanto no se puede calcular tan eficientemente su dirección; de hecho, por esta última razón los apuntadores
-  son la solución natural para estructuras de datos como los árboles y listas, que no siempre tendrán un orden en sus elementos como ocurre con los arreglos.
+  Aï¿½n no es la soluciï¿½n mï¿½s eficiente, puesto que se calcula la direcciï¿½n destino, cuando podrï¿½a almacenarse directamente. Por tanto, si en vez del ï¿½ndice en el
+  arreglo guardamos la direcciï¿½n de memoria donde se encuentra el elemento relacionado, no tendremos que hacer operaciones. Esto tiene ademï¿½s la ventaja de que permite
+  relacionar elementos que no estï¿½n en un arreglo y por lo tanto no se puede calcular tan eficientemente su direcciï¿½n; de hecho, por esta ï¿½ltima razï¿½n los apuntadores
+  son la soluciï¿½n natural para estructuras de datos como los ï¿½rboles y listas, que no siempre tendrï¿½n un orden en sus elementos como ocurre con los arreglos.
   </p>
   <p>
   &nbsp;
@@ -314,16 +317,16 @@ Luis Alberto Gutiérrez de GomezLanda</font></td>
   Acciones comunes con apuntadores:
   </h3>
   <p>
-  Para ejemplificar el uso de apuntadores, verificaremos dos casos comunes de aplicación:
+  Para ejemplificar el uso de apuntadores, verificaremos dos casos comunes de aplicaciï¿½n:
   </p>
   <p><b>a) Recorrido secuencial, apuntadores contra arreglos</b>&nbsp;
   </p>
   <p>
-  En diversos algoritmos, necesitamos recorrer todos los elementos de un arreglo, especialmente en cadenas. Como ejemplo, veremos una función de sumatoria, que suma
+  En diversos algoritmos, necesitamos recorrer todos los elementos de un arreglo, especialmente en cadenas. Como ejemplo, veremos una funciï¿½n de sumatoria, que suma
   todos los elementos en un arreglo:
   </p>
   <p>
-  En lenguaje C, el código sería:
+  En lenguaje C, el cï¿½digo serï¿½a:
   </p>
 </blockquote>
 </font>
@@ -367,9 +370,9 @@ return Temp;
 </p>
 <blockquote>
   <p>
-  En este caso, estamos haciendo el recorrido de todos los elementos, y para cada elemento del arreglo se está calculando su dirección, utilizando la fórmula que vimos
-  en el tema de &quot;Representación de datos&quot;. Esto es ineficiente, por lo que en vez de implementar el uso del arreglo en ensamblador, usaremos un apuntador para
-  ir a través de él.
+  En este caso, estamos haciendo el recorrido de todos los elementos, y para cada elemento del arreglo se estï¿½ calculando su direcciï¿½n, utilizando la fï¿½rmula que vimos
+  en el tema de &quot;Representaciï¿½n de datos&quot;. Esto es ineficiente, por lo que en vez de implementar el uso del arreglo en ensamblador, usaremos un apuntador para
+  ir a travï¿½s de ï¿½l.
   </p>
   <p>
   &nbsp;
@@ -398,7 +401,7 @@ MOV SI, OFFSET Arreglo
 MOV AX, 0 ; AX va a tener el temporal para llevar el resultado
 </p>
 <p>
-MOV CX, 0 ; CX la hará de contador
+MOV CX, 0 ; CX la harï¿½ de contador
 </p>
 <p>
 CicloForI:
@@ -434,21 +437,21 @@ JNE CicloForI
   </p>
   <p>
   En ocasiones requeriremos estructuras de datos que no son simples arreglos o estructuras; por ejemplo, usaremos una lista ligada para acceder a un conjunto de datos en
-  orden alfabético.
+  orden alfabï¿½tico.
   </p>
   <p>
   Para construir la estructura usaremos un arreglo con datos especialmente pensados:
   </p>
   <blockquote>
     <p>
-    Será un arreglo de alumnos
+    Serï¿½ un arreglo de alumnos
     </p>
     <p>
-    Se aceptarán hasta 1000 alumnos
+    Se aceptarï¿½n hasta 1000 alumnos
     </p>
     <p>
-    Cada registro de alumno usará los campos de &quot;Nombre&quot; (20 caracteres), &quot;Matrícula&quot; (6 caracteres), &quot;Promedio&quot; (3 caracteres con
-    justificación a la derecha y espacios de relleno), y &quot;Siguiente&quot;, que será un apuntador (un Word), el que inicializaremos con 0.
+    Cada registro de alumno usarï¿½ los campos de &quot;Nombre&quot; (20 caracteres), &quot;Matrï¿½cula&quot; (6 caracteres), &quot;Promedio&quot; (3 caracteres con
+    justificaciï¿½n a la derecha y espacios de relleno), y &quot;Siguiente&quot;, que serï¿½ un apuntador (un Word), el que inicializaremos con 0.
     </p>
   </blockquote>
 </blockquote>
@@ -468,7 +471,7 @@ DB 'Pepito del Cuento', 3 DUP(' '), '987654', '100', 0, 0</font></td>
 </table>
 <font FACE="Helv" SIZE="2" COLOR="#000000">
 <p>
-&nbsp;Como un ejemplo adicional, véase el recorrido de una lista:
+&nbsp;Como un ejemplo adicional, vï¿½ase el recorrido de una lista:
 </p>
 <p>
 &nbsp;
@@ -535,17 +538,17 @@ END Principal
 </p>
 </font>
 
-<p><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> </p>
+<p><img src="../../images/waveline.gif" alt="Lï¿½nea de separaciï¿½n" width="756" height="16"> </p>
 
-<h2><a name="objetivo">Bibliografía</a> </h2>
+<h2><a name="objetivo">Bibliografï¿½a</a> </h2>
 
 <ul>
     <li>PC Interno, Michael Tischer </li>
-    <li>Manuales de Interrupciones, por ejemplo el apéndice C
+    <li>Manuales de Interrupciones, por ejemplo el apï¿½ndice C
         del libro de texto. </li>
 </ul>
 
-<p align="center"><img src="../../images/waveline.gif" alt="Línea de separación" width="756" height="16"> Página por
+<p align="center"><img src="../../images/waveline.gif" alt="Lï¿½nea de separaciï¿½n" width="756" height="16"> Pï¿½gina por
 Bruno Guardia R. </p>
 <div align="center"><center>
 
@@ -555,6 +558,6 @@ Bruno Guardia R. </p>
 </center></div>
 
 <p align="center"><em>Creada: Vi 7-Jun-96 </em><br>
-<em>Última actualización: Lu 26/Sep/2000</em> </p>
+<em>ï¿½ltima actualizaciï¿½n: Lu 26/Sep/2000</em> </p>
 </body>
 </html>

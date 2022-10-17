@@ -13,25 +13,25 @@ Sesión 12](../Sesiones/sv12.htm)
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase21.md)
 
-[Objetivos Específicos](#objetivo)
+[Objetivos Específicos](#objetivos-específicos)
 ----------------------------------
 
-[Teoría](#teoria)
+[Teoría](#teoría)
 -----------------
 
-[Bibliografía](#biblio)
+[Bibliografía](#bibliografía)
 -----------------------
 
 ![Línea de separación](../../images/waveline.gif)
 
-Objetivos Específicos
+## Objetivos Específicos
 ---------------------
 
 *   Conocer las instrucciones especiales de la familia 80x86, especialmente diseñadas para el manejo eficiente de bloques de memoria.
 
 ![Línea de separación](../../images/waveline.gif)
 
-Teoría
+## Teoría
 ------
 
 Instrucciones de Strings
@@ -42,14 +42,14 @@ Las instrucciones de Strings son instrucciones muy particulares a la familia de 
 
 Las instrucciones que vamos a estudiar a este respecto son:
 
-*   [CLD](#CLD)
-*   [STD](#STD)
-*   [LODS](#LODS)
-*   [STOS](#STOS)
-*   [MOVS](#MOVS)
-*   [SCAS](#SCAS)
-*   [CMPS](#CMPS)
-*   El prefijo [REP](#REP) y sus variantes [REPE/REPNE](#REPE)
+*   [CLD](#cld-clear-direction-flag)
+*   [STD](#std-set-direction-flag)
+*   [LODS](#lods-load-string)
+*   [STOS](#stos-store-string)
+*   [MOVS](#movs-move-string)
+*   [SCAS](#scas-scan-string)
+*   [CMPS](#cmps-compare-string)
+*   El prefijo [REP](#rep) y sus variantes [REPE/REPNE](#reperepne)
 
 * * *
 
@@ -213,13 +213,15 @@ Estos mnemónicos también son prefijos que modifica las instrucciones de string
 
 ![Línea de separación](../../images/waveline.gif)
 
-Bibliografía
+## Bibliografía
 ------------
 
 1.  Libro de Texto, capítulo 11.
 2.  Capítulo correspondiente de los libros de referencia.
 
-![Línea de separación](../../images/waveline.gif) Página por Bruno Guardia R.
+![Línea de separación](../../images/waveline.gif) 
+
+## Página por Bruno Guardia R.
 
  [![Correo](../../images/mail.gif) bguardia@itesm.mx](mailto:bguardia@campus.ccm.itesm.mx)
 
