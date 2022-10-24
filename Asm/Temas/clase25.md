@@ -10,7 +10,7 @@ Manejo del Ratón
 Clase Anterior](clase24.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 16](../Sesiones/sv16.htm)
+Sesión 16](../Sesiones/sv16.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](clase26.md)

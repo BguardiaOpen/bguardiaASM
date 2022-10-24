@@ -8,7 +8,7 @@ Instrucciones de Ciclos
 Clase Anterior](clase18.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 11](../Sesiones/sv11.htm)
+Sesión 11](../Sesiones/sv11.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase20.md)

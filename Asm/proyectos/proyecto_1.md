@@ -1,4 +1,4 @@
- Proyecto 1
+ 
 
 Proyecto 1, semestre 2002-11
 ----------------------------
@@ -7,7 +7,7 @@ Proyecto 1, semestre 2002-11
 
 Fecha de entrega: Martes 12 de Marzo de 2002; 19:00 horas (no se acepta más tarde)
 
-Qué hay que entregar: revisen las [políticas](../politicv.htm) del curso...
+Qué hay que entregar: revisen las [políticas](../politicv.md) del curso...
 
 En equipo de dos personas
 
@@ -23,403 +23,766 @@ En equipo de dos personas
 
 Ejemplos del juego:
 
-1
+<!-- aqui -->
 
-2
+<table border="0" cellpadding="10" cellspacing="10" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
 
-3
+<tbody>
 
-4
+<tr>
 
-5
+<td width="50%">
 
-6
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
 
-7
+<tbody>
 
- 
+<tr>
 
- 
+<td><span lang="es-mx">1</span></td>
 
- 
+<td><span lang="es-mx">2</span></td>
 
- 
+<td><span lang="es-mx">3</span></td>
 
- 
+<td><span lang="es-mx">4</span></td>
 
- 
+<td><span lang="es-mx">5</span></td>
 
- 
+<td><span lang="es-mx">6</span></td>
 
- 
+<td><span lang="es-mx">7</span></td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
- 
+<td> </td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
-![](../../images/plila.gif)
+<td> </td>
 
-![](../../images/plila.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
-![](../../images/pazul.gif)
+</tr>
 
-![](../../images/pazul.gif)
+<tr>
 
-![](../../images/plila.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
-![](../../images/plila.gif)
+<td>
 
-![](../../images/plila.gif)
+![](../../images/pazul.gif)</td>
 
-![](../../images/plila.gif)
 
-  
-Después de tirar 6 fichas c/u (ejemplo de base)
 
-1
+<td>
 
-2
+![](../../images/pazul.gif)</td>
 
-3
+<td> </td>
 
-4
+<td> </td>
 
-5
+<td> </td>
 
-6
+</tr>
 
-7
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td>
 
- 
+![](../../images/plila.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
- 
+![](../../images/plila.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
- 
+![](../../images/pazul.gif)</td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td>
 
- 
+![](../../images/pazul.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
- 
+![](../../images/pazul.gif)</td>
 
- 
 
-![](../../images/pazul.gif)
 
-![](../../images/pazul.gif)
+<td>
 
-![](../../images/pazul.gif)
+![](../../images/plila.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
- 
+![](../../images/pazul.gif)</td>
 
-![](../../images/plila.gif)
 
-![](../../images/plila.gif)
 
-![](../../images/pazul.gif)
+<td>
 
- 
+![](../../images/plila.gif)</td>
 
- 
 
-![](../../images/pazul.gif)
 
-![](../../images/pazul.gif)
+<td>
 
-![](../../images/plila.gif)
+![](../../images/plila.gif)</td>
 
-![](../../images/pazul.gif)
 
-![](../../images/plila.gif)
 
-![](../../images/plila.gif)
+<td>
 
-![](../../images/plila.gif)
+![](../../images/plila.gif)</td>
 
-Juega el azul en la columna 5
+</tr>
 
-1
+</tbody>
 
-2
+</table>
 
-3
+<span lang="en-us">Despu</span><span lang="es-mx">és de tirar 6 fichas c/u (ejemplo de base)</span></td>
 
-4
+<td width="50%">
 
-5
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber3">
 
-6
+<tbody>
 
-7
+<tr>
 
- 
+<td><span lang="es-mx">1</span></td>
 
- 
+<td><span lang="es-mx">2</span></td>
 
- 
+<td><span lang="es-mx">3</span></td>
 
- 
+<td><span lang="es-mx">4</span></td>
 
- 
+<td><span lang="es-mx">5</span></td>
 
- 
+<td><span lang="es-mx">6</span></td>
 
- 
+<td><span lang="es-mx">7</span></td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
-![](../../images/plila.gif)
+<td> </td>
 
-![](../../images/plila.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+<td> </td>
 
-![](../../images/plila.gif)
+<td> </td>
 
- 
+</tr>
 
-![](../../images/pazul.gif)
+<tr>
 
-![](../../images/pazul.gif)
+<td> </td>
 
-![](../../images/plila.gif)
+<td> </td>
 
-![](../../images/pazul.gif)
+<td>
 
-![](../../images/plila.gif)
+![](../../images/pazul.gif)</td>
 
-![](../../images/plila.gif)
 
-![](../../images/plila.gif)
 
-Juega el morado en la columna 6 (cooperando)
+<td>
 
-1
+![](../../images/pazul.gif)</td>
 
-2
 
-3
 
-4
+<td>
 
-5
+![](../../images/pazul.gif)</td>
 
-6
+<td> </td>
 
-7
+<td> </td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+<td>
 
- 
+![](../../images/plila.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
- 
+![](../../images/plila.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
- 
+![](../../images/pazul.gif)</td>
 
- 
+<td> </td>
 
- 
+<td> </td>
 
- 
+</tr>
 
- 
+<tr>
 
- 
+<td>
 
- 
+![](../../images/pazul.gif)</td>
 
- 
 
- 
 
- 
+<td>
 
-![](../../images/pazul.gif)
+![](../../images/pazul.gif)</td>
 
-![](../../images/pazul.gif)
 
-![](../../images/pazul.gif)
 
-![](../../images/pazul.gif)
+<td>
 
- 
+![](../../images/plila.gif)</td>
 
- 
 
- 
 
-![](../../images/plila.gif)
+<td>
 
-![](../../images/plila.gif)
+![](../../images/pazul.gif)</td>
 
-![](../../images/pazul.gif)
 
-![](../../images/plila.gif)
 
- 
+<td>
 
-![](../../images/pazul.gif)
+![](../../images/plila.gif)</td>
 
-![](../../images/pazul.gif)
 
-![](../../images/plila.gif)
 
-![](../../images/pazul.gif)
+<td>
 
-![](../../images/plila.gif)
+![](../../images/plila.gif)</td>
 
-![](../../images/plila.gif)
 
-![](../../images/plila.gif)
 
-Y así el azul gana (muy fácilmente)
+<td>
+
+![](../../images/plila.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<span lang="es-mx">Juega el azul en la columna 5</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="50%">
+
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber4">
+
+<tbody>
+
+<tr>
+
+<td><span lang="es-mx">1</span></td>
+
+<td><span lang="es-mx">2</span></td>
+
+<td><span lang="es-mx">3</span></td>
+
+<td><span lang="es-mx">4</span></td>
+
+<td><span lang="es-mx">5</span></td>
+
+<td><span lang="es-mx">6</span></td>
+
+<td><span lang="es-mx">7</span></td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<span lang="es-mx">Juega el morado en la columna 6 (cooperando)</span>
+
+</td>
+
+<td width="50%">
+
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber5">
+
+<tbody>
+
+<tr>
+
+<td><span lang="es-mx">1</span></td>
+
+<td><span lang="es-mx">2</span></td>
+
+<td><span lang="es-mx">3</span></td>
+
+<td><span lang="es-mx">4</span></td>
+
+<td><span lang="es-mx">5</span></td>
+
+<td><span lang="es-mx">6</span></td>
+
+<td><span lang="es-mx">7</span></td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td> </td>
+
+<td> </td>
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td> </td>
+
+</tr>
+
+<tr>
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/pazul.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+
+
+<td>
+
+![](../../images/plila.gif)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<span lang="es-mx">Y así el azul gana (muy fácilmente)</span>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>

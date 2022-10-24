@@ -10,7 +10,7 @@ Uso avanzado de macros y directivas condicionales
 Clase Anterior](clase22.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 14](../Sesiones/sv14.htm)
+Sesión 14](../Sesiones/sv14.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase24.md)

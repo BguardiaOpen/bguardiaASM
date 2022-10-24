@@ -10,7 +10,7 @@ Manejo de video por acceso directo a memoria
 Clase Anterior](clase23.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 15](../Sesiones/sv15.htm)
+Sesión 15](../Sesiones/sv15.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase25.md)

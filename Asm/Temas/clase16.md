@@ -10,7 +10,7 @@ Manejo básico de Archivos usando DOS
 Clase Anterior](clase15.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 10](../Sesiones/sv10.htm)
+Sesión 10](../Sesiones/sv10.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase17.md)

@@ -22,17 +22,34 @@ Aquí se irán poniendo los proyectos según los aparten los alumnos; no se cons
 *   El tema deberá informarse con anticipación al profesor, por medio personal o por correo, para obtener la autorización correspondiente del tema, y en su caso, para justificar la formación de un equipo
 *   Puede aplicarse (_**y se fomenta**_) el que sea un proyecto también para otra materia; inclusive, que combinen equipos multidisciplinarios, por ejemplo un proyecto de Ingeniería Mecánica con éste.
 
-*   Sugerencias, para más ideas, conviene que vean el [cuadro de honor:](../HONOR.HTM)
+*   Sugerencias, para más ideas, conviene que vean el [cuadro de honor:](../HONOR.md)
 
-Categorías
 
-Ejemplos, ordenados en forma creciente por su dificultad
+<table border="1" cellpadding="2">
 
-Optimización
+<tbody>
 
-Tomar un programa en C y traducirlo a ensamblador, para hacerlo más eficiente, por un factor al menos de 2 veces más rápido, a veces hasta de 4. Documentar el "caso"
+<tr>
 
-Imágenes
+<th>Categorías</th>
+
+<th>Ejemplos, ordenados en forma creciente por su dificultad</th>
+
+</tr>
+
+<tr>
+
+<th>Optimización</th>
+
+<td>Tomar un programa en C y traducirlo a ensamblador, para hacerlo más eficiente, por un factor al menos de 2 veces más rápido, a veces hasta de 4\. Documentar el "caso"</td>
+
+</tr>
+
+<tr>
+
+<th>Imágenes</th>
+
+<td>
 
 *   Mostrar archivos con formato PGP
 *   Convertir archivos entre distintos formatos, por ejemplo:
@@ -41,15 +58,21 @@ Imágenes
     *   JPEG a BMP
     *   TIFF multipágina a varios BMP
 *   Mostrar archivos de video FLIC.
-*   Mostrar GIFs animados (se puede tomar como base el proyecto en el [Cuadro de Honor](../HONOR.HTM))
-*   Mostrar y navegar por archivos TIFFs multipágina (p.ej. Fax) (se puede tomar como base el proyecto en el [Cuadro de Honor](../HONOR.HTM))
+*   Mostrar GIFs animados (se puede tomar como base el proyecto en el [Cuadro de Honor](../HONOR.md))
+*   Mostrar y navegar por archivos TIFFs multipágina (p.ej. Fax) (se puede tomar como base el proyecto en el [Cuadro de Honor](../HONOR.md))
 *   Mostrar archivos JPEG
 *   Mostrar archivos de video AVI.
 *   Mostrar archivos de video Quick Time.
 
-Programas educativos
+</td>
 
-Pueden ser simulaciones o tutoriales de distintas materias, a niveles preparatoria y profesional; por ejemplo:
+</tr>
+
+<tr>
+
+<th>Programas educativos</th>
+
+<td>Pueden ser simulaciones o tutoriales de distintas materias, a niveles preparatoria y profesional; por ejemplo:
 
 Química:
 
@@ -75,9 +98,15 @@ Ensamblador
 *   Simulación del procesador - Fetch Execute usando 80x86 como referencia.
 *   Simulación del funcionamiento de una familia de instrucciones; por ejemplo, los corrimientos y rotaciones.
 
-Juegos
+</td>
 
-Deben ser originales, ya hemos tenido Pacman, carreras, Tetris y muchos de los juegos sencillos similares.
+</tr>
+
+<tr>
+
+<th>Juegos</th>
+
+<td>Deben ser originales, ya hemos tenido Pacman, carreras, Tetris y muchos de los juegos sencillos similares.
 
 Hay oportunidades en:
 
@@ -85,9 +114,15 @@ Hay oportunidades en:
 *   Juegos de estrategia.
 *   Juegos de mundos virtuales.
 
-Control de Hardware
+</td>
 
-Por los puertos seriales y paralelos, puede ser hardware existente, como por ejemplo:
+</tr>
+
+<tr>
+
+<th>Control de Hardware</th>
+
+<td>Por los puertos seriales y paralelos, puede ser hardware existente, como por ejemplo:
 
 *   Joysticks.
 *   Lápiz óptico.
@@ -105,9 +140,15 @@ Como oportunidades, hay algunas ideas de hardware relativamente fácil de constr
 *   Filtro para monitor "touchscreen".
 *   Interfase para control de estéreos, videos o TV (por ejemplo, a través de control remoto).
 
-Comunicaciones
+</td>
 
-Comunicar información entre distintas máquinas es una aplicación natural de Ensamblador. Desafortunadamente, ya está un poco saturado.
+</tr>
+
+<tr>
+
+<th>Comunicaciones</th>
+
+<td>Comunicar información entre distintas máquinas es una aplicación natural de Ensamblador. Desafortunadamente, ya está un poco saturado.
 
 Algunas aplicaciones ya hechas (no aceptables):
 
@@ -125,9 +166,15 @@ Algunas oportunidades:
     *   Módem acústico
     *   Convertidor a señales ópticas para comunicación por fibra óptica.
 
-Librerías para otros lenguajes
+</td>
 
-Este tipo de proyectos hacen uso de la interfaz de C con Ensamblador; se trata de proveer funciones para los programadores de C, que faciliten su trabajo. Estas funciones se deben realizar en ensamblador (no se califica el código en C).
+</tr>
+
+<tr>
+
+<th>Librerías para otros lenguajes</th>
+
+<td>Este tipo de proyectos hacen uso de la interfaz de C con Ensamblador; se trata de proveer funciones para los programadores de C, que faciliten su trabajo. Estas funciones se deben realizar en ensamblador (no se califica el código en C).
 
 Algunas de las que ya se han realizado (y por tanto, no serían válidas) incluyen:
 
@@ -138,31 +185,49 @@ Algunas oportunidades serían:
 
 *   Decodificación de archivos de imágenes, por ejemplo BMP, PCX, GIF y TIFF.
 
-Demos
+</td>
 
-Pueden revisar en especial el libro "PC al Límite", disponible en Biblioteca.
+</tr>
 
-Consisten en presentaciones de un producto o compañía, por ejemplo los comerciales de TV; obviamente, involucran gráficas computacionales y animación, muchas veces también sonido.
+<tr>
+
+<th>Demos</th>
+
+<td>Pueden revisar en especial el libro "PC al Límite", disponible en Biblioteca.
+
+Consisten en presentaciones de un producto o compaña, por ejemplo los comerciales de TV; obviamente, involucran gráficas computacionales y animación, muchas veces también sonido.
 
 También pueden ser animaciones de entrada a un programa, que llamen la atención del usuario.
 
-Música y sonido
+</td>
 
-Ya tenemos en el [Cuadro de honor](../HONOR.HTM) un piano electrónico. Algunas oportunidades que se podrían hacer incluyen:
+</tr>
+
+<tr>
+
+<th>Música y sonido</th>
+
+<td>Ya tenemos en el [Cuadro de honor](../HONOR.md) un piano electrónico. Algunas oportunidades que se podrían hacer incluyen:
 
 *   Extender el piano con uso de tarjetas de sonido;
 *   "Escribir" música en un pentagrama, utilizando el modo gráfico para dibujar, y posiblemente el ratón para "arrastrar y soltar" las notas; y utilizar las funciones del piano para tocar la música en el pentagrama.
 *   Digitalizar música haciendo interfaz con el micrófono y la tarjeta de sonido.
 *   Librería de efectos especiales de sonido, ej. explosión, láser, tren pasando... Al menos, debieran crear unos 20; o bien, un programa que permita crearlos.
 
-Utilerías
+</td>
 
-Programas que permitan a un usuario poderoso sacar mayor provecho de su máquina o bien obtener datos internos, por ejemplo he recibido:
+</tr>
+
+<tr>
+
+<th>Utilerías</th>
+
+<td>Programas que permitan a un usuario poderoso sacar mayor provecho de su máquina o bien obtener datos internos, por ejemplo he recibido:
 
 *   Información de sistema (tipo SI de Norton o MSD - Microsoft Diagnostics).
-*   Vacunas - pueden ver el [cuadro de Honor](../honor.htm), aquí las oportunidades ya están limitadas a vacunas contra virus nuevos o contra virus de macros.
-*   Conjunto de utilerías "EACTools" - tipo PC Tools, está en el [cuadro de Honor](../honor.htm).
-*   Observador del nombres extendidos Windows 95, en versiones anteriores de DOS; está en el [Cuadro de honor](../honor.htm).
+*   Vacunas - pueden ver el [cuadro de Honor](../honor.md), aquí las oportunidades ya están limitadas a vacunas contra virus nuevos o contra virus de macros.
+*   Conjunto de utilerías "EACTools" - tipo PC Tools, está en el [cuadro de Honor](../honor.md).
+*   Observador del nombres extendidos Windows 95, en versiones anteriores de DOS; está en el [Cuadro de honor](../honor.md).
 *   Tocar CDs desde MS-DOS.
 
 Algunas que puedo sugerir incluyen:
@@ -172,14 +237,34 @@ Algunas que puedo sugerir incluyen:
 *   Compresión de archivos ejecutables, con la descompresión dinámica al ejecutarse. En este caso, el algoritmo de compresión no necesariamente tiene que ser complejo.
 *   Encripción de archivos ejecutables, con el desciframiento dinámico al ejecutarse. En este caso, el algoritmo de compresión no necesariamente tiene que ser especialmente seguro.
 
-Encripción
+</td>
 
-Es un tema muy explotado, por lo cual quedan pocas ideas. Ya he recibido programas que cifran y descifran archivos, utilizando diversos algoritmos, incluyendo RSA, TEA, IDEA, DES, XOR con muchas variantes, etcétera.
+</tr>
+
+<tr>
+
+<th>Encripción</th>
+
+<td>Es un tema muy explotado, por lo cual quedan pocas ideas. Ya he recibido programas que cifran y descifran archivos, utilizando diversos algoritmos, incluyendo RSA, TEA, IDEA, DES, XOR con muchas variantes, etcétera.
 
 No se aceptan algoritmos "inventados" por el alumno, a menos que tengan una fundamentación matemática que muestre su "fortaleza"; por lo que en general, sugiero hagan una búsqueda de algoritmos nuevos de encripción, publicados.
 
-Compresión
+</td>
 
-Al igual que la encripción, es un tema explotado en distintas ocasiones. Ya he recibido programas que comprimen y descomprimen usando algoritmos como RLE.
+</tr>
+
+<tr>
+
+<th>Compresión</th>
+
+<td>Al igual que la encripción, es un tema explotado en distintas ocasiones. Ya he recibido programas que comprimen y descomprimen usando algoritmos como RLE.
 
 Hay opción para otros algoritmos, por ejemplo ZIP y LZW; sin embargo, generalmente estos ya son proyectos relativamente complejos, solamente los recomendaría para alumnos que tienen una amplia práctica de programación.
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>

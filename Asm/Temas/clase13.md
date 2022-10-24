@@ -10,7 +10,7 @@ Manejo básico del Teclado usando BIOS
 Clase Anterior](clase12.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 9](../Sesiones/sv09.htm)
+Sesión 9](../Sesiones/sv09.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase14.md)

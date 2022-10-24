@@ -1,4 +1,4 @@
-  Proyecto 2 Virtual 9801
+
 
 Proyecto 2
 ----------

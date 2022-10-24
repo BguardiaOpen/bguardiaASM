@@ -1,4 +1,3 @@
-  Proyecto 1
 
 Proyecto 1, semestre 9808
 -------------------------
@@ -7,7 +6,7 @@ Proyecto 1, semestre 9808
 
 Fecha de entrega: 29 de septiembre de 1998, según el grupo; 19:00 horas (no se acepta más tarde)
 
-Qué hay que entregar: revisen las [políticas](../politicv.htm) del curso...
+Qué hay que entregar: revisen las [políticas](../politicv.md) del curso...
 
 En equipo de dos personas (se vale hacer equipos con integrantes de ambos grupos de la materia)
 

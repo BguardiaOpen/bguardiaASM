@@ -10,7 +10,7 @@ Modelos de Memoria
 Clase Anterior](clase21.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 13](../Sesiones/sv13.htm)
+Sesión 13](../Sesiones/sv13.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase23.md)

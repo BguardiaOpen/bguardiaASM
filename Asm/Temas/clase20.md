@@ -8,7 +8,7 @@ Instrucciones de Strings
 Clase Anterior](clase19.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 12](../Sesiones/sv12.htm)
+Sesión 12](../Sesiones/sv12.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase21.md)

@@ -8,7 +8,7 @@ Macros
 Clase Anterior](clase17.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 11](../Sesiones/sv11.htm)
+Sesión 11](../Sesiones/sv11.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase19.md)

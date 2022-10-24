@@ -10,10 +10,10 @@ Programas residentes
 Clase Anterior](clase25.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 16](../Sesiones/sv16.htm)
+Sesión 16](../Sesiones/sv16.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
-Clase Siguiente](../Sesiones/sv17.htm)
+Clase Siguiente](../Sesiones/sv17.md)
 
 [Objetivos Específicos](#objetivos-específicos)
 ----------------------------------

@@ -7,7 +7,7 @@ Proyecto 1, semestre 2001-13
 
 Fecha de entrega: 25 de septiembre de 2001; 19:00 horas (no se acepta más tarde)
 
-Qué hay que entregar: revisen las [políticas](../politicv.htm) del curso...
+Qué hay que entregar: revisen las [políticas](../politicv.md) del curso...
 
 En equipo de dos personas
 

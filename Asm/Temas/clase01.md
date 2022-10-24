@@ -18,7 +18,7 @@ Objetivos Específicos
 ---------------------
 
 *   Presentación del grupo (alumnos y profesor)
-*   Conocer las reglas del juego ([políticas](../politica.htm))
+*   Conocer las reglas del juego ([políticas](../politica.md))
 *   Conocer los libros y bibliografía que se va a usar.
 
 ![](../../images/waveline.gif) 

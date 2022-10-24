@@ -10,7 +10,7 @@ Técnicas de programación: Ciclos y arreglos
 Clase Anterior](clase13.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 9](../Sesiones/sv09.htm)
+Sesión 9](../Sesiones/sv09.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase15.md)

@@ -10,7 +10,7 @@ Manejo de la Línea de Comandos de DOS
 Clase Anterior](clase16.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 10](../Sesiones/sv10.htm)
+Sesión 10](../Sesiones/sv10.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase18.md)

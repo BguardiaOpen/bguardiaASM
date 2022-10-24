@@ -10,7 +10,7 @@ Interfaz entre C y Ensamblador
 Clase Anterior](clase20.md)
 
 [![Sesión](../../images/light.gif)  
-Sesión 13](../Sesiones/sv13.htm)
+Sesión 13](../Sesiones/sv13.md)
 
 [![Sesión Siguiente](../../images/sigue.gif)  
 Clase Siguiente](../Temas/clase22.md)
