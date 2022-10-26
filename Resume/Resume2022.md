@@ -22,7 +22,7 @@ I am an experienced software developer, who has worked on a wide variety of tech
 | 1996 - 1997 | TECHNOLOGY MANAGER | Grupo Siglo | Mexico City | Visual Basic 3.0 and 4.0, SQL Server 6.0, ASP 1.0 |
 | 1992 - 1995 | SOFTWARE DEVELOPER / MANAGER | Programas, Ingenieria y Computadoras| Mexico City | IBM's AIX, HP/UX, C, Visual Basic, xBase, TCP/IP sockets, imaging and compression |
 | 1985 - 1992 | STUDENT JOBS | Various | Mexico City | Part time high school professor (Word 3.0, Lotus 1-2-3, Turbo Pascal. Technical Support (Mac and PCs, using Mac System 6/7, MS DOS 3.3-5.0, Windows 2.1 and 3.0, Netware) Programming (payroll systems in Quick Basic) 
-|
+
 
 
 ## Education
