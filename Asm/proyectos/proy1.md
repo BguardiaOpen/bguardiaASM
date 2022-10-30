@@ -1,4 +1,4 @@
-Proyecto 1 
+
 
 Proyecto 1, Semestre Enero 2001
 -------------------------------
