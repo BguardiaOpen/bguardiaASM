@@ -1,4 +1,4 @@
- Representación y Tipos de Datos
+ 
 
 Tema #4
 =======
