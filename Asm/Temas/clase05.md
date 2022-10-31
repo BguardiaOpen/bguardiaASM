@@ -1,4 +1,4 @@
- Arquitectura de la Familia de Procesadores 80x86
+
 
 ![Chip](../../images/ASM/386.jpg)
 =================================
