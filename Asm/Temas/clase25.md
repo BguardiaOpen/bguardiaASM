@@ -1,4 +1,4 @@
- Manejo del Ratón
+ 
 
 Tema #25
 ========

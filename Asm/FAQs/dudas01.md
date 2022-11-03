@@ -1,0 +1,14 @@
+## Dudas Comunes
+
+1.  _¿A qué hora se entregan los proyectos?_  
+    R: A la **ENTRADA** de la clase; esto debido a la experiencia negativa con una clase anterior, de 3 horas, en la que el día de entrega de proyectos existían alumnos que llegaban a la tercera hora a entregar, con lo que se perdía continuidad en la clase.
+2.  _¿Cómo se consigue el Software de la materia?_  
+    R: Se tiene en el laboratorio SC08; y existen en Internet lugares con versiones freeware y shareware de ensambladores, la más famosa la GNU, de la Free Software Foundation.
+3.  _¿Por qué se pide la marca y modelo de la computadora donde se realizó, en la documentación?_  
+    R: A veces nos encontramos con que hay incompatibilidades entre las PCs de distintas marcas; al trabajar en ensamblador, cerca de la máquina, es más común que nos encontremos con dichas diferencias.
+4.  _¿Hay alguna preferencia entre el ensamblador de Microsoft y el de Borland?_  
+    R: Mi preferencia personal es por el TASM, de Borland; sin embargo, la competencia es muy pareja. Por ejemplo, entre el MASM versión 6 y el TASM versión 1, tiene más características útiles el MASM. Pero a versiones iguales, son similares y generalmente compatibles, al menos en lo más estándar. Entre las diferencias a considerar pueden tenerse: si lo voy a integrar con otro lenguaje (por ejemplo, el TASM se integra automáticamente con el Turbo o Borland C++, y el MASM con el Visual C++); si voy a usar un procesador avanzado (la versión y marca influye en qué procesadores soporta); y el libro en el que me base. Sin embargo, me encontró alguna vez con un programa hecho a la especificación del MASM, que ensamblaba pero por alguna razón no funcionaba; se usó el TASM y funcionó a la primera. De esa y otras experiencias similares, mi preferencia personal. Además, es el que tenemos instalado en el Campus. Sin embargo, si alguno usa MASM o cualquier otro ensamblador, no implica ninguna sanción o efecto en sus calificaciones.
+5.  _¿Es indispensable comprar el libro de texto?_  
+    No, es opcional; hay quien no lo necesita o prefiere otro libro; además, está en reserva. Sin embargo, sí es conveniente, y sí se usa como base del curso y las lecturas.
+6.  _Quiero informarte que me hice bolas con lo de tu pagina , porque el tema 2 es el mismo de la clase#2, que quieres decir?, que es lo que vamos a hacer el la clase dos o que?_  
+    Efectivamente, se presta a confusión. Para estas páginas, llamo "sesión" a la clase diaria; y "tema" a un grupo general de conceptos a tratar de la materia; en una clase semanal o sesión, puede haber uno o más temas; así como un tema puede requerir más de una sesión para tratarse.

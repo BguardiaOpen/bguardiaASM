@@ -8,4 +8,4 @@
     **MUY IMPORTANTE.**
 *   Si es necesario, pedir asesoría personalizada.
 *   Leer los temas de la sesión 4\.
-*   [Tarea #3](tarea3.html) (Todos los ejercicios)
+*   [Tarea #3](tarea3.md) (Todos los ejercicios)
