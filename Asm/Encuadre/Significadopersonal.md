@@ -1,0 +1,7 @@
+# ¿Qué significa para Bruno Guardia impartir esta materia?
+
+Después de 15 años impartiendo clases, y más de 6 impartiendo esta materia en forma continua, continúo buscando formas de ampliar y mejorar el contenido así como la clase misma. Evidentemente, me gusta dar clases, es parte de mi misión personal el aprender en la actividad profesional, atendiendo diversos clientes, y transferir ese conocimiento, a través de diversos medios; entre éstos el más importante las clases a nivel de Licenciatura.
+
+La materia me encanta por ser sumamente técnica, porque implica pensar a todo detalle la forma en que se programa la solución a un problema, porque es convivir con la máquina en el nivel más profundo. Es una oportunidad de superación personal, pues siempre se encuentran formas de mejorar como profesor y por consiguiente, alcanzar niveles más altos para transmitir los conocimientos que estamos descubriendo continuamente.
+
+También es un lugar donde conozco a muchas personas, que se convierten en importantes para mí, con quienes posteriormente a la clase sigo conviviendo como colegas, encontrándolos continuamente trabajando en diversas compañías, clientes a los que visito, proveedores de clientes comunes, como aliados de negocios o en cualquier otro ambiente dentro de nuestra actividad profesional. De modo que puedo ver cómo contribuyen al mejoramiento de la forma de hacer sistemas en nuestro país, y por consiguiente formamos una comunidad que genera desarrollo tecnológico y económico para México.
