@@ -4,7 +4,7 @@
     R: En un corrimiento, el bit que entra siempre es un 0; en una rotación, entra un valor dependiendo del bit que sale.  
     Por ejemplo, supongamos que en AL está el número binario:
 
-    <table border="" cellpadding="2">
+    <table>
 
     <tbody>
 
@@ -24,7 +24,7 @@
     `SHL AL, 1`  
     quedará el valor:
 
-    <table border="" cellpadding="2">
+    <table cellpadding="2">
 
     <tbody>
 
@@ -45,7 +45,7 @@
     en vez del corrimiento, en este caso quedaría igual, porque el bit más significativo (el de la izquierda) era un 0.  
     Pero si repetimos, sobre el último valor:
 
-    <table border="" cellpadding="2">
+    <table cellpadding="2">
 
     <tbody>
 
@@ -65,7 +65,7 @@
     `SHL AL, 1`  
     quedará el valor:
 
-    <table border="" cellpadding="2">
+    <table cellpadding="2">
 
     <tbody>
 
@@ -85,7 +85,7 @@
     `ROL AL, 1`  
     quedará en cambio
 
-    <table border="" cellpadding="2">
+    <table cellpadding="2">
 
     <tbody>
 

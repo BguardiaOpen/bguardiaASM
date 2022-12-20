@@ -1,6 +1,6 @@
 # Tema de apoyo
 
-# Conexiín de hardware
+# Conexión de hardware
 
 ![Línea de Separación](../../images/waveline.gif)
 
