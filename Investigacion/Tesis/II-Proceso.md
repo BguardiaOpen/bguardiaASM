@@ -356,9 +356,8 @@ Se habla de "roles" y no "participantes", ya que puede haber múltiples individu
 
 Según sea el modelo instruccional, es la forma en que se supone que interactúan Alumno y Profesor; por ejemplo, algunos modelos indican que el Profesor inicia la interacción, y el Alumno reacciona al Profesor; mientras que en otros, el rol iniciador es el Alumno y el Profesor actúa "reactivamente" [24<span class="GramE">][23]. Sin embargo, en general se considera que el Profesor transmite información y responde dudas del alumno, además de retroalimentar en forma de refuerzos; mientras que el alumno es un receptor activo (tiene un comportamiento observable) de la información, y plantea dudas o requiere asesoría. Todo esto se ejemplifica en la figura 5.
 
-<span style="mso-ignore:vglayout;position:
- relative;z-index:2;left:-1px;top:0px;width:559px;height:223px">![](II-Proceso_files/image007.gif)  
-<a name="_Toc404744094"></a><a name="_Toc405006059"></a>Figura 5: Modelo de dos roles (alumno - profesor).
+![](II-Proceso_files/image007.gif)  
+Figura 5: Modelo de dos roles (alumno - profesor).
 
 
 
@@ -376,7 +375,7 @@ Estos roles se resumen en la tabla 4, y en las figuras 6 y 7:
 
 
 
-<a name="_Toc405006080"></a>Tabla 4: Algunos agentes que se proponen para el modelado del proceso enseñanza - aprendizaje.
+Tabla 4: Algunos agentes que se proponen para el modelado del proceso enseñanza - aprendizaje.
 
 
 
@@ -480,7 +479,7 @@ Reconocer y corregir los errores del Alumno al realizar prácticas de programaci
 ![](II-Proceso_files/image008.gif)
 
 
-<a name="_Toc404744095"></a><a name="_Toc405006060"></a>Figura 6: Modelo de tres roles (alumno - profesor - asesor).
+Figura 6: Modelo de tres roles (alumno - profesor - asesor).
 
 
 

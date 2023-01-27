@@ -73,8 +73,8 @@ Este problema, como se ha visto, se presenta cuando el alumno durante su prácti
 Para describir más a fondo el problema, se enumeran las razones más comunes que llevan al alumno a requerir una asesoría:
 
 *   Errores de sintaxis.
-*   Otros errores y advertencias en la compilaci¿n.
-*   Ambig¿edades del lenguaje.
+*   Otros errores y advertencias en la compilación.
+*   Ambigüedades del lenguaje.
 *   Seguimiento incorrecto del programa.
 *   Fallas por efectos colaterales no previstos.
 *   Conceptos equivocados sobre los recursos y técnicas utilizadas.
@@ -97,17 +97,17 @@ A esto hay que agregar que los alumnos de carreras tales como Ingeniería en Sis
 *   Generar paquetes educativos y de educación a distancia.
 *   Llevar educación a los hogares y centros de trabajo.
 
-Una de las actividades complementarias que se deben profundizar es este análisis, de forma que quede mejor fundamentada la hipótesis; hasta aquí, se han proporcionado argumentos emp¿ricos y observaciones simples, que simplemente justifican y muestran realizar investigación sobre las mismas.
+Una de las actividades complementarias que se deben profundizar es este análisis, de forma que quede mejor fundamentada la hipótesis; hasta aquí, se han proporcionado argumentos empíricos y observaciones simples, que simplemente justifican y muestran realizar investigación sobre las mismas.
 
 Entre las consecuencias que el problema puede tener, se mencionarán las siguientes:
 
 *   Baja en el desempeño de los alumnos.
-*   Limitaciones al nivel acad¿mico de los profesores que imparten materias posteriormente. Es decir, las fallas en el aprendizaje en un curso, incidirán en problemas en el aprendizaje durante cursos posteriores, ligados con el primero.
-*   Desperdicio del tiempo del profesor, resolviendo repetitivamente las mismas dudas a distintos alumnos, durante distintos tiempos, algunas de ellas ya mencionadas en clase; tiempo que podráa ser aprovechado para ampliar los conocimientos que se cubren, agregar mayor número de ejemplos, y otras diversas actividades acad¿micas.
+*   Limitaciones al nivel académico de los profesores que imparten materias posteriormente. Es decir, las fallas en el aprendizaje en un curso, incidirán en problemas en el aprendizaje durante cursos posteriores, ligados con el primero.
+*   Desperdicio del tiempo del profesor, resolviendo repetitivamente las mismas dudas a distintos alumnos, durante distintos tiempos, algunas de ellas ya mencionadas en clase; tiempo que podráa ser aprovechado para ampliar los conocimientos que se cubren, agregar mayor número de ejemplos, y otras diversas actividades académicas.
 
-Al resolver el problema de las limitantes en la asesoría de programación, se podrán obtener entre otros beneficios los siguientes, que se ocupar¿n como objetivos de este trabajo:
+Al resolver el problema de las limitantes en la asesoría de programación, se podrán obtener entre otros beneficios los siguientes, que se ocuparán como objetivos de este trabajo:
 
-*   Apoyo al trabajo del profesor, reduciendo su carga de trabajo repetitivo y permiti¿ndole Así ampliar el tiempo que dedica a las actividades que requieren mayor experiencia, inteligencia o creatividad.
+*   Apoyo al trabajo del profesor, reduciendo su carga de trabajo repetitivo y permitiéndole Así ampliar el tiempo que dedica a las actividades que requieren mayor experiencia, inteligencia o creatividad.
 *   El alumno mejorará su aprendizaje, al resolver sus dudas, especialmente aquellas comunes en el aprendizaje de la materia; y lo conseguirá en un tiempo más oportuno.
 *   Se apoyará al proyecto de Universidad Virtual, al no requerir de la presencia o tiempo del profesor, en las labores relativamente mecúnicas de soporte.
 *   Se podrá llevar un registro más completo de la evolución del alumno.
@@ -121,15 +121,15 @@ Antes de revisar las posibles alternativas, tanto tradicionales como por medios 
 *   **Disponibilidad**: es deseable que la alternativa seleccionada sea accesible al alumno, durante el mayor tiempo posible, sin las limitantes que normalmente tiene un profesor o instructor.
 *   **Ubicuidad**: es deseable que la alternativa sea fácilmente transportable, de tal manera que el alumno pueda accesarla en la escuela, en la casa o en cualquier otro lugar donde está realizando su práctica de programación.
 *   **Costo**: es deseable que la alternativa no requiera recursos elevados, que limiten su ubicuidad; al mismo tiempo, es conveniente que su costo de distribución sea bajo, de manera que pueda alcanzar a un gran número de alumnos sin incrementar los costos en la misma medida.
-*   **Dinamismo**: es conveniente que la aplicación sea activa o din¿mica, más que reactiva o estática, de forma tal que induzca al alumno al aprendizaje y no dependa de las acciones del alumno para funcionar.
+*   **Dinamismo**: es conveniente que la aplicación sea activa o diñamica, más que reactiva o estática, de forma tal que induzca al alumno al aprendizaje y no dependa de las acciones del alumno para funcionar.
 *   **Adaptabilidad o flexibilidad**: es importante que, al igual que un profesor humano, pueda ajustarse la aplicación de la herramienta, a los distintos perfiles de usuarios (alumnos) que va a tener.
-*   **difusión**: existen alternativas sobre las que ya se ha investigado ampliamente, y a las que por ello la poblaci¿n estudiantil ya tiene acceso; pero se preferirán aquellas alternativas que aun no son utilizadas por una porción amplia de la poblaci¿n, pues justifican una mayor investigación sobre ellas.
+*   **difusión**: existen alternativas sobre las que ya se ha investigado ampliamente, y a las que por ello la población estudiantil ya tiene acceso; pero se preferirán aquellas alternativas que aun no son utilizadas por una porción amplia de la población, pues justifican una mayor investigación sobre ellas.
 
 **2.4 Alternativas de solución.**
 
 Ahora bien, para mostrar que este es un problema abierto, y justificar la investigación de una solución para él, revisar¿ algunas de las diversas alternativas de solución, tanto existentes como propuestas.
 
-Se describirán las diversas alternativas que se han considerado: No se pretende que esta sea una lista completa o exhaustiva, sino una primera aproximaci¿n para compararlas. Al final de esta sección, se presenta una tabla de comparación, de acuerdo a los criterios indicados anteriormente.
+Se describirán las diversas alternativas que se han considerado: No se pretende que esta sea una lista completa o exhaustiva, sino una primera aproximación para compararlas. Al final de esta sección, se presenta una tabla de comparación, de acuerdo a los criterios indicados anteriormente.
 
 *   Libros y tutoriales
 *   Manuales de solución de problemas
@@ -150,7 +150,7 @@ Cuando el profesor no está disponible, muchas de las dudas se pueden resolver a
 
 Sin embargo, este medio tiene la desventaja de ser pasivo y estático, en vez de ser activo: el alumno debe reconocer el problema y tomar la decisión de buscar su solución en estos medios, además de realizar la búsqueda. Por otro lado, al igual que el profesor, no es un medio que siempre está disponible, en particular en los laboratorios donde el alumno realiza su actividad de programación; por diversas razones, el estudiante puede no contar con acceso a este medio; y, finalmente, la oportunidad con la que se resuelven las dudas no es óptima.
 
-Nuevamente, aquí se pueden reducir las desventajas mediante diversas técnicas, tales como los ¿ndices y glosarios; con la disponibilidad de amplias bibliotecas, y la integración de las mismas en los laboratorios de cómputo.
+Nuevamente, aquí se pueden reducir las desventajas mediante diversas técnicas, tales como los índices y glosarios; con la disponibilidad de amplias bibliotecas, y la integración de las mismas en los laboratorios de cómputo.
 
 **2.4.2 Manuales de solución de problemas**
 
@@ -283,7 +283,7 @@ _Tabla 2: Comparación entre los papeles en esquemas de enseñanza de programaci
 | _Clase práctica (Laboratorio)_ | El profesor dedica menos tiempo a la transmisión de conocimientos, y más a supervisar, corregir y asesorar a los alumnos, quienes desarrollan ejercicios de programación, generalmente indicados por el profesor. | Similar al caso de clase teórica con el profesor no disponible; con las diferencias de que: * Los alumnos cuentan con un tiempo designado, y generalmente ejercicios o tareas asignadas. *   Se facilita la cooperación entre los alumnos, al compartir el lugar y momento de practicar.
 | _Clase apoyada por Asesor Inteligente (Salón + Laboratorio)_ | El profesor toma, según su criterio, el papel que desee de los dos anteriores. | Los alumnos, además de las posibilidades inherentes a los dos tipos de clases anteriores, cuentan con un sustituto del profesor en el proceso de asesoría. De esta manera, dentro de los alcances del conocimiento del Asesor Inteligente, se subsanan las limitantes debidas a la ausencia del profesor. |
 
-Para complementar este análisis de alternativas, se presenta en la tabla 3 una comparación entre aquellas presentadas, basada en los criterios indicados en la sección de "_Parámetros para buscar una solución_", al inicio de este capítulo. Solamente es necesario la aclaración de que en la columna de dinamismo, se indica "sí" cuando la alternativa es din¿mica, de acuerdo a la definición realizada para dinamismo; y recordar que la disponibilidad se refiere a la porción de tiempo durante el cual el alumno tendr¿ posibilidad de acceder a la solución, la ubicuidad se aplica en los aspectos de transportabilidad para el alumno a sus distintas áreas de trabajo, y la adaptabilidad se enfoca al usuario.
+Para complementar este análisis de alternativas, se presenta en la tabla 3 una comparación entre aquellas presentadas, basada en los criterios indicados en la sección de "_Parámetros para buscar una solución_", al inicio de este capítulo. Solamente es necesario la aclaración de que en la columna de dinamismo, se indica "sí" cuando la alternativa es diñamica, de acuerdo a la definición realizada para dinamismo; y recordar que la disponibilidad se refiere a la porción de tiempo durante el cual el alumno tendr¿ posibilidad de acceder a la solución, la ubicuidad se aplica en los aspectos de transportabilidad para el alumno a sus distintas áreas de trabajo, y la adaptabilidad se enfoca al usuario.
 
 _Tabla 3: Tabla de comparación entre alternativas_
 
