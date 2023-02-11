@@ -2,24 +2,16 @@
 
 Existen dos tipos de "reglas" dentro del modelo del dominio: las gramaticales, y las del sistema experto de diagnóstico. Ambas están relacionadas y se presentan en este apéndice.
 
-
-
 Se anexa a continuación la gramática simplificada de Lenguaje Ensamblador, utilizada para invocar las primeras reglas, corresponde al archivo ASM.GRM que utiliza LALR para generar el archivo PARSER.C.
-
-
 
 <div style="border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
 padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
-/* gramática TASM - modo MASM */
+/*gramática TASM - modo MASM*/
 
-/* Basada en manual de referencia TASM 2.0 */
+/*Basada en manual de referencia TASM 2.0*/
 
-
-
-/* TOKENS. */
-
-
+/*TOKENS.*/
 
    _<error>_
 
@@ -43,25 +35,19 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
    <backslash>
 
+   /*Tokens de identificadores especiales regresados por la búsqueda en la tabla de símbolos*/
 
+   <id_constante>
 
-   /* Tokens de identificadores especiales regresados por la búsqueda en la tabla de símbolos */
+   <id_variable>
 
-   <id_constante>      
+   <id_macro>
 
-   <id_variable>      
+   <id_etiqueta>
 
-   <id_macro>         
+   <id_proc>
 
-   <id_etiqueta>         
-
-   <id_proc>     
-
-
-
-/* KEYWORDS. */
-
-
+/*KEYWORDS.*/
 
    .MODEL TINY SMALL MEDIUM COMPACT LARGE HUGE TPASCAL NEARSTACK FARSTACK
 
@@ -81,7 +67,7 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
    BYTE WORD DWORD QWORD TBYTE NEAR FAR SHORT st1:place PARA PAGE
 
-   /* AND OR XOR NOT */ /* son instrucciones adem s de directivas */
+   /* AND OR XOR NOT */ /*son instrucciones adem s de directivas*/
 
    @CODE @CODESIZE @CPU @CURSEG @DATA @DATASIZE ??DATE @FARDATA
 
@@ -139,8 +125,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
    ALN ASS BRK ICG LCO OPI OPP OPS OVF PDC PRO PQK RES TPI
 
-
-
    /* hasta aqu  fueron directivas, van las instrucciones propiamente
 
       dichas */
@@ -161,43 +145,29 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
    SHR STC STD STI STOS STOSB STOSW SUB TEST WAIT XCHG XLAT XOR
 
-
-
-/* OPERATORS. */
-
-
+/*OPERATORS.*/
 
    LENGTH MASK OFFSET SEG SIZE WIDTH THIS
 
    HIGH LOW
 
-   * / MOD
+* / MOD
 
-   + -
+  * -
 
    EQ GE GT LE LT NE
 
    PTR SYMTYPE .TYPE TYPE
 
-
-
-/* PUNCTUATORS. */
-
-
+/*PUNCTUATORS.*/
 
    . , : [ ] { } ( ) < >
 
-
-
-/* NONTERMINALS. */
-
-
+/*NONTERMINALS.*/
 
    Linea
 
       -> LineaValida <eol>
-
-
 
    LineaValida
 
@@ -207,8 +177,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> LineaValida2
 
-
-
    /* producci n usada solamente para conservar correctamente el
 
       nombre del procedimiento */
@@ -216,8 +184,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    NombreProc
 
       -> <identificador>                        => RegistraNombrePROC
-
-
 
    Directiva
 
@@ -367,21 +333,15 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> DefSegmento
 
-
-
    Texto
 
       -> Texto ElementoTexto
 
       -> ElementoTexto
 
-
-
    ElementoTexto
 
       -> <cadena>
-
-
 
    CadenaMacro
 
@@ -389,23 +349,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> < ListaCarsMacro >
 
-
-
    ListaCarsMacro
 
       -> CarMacro
 
       -> ListaCarsMacro , CarMacro
 
-
-
    CarMacro
 
       -> <caracter>
 
       -> <numero>
-
-
 
    DefSegmento
 
@@ -416,8 +370,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> <identificador> SEGMENT Alineacion Combinar
 
       -> <identificador> SEGMENT Alineacion Combinar <cadena>
-
-
 
    Alineacion
 
@@ -430,8 +382,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> PARA
 
       -> PAGE
-
-
 
    Combinar
 
@@ -449,23 +399,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> VIRTUAL
 
-
-
    Campo
 
       -> <identificador> : <numero>
 
       -> <identificador> : <numero> = <numero>
 
-
-
    ListaArgsMacro
 
       -> ArgumentoMacro
 
       -> ListaArgsMacro , ArgumentoMacro
-
-
 
    ArgumentoMacro
 
@@ -475,8 +419,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> <caracter>
 
-
-
    NombreArchivo
 
       -> NombreArchivoFin
@@ -485,21 +427,15 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> Drive Trayectoria NombreArchivoFin
 
-
-
    Trayectoria
 
       -> Trayectoria2
 
       -> Trayectoria Trayectoria2
 
-
-
    Trayectoria2
 
       -> NombreArchivoFin <backslash>
-
-
 
    NombreArchivoFin
 
@@ -507,15 +443,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> <identificador> . <identificador>
 
-
-
    ListaSegs
 
       -> <identificador>
 
       -> ListaSegs , <identificador>
-
-
 
    DirErrorID
 
@@ -531,8 +463,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> IFNDEF
 
-
-
    DirErrorArg
 
       -> .ERRB
@@ -546,8 +476,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> IFB
 
       -> IFNB
-
-
 
    DirErrorComp
 
@@ -575,8 +503,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> IFIDNI
 
-
-
    DirErrorExpr
 
       -> .ERRE
@@ -595,8 +521,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> IFE
 
-
-
    ListaAsume
 
       -> NOTHING
@@ -607,13 +531,9 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> ListaAsume , AsumeSimple
 
-
-
    AsumeSimple
 
       -> Segmento : <identificador>
-
-
 
    ListaArgumentos
 
@@ -621,23 +541,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> ListaArgumentos , Argumento
 
-
-
    Argumento
 
       -> <identificador> : Cast
 
       -> <identificador> : Cast : <numero>
 
-
-
    DirectivaSegmento
 
       -> DirectivaSegSimple
 
       -> DirectivaSegSimple <identificador>
-
-
 
    DirectivaSegSimple
 
@@ -656,8 +570,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> .FARDATA?
 
       -> FARDATA
-
-
 
    DirectivaSimple
 
@@ -853,8 +765,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> .XLIST
 
-
-
    WarnClass
 
       -> ALN
@@ -885,15 +795,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> TPI
 
-
-
    DefVars
 
       -> DefVar
 
       -> DefVars , DefVar
-
-
 
    DefVar
 
@@ -903,15 +809,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> NEAR Argumento
 
-
-
    ParamsDatos
 
       -> ParamsDatos , ParamDatos
 
       -> ParamDatos
-
-
 
    ParamDatos
 
@@ -924,8 +826,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> <caracter>
 
       -> ExpresionConstante DUP ( ParamsDatos )
-
-
 
    TipoDato
 
@@ -943,8 +843,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> DP
 
-
-
    MemoryModel
 
       -> TINY
@@ -961,15 +859,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> TPASCAL
 
-
-
    ModelModifier
 
       -> NEARSTACK
 
       -> FARSTACK
-
-
 
    LineaValida2
 
@@ -987,21 +881,15 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> <identificador> Params <comentario>
 
-
-
    Params
 
       -> Params , Param
 
       -> Param
 
-
-
    Etiqueta
 
       -> <identificador> :     
-
-
 
    Param
 
@@ -1018,8 +906,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> Memoria . <identificador>
 
       -> Cast PTR Memoria
-
-
 
    Cast
 
@@ -1041,15 +927,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> SHORT
 
-
-
    Registro
 
       -> RegistroByte
 
       -> RegistroWord
-
-
 
    RegistroByte
 
@@ -1069,8 +951,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> DH
 
-
-
    RegistroWordPG
 
       -> AX
@@ -1080,8 +960,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> CX
 
       -> DX
-
-
 
    RegistroWord
 
@@ -1095,8 +973,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> BP
 
-
-
    Segmento
 
       -> CS
@@ -1106,8 +982,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> ES
 
       -> SS
-
-
 
    Memoria
 
@@ -1129,8 +1003,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> Memoria2
 
-
-
    Memoria2
 
       -> [ ExpresionConstante ]
@@ -1143,23 +1015,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> [ Base + Indice + ExpresionConstante ]
 
-
-
    Base
 
       -> BX
 
       -> BP
 
-
-
    Indice
 
       -> SI                                    => RegistraUsoSI
 
       -> DI                                    => RegistraUsoDI
-
-
 
    ExpresionConstante
 
@@ -1170,8 +1036,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> ( ExpresionConstante )
 
       -> ExpresionConstante2
-
-
 
    Op
 
@@ -1207,8 +1071,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> SHR
 
-
-
    OpUnario
 
       -> +
@@ -1216,8 +1078,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> -
 
       -> NOT
-
-
 
    Expresión Constante 2
 
@@ -1250,8 +1110,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> THIS Cast
 
       -> ConstantePredefinida
-
-
 
    ConstantePredefinida
 
@@ -1288,8 +1146,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> ??VERSION
 
       -> @WORDSIZE
-
-
 
    Instruccion
 
@@ -1336,8 +1192,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> OUT AL , DX
 
       -> XCHG DosParamsSinInmediato
-
-
 
    Instruccion0Par
 
@@ -1409,8 +1263,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> XLAT
 
-
-
    InstruccionString
 
       -> CMPS
@@ -1443,8 +1295,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> STOSW                          => AssertSTOS
 
-     
-
    Instruccion1Par
 
       -> DEC
@@ -1464,8 +1314,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> POP
 
       -> PUSH
-
-
 
    Salto
 
@@ -1545,8 +1393,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> LOOPNZ
 
-
-
    Instruccion2Par
 
       -> ADC
@@ -1575,8 +1421,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> XOR
 
-
-
    Rotacion
 
       -> RCL ParametroRot
@@ -1595,23 +1439,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> SHR ParametroRot
 
-
-
    ParametroRot
 
       -> Operador1 , <numero>            /* => Aqui ir a el que procese el error com n en SHifts */
 
       -> Operador1 , CL
 
-
-
    Operador1
 
       -> Registro
 
       -> Memoria
-
-
 
    DosParams
 
@@ -1622,8 +1460,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
       -> Memoria , Memoria               => AssertErrorMem
 
       -> DosParamsSinInmediato
-
-
 
    DosParamsSinInmediato
 
@@ -1637,29 +1473,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
       -> Segmento , Registro
 
-
-
    Inmediato
 
       -> <numero>
 
       -> ExpresionConstante
 
-
-
-/* END. */
-
-
+/*END.*/
 
 </div>
 
-
-
-
-
 Se anexa a continuación, un resumen del archivo de reglas del dominio (ASM.CLP), tal como se utiliz  en las primeras pruebas. Se encuentran en el lenguaje propio de CLIPS.
-
-
 
 <div style="border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
 padding:1.0pt 4.0pt 1.0pt 4.0pt">
@@ -1680,15 +1504,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 ;;;======================================================
 
-
-
 ;;****************
 
-;;* DEFFUNCTIONS *
+;;*DEFFUNCTIONS*
 
 ;;****************
-
-
 
 ;;;
 
@@ -1698,8 +1518,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 ;;;
 
-
-
 (deffunction registra-error (?numconcepto ?numlinea)
 
    (incrementaexperiencia ?numconcepto 0 )
@@ -1708,23 +1526,17 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (deffunction registra-acierto (?numconcepto)
 
    (incrementaexperiencia ?numconcepto 1 )
 
 )
 
-
-
 ;;;******************************************************
 
 ;;;* REGLA 1: Falta una directiva base de estructura del programa
 
 ;;;******************************************************
-
-
 
 ;;; Primero, reglas que permitan subir el n mero de aciertos cuando se
 
@@ -1742,8 +1554,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule hay-directiva-stack "Se define la pila"
 
    (definida directiva stack)
@@ -1755,8 +1565,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    (registra-acierto 7)
 
 )
-
-
 
 (defrule hay-directiva-data "Se define el segmento de datos"
 
@@ -1770,8 +1578,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule hay-directiva-code "Se define el segmento de c digo"
 
    (definida directiva code)
@@ -1784,8 +1590,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule hay-directiva-end "Se define el final del c digo fuente"
 
    (definida directiva end)
@@ -1797,8 +1601,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    (registra-acierto 10)
 
 )
-
-
 
 (defrule falta-directiva-model "Falta definir un modelo de memoria"
 
@@ -1814,8 +1616,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule falta-directiva-stack "Falta reservar espacio para la pila"
 
    (not (definida directiva stack))
@@ -1829,8 +1629,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    (registra-error 7 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
 )
-
-
 
 (defrule falta-directiva-data "Falta definir el segmento donde ir n las variables"
 
@@ -1846,8 +1644,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule falta-directiva-code "Falta definir el segmento de c digo"
 
    (not (definida directiva code))
@@ -1861,8 +1657,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    (registra-error 9 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
 )
-
-
 
 (defrule falta-directiva-end "Falta definir el final del c digo fuente"
 
@@ -1878,8 +1672,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule sabe-estructurar-programa "El alumno ya cuenta con el esqueleto de estructura del programa"
 
    (not (estado estructura-programa ?))
@@ -1894,15 +1686,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 ;;;******************************************************
 
 ;;;* REGLA 5: No se cerr  un PROC
 
 ;;;******************************************************
-
-  
 
 (defrule no-cerro-proc "Falta cerrar el procedimiento"
 
@@ -1920,15 +1708,11 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 ;;;******************************************************
 
 ;;;* REGLA 6: Se cerr  un PROC que no se hab a abierto
 
 ;;;******************************************************
-
-
 
 (defrule no-abrio-proc "Se cierra un procedimiento no definido"
 
@@ -1946,8 +1730,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 ;;;******************************************************
 
 ;;;* REGLA 7: No se termin  apropiadamente un PROC con RET, JMP o INT 21h
@@ -1955,8 +1737,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 ;;;* servicio 4Ch
 
 ;;;******************************************************
-
-
 
 (defrule termino-bien-proc "No se termina apropiadamente el procedimiento"
 
@@ -1976,8 +1756,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule termino-bien-proc-2 "No se termina apropiadamente el procedimiento"
 
    (definida directiva endp ?nombre ?lin)
@@ -1995,8 +1773,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    (registra-acierto 13 )
 
 )
-
-
 
 (defrule termino-bien-proc-3 "No se termina apropiadamente el procedimiento"
 
@@ -2022,8 +1798,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule no-termino-bien-proc "No se termina apropiadamente el procedimiento"
 
    (definida directiva proc ?nombre ?lin)
@@ -2042,8 +1816,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule checar "hay error de sintaxis?"
 
    (error-sintaxis ?x)
@@ -2054,8 +1826,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 ;;;***************************************************************
 
 ;;;* REGLA 64: Reglas de optimizaci n de instrucciones de Strings
@@ -2065,8 +1835,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 ;;;* Faltante: validar que la etiqueta del loop corresponda...
 
 ;;;***************************************************************
-
-
 
 (defrule se-puede-rep-1 "Puede usarse REP"
 
@@ -2082,8 +1850,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule se-puede-rep-2 "Puede usarse REP"
 
    (accion-instruccion "existe" "LOOP" ?lin )
@@ -2098,8 +1864,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 )
 
-
-
 (defrule memoria-memoria "hay error de memoria-memoria"
 
    (error-memoria ?x)
@@ -2109,8 +1873,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    (registra-error 15 ?x)
 
 )
-
-
 
 (defrule se-puede-usar-string-1 "Puede usarse instruccion de string"
 
@@ -2129,4 +1891,3 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
    )
 
 )
-

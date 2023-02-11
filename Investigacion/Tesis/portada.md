@@ -1,6 +1,6 @@
 INSTITUTO TECNOLÓGICO Y DE ESTUDIOS SUPERIORES DE MONTERREY
 
-CAMPUS CIUDAD DE MéXICO
+CAMPUS CIUDAD DE MÉXICO
 
 ![](Image5.gif)
 
@@ -14,7 +14,6 @@ PRESENTA
 
 [BRUNO GUARDIA ROBLES](mailto:bguardia@sinergia-web.com.mx)
 
-</font>
 
 | Asesor | Dr. Marc Broumedine Montaner |
 |--------|-------|
@@ -62,4 +61,4 @@ PRESENTA
 México, D.F., Noviembre de 1997.
 
 
-### [CONTENIDO](contenido.MD)
+### [CONTENIDO](contenido.md)

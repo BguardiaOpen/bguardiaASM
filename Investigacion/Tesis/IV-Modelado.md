@@ -1,4 +1,5 @@
 # 4. Modelado de la arquitectura
+
 ## 4.1 Panorama del capítulo
 
 En este capítulo se revisan las necesidades que plantea la implementación de ANGEL, una vez que se ha determinado que es un sistema tutor inteligente, con las características adicionales de ser un agente que funciona como interfaz inteligente, es decir, de ser un asesor inteligente automatizado.
@@ -25,11 +26,7 @@ Se empezó a analizar en la sección 2.4, donde se reconocieron tres roles bási
 
 - El receptor
 
-
-
 En particular para el asesor, tenemos las siguientes funciones:
-
-
 
 - Observar el comportamiento del estudiante al aplicar sus nuevos conocimientos (en el caso de estudio, programando, sentado frente a la computadora). [7]
 
@@ -43,14 +40,9 @@ Estas serían las características que identifiquen a un asesor inteligente auto
 
 Para conseguir la realización de dichas funciones, ANGEL observará al estudiante a través de una interface con el usuario apropiada, mientras está programando; el diagóstico se hará a través de un sistema experto [30], el cual opera sobre la base de conocimientos específico del dominio del lenguaje; la retroalimentación se hará a través de la misma interface; el conocimiento del estudiante estará en una base de conocimiento sobre el estudiante, que implementará al componente 'modelo del estudiante' del Sistema Tutor Inteligente. Finalmente, las estrategias de retroalimentación serían dictadas por la implementación apropiada del 'modelo pedagógico'.
 
-
-
 Resumiendo, la arquitectura general de un Sistema Tutor Inteligente vista en el capítulo 3, es apropiada para el asesor inteligente ANGEL. De modo que, a lo largo de este capítulo, se analizará cómo implementar cada uno de sus componentes.
 
-
-
-Sería deseable que ANGEL cuente con conocimiento equivalente al de un asesor humano; sin embargo, aquí se encuentra un problema difícil de la Inteligencia Artificial: dotarlo de 'sentido común'. Por ello, en este trabajo no se espera llegar a dicho nivel y 'sustituir' totalmente al asesor humano; pero, de acuerdo a la experiencia de la rama de Inteligencia Artificial, es razonable esperar que el asesor cuente con el "conocimiento experto", totalmente especializado al dominio donde va a asesorar al estudiante, en este caso, un lenguaje específico de programación.
-
+Sería deseable que ANGEL cuente con conocimiento equivalente al de un asesor humano; sin embargo, aquí se encuentra un problema difícil de la Inteligencia Artificial: dotarlo de 'sentido común'. Por ello, en este trabajo no se espera llegar a dicho nivel y 'sustituir' totalmente al asesor humano; pero, de acuerdo a la experiencia de la rama de Inteligencia Artificial, es razonable esperar que el asesor cuente con el "conocimiento experto", totalmente especializado al dominio donde va a asesorar al estudiante, en este scaso, un lenguaje específico de programación.
 
 A continuación, se presenta un resumen del contexto del curso de Ensamblador, en el cual se aplica el prototipo del asesor inteligente; hay que mencionar que no solamente el asesor inteligente deberá encajar apropiadamente en el curso, sino que el curso requirió de una adaptación para facilitar la función del asesor inteligente. Una vez que se plantee dicho contexto, se analizará módulo a módulo el diseño de ANGEL.
 
@@ -58,16 +50,11 @@ A continuación, se presenta un resumen del contexto del curso de Ensamblador, e
 
 Los objetivos planteados para el curso de Ensamblador [E7] son:
 
-
 - Conocer y aplicar el lenguaje Ensamblador de los procesadores 80x86 en la resolución de problemas.
 
 - Consolidar las habilidades de programación.
 
-
-
 Para conseguir estos objetivos, se cuenta con una serie de herramientas básicas:
-
-
 
 - Libro de texto y apuntes en páginas WWW [E7], que contienen la información sobre los conceptos (teoría) del curso: componentes del procesador, modos de direccionamiento, uso de variables e instrucciones.
 
@@ -119,7 +106,7 @@ El diseño específico para cada uno de estos componentes se analizará en las s
 
 ### 4.4.2 Diseño de la interface
 
-#### 4.4.2.1. Interface con el estudiante: Editor de programa.
+#### 4.4.2.1. Interface con el estudiante: Editor de programa
 
 En el capítulo 2 se describió cómo es el proceso actual de enseñanza - aprendizaje de la materia; en particular, se determinó que las principales actividades del estudiante, fuera de la clase, son prácticas y ejercicios de programación.
 
@@ -143,7 +130,7 @@ En conclusión, la interface de ANGEL con el alumno constará de:
 
 - Una opción de solicitar ayuda, que le permitirá al alumno "pedirle pistas" al asesor ANGEL, en el momento que considere conveniente.
 
-#### 4.4.2.2. Interface con el profesor: Reportes de comportamiento del estudiante.
+#### 4.4.2.2. Interface con el profesor: Reportes de comportamiento del estudiante
 
 Cuando el profesor humano combina los roles de transmisor y asesor, se puede reconocer que hay interacción entre ellos: por ejemplo, si el asesor observa un error, el transmisor informa al alumno sobre las partículas de conocimiento o conceptos teóricos que le ayuden a superarlo; del mismo modo, puede ejemplificarse que el transmisor repite un tema o lo parafrasea, cuando el asesor descubre que el grupo de alumnos no lo ha captado.
 
@@ -159,7 +146,7 @@ Por ello, además del código fuente del alumno, el profesor humano puede consul
 
 Se decidió que este módulo fuera separado del módulo editor a través del cual interactúa el alumno, para no hacer el módulo editor demasiado grande y en particular, que ocupara demasiada memoria, lo que impediría su aplicación práctica por parte del alumno; además de facilitar su distribución. Por ello, el funcionamiento del módulo consiste en tomar un archivo con los datos propios de un estudiante, y mostrar sus reportes a partir de dicha información. De esta manera, el profesor puede llevar su aplicación de interface, en diskette, a la máquina del alumno y así obtener el reporte deseado; o al revés, pedir sus archivos de registro al alumno.
 
-#### 4.4.2.3. Interface con el desarrollador: edición de reglas, conceptos y gramática.
+#### 4.4.2.3. Interface con el desarrollador: edición de reglas, conceptos y gramática
 
 Para entender más claramente este apartado, puede ser necesario considerar los apartados que se refieren al diseño del modelo del dominio y del modelo pedagógico, que se encuentran en las siguientes secciones, puesto que la interface del desarrollador es dependiente de los detalles de dichos modelos.
 
@@ -167,9 +154,9 @@ Se asume que el desarrollador cuenta con los conocimientos apropiados de la arqu
 
 En esta primera versión no se proporciona una interface de mayor nivel para el desarrollador, salvo para la edición del archivo de conceptos; solamente una plataforma de código fuente, estructurada y modificable. Esto reduce el tiempo de desarrollo, sin embargo, por el momento solamente permite la adaptación de ANGEL por parte de un desarrollador especializado en el área de sistemas.
 
-### 4.4.3 Diseño del modelo del dominio.
+### 4.4.3 Diseño del modelo del dominio
 
-#### 4.4.3.1. Generalidades.
+#### 4.4.3.1. Generalidades
 
 Para describir el modelo del dominio, se tomó el enfoque de dividir varias clases de conocimiento, requeridas por el alumno que está aprendiendo a programar en determinado lenguaje. Ya se había visualizado la necesidad de esta división en el capítulo 1, "Antecedentes", al comparar el aprendizaje de un lenguaje de programación con el lenguaje matemático.
 
@@ -191,7 +178,7 @@ Las clases de conocimiento consideradas son:
 
 El conocimiento experto sobre el dominio, de acuerdo a las funciones que deberá realizar ANGEL, deberá ser suficiente para diagnosticar los errores más comunes cuando los estudiantes están en proceso de aprendizaje del lenguaje; se presenta una lista de errores comunes de acuerdo a la experiencia del profesor, en el apéndice B.
 
-#### 4.4.3.2. Conocimiento sobre el léxico y la gramática.
+#### 4.4.3.2. Conocimiento sobre el léxico y la gramática
 
 Ya se ha trabajado ampliamente en la teoría de la Computación y los lenguajes formales [44], por lo que se cuenta con herramientas que facilitan enormemente la construcción de los analizadores léxicos o semánticos. A estas herramientas se les suele llamar "compiladores - compiladores"; los más conocidos son las utilerías LEX y YACC disponibles ampliamente en las distintas versiones de UNIX en el mercado.
 
@@ -203,7 +190,7 @@ Para conectar el conocimiento de este nivel con el conocimiento basado en reglas
 
 Dicho de otra forma: se hace la distición entre el conocimiento estático, descrito por la sintaxis y léxico del lenguaje de programación, pues una vez establecido el lenguaje, éste no cambia; y el dinámico, que según el experto adquiere más experiencia, puede ir evolucionando. El primero se implementó buscando el máximo desempeño; el segundo, como se ve en la siguiente sección, busca la máxima flexibilidad.
 
-#### 4.4.3.3. Conocimiento particular del lenguaje.
+#### 4.4.3.3. Conocimiento particular del lenguaje
 
 Más allá del léxico y la sintaxis, que están definidos por reglas claras, maquinales, y sin ambigüedad, existe el conocimiento de alto nivel sobre el lenguaje, que incluye al semántico, a los errores comunes, así como las acciones comunes del lenguaje. El conocimiento sobre la semántica se consideró dentro de esta clasificación, pues a diferencia de lo que ocurre con un compilador, no será un proceso monótono de traducción. Para el asesor, una instrucción puede tener un significado distinto, de acuerdo al contexto, pues no solamente se está realizando un análisis local sobre la acción que corresponde a la instrucción dada, sino un análisis global sobre sé su relación con otras instrucciones es coherente y consigue un fin determinado y de acuerdo a los patrones comunes de programación.
 
@@ -225,21 +212,19 @@ De entre las distintas formas de representar la incertidumbre, en el conocimient
 
 La afirmación anterior se debe considerar como un teorema, basado en la observación del contexto; en la observación de que las decisiones entre alternativas de implementación suelen ser tomadas basándose en factores no ambiguos; y en la reflexión sobre los "tips" que el profesor suele proporcionar a los alumnos, que toman precisamente la forma "Si (_determinadas condiciones ocurren_) utiliza (_tal técnica, tal instrucción, o tal truco_) para (_hacer más veloz la ejecución, usar menos memoria, escribir menos código_)". No se pudo encontrar un contraejemplo, por lo cual, se decidió explorar la opción de implementar ANGEL utilizando reglas sin el manejo de incertidumbre. Esto hace más fácil la adaptación de las reglas por parte de un experto humano en el dominio, sin menoscabo de que, de ser necesario, puede posteriormente sustituirse el motor de inferencia por uno que soporte incertidumbre y extender las reglas del dominio para que la manejen. Esto ocurriría, por ejemplo, en caso de encontrar un contraejemplo, una regla o conclusión que fuera complejo implementar sin manejo de incertidumbre.
 
-#### 4.4.3.4. Conocimiento general del paradigma de programación.
+#### 4.4.3.4. Conocimiento general del paradigma de programación
 
 Independientemente del lenguaje que se domine, es un hecho conocido y generalmente aceptado el que un experto programador humano, en un lenguaje imperativo como C o Pascal, puede transferir dicho conocimiento experto de las técnicas que usa para programar, a otros lenguajes como Ensamblador o Basic. También se reconoce que existe una menor transferencia del conocimiento cuando se desea aprender un lenguaje de programación que sigue otro paradigma, como pueden ser el aprendizaje Java y Smalltalk (paradigma orientado a objetos) para un programador en Basic; o de LISP o Miranda (lenguajes funcionales), para un programador de Ensamblador.
 
-
-
 La conclusión que se obtiene de dichas observaciones, es que existe un cierto conocimiento transferible entre los distintos lenguajes. Por ejemplo, las reglas referentes a dividir el código en pequeños módulos, incluir comentarios con determinada frecuencia, evitar los ciclos infinitos, o no colocar una instrucción en un punto inalcanzable, tal que nunca se ejecute, son aplicables a todos los lenguajes de programación imperativa, y más o menos transferibles a aquellos orientados a objetos. Del mismo modo, las reglas sobre cómo aplicar el uso la herencia o el polimorfismo, aunque sea en distinta forma, tanto a C++ como a Java. Por ello se propone que este conocimiento se coloque en una clase diferente, la cual para este trabajo se llamará "conocimiento general del paradigma de programación", lo cual permitirá que dicha sección del conocimiento se transfiera con un mínimno de modificaciones al cambiar de un lenguaje de programación a otro.
 
-### 4.4.4 Diseño del modelo del estudiante.
+### 4.4.4 Diseño del modelo del estudiante
 
 Uno de los factores críticos para que el asesor ANGEL tenga buenos resultados, es el conocimiento con el que cuente sobre el alumno al que está asesorando. Por ello, la representación del conocimiento sobre el alumno, conocida como "el modelo del estudiante" siguiendo la arquitectura general de Sistemas Tutores Inteligentes propuesta por Kaplan [11]; la cual corresponde con el módulo conocido como "modelo del usuario", dentro de la arquitectura general de Sistemas Adaptativos propuesta por Benyon y Murray [20].
 
 En primer lugar, se va a profundizar en algunos detalles de la implementación que otros trabajos han realizado de estos modelos; posteriormente, se hará referencia al modelo instruccional y cómo representa al estudiante; para finalmente, integrando las ideas recabadas, explicar cómo será el modelo del estudiante usado por ANGEL.
 
-#### 4.4.4.1. Modelo usado por COACH.
+#### 4.4.4.1. Modelo usado por COACH
 
 Selker, para implementar COACH [7], usa un modelo explícito del usuario, compuesto por marcos (_frames_), hechos y reglas. Existen dos marcos por cada concepto a aprender: uno "de la materia", que contiene el conocimiento invariante del concepto, y corresponde al modelo del dominio; y uno "adaptativo", que corresponde a una parte del modelo del estudiante, y contiene los siguientes atributos (_slots_) o características del usuario: experiencia, latencia, calificación global, tasa de aprendizaje, y ejemplos específicos. Estos conceptos se describen a continuación.
 
@@ -259,7 +244,7 @@ Cabe hacer notar que los valores que pueden tomar los atributos, ya no son simpl
 
 También se cuenta con un atributo implícito adicional, que es el nivel de ayuda que requiere el usuario, e indica cómo catalogar al usuario: novato, intermedio, profesional o experto. Este nivel de ayuda requerida está directamente relacionado con la forma en la que se presenta la asesoría al alumno.
 
-#### 4.4.4.2. Modelo del usuario manejado en el asistente de agenda CAP.
+#### 4.4.4.2. Modelo del usuario manejado en el asistente de agenda CAP
 
 CAP (Aprendiz de Calendario) [17] es un asistente inteligente, cuyo objetivo consiste en llevar la agenda del usuario, como lo haría una secretaria. Para ello, requiere conocer el comportamiento común del usuario, al que se ajusta, aprendiendo de la experiencia.
 
@@ -275,7 +260,7 @@ De esta forma, todo el conocimiento que maneja CAP sobre el usuario se puede div
 
 - Reglas inducidas, utilizando ID3, a partir de dichos ejemplos. Un ejemplo de una posible regla sería "si el director asiste a la reunión, la reunión es en Dirección General, con un factor de certeza del 100%". Esta regla habría venido de encontrar que el valor "director" en el atributo "asistentes" de los ejemplos anteriores, estaba correlacionado con el atributo "lugar" con el valor "Dirección General, y que no se encontró ni un contraejemplo del mismo. Puede decirse que el conocimiento de alto nivel sobre el usuario, el que puede ser transferible, se encuentra en esta parte, pues describe más claramente y en forma más general los comportamientos inherentes al usuario.
 
-#### 4.4.4.3. Modelo del alumno según Gagné.
+#### 4.4.4.3. Modelo del alumno según Gagné
 
 Como se revisó en la sección 2.7, para Gagné el alumno se modela como un procesador de información, el cual contiene sensores, un registro sensorial, una memoria de corto plazo, una memoria de largo plazo, un generador de respuestas, efectores, el control ejecutivo y las expectativas [13]. Estos parámetros son entidades modelables, que en conjunto pueden servir como un modelo del estudiante.
 
@@ -292,7 +277,8 @@ El generador de respuestas es una parte que no se modela en COACH, para el estud
 El control ejecutivo es la estrategia de aprendizaje que el alumno usa para modificar su generación de respuestas y transferir la información registrada, a la memoria de corto y largo plazo. Para representar este "control ejecutivo", se requeriría conocer sobre los posibles estilos de aprendizaje de un alumno [28], de modo que se le clasifique dentro de uno de ellos. La teoría 4-MAT [21] puede ser utilizada para definir estos estilos, con lo que el estilo de aprendizaje se convierte en un atributo concreto del modelo del estudiante, que puede afectar la estrategia instruccional que ANGEL usará con ese alumno en particular.
 
 Finalmente, las expectativas del alumno afectan el proceso de aprendizaje. Para representarlas, al igual que se hizo con el control ejecutivo, conviene contar con una teoría que permita clasificar a los alumnos en un número finito de clases, de acuerdo a sus expectativas, y reconocer qué comportamientos son propios de cada clase. Afortunadamente, el mismo modelo 4-MAT indica las expectativas del alumno de acuerdo a su estilo de aprendizaje; de modo que, bajo la premisa del uso de este modelo, el control ejecutivo y las expectativas se pueden ver reflejados en reglas dependientes de una sola variable, que es el atributo "estilo de aprendizaje" del estudiante.
-#### 4.4.4.4. Resumen de requerimientos del modelo del estudiante.
+
+#### 4.4.4.4. Resumen de requerimientos del modelo del estudiante
 
 Se requiere modelar la memoria de corto y largo plazo, así como el generador de respuestas, en forma de reglas o hechos; la adaptabilidad del modelo se hace más sencilla si se usan reglas [5], pero es más sencillo implementar el modelo en forma de hechos, los cuales son procesados por reglas adicionales, establecidas por el desarrollador.
 
@@ -308,7 +294,7 @@ Se resumen a continuación los campos o atributos que se requerirá almacenar en
 
 - Con objeto de personalizar al asesor, el nombre y matrícula del alumno [38].
 
-#### 4.4.4.5. Reglas para calcular o estimar los parámetros requeridos.
+#### 4.4.4.5. Reglas para calcular o estimar los parámetros requeridos
 
 La experiencia se calculará como el número de veces que se ha manejado el concepto [7]. De modo que cada vez que se use el concepto, se incrementará el coeficiente asociado.
 
@@ -344,7 +330,7 @@ Del mismo modo, para describir la dominancia de los hemisferios, el modelo nos s
 
 El desarrollo de las reglas que asocien un comportamiento observado en el alumno con descubrir su estilo de aprendizaje y la dominancia de hemisferios cerebrales es un ejercicio fuera del alcance de este trabajo. Sin embargo, en el prototipo de ANGEL se demuestran unas cuantas de estas reglas, con el objetivo de comprobar que pueden ser usadas para ampliar el alcance del perfil del estudiante.
 
-#### 4.4.4.6. Proceso de adaptación del conocimiento sobre el estudiante.
+#### 4.4.4.6. Proceso de adaptación del conocimiento sobre el estudiante
 
 El modelo del estudiante se almacena en una base separada de hechos; se crea un perfil con valores por defecto para el perfil del estudiante, salvo su nombre y matrícula; y la interacción con el estudiante genera hechos. Algunos de estos hechos son usados para diagnosticar los errores, y son premisas usadas por reglas en el modelo del dominio; pero también se usan para el modelo del estudiante, pues indican el afectar la experiencia o latencia de un concepto. Del mismo modo, algunas de las conclusiones obtenidas en el diagóstico, afectarán a las variables dentro del modelo del estudiante.
 

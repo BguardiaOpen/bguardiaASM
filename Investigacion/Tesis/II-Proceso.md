@@ -21,7 +21,6 @@ Para entender el subproceso de asesoría y sus limitantes, que es el problema al
 
 Entre las diversas teorías formadas por diversos pedagogos para explicar cómo se da el aprendizaje, hay básicamente dos tendencias [23]: la instruccional, donde se considera al profesor como el diseñador del contenido que el alumno debe "aprender"; y la del aprendizaje por descubrimiento, donde el profesor es un facilitador para que el alumno descubra el conocimiento que le convenga. Esté fuera del alcance de este trabajo analizar la controversia entre ambos enfoques, sin embargo, se mencionarán algunas características de teorías en las dos tendencias, con el objetivo de tomar una posición apropiada para el objetivo de este trabajo.
 
-
 ### 2.2.2 Teorías instruccionales
 
 Araújo y Chadwick [13] resumen un conjunto de las teorías de instrucción más influyentes, de una forma que permite comparar los puntos de vista, fortalezas y debilidades de distintos autores. Las teorías que cubren incluyen las de Ausubel, Bandura, Bruner, Gagné, Piaget y Skinner, de las que se hace un muy breve resumen a continuación.
@@ -188,7 +187,6 @@ Autorrefuerzo.
 
 </table>
 
-
 #### Teoría de Piaget
 
 Esta teoría, que representa la corriente de la psicología evolutiva, suele no considerarse como una teoría de aprendizaje sino más bien una teoría del desarrollo psicológico [24], y en esto hay cierta controversia. Efectivamente el mismo Piaget no desarrolla una estrategia de instrucción, dejando ese trabajo a pedagogos que usando la psicología evolutiva proponen aquella. Una diferenciación que algunos teóricos hacen y parece ser pertinente, es que una teoría del aprendizaje habla del proceso que ocurre para que el aprendiz adquiera el conocimiento, mientras que una teoría de instrucción ofrece un modelo para optimizar la ocurrencia del proceso de aprendizaje. Con este enfoque, se comenta la teoría de Piaget sin tomarla como teoría instruccional, sino más bien teoría del aprendizaje.
@@ -217,9 +215,7 @@ El aprendizaje del descubrimiento en sí mismo; es decir, por la ejercitación d
 
 Maximiza la retención en la memoria.
 
-
-
-#### Teoría de Gagné.
+#### Teoría de Gagné
 
 En esta teoría, el aprendizaje se define como un proceso que permite a un organismo vivo modificar sus comportamientos en forma rápida y permanente; por tanto, el aprendizaje se verifica cuando existe un cambio de comportamiento, relativamente estable. Esto supone cuatro elementos:
 
@@ -259,7 +255,6 @@ Las estructuras existentes en el aprendiz humano, para Gagné son similares a la
 
 ![](II-Proceso_files/figura2_proceso.png)
 
-
 Figura 2: Modelo básico de aprendizaje y memoria en un enfoque de procesamiento de la información (tomado de Chadwick [13])
 
 Sensores, por los cuales el aprendiz recibe los estímulos del ambiente.
@@ -296,9 +291,7 @@ Finalmente, se cierra un ciclo de aprendizaje en la fase de _retroalimentación_
 
 Figura 3: Fases y sucesos del aprendizaje según Gagné. Adaptada de Araujo [13].
 
-
 ![](II-Proceso_files/image005.gif)
-
 
 Teoría de Skinner
 
@@ -314,7 +307,7 @@ La mayoría de los autores anteriores han realizado su investigación en otros c
 
 En la siguiente sección, se examina ese contexto, hacia el que se deberá dirigir la aplicación de un modelo instruccional.
 
-### 2.3 Observación de los procesos que intervienen en la enseñanza y aprendizaje de un lenguaje de programación.
+### 2.3 Observación de los procesos que intervienen en la enseñanza y aprendizaje de un lenguaje de programación
 
 La experiencia del autor ha permitido observar algunos patrones comunes en la forma en que se enseña a los alumnos a programar, utilizando un lenguaje de programación específico. Estos patrones se presentan a continuación, y se resumen en la figura 4; a través de la observación de este proceso, se podrá justificar a continuación la selección de un modelo de enseñanza y aprendizaje que pueda ser adaptado a este proceso.
 
@@ -336,7 +329,6 @@ Otros recursos [8] con los que comúnmente el profesor refuerza el proceso del a
 
 En algunas ocasiones, especialmente en grupos grandes, el profesor "titular" cuenta con un profesor auxiliar; este auxiliar facilita la labor del profesor titular, en actividades tales como: control del grupo, resolución de dudas, asesoría, evaluación, y en ocasiones también en la "impartición" de la clase. Cabe hacer notar que el tamaño del grupo es un factor que afecta el comportamiento del grupo [24], y el número de dudas o requerimientos de asesoría que recibe el profesor, así como el número de exámenes o tareas a evaluar; pero tareas como explicar, demostrar, y en general, transmitir la información y "hechos" referentes a la asignatura, están limitadas por otros factores tales como el tamaño del aula, del pizarrón, y los medios audiovisuales con los que se cuenta, así como la calidad del material; pero son independientes del número de alumnos.
 
-
 ![](II-Proceso_files/image006.gif)
 
 Figura 4: Proceso de la enseñanza de lenguajes de programación
@@ -349,17 +341,12 @@ La generalidad de los modelos instruccionales, como hemos verificado, asumen que
 
 -El de alumno, el cual no cuenta con el conocimiento o comportamiento deseado; y cuya tarea consiste en adquirirlo.
 
-
 Se habla de "roles" y no "participantes", ya que puede haber múltiples individuos desempeñando cada uno de dichos roles; lo único que se puede decir del número de individuos, es que generalmente hay más alumnos que profesores; los arreglos más comunes dentro de un aula son "un profesor que imparte la asignatura a n alumnos", donde n suele estar en el rango de 5 a 300 alumnos, dependiendo del nivel escolar y la asignatura; y "dos profesores para n alumnos", donde dos profesores comparten el rol de profesor, generalmente por que el número de alumnos es alto.
-
-
 
 Según sea el modelo instruccional, es la forma en que se supone que interactúan Alumno y Profesor; por ejemplo, algunos modelos indican que el Profesor inicia la interacción, y el Alumno reacciona al Profesor; mientras que en otros, el rol iniciador es el Alumno y el Profesor actúa "reactivamente" [24<span class="GramE">][23]. Sin embargo, en general se considera que el Profesor transmite información y responde dudas del alumno, además de retroalimentar en forma de refuerzos; mientras que el alumno es un receptor activo (tiene un comportamiento observable) de la información, y plantea dudas o requiere asesoría. Todo esto se ejemplifica en la figura 5.
 
 ![](II-Proceso_files/image007.gif)  
 Figura 5: Modelo de dos roles (alumno - profesor).
-
-
 
 Tomando el proceso observado durante la experiencia del autor en la enseñanza de lenguajes de programación, en la propuesta de tesis [E2] se propuso la existencia de tres roles: el transmisor, el receptor, y el asesor.
 
@@ -369,15 +356,9 @@ Tomando el proceso observado durante la experiencia del autor en la enseñanza d
 
 - Un asesor, quien suele ser el profesor mismo, pero también puede estar a cargo de un profesor auxiliar o de un alumno avanzado; el cual observa al alumno (receptor) al momento de aplicar el conocimiento recibido, y de acuerdo al ajuste del comportamiento del alumno, valida si se ha dado o no el aprendizaje; en el caso de que no se haya dado, es decir, que diagnostique fallas en la ejecución por parte del alumno, le proporciona retroalimentación  que facilite la reconstrucción o complementación del conocimiento del alumno, permitiendo así que se oriente hacia el comportamiento deseado. Este papel puede identificarse con el facilitador que aparece en el nuevo modelo de enseñanza propuesto en el ITESM [1], o en el modelo postmodernista [E1].
 
-
-
 Estos roles se resumen en la tabla 4, y en las figuras 6 y 7:
 
-
-
 Tabla 4: Algunos agentes que se proponen para el modelado del proceso enseñanza - aprendizaje.
-
-
 
 <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;mso-padding-alt:0in 3.5pt 0in 3.5pt">
 
@@ -470,25 +451,17 @@ Reconocer y corregir los errores del Alumno al realizar prácticas de programaci
 
 </table>
 
-
-
 ¿Para qué sirven estos roles? ¿Por qué no simplemente basarse en el modelo de dos roles usado tradicionalmente?
-
-
 
 ![](II-Proceso_files/image008.gif)
 
-
 Figura 6: Modelo de tres roles (alumno - profesor - asesor).
-
-
 
 El modelo de dos roles esté basado en la observación de los participantes humanos que intervienen en el proceso; es claro que se les puede clasificar en "profesores" y "alumnos" según si su objetivo general es adquirir o transmitir el conocimiento. Sin embargo, se admite que existen diversos procesos ocurriendo dentro de cada una de las entidades; por ejemplo, un alumno humano ejecuta a veces el proceso "memorizar", en otras "analizar", en otras "sintetizar". Del mismo modo, el profesor en ocasiones ejecuta procesos como "ejemplificar", "definir", "preguntar", "responder dudas", "premiar" y "castigar". Desde un enfoque de Sistemas, sería posible dividir a cualquiera de ambos roles, "alumno" o "profesor", en múltiples subsistemas.
 
 Sin embargo, esto aún no explica por qué usar un modelo de tres roles, y no uno de cinco, siete o veinticinco. De hecho, sigue siendo conveniente usar el modelo de dos roles, pues la generalidad de los autores de teorías instruccionales, lo utilizan directamente.
 
 La explicación esté en la necesidad que se busca resolver con un asesor inteligente automatizado:
-
 
 _El profesor humano (quien evidentemente, funge en el rol de profesor de los modelos instruccionales), se ve limitado en tiempo y espacio, para asesorar oportunamente a los alumnos._
 
@@ -513,11 +486,7 @@ Explicándolo de otro modo:
 ![](II-Proceso_files/image010.gif)_
 Figura 7: Participantes que juegan en el modelo de tres roles.
 
-
-
 Al construir el asesor inteligente automatizado ANGEL, objeto de este trabajo, éste apoyará a un profesor humano en su enseñanza a alumnos humanos; de manera que los distintos roles serán ejecutados de la forma siguiente (Figura 7):
-
-
 
 -El rol de Transmisor será ejecutado por un profesor humano, apoyado por medios tales como libros y páginas WWW
 
@@ -525,11 +494,7 @@ Al construir el asesor inteligente automatizado ANGEL, objeto de este trabajo, �
 
 -El rol del Asesor será ejecutado en primera instancia por ANGEL, respaldado por el profesor humano.
 
-
-
 Aún no contamos con los elementos tecnológicos suficientes para automatizar totalmente el papel del Asesor, pues el recabar el conocimiento necesario para este agente, y su construcción completa, requiere como todo Sistema Tutor Inteligente, de varios años de desarrollo [15]; además de que el problema de dotar al software de sentido común, es aún un problema abierto [5] [18] [19]; de aquí que el profesor humano continúe respaldando el rol.
-
-
 
 Sin embargo, ANGEL permitirá aumentar la disponibilidad de la asesoría, al menos hasta cierto nivel de inteligencia, ya que el asesor automatizado podrá apoyar al alumno en momentos y lugares donde el asesor humano no esté disponible, además de recabar información sobre el comportamiento del alumno que ayude a hacer más efectiva la asesoría por parte del humano.
 

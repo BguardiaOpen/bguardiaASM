@@ -11,8 +11,8 @@ Documento de trabajo, mayo de 1997.
 McGraw-Hill, Inc., 1991.
 
 [4] Ramos Quintana, Fernando y Espinosa Carrillo, Enrique David: "_Educational Placement of Agent Characterizations: Imposed vs. Autonomous Planification_".  
-_Memorias del V Congreso Iberoamericano de Inteligencia Artificial, IBERAMIA 1996, Cholula, Puebla.  
-_Limusa, noviembre de 1996.
+Memorias del V Congreso Iberoamericano de Inteligencia Artificial, IBERAMIA 1996, Cholula, Puebla.  
+Limusa, noviembre de 1996.
 
 [5] Lenat, Douglas B.: "_The Nature of Heuristics_", en "_Artificial Intelligence 19 (1982)_", pp. 189-249.
 
@@ -50,8 +50,8 @@ _"Tecnología Educacional: Teorías de Instrucción"_.
 Paidós, 1980.
 
 [14] Press, Larry.  
-_"Tomorrow Campus".  
-Communications of the ACM_, July 1994, Vol. 37, No. 7, pp. 13-17.
+_"Tomorrow Campus"_.  
+Communications of the ACM, July 1994, Vol. 37, No. 7, pp. 13-17.
 
 [15] Clancey, William J. "_Intelligent tutoring systems: A tutorial survey_", en "_Applied Artificial Intelligence: A Sourcebook_", Andriole & Hopple, Eds.McGraw-Hill, Inc., 1991.
 
@@ -59,15 +59,15 @@ Communications of the ACM_, July 1994, Vol. 37, No. 7, pp. 13-17.
 " _Agents that Reduce Work and Information Overload_" 
 _Communications of the ACM, July 1994_, Vol. 37, No. 7, pp. 81-91.</a>
 
-17] Mitchel, Tom et al.:  
+[17] Mitchel, Tom et al.:  
 "_Experience with a Learning Personal Assistant_"  
 _Communications of the ACM, July 1994_, Vol. 37, No. 7, pp. 81-91.
 
-18] Rich, Elaine y Knight, Kevin:  
+[18] Rich, Elaine y Knight, Kevin:  
 "_Inteligencia Artificial_" 
 _Communications of the ACM, July 1994_, Vol. 37, No. 7, pp. 81-91.
 
-19] Winston, Patrick Henry:  
+[19] Winston, Patrick Henry:  
 "_Inteligencia Artificial_"  
 _Communications of the ACM, July 1994_, Vol. 37, No. 7, pp. 81-91.
 
@@ -89,7 +89,6 @@ Internet: _http://www.crossrds.org/dot.htm_
 Bruno Guardia Robles, Diciembre de 1996  
 Internet: _http://anubis.ccm.itesm.mx/~bguardia/tesis/propuesta.htm_
 
-[E3] -_CLIPS Version 6.0\. Volume II: Advanced Programming Guide_"  
+[E3] "_CLIPS Version 6.0\. Volume II: Advanced Programming Guide_"  
 Software Technology Branch. Lyndon B. Johnson Space Center, 1993.  
 Internet: _http://www.cs.cmu.edu/Groups/AI/html/repository.html_
-

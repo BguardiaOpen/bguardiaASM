@@ -32,7 +32,7 @@ Se presenta esta serie de definiciones, para clarificar el sentido en el que se 
 
 **Modelo pedagógico o instruccional**: es el componente de un sistema tutor inteligente que sigue el diagnóstico del estado actual de conocimiento del estudiante, toma decisiones sobre las estrategias instruccionales a seguir, y determina la forma en la que se presentará la información. [11]
 
-**Sistema Adaptativo:**Es un sistema computacional capaz de adaptarse a él mismo, para ajustarse a las necesidades de distintos individuos o clases de usuarios. [20]
+**Sistema Adaptativo:** Es un sistema computacional capaz de adaptarse a él mismo, para ajustarse a las necesidades de distintos individuos o clases de usuarios. [20]
 
 **Sistema Tutor Inteligente (ITS - Intelligent Tutoring System)**: Sistemas educativos asistidos por computadora, que cuentan con la "inteligencia" necesaria como para resolver los problemas que presentan a los estudiantes; esto se logra modelando el dominio, modelando al estudiante y su conocimiento, y dirigiendo por lo tanto una instrucción individualizada. [15]
 

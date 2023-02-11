@@ -10,6 +10,7 @@ Dentro de la enseñanza de los lenguajes de programación, tenemos como objetivo
 
 Durante la experiencia del autor como instructor y profesor de diversos lenguajes de programación, se ha observado que se pueden clasificar dichos conocimientos y habilidades, en la forma siguiente:
 
+
 <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .75pt;
  mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.75pt solid windowtext;
  mso-border-insidev:.75pt solid windowtext">
