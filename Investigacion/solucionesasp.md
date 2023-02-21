@@ -1,5 +1,3 @@
- Ejemplo usando ASP
-
 Código fuente de la página de Selección de Productos, usando [ASP](http://www.microsoft.com/asp)
 ================================================================================================
 

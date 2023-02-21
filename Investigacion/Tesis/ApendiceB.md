@@ -1,2143 +1,1893 @@
 ## Apéndice B: Reglas planteadas para el modelo del dominio
 
-<span lang="ES">Existen dos tipos de "reglas" dentro del modelo del dominio: las gramaticales, y las del sistema experto de diagnóstico. Ambas están relacionadas y se presentan en este apéndice.</span>
+Existen dos tipos de "reglas" dentro del modelo del dominio: las gramaticales, y las del sistema experto de diagnóstico. Ambas están relacionadas y se presentan en este apéndice.
 
-<span lang="ES"></span>
-
-<span lang="ES">Se anexa a continuación la gramática simplificada de Lenguaje Ensamblador, utilizada para invocar las primeras reglas, corresponde al archivo ASM.GRM que utiliza LALR para generar el archivo PARSER.C.</span>
-
-<span lang="ES"></span>
+Se anexa a continuación la gramática simplificada de Lenguaje Ensamblador, utilizada para invocar las primeras reglas, corresponde al archivo ASM.GRM que utiliza LALR para generar el archivo PARSER.C.
 
 <div style="border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
 padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
-<span lang="ES">/* gramática TASM - modo MASM */</span>
+/*gramática TASM - modo MASM*/
 
-<span lang="ES">/* Basada en manual de referencia TASM 2.0 */</span>
+/*Basada en manual de referencia TASM 2.0*/
 
-<span lang="ES"></span>
+/*TOKENS.*/
 
-<span lang="ES">/* TOKENS. */</span>
+   _<error>_
 
-<span lang="ES"></span>
+   <identificador>  => KW_SEARCH
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <error></span>
+   <operador>    => OP_SEARCH
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <identificador><span style="mso-spacerun:yes"> </span> => KW_SEARCH</span>
+   <puntuacion>  => OP_SEARCH
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <operador><span style="mso-spacerun:yes">   </span> => OP_SEARCH</span>
+   <numero>     => RegistraNumero
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <puntuacion><span style="mso-spacerun:yes"> </span> => OP_SEARCH</span>
+   <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <numero><span style="mso-spacerun:yes">    </span> => RegistraNumero</span>
+   <caracter>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <cadena></span>
+   <eol>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <caracter></span>
+   <eof>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <eol></span>
+   <comentario>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <eof></span>
+   <backslash>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <comentario></span>
+   /*Tokens de identificadores especiales regresados por la búsqueda en la tabla de símbolos*/
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> <backslash></span>
+   <id_constante>
 
-<span lang="ES"></span>
+   <id_variable>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> /* Tokens de identificadores especiales regresados por la búsqueda</span>
+   <id_macro>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> en la tabla de símbolos */</span>
+   <id_etiqueta>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> </span><span style="mso-ansi-language:EN-US"><id_constante><span style="mso-spacerun:yes">      </span></span>
+   <id_proc>
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> <id_variable><span style="mso-spacerun:yes">      </span></span>
+/*KEYWORDS.*/
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> <id_macro><span style="mso-spacerun:yes">         </span></span>
+   .MODEL TINY SMALL MEDIUM COMPACT LARGE HUGE TPASCAL NEARSTACK FARSTACK
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> <id_etiqueta><span style="mso-spacerun:yes">         </span></span>
+   END
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> <id_proc><span style="mso-spacerun:yes">     </span></span>
+   DB DW DD DQ DT DF DP
 
-<span style="mso-ansi-language:EN-US"></span>
+   AH AL BH BL CH CL DH DL
 
-<span style="mso-ansi-language:EN-US">/* KEYWORDS. */</span>
+   AX BX CX DX
 
-<span style="mso-ansi-language:EN-US"></span>
+   SI DI
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> .MODEL TINY SMALL MEDIUM COMPACT LARGE HUGE TPASCAL NEARSTACK FARSTACK</span>
+   SP BP
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> END</span>
+   CS DS ES SS
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> DB DW DD DQ DT DF DP</span>
+   BYTE WORD DWORD QWORD TBYTE NEAR FAR SHORT st1:place PARA PAGE
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> </span><span lang="ES">AH AL BH BL CH CL DH DL</span>
+   /* AND OR XOR NOT */ /*son instrucciones adem s de directivas*/
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> AX BX CX DX</span>
+   @CODE @CODESIZE @CPU @CURSEG @DATA @DATASIZE ??DATE @FARDATA
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> SI DI</span>
+   @FARDATA? @FILENAME ??FILENAME @MODEL @STARTUP ??TIME ??VERSION
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> SP BP</span>
+   @WORDSIZE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> CS DS ES SS</span>
+   DUP ?
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> </span><span style="mso-ansi-language:EN-US">BYTE WORD DWORD QWORD TBYTE NEAR FAR SHORT</span> st1:place <span style="mso-ansi-language:EN-US">PARA</span></st1:place> <span style="mso-ansi-language:
-EN-US">PAGE</span>
+   PROC ENDP
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> /* AND OR XOR NOT */ /* son instrucciones adem s de directivas */</span>
+   NOTHING
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> @CODE @CODESIZE @CPU @CURSEG @DATA @DATASIZE ??DATE @FARDATA</span>
+   .186 .286 .286C .286P .287 .386 .386C .386P .387 .8086 .8087
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> @FARDATA? @FILENAME ??FILENAME @MODEL @STARTUP ??TIME ??VERSION</span>
+   = ALIGN .ALPHA ARG ASSUME %BIN .CODE CODESEG COMM
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> @WORDSIZE</span>
+   %CONDS .CONST CONST .CREF %CREF %CREFALL %CREFREF %CREFUREF %CTLS
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> DUP ?</span>
+   .DATA .DATA? DATASEG %DEPTH DISPLAY DOSSEG
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> PROC ENDP</span>
+   ELSE ELSEIF EMUL ENDIF ENDM ENDS EQU .ERR ERR .ERR1 .ERR2
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> NOTHING</span>
+   .ERRB .ERRDEF .ERRDIF .ERRDIFI .ERRE .ERRIDN .ERRIDNI ERRIF ERRIF1
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> .186 .286 .286C .286P .287 .386 .386C .386P .387 .8086 .8087</span>
+   ERRIF2 ERRIFB ERRIFDEF ERRIFDIF ERRIFDIFI ERRIFE ERRIFIDN ERRIFIDNI
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> = ALIGN .ALPHA ARG ASSUME %BIN .CODE CODESEG COMM</span>
+   ERRIFNB ERRIFNDEF .ERRNB .ERRNDEF .ERRNZ EVEN EVENDATA EXITM EXTRN
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> %CONDS .CONST CONST .CREF %CREF %CREFALL %CREFREF %CREFUREF %CTLS</span>
+   .FARDATA .FARDATA? FARDATA GLOBAL GROUP IDEAL IF IF1 IF2 IFB IFDEF
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> .DATA .DATA? DATASEG %DEPTH DISPLAY DOSSEG</span>
+   IFDIF IFDIFI <st1:city><st1:place>IFE</st1:place></st1:city> IFIDN IFIDNI IFNB IFNDEF %INCL INCLUDE INCLUDELIB
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> ELSE ELSEIF EMUL ENDIF ENDM ENDS EQU .ERR ERR .ERR1 .ERR2</span>
+   IRP IRPC JUMPS LABEL .LALL .LFCOND %LINUM %LIST .LIST LOCAL
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> </span><span lang="ES">.ERRB .ERRDEF .ERRDIF .ERRDIFI .ERRE .ERRIDN .ERRIDNI ERRIF ERRIF1</span>
+   LOCALS MACRO %MACS MASM MASM51 MODEL MULTERRS %NEWPAGE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ERRIF2 ERRIFB ERRIFDEF ERRIFDIF ERRIFDIFI ERRIFE ERRIFIDN ERRIFIDNI</span>
+   %NOCONDS %NOCREF %NOCTLS NOEMUL %NOINCL NOJUMPS %NOLIST NOLOCALS
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ERRIFNB ERRIFNDEF .ERRNB .ERRNDEF .ERRNZ EVEN EVENDATA EXITM EXTRN</span>
+   %NOMACS NOMASM51 NOMULTERRS %NOSYMS %NOTRUNC NOWARN ORG %OUT P186
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> </span><span style="mso-ansi-language:EN-US">.FARDATA .FARDATA? FARDATA GLOBAL GROUP IDEAL IF IF1 IF2 IFB IFDEF</span>
+   P286 P286N P286P P287 P386 P386N P386P P387 P8086 P8087
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes"> </span><span style="mso-spacerun:yes"> </span> IFDIF IFDIFI</span> <st1:city><st1:place><span style="mso-ansi-language:EN-US">IFE</span></st1:place></st1:city> <span style="mso-ansi-language:EN-US">IFIDN IFIDNI IFNB IFNDEF %INCL INCLUDE INCLUDELIB</span>
+   %PAGESIZE %PCNT PNO87 %POPLCTL PUBLIC PUBLICDLL PURGE %PUSHLCTL
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> IRP IRPC JUMPS LABEL .LALL .LFCOND %LINUM %LIST .LIST LOCAL</span>
+   QUIRKS .RADIX RADIX RECORD REPT .SALL SEGMENT .SEQ .SFCOND SIZESTR
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> LOCALS MACRO %MACS MASM MASM51 MODEL MULTERRS %NEWPAGE</span>
+   .STACK STACK .STARTUP STARTUPCODE STRUC SUBTTL %SUBTTL
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> %NOCONDS %NOCREF %NOCTLS NOEMUL %NOINCL NOJUMPS %NOLIST NOLOCALS</span>
+   %SYMS %TABSIZE %TEXT .TFCOND TITLE %TITLE %TRUNC UDATASEG UFARDATA
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> %NOMACS NOMASM51 NOMULTERRS %NOSYMS %NOTRUNC NOWARN ORG %OUT P186</span>
+   <st1:place>UNION</st1:place> USES WARN .XALL .XCREF .XLIST
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> P286 P286N P286P P287 P386 P386N P386P P387 P8086 P8087</span>
+   AT COMMON MEMORY PRIVATE VIRTUAL
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> %PAGESIZE %PCNT PNO87 %POPLCTL PUBLIC PUBLICDLL PURGE %PUSHLCTL</span>
+   ALN ASS BRK ICG LCO OPI OPP OPS OVF PDC PRO PQK RES TPI
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> QUIRKS .RADIX RADIX RECORD REPT .SALL SEGMENT .SEQ .SFCOND SIZESTR</span>
+   /* hasta aqu  fueron directivas, van las instrucciones propiamente
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> .STACK STACK .STARTUP STARTUPCODE STRUC SUBTTL %SUBTTL</span>
+      dichas */
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> %SYMS %TABSIZE %TEXT .TFCOND TITLE %TITLE %TRUNC UDATASEG UFARDATA</span>
+   AAA AAD AAM AAS ADC ADD AND CALL CBW CLC CLD CLI CMC CMP CMPS CMPSB
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> </span><st1:place><span style="mso-ansi-language:
- EN-US">UNION</span></st1:place> <span style="mso-ansi-language:EN-US">USES WARN .XALL .XCREF .XLIST</span>
+   CMPSW CWD DAA DAS DEC DIV ESC HLT IDIV IMUL IN INC INT INTO IRET
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> AT COMMON MEMORY PRIVATE VIRTUAL</span>
+   JA JAE JB JBE JC JCXZ JE JG JGE JL JLE JNA JNAE JNB JNBE JNC JNE
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> ALN ASS BRK ICG LCO OPI OPP OPS OVF PDC PRO PQK RES TPI</span>
+   JNG JNGE JNL JNLE JNO JNP JNS JNZ JO JP JPE JPO JS JZ JMP LAHF LDS
 
-<span style="mso-ansi-language:EN-US"></span>
+   LEA LES LOCK LODS LODSB LODSW LOOP LOOPE LOOPZ LOOPNE LOOPNZ MOV MOVS
 
-<span style="mso-ansi-language:EN-US"><span style="mso-spacerun:yes">  </span> </span><span lang="ES">/* hasta aqu  fueron directivas, van las instrucciones propiamente</span>
+   MOVSB MOVSW MUL NEG NOP NOT OR OUT POP POPF PUSH PUSHF RCL RCR REP REPZ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> dichas */</span>
+   REPE REPNE REPNZ RET ROL ROR SAHF SAL SHL SAR SBB SCAS SCASB SCASW
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> AAA AAD AAM AAS ADC ADD AND CALL CBW CLC CLD CLI CMC CMP CMPS CMPSB</span>
+   SHR STC STD STI STOS STOSB STOSW SUB TEST WAIT XCHG XLAT XOR
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> CMPSW CWD DAA DAS DEC DIV ESC HLT IDIV IMUL IN INC INT INTO IRET</span>
+/*OPERATORS.*/
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> JA JAE JB JBE JC JCXZ JE JG JGE JL JLE JNA JNAE JNB JNBE JNC JNE</span>
+   LENGTH MASK OFFSET SEG SIZE WIDTH THIS
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> JNG JNGE JNL JNLE JNO JNP JNS JNZ JO JP JPE JPO JS JZ JMP LAHF LDS</span>
+   HIGH LOW
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> LEA LES LOCK LODS LODSB LODSW LOOP LOOPE LOOPZ LOOPNE LOOPNZ MOV MOVS</span>
+* / MOD
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> MOVSB MOVSW MUL NEG NOP NOT OR OUT POP POPF PUSH PUSHF RCL RCR REP REPZ</span>
+  * -
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> REPE REPNE REPNZ RET ROL ROR SAHF SAL SHL SAR SBB SCAS SCASB SCASW</span>
+   EQ GE GT LE LT NE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> SHR STC STD STI STOS STOSB STOSW SUB TEST WAIT XCHG XLAT XOR</span>
+   PTR SYMTYPE .TYPE TYPE
 
-<span lang="ES"></span>
+/*PUNCTUATORS.*/
 
-<span lang="ES">/* OPERATORS. */</span>
+   . , : [ ] { } ( ) < >
 
-<span lang="ES"></span>
+/*NONTERMINALS.*/
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> LENGTH MASK OFFSET SEG SIZE WIDTH THIS</span>
+   Linea
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> HIGH LOW</span>
+      -> LineaValida <eol>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> * / MOD</span>
+   LineaValida
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> + -</span>
+      -> Directiva
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> EQ GE GT LE LT NE</span>
+      -> Etiqueta LineaValida2
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> PTR SYMTYPE .TYPE TYPE</span>
+      -> LineaValida2
 
-<span lang="ES"></span>
+   /* producci n usada solamente para conservar correctamente el
 
-<span lang="ES">/* PUNCTUATORS. */</span>
+      nombre del procedimiento */
 
-<span lang="ES"></span>
+   NombreProc
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> . , : [ ] { } ( ) < ></span>
+      -> <identificador>                        => RegistraNombrePROC
 
-<span lang="ES"></span>
+   Directiva
 
-<span lang="ES">/* NONTERMINALS. */</span>
+      -> .MODEL MemoryModel                     => AssertModel
 
-<span lang="ES"></span>
+      -> .MODEL ModelModifier MemoryModel       => AssertModel
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Linea</span>
+      -> MODEL MemoryModel                      => AssertModel
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LineaValida <eol></span>
+      -> MODEL ModelModifier MemoryModel        => AssertModel
 
-<span lang="ES"></span>
+      -> <identificador> = ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> LineaValida</span>
+      -> <identificador> EQU ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Directiva</span>
+      -> END                                    => AssertEnd
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Etiqueta LineaValida2</span>
+      -> END <identificador>                    => AssertEnd
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LineaValida2</span>
+      -> <identificador> TipoDato ParamsDatos 
 
-<span lang="ES"></span>
+      -> NombreProc PROC                        => AssertPROC
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> /* producci n usada solamente para conservar correctamente el</span>
+      -> NombreProc ENDP                        => AssertENDP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> nombre del procedimiento */</span>
+      -> NombreProc PROC NEAR                   => AssertPROC
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> NombreProc</span>
+      -> NombreProc PROC FAR                    => AssertPROC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador><span style="mso-spacerun:yes">                       </span> => RegistraNombrePROC</span>
+      -> <identificador> ENDS
 
-<span lang="ES"></span>
+      -> <identificador> GROUP ListaSegs
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Directiva</span>
+      -> ALIGN <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .MODEL MemoryModel<span style="mso-spacerun:yes">                    </span> => AssertModel</span>
+      -> ARG ListaArgumentos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .MODEL ModelModifier MemoryModel<span style="mso-spacerun:yes">      </span> => AssertModel</span>
+      -> ASSUME ListaAsume
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MODEL MemoryModel<span style="mso-spacerun:yes">                     </span> => AssertModel</span>
+      -> %BIN <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MODEL ModelModifier MemoryModel<span style="mso-spacerun:yes">       </span> => AssertModel</span>
+      -> %DEPTH <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> = ExpresionConstante</span>
+      -> DISPLAY <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> EQU ExpresionConstante</span>
+      -> %OUT Texto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> END<span style="mso-spacerun:yes">                                   </span> => AssertEnd</span>
+      -> COMM DefVars                         
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> END <identificador><span style="mso-spacerun:yes">                   </span> => AssertEnd</span>
+      -> EXTRN DefVars                        
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> TipoDato ParamsDatos<span style="mso-spacerun:yes"> </span></span>
+      -> GLOBAL DefVars                       
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NombreProc PROC<span style="mso-spacerun:yes">                       </span> => AssertPROC</span>
+      -> PUBLIC ListaArgsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NombreProc ENDP<span style="mso-spacerun:yes">                       </span> => AssertENDP</span>
+      -> PUBLICDLL ListaArgsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NombreProc PROC NEAR<span style="mso-spacerun:yes">                  </span> => AssertPROC</span>
+      -> INCLUDE NombreArchivo
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NombreProc PROC FAR<span style="mso-spacerun:yes">                   </span> => AssertPROC</span>
+      -> INCLUDELIB NombreArchivo
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> ENDS</span>
+      -> IRP <identificador> < ListaArgsMacro >
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> GROUP ListaSegs</span>
+      -> IRPC <identificador> CadenamMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ALIGN <numero></span>
+      -> <identificador> LABEL Cast
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ARG ListaArgumentos</span>
+      -> %LINUM <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ASSUME ListaAsume</span>
+      -> LOCAL ListaArgsMacro                  
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %BIN <numero></span>
+      -> LOCAL ListaArgumentos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %DEPTH <numero></span>
+      -> <identificador> MACRO                
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DISPLAY <cadena></span>
+      -> <identificador> MACRO ListaArgsMacro 
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %OUT Texto</span>
+      -> %NOCREF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> COMM DefVars<span style="mso-spacerun:yes">                         </span></span>
+      -> %NOCREF ListaArgsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> EXTRN DefVars<span style="mso-spacerun:yes">                        </span></span>
+      -> ORG ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> GLOBAL DefVars<span style="mso-spacerun:yes">                       </span></span>
+      -> PAGE <numero> , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PUBLIC ListaArgsMacro</span>
+      -> PAGE <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PUBLICDLL ListaArgsMacro</span>
+      -> PAGE , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INCLUDE NombreArchivo</span>
+      -> PAGESIZE <numero> , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INCLUDELIB NombreArchivo</span>
+      -> PAGESIZE <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IRP <identificador> < ListaArgsMacro ></span>
+      -> PAGESIZE , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IRPC <identificador> CadenamMacro</span>
+      -> PAGE +
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> LABEL Cast</span>
+      -> %PCNT <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %LINUM <numero></span>
+      -> PURGE ListaArgsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOCAL ListaArgsMacro<span style="mso-spacerun:yes">                  </span></span>
+      -> .RADIX ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOCAL ListaArgumentos</span>
+      -> <identificador> RECORD Campo
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> MACRO<span style="mso-spacerun:yes">                </span></span>
+      -> REPT ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> MACRO ListaArgsMacro<span style="mso-spacerun:yes"> </span></span>
+      -> .STACK <numero>                                => AssertStack
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOCREF</span>
+      -> <identificador> SIZESTR <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOCREF ListaArgsMacro</span>
+      -> <identificador> SIZESTR CadenaMacro   
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ORG ExpresionConstante</span>
+      -> <identificador> STRUC                 
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGE <numero> , <numero></span>
+      -> SUBTTL Texto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGE <numero></span>
+      -> %SUBTTL <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGE , <numero></span>
+      -> %TABSIZE <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGESIZE <numero> , <numero></span>
+      -> %TEXT <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGESIZE <numero></span>
+      -> TITLE Texto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGESIZE , <numero></span>
+      -> %TITLE <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGE +</span>
+      -> <identificador> UNION
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %PCNT <numero></span>
+      -> USES ListaArgsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PURGE ListaArgsMacro</span>
+      -> NOWARN WarnClass
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .RADIX ExpresionConstante</span>
+      -> WARN WarnClass
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> RECORD Campo</span>
+      -> DirErrorID <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> REPT ExpresionConstante</span>
+      -> DirErrorArg < ArgumentoMacro >
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .STACK <numero><span style="mso-spacerun:yes">                               </span> => AssertStack</span>
+      -> DirErrorComp < ArgumentoMacro > , < ArgumentoMacro >
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> SIZESTR <identificador></span>
+      -> DirErrorExpr ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> SIZESTR CadenaMacro<span style="mso-spacerun:yes">   </span></span>
+      -> DirectivaSimple
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> STRUC<span style="mso-spacerun:yes">                 </span></span>
+      -> DirectivaSegmento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SUBTTL Texto</span>
+      -> DefSegmento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %SUBTTL <cadena></span>
+   Texto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %TABSIZE <numero></span>
+      -> Texto ElementoTexto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %TEXT <numero></span>
+      -> ElementoTexto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TITLE Texto</span>
+   ElementoTexto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %TITLE <cadena></span>
+      -> <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> UNION</span>
+   CadenaMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> USES ListaArgsMacro</span>
+      -> <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOWARN WarnClass</span>
+      -> < ListaCarsMacro >
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> WARN WarnClass</span>
+   ListaCarsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirErrorID <identificador></span>
+      -> CarMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirErrorArg < ArgumentoMacro ></span>
+      -> ListaCarsMacro , CarMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirErrorComp < ArgumentoMacro > , < ArgumentoMacro ></span>
+   CarMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirErrorExpr ExpresionConstante</span>
+      -> <caracter>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirectivaSimple</span>
+      -> <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirectivaSegmento</span>
+   DefSegmento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DefSegmento</span>
+      -> <identificador> SEGMENT
 
-<span lang="ES"></span>
+      -> <identificador> SEGMENT Alineacion
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Texto</span>
+      -> <identificador> SEGMENT Alineacion Combinar
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Texto ElementoTexto</span>
+      -> <identificador> SEGMENT Alineacion Combinar <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ElementoTexto</span>
+   Alineacion
 
-<span lang="ES"></span>
+      -> BYTE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ElementoTexto</span>
+      -> WORD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <cadena></span>
+      -> DWORD
 
-<span lang="ES"></span>
+      -> PARA
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> CadenaMacro</span>
+      -> PAGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <cadena></span>
+   Combinar
 
-<span lang="ES"><span style="mso-spacerun:yes"> </span> <span style="mso-spacerun:yes">    </span>-> < ListaCarsMacro ></span>
+      -> AT ExpresionConstante
 
-<span lang="ES"></span>
+      -> COMMON
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ListaCarsMacro</span>
+      -> MEMORY
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CarMacro</span>
+      -> PRIVATE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ListaCarsMacro , CarMacro</span>
+      -> PUBLIC
 
-<span lang="ES"></span>
+      -> STACK
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> CarMacro</span>
+      -> VIRTUAL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <caracter></span>
+   Campo
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <numero></span>
+      -> <identificador> : <numero>
 
-<span lang="ES"></span>
+      -> <identificador> : <numero> = <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DefSegmento</span>
+   ListaArgsMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> SEGMENT</span>
+      -> ArgumentoMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> SEGMENT Alineacion</span>
+      -> ListaArgsMacro , ArgumentoMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> SEGMENT Alineacion Combinar</span>
+   ArgumentoMacro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> SEGMENT Alineacion Combinar <cadena></span>
+      -> <identificador>
 
-<span lang="ES"></span>
+      -> Registro
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Alineacion</span>
+      -> <caracter>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BYTE</span>
+   NombreArchivo
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> WORD</span>
+      -> NombreArchivoFin
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DWORD</span>
+      -> Trayectoria NombreArchivoFin
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PARA</span>
+      -> Drive Trayectoria NombreArchivoFin
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGE</span>
+   Trayectoria
 
-<span lang="ES"></span>
+      -> Trayectoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Combinar</span>
+      -> Trayectoria Trayectoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AT ExpresionConstante</span>
+   Trayectoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> COMMON</span>
+      -> NombreArchivoFin <backslash>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MEMORY</span>
+   NombreArchivoFin
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PRIVATE</span>
+      -> <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PUBLIC</span>
+      -> <identificador> . <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STACK</span>
+   ListaSegs
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> VIRTUAL</span>
+      -> <identificador>
 
-<span lang="ES"></span>
+      -> ListaSegs , <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Campo</span>
+   DirErrorID
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> : <numero></span>
+      -> .ERRDEF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> : <numero> = <numero></span>
+      -> ERRIFDEF
 
-<span lang="ES"></span>
+      -> ERRIFNDEF
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ListaArgsMacro</span>
+      -> .ERRNDEF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ArgumentoMacro</span>
+      -> IFDEF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ListaArgsMacro , ArgumentoMacro</span>
+      -> IFNDEF
 
-<span lang="ES"></span>
+   DirErrorArg
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ArgumentoMacro</span>
+      -> .ERRB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador></span>
+      -> ERRIFB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Registro</span>
+      -> ERRIFNB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <caracter></span>
+      -> .ERRNB
 
-<span lang="ES"></span>
+      -> IFB
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> NombreArchivo</span>
+      -> IFNB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NombreArchivoFin</span>
+   DirErrorComp
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Trayectoria NombreArchivoFin</span>
+      -> .ERRDIF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Drive Trayectoria NombreArchivoFin</span>
+      -> .ERRDIFI
 
-<span lang="ES"></span>
+      -> .ERRIDN
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Trayectoria</span>
+      -> .ERRIDNI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Trayectoria2</span>
+      -> ERRIFDIF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Trayectoria Trayectoria2</span>
+      -> ERRIFDIFI
 
-<span lang="ES"></span>
+      -> ERRIFIDN
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Trayectoria2</span>
+      -> ERRIFIDNI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NombreArchivoFin <backslash></span>
+      -> IFDIF
 
-<span lang="ES"></span>
+      -> IFDIFI
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> NombreArchivoFin</span>
+      -> IFIDN
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador></span>
+      -> IFIDNI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> . <identificador></span>
+   DirErrorExpr
 
-<span lang="ES"></span>
+      -> .ERRE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ListaSegs</span>
+      -> ERRIF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador></span>
+      -> ERRIF1
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ListaSegs , <identificador></span>
+      -> ERRIF2
 
-<span lang="ES"></span>
+      -> ERRIFE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirErrorID</span>
+      -> .ERRNZ
 
-<span lang="ES"><span style="mso-spacerun:yes">   </span> <span style="mso-spacerun:yes">  </span>-> .ERRDEF</span>
+      -> IF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFDEF</span>
+      -> IFE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFNDEF</span>
+   ListaAsume
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRNDEF</span>
+      -> NOTHING
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFDEF</span>
+      -> Segmento : NOTHING
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFNDEF</span>
+      -> AsumeSimple
 
-<span lang="ES"></span>
+      -> ListaAsume , AsumeSimple
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirErrorArg</span>
+   AsumeSimple
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRB</span>
+      -> Segmento : <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFB</span>
+   ListaArgumentos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFNB</span>
+      -> Argumento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRNB</span>
+      -> ListaArgumentos , Argumento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFB</span>
+   Argumento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFNB</span>
+      -> <identificador> : Cast
 
-<span lang="ES"></span>
+      -> <identificador> : Cast : <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirErrorComp</span>
+   DirectivaSegmento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRDIF</span>
+      -> DirectivaSegSimple
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRDIFI</span>
+      -> DirectivaSegSimple <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRIDN</span>
+   DirectivaSegSimple
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRIDNI</span>
+      -> .CODE                                          => AssertCode
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFDIF</span>
+      -> CODESEG                                        => AssertCode
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFDIFI</span>
+      -> .DATA                                          => AssertData
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFIDN</span>
+      -> .DATA?                                         => AssertData
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIFIDNI</span>
+      -> DATASEG                                        => AssertData
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFDIF</span>
+      -> .FARDATA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFDIFI</span>
+      -> .FARDATA?
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFIDN</span>
+      -> FARDATA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFIDNI</span>
+   DirectivaSimple
 
-<span lang="ES"></span>
+      -> .186
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirErrorExpr</span>
+      -> .286
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRE</span>
+      -> .286C
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIF</span>
+      -> .286P
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIF1</span>
+      -> .287
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERRIF2</span>
+      -> .386
 
-<span lang="ES"><span style="mso-spacerun:yes">   </span> <span style="mso-spacerun:yes">  </span>-> ERRIFE</span>
+      -> .386C
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRNZ</span>
+      -> .386P
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IF</span>
+      -> .387
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IFE</span>
+      -> .8086
 
-<span lang="ES"></span>
+      -> .8087
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ListaAsume</span>
+      -> .ALPHA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOTHING</span>
+      -> %CONDS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Segmento : NOTHING</span>
+      -> .CONST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AsumeSimple</span>
+      -> CONST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ListaAsume , AsumeSimple</span>
+      -> .CREF
 
-<span lang="ES"></span>
+      -> %CREF
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> AsumeSimple</span>
+      -> %CREFALL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Segmento : <identificador></span>
+      -> %CREFREF
 
-<span lang="ES"></span>
+      -> %CREFUREF
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ListaArgumentos</span>
+      -> %CTLS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Argumento</span>
+      -> DOSSEG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ListaArgumentos , Argumento</span>
+      -> ELSE
 
-<span lang="ES"></span>
+      -> ELSEIF
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Argumento</span>
+      -> EMUL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> : Cast</span>
+      -> ENDIF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> : Cast : <numero></span>
+      -> ENDM
 
-<span lang="ES"></span>
+      -> .ERR
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirectivaSegmento</span>
+      -> ERR
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirectivaSegSimple</span>
+      -> .ERR1
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DirectivaSegSimple <identificador></span>
+      -> .ERR2
 
-<span lang="ES"></span>
+      -> .ERRDEF
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirectivaSegSimple</span>
+      -> .ERRDIF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .CODE<span style="mso-spacerun:yes">                                         </span> => AssertCode</span>
+      -> .ERRDIFI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CODESEG<span style="mso-spacerun:yes">                                       </span> => AssertCode</span>
+      -> EVEN
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .DATA<span style="mso-spacerun:yes">                                         </span> => AssertData</span>
+      -> EVENDATA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .DATA?<span style="mso-spacerun:yes">                                        </span> => AssertData</span>
+      -> EXITM
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DATASEG<span style="mso-spacerun:yes">                                       </span> => AssertData</span>
+      -> IDEAL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .FARDATA</span>
+      -> IF1
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .FARDATA?</span>
+      -> IF2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> FARDATA</span>
+      -> %INCL
 
-<span lang="ES"></span>
+      -> JUMPS
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DirectivaSimple</span>
+      -> .LALL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .186</span>
+      -> .LFCOND
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .286</span>
+      -> %LIST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .286C</span>
+      -> .LIST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .286P</span>
+      -> LOCALS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .287</span>
+      -> %MACS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .386</span>
+      -> MASM
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .386C</span>
+      -> MASM51
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .386P</span>
+      -> MULTERRS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .387</span>
+      -> %NEWPAGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .8086</span>
+      -> %NOCONDS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .8087</span>
+      -> %NOCTLS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ALPHA</span>
+      -> NOEMUL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %CONDS</span>
+      -> %NOINCL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .CONST</span>
+      -> NOJUMPS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CONST</span>
+      -> %NOLIST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .CREF</span>
+      -> NOLOCALS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %CREF</span>
+      -> %NOMACS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %CREFALL</span>
+      -> NOMASM51
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %CREFREF</span>
+      -> NOMULTERRS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %CREFUREF</span>
+      -> %NOSYMS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %CTLS</span>
+      -> %NOTRUNC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DOSSEG</span>
+      -> NOWARN
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ELSE</span>
+      -> P186
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ELSEIF</span>
+      -> P286
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> EMUL</span>
+      -> P286N
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ENDIF</span>
+      -> P286P
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ENDM</span>
+      -> P287
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERR</span>
+      -> P386
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ERR</span>
+      -> P386N
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERR1</span>
+      -> P386P
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERR2</span>
+      -> P387
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRDEF</span>
+      -> P8086
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRDIF</span>
+      -> P8087
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .ERRDIFI</span>
+      -> PAGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> EVEN</span>
+      -> PNO87
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> EVENDATA</span>
+      -> %POPLCTL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> EXITM</span>
+      -> %PUSHLCTL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IDEAL</span>
+      -> QUIRKS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IF1</span>
+      -> RADIX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IF2</span>
+      -> .SALL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %INCL</span>
+      -> .SEQ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JUMPS</span>
+      -> .SFCOND
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .LALL</span>
+      -> STACK                                               => AssertStack
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .LFCOND</span>
+      -> .STARTUP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %LIST</span>
+      -> STARTUPCODE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .LIST</span>
+      -> %SYMS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOCALS</span>
+      -> .TFCOND
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %MACS</span>
+      -> %TRUNC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MASM</span>
+      -> UDATASEG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MASM51</span>
+      -> UFARDATA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MULTERRS</span>
+      -> .XALL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NEWPAGE</span>
+      -> .XCREF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOCONDS</span>
+      -> .XLIST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOCTLS</span>
+   WarnClass
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOEMUL</span>
+      -> ALN
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOINCL</span>
+      -> ASS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOJUMPS</span>
+      -> BRK
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOLIST</span>
+      -> ICG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOLOCALS</span>
+      -> LCO
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOMACS</span>
+      -> OPI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOMASM51</span>
+      -> OPP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOMULTERRS</span>
+      -> OPS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOSYMS</span>
+      -> OVF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %NOTRUNC</span>
+      -> PDC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOWARN</span>
+      -> PRO
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P186</span>
+      -> PQK
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P286</span>
+      -> RES
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P286N</span>
+      -> TPI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P286P</span>
+   DefVars
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P287</span>
+      -> DefVar
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P386</span>
+      -> DefVars , DefVar
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P386N</span>
+   DefVar
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P386P</span>
+      -> Argumento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P387</span>
+      -> FAR Argumento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P8086</span>
+      -> NEAR Argumento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> P8087</span>
+   ParamsDatos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PAGE</span>
+      -> ParamsDatos , ParamDatos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PNO87</span>
+      -> ParamDatos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %POPLCTL</span>
+   ParamDatos
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %PUSHLCTL</span>
+      -> ?
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> QUIRKS</span>
+      -> ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RADIX</span>
+      -> <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .SALL</span>
+      -> <caracter>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .SEQ</span>
+      -> ExpresionConstante DUP ( ParamsDatos )
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .SFCOND</span>
+   TipoDato
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STACK<span style="mso-spacerun:yes">                                              </span> => AssertStack</span>
+      -> DB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .STARTUP</span>
+      -> DW
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STARTUPCODE</span>
+      -> DD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %SYMS</span>
+      -> DF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .TFCOND</span>
+      -> DQ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> %TRUNC</span>
+      -> DT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> UDATASEG</span>
+      -> DP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> UFARDATA</span>
+   MemoryModel
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .XALL</span>
+      -> TINY
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .XCREF</span>
+      -> SMALL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .XLIST</span>
+      -> COMPACT
 
-<span lang="ES"></span>
+      -> MEDIUM
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> WarnClass</span>
+      -> LARGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ALN</span>
+      -> HUGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ASS</span>
+      -> TPASCAL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BRK</span>
+   ModelModifier
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ICG</span>
+      -> NEARSTACK
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LCO</span>
+      -> FARSTACK
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OPI</span>
+   LineaValida2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OPP</span>
+      ->
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OPS</span>
+      -> <comentario>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OVF</span>
+      -> Instruccion
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PDC</span>
+      -> <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PRO</span>
+      -> <identificador> <comentario>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PQK</span>
+      -> <identificador> Params
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RES</span>
+      -> <identificador> Params <comentario>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TPI</span>
+   Params
 
-<span lang="ES"></span>
+      -> Params , Param
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DefVars</span>
+      -> Param
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DefVar</span>
+   Etiqueta
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DefVars , DefVar</span>
+      -> <identificador> :     
 
-<span lang="ES"></span>
+   Param
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DefVar</span>
+      -> ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Argumento</span>
+      -> <cadena>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> FAR Argumento</span>
+      -> <caracter>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NEAR Argumento</span>
+      -> Registro
 
-<span lang="ES"></span>
+      -> Memoria
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ParamsDatos</span>
+      -> Memoria . <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ParamsDatos , ParamDatos</span>
+      -> Cast PTR Memoria
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ParamDatos</span>
+   Cast
 
-<span lang="ES"></span>
+      -> BYTE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ParamDatos</span>
+      -> WORD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ?</span>
+      -> DWORD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ExpresionConstante</span>
+      -> QWORD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <cadena></span>
+      -> TBYTE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <caracter></span>
+      -> NEAR
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ExpresionConstante DUP ( ParamsDatos )</span>
+      -> FAR
 
-<span lang="ES"></span>
+      -> LARGE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> TipoDato</span>
+      -> SHORT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DB</span>
+   Registro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DW</span>
+      -> RegistroByte
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DD</span>
+      -> RegistroWord
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DF</span>
+   RegistroByte
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DQ</span>
+      -> AL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DT</span>
+      -> AH
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DP</span>
+      -> BL
 
-<span lang="ES"></span>
+      -> BH
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> MemoryModel</span>
+      -> CL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TINY</span>
+      -> CH
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SMALL</span>
+      -> DL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> COMPACT</span>
+      -> DH
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MEDIUM</span>
+   RegistroWordPG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LARGE</span>
+      -> AX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> HUGE</span>
+      -> BX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TPASCAL</span>
+      -> CX
 
-<span lang="ES"></span>
+      -> DX
 
-<span lang="ES"><span style="mso-spacerun:yes"> </span><span style="mso-spacerun:yes"> </span> ModelModifier</span>
+   RegistroWord
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NEARSTACK</span>
+      -> RegistroWordPG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> FARSTACK</span>
+      -> SI
 
-<span lang="ES"></span>
+      -> DI
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> LineaValida2</span>
+      -> SP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -></span>
+      -> BP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <comentario></span>
+   Segmento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Instruccion</span>
+      -> CS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador></span>
+      -> DS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> <comentario></span>
+      -> ES
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> Params</span>
+      -> SS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> Params <comentario></span>
+   Memoria
 
-<span lang="ES"></span>
+      -> Segmento : Memoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Params</span>
+      -> [ Segmento : ExpresionConstante ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Params , Param</span>
+      -> [ Segmento : Indice ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Param</span>
+      -> [ Segmento : Base ]
 
-<span lang="ES"></span>
+      -> [ Segmento : Base + Indice ]
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Etiqueta</span>
+      -> [ Segmento : Base + Indice + ExpresionConstante ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> :<span style="mso-spacerun:yes">     </span></span>
+      -> <identificador>
 
-<span lang="ES"></span>
+      -> <identificador> Memoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Param</span>
+      -> Memoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ExpresionConstante</span>
+   Memoria2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <cadena></span>
+      -> [ ExpresionConstante ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <caracter></span>
+      -> [ Indice ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Registro</span>
+      -> [ Base ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria</span>
+      -> [ Base + Indice ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria . <identificador></span>
+      -> [ Base + Indice + ExpresionConstante ]
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Cast PTR Memoria</span>
+   Base
 
-<span lang="ES"></span>
+      -> BX
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Cast</span>
+      -> BP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BYTE</span>
+   Indice
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> WORD</span>
+      -> SI                                    => RegistraUsoSI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DWORD</span>
+      -> DI                                    => RegistraUsoDI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> QWORD</span>
+   ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TBYTE</span>
+      -> ExpresionConstante2 Op ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NEAR</span>
+      -> OpUnario ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> FAR</span>
+      -> ( ExpresionConstante )
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LARGE</span>
+      -> ExpresionConstante2
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SHORT</span>
+   Op
 
-<span lang="ES"></span>
+      -> +
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Registro</span>
+      -> -
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RegistroByte</span>
+      -> *
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RegistroWord</span>
+      -> /
 
-<span lang="ES"></span>
+      -> MOD
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> RegistroByte</span>
+      -> AND
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AL</span>
+      -> OR
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AH</span>
+      -> XOR
 
-<span lang="ES"><span style="mso-spacerun:yes"> </span><span style="mso-spacerun:yes">    </span> -> BL</span>
+      -> EQ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BH</span>
+      -> GT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CL</span>
+      -> GE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CH</span>
+      -> LE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DL</span>
+      -> LT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DH</span>
+      -> NE
 
-<span lang="ES"></span>
+      -> SHL
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> RegistroWordPG</span>
+      -> SHR
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AX</span>
+   OpUnario
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BX</span>
+      -> +
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CX</span>
+      -> -
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DX</span>
+      -> NOT
 
-<span lang="ES"></span>
+   Expresión Constante 2
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> RegistroWord</span>
+      -> <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RegistroWordPG</span>
+      -> <identificador>                /* Buscarlo en tabla de constantes */
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SI</span>
+      -> OFFSET <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DI</span>
+      -> LENGTH <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SP</span>
+      -> SEG <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BP</span>
+      -> SIZE <identificador>
 
-<span lang="ES"></span>
+      -> WIDTH ExpresionContante
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Segmento</span>
+      -> HIGH <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CS</span>
+      -> LOW <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">   </span> <span style="mso-spacerun:yes">  </span>-> DS</span>
+      -> MASK <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ES</span>
+      -> SYMTYPE <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SS</span>
+      -> .TYPE <identificador>
 
-<span lang="ES"></span>
+      -> TYPE <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Memoria</span>
+      -> THIS Cast
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Segmento : Memoria2</span>
+      -> ConstantePredefinida
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Segmento : ExpresionConstante ]</span>
+   ConstantePredefinida
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Segmento : Indice ]</span>
+      -> $
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Segmento : Base ]</span>
+      -> @CODE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Segmento : Base + Indice ]</span>
+      -> @CODESIZE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Segmento : Base + Indice + ExpresionConstante ]</span>
+      -> @CPU
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador></span>
+      -> @CURSEG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador> Memoria2</span>
+      -> @DATA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria2</span>
+      -> @DATASIZE
 
-<span lang="ES"></span>
+      -> ??DATE
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Memoria2</span>
+      -> @FARDATA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ ExpresionConstante ]</span>
+      -> @FARDATA?
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Indice ]</span>
+      -> @FILENAME
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Base ]</span>
+      -> ??FILENAME
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Base + Indice ]</span>
+      -> @MODEL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> [ Base + Indice + ExpresionConstante ]</span>
+      -> @STARTUP
 
-<span lang="ES"></span>
+      -> ??TIME
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Base</span>
+      -> ??VERSION
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BX</span>
+      -> @WORDSIZE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> BP</span>
+   Instruccion
 
-<span lang="ES"></span>
+      -> JMP <identificador>            => AssertJMP
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Indice</span>
+      -> INT <numero>                   => AssertINT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SI<span style="mso-spacerun:yes">                                   </span> => RegistraUsoSI</span>
+      -> Instruccion0Par     
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DI<span style="mso-spacerun:yes">                                   </span> => RegistraUsoDI</span>
+      -> Instruccion1Par Operador1
 
-<span lang="ES"></span>
+      -> INC SI                         => RegistraIncrementoSI
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ExpresionConstante</span>
+      -> INC DI                         => RegistraIncrementoDI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ExpresionConstante2 Op ExpresionConstante</span>
+      -> DEC SI                         => RegistraIncrementoSI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OpUnario ExpresionConstante</span>
+      -> DEC DI                         => RegistraIncrementoDI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ( ExpresionConstante )</span>
+      -> Rotacion
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ExpresionConstante2</span>
+      -> POP Segmento
 
-<span lang="ES"></span>
+      -> PUSH Segmento
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Op</span>
+      -> Instruccion2Par DosParams
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> +</span>
+      -> Salto <identificador>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> -</span>
+      -> IN AX , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> *</span>
+      -> IN AL , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> /</span>
+      -> IN AX , DX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MOD</span>
+      -> IN AL , DX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AND</span>
+      -> OUT AX , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OR</span>
+      -> OUT AL , <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> XOR</span>
+      -> OUT AX , DX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> EQ</span>
+      -> OUT AL , DX
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> GT</span>
+      -> XCHG DosParamsSinInmediato
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> GE</span>
+   Instruccion0Par
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LE</span>
+      -> AAA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LT</span>
+      -> AAD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NE</span>
+      -> AAM
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SHL</span>
+      -> AAS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SHR</span>
+      -> CBW
 
-<span lang="ES"></span>
+      -> CLC
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> OpUnario</span>
+      -> CLD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> +</span>
+      -> CLI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> -</span>
+      -> CMC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOT</span>
+      -> CWD
 
-<span lang="ES"></span>
+      -> DAA
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ExpresionConstante2</span>
+      -> DAS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <numero></span>
+      -> ESC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <identificador><span style="mso-spacerun:yes">               </span> /* Buscarlo en tabla de constantes */</span>
+      -> HLT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OFFSET <identificador></span>
+      -> INTO
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LENGTH <identificador></span>
+      -> IRET
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SEG <identificador></span>
+      -> LAHF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SIZE <identificador></span>
+      -> LOCK
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> WIDTH ExpresionContante</span>
+      -> NOP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> HIGH <identificador></span>
+      -> POPF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOW <identificador></span>
+      -> PUSHF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MASK <identificador></span>
+      -> InstruccionString
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SYMTYPE <identificador></span>
+      -> REP InstruccionString
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> .TYPE <identificador></span>
+      -> REPE InstruccionString
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TYPE <identificador></span>
+      -> REPZ InstruccionString
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> THIS Cast</span>
+      -> REPNE InstruccionString
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ConstantePredefinida</span>
+      -> REPNZ InstruccionString
 
-<span lang="ES"></span>
+      -> RET                            => AssertRET
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ConstantePredefinida</span>
+      -> SAHF
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> $</span>
+      -> STC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @CODE</span>
+      -> STD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @CODESIZE</span>
+      -> STI
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @CPU</span>
+      -> WAIT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @CURSEG</span>
+      -> XLAT
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @DATA</span>
+   InstruccionString
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @DATASIZE</span>
+      -> CMPS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ??DATE</span>
+      -> CMPSB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @FARDATA</span>
+      -> CMPSW
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @FARDATA?</span>
+      -> LODS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @FILENAME</span>
+      -> LODSB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ??FILENAME</span>
+      -> LODSW
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @MODEL</span>
+      -> MOVS                           => AssertMOVS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @STARTUP</span>
+      -> MOVSB                          => AssertMOVS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ??TIME</span>
+      -> MOVSW                          => AssertMOVS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ??VERSION</span>
+      -> SCAS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> @WORDSIZE</span>
+      -> SCASB
 
-<span lang="ES"></span>
+      -> SCASW  
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Instruccion</span>
+      -> STOS                           => AssertSTOS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JMP <identificador><span style="mso-spacerun:yes">           </span> => AssertJMP</span>
+      -> STOSB                          => AssertSTOS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INT <numero><span style="mso-spacerun:yes">                  </span> => AssertINT</span>
+      -> STOSW                          => AssertSTOS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Instruccion0Par<span style="mso-spacerun:yes">     </span></span>
+   Instruccion1Par
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Instruccion1Par Operador1</span>
+      -> DEC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INC SI<span style="mso-spacerun:yes">                        </span> => RegistraIncrementoSI</span>
+      -> DIV
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INC DI<span style="mso-spacerun:yes">                        </span> => RegistraIncrementoDI</span>
+      -> IDIV
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DEC SI<span style="mso-spacerun:yes">                        </span> => RegistraIncrementoSI</span>
+      -> IMUL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DEC DI<span style="mso-spacerun:yes">                        </span> => RegistraIncrementoDI</span>
+      -> INC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Rotacion</span>
+      -> MUL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> POP Segmento</span>
+      -> NEG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PUSH Segmento</span>
+      -> POP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Instruccion2Par DosParams</span>
+      -> PUSH
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Salto <identificador></span>
+   Salto
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IN AX , <numero></span>
+      -> CALL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IN AL , <numero></span>
+      -> JMP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IN AX , DX</span>
+      -> JA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IN AL , DX</span>
+      -> JAE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OUT AX , <numero></span>
+      -> JB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OUT AL , <numero></span>
+      -> JBE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OUT AX , DX</span>
+      -> JC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OUT AL , DX</span>
+      -> JCXZ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> XCHG DosParamsSinInmediato</span>
+      -> JE
 
-<span lang="ES"></span>
+      -> JG
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Instruccion0Par</span>
+      -> JGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AAA</span>
+      -> JL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AAD</span>
+      -> JLE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AAM</span>
+      -> JNA
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AAS</span>
+      -> JNAE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CBW</span>
+      -> JNB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CLC</span>
+      -> JNBE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CLD</span>
+      -> JNC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CLI</span>
+      -> JNE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CMC</span>
+      -> JNG
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CWD</span>
+      -> JNGE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DAA</span>
+      -> JNL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DAS</span>
+      -> JNLE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ESC</span>
+      -> JNO
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> HLT</span>
+      -> JNP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INTO</span>
+      -> JNS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IRET</span>
+      -> JNZ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LAHF</span>
+      -> JO
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOCK</span>
+      -> JP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NOP</span>
+      -> JPE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> POPF</span>
+      -> JPO
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PUSHF</span>
+      -> JS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> InstruccionString</span>
+      -> JZ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> REP InstruccionString</span>
+      -> LOOP                           => AssertLOOP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> REPE InstruccionString</span>
+      -> LOOPE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> REPZ InstruccionString</span>
+      -> LOOPNE
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> REPNE InstruccionString</span>
+      -> LOOPZ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> REPNZ InstruccionString</span>
+      -> LOOPNZ
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RET<span style="mso-spacerun:yes">                           </span> => AssertRET</span>
+   Instruccion2Par
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SAHF</span>
+      -> ADC
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STC</span>
+      -> ADD
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STD</span>
+      -> AND
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STI</span>
+      -> CMP
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> WAIT</span>
+      -> LDS
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> XLAT</span>
+      -> LEA
 
-<span lang="ES"></span>
+      -> LES
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> InstruccionString</span>
+      -> MOV
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CMPS</span>
+      -> OR
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CMPSB</span>
+      -> SBB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CMPSW</span>
+      -> SUB
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LODS</span>
+      -> TEST
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LODSB</span>
+      -> XOR
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LODSW</span>
+   Rotacion
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MOVS<span style="mso-spacerun:yes">                          </span> => AssertMOVS</span>
+      -> RCL ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MOVSB<span style="mso-spacerun:yes">                         </span> => AssertMOVS</span>
+      -> RCR ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MOVSW<span style="mso-spacerun:yes">    </span> <span style="mso-spacerun:yes">                     </span>=> AssertMOVS</span>
+      -> ROR ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SCAS</span>
+      -> ROL ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SCASB</span>
+      -> SAL ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SCASW<span style="mso-spacerun:yes">  </span></span>
+      -> SHL ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STOS<span style="mso-spacerun:yes">                          </span> => AssertSTOS</span>
+      -> SAR ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STOSB<span style="mso-spacerun:yes">                         </span> => AssertSTOS</span>
+      -> SHR ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> STOSW<span style="mso-spacerun:yes">                         </span> => AssertSTOS</span>
+   ParametroRot
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span></span>
+      -> Operador1 , <numero>            /* => Aqui ir a el que procese el error com n en SHifts */
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Instruccion1Par</span>
+      -> Operador1 , CL
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DEC</span>
+   Operador1
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DIV</span>
+      -> Registro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IDIV</span>
+      -> Memoria
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> IMUL</span>
+   DosParams
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> INC</span>
+      -> Registro , Inmediato
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MUL</span>
+      -> Memoria , Inmediato
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> NEG</span>
+      -> Memoria , Memoria               => AssertErrorMem
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> POP</span>
+      -> DosParamsSinInmediato
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> PUSH</span>
+   DosParamsSinInmediato
 
-<span lang="ES"></span>
+      -> Registro , Registro
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Salto</span>
+      -> Registro , Segmento
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CALL</span>
+      -> Registro , Memoria
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JMP</span>
+      -> Memoria , Registro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JA</span>
+      -> Segmento , Registro
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JAE</span>
+   Inmediato
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JB</span>
+      -> <numero>
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JBE</span>
+      -> ExpresionConstante
 
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JC</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JCXZ</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JG</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JGE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JL</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JLE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNA</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNAE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNB</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNBE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNC</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNG</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNGE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNL</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNLE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNO</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNP</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNS</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JNZ</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JO</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">    </span> <span style="mso-spacerun:yes"> </span>-> JP</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JPE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JPO</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JS</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> JZ</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOOP<span style="mso-spacerun:yes">                          </span> => AssertLOOP</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOOPE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOOPNE</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOOPZ</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LOOPNZ</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Instruccion2Par</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ADC</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ADD</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> AND</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> CMP</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LDS</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LEA</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> LES</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> MOV</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> OR</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SBB</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SUB</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> TEST</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> XOR</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Rotacion</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RCL ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> RCR ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ROR ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ROL ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SAL ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SHL ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SAR ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> SHR ParametroRot</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ParametroRot</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Operador1 , <numero><span style="mso-spacerun:yes">           </span> /* => Aqui ir a el que procese el error com n en SHifts */</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Operador1 , CL</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Operador1</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Registro</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DosParams</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Registro , Inmediato</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria , Inmediato</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria , Memoria<span style="mso-spacerun:yes">              </span> => AssertErrorMem</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> DosParamsSinInmediato</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> DosParamsSinInmediato</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Registro , Registro</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Registro , Segmento</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">   </span> <span style="mso-spacerun:yes">  </span>-> Registro , Memoria</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Memoria , Registro</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> Segmento , Registro</span>
-
-<span lang="ES"></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> Inmediato</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> <numero></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">     </span> -> ExpresionConstante</span>
-
-<span lang="ES"></span>
-
-<span lang="ES">/* END. */</span>
-
-<span lang="ES"></span>
+/*END.*/
 
 </div>
 
-<span lang="ES"></span>
-
-<span lang="ES"></span>
-
-<span lang="ES">Se anexa a continuación, un resumen del archivo de reglas del dominio (ASM.CLP), tal como se utiliz  en las primeras pruebas. Se encuentran en el lenguaje propio de CLIPS.</span>
-
-<span lang="ES"></span>
+Se anexa a continuación, un resumen del archivo de reglas del dominio (ASM.CLP), tal como se utiliz  en las primeras pruebas. Se encuentran en el lenguaje propio de CLIPS.
 
 <div style="border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
 padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
-<span lang="ES">;;;======================================================</span>
+;;;======================================================
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">    </span> Diagnostica algunos ejemplos simples de fallas del</span>
+;;;     Diagnostica algunos ejemplos simples de fallas del
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">    </span> conocimiento que ha absorbido el alumno</span>
+;;;     conocimiento que ha absorbido el alumno
 
-<span lang="ES">;;;</span>
+;;;
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">    </span> CLIPS Version 6.0</span>
+;;;     CLIPS Version 6.0
 
-<span lang="ES">;;;</span>
+;;;
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">    </span> To execute, merely load, reset and run.</span>
+;;;     To execute, merely load, reset and run.
 
-<span lang="ES">;;;======================================================</span>
+;;;======================================================
 
-<span lang="ES"></span>
+;;****************
 
-<span lang="ES">;;****************</span>
+;;*DEFFUNCTIONS*
 
-<span lang="ES">;;* DEFFUNCTIONS *</span>
+;;****************
 
-<span lang="ES">;;****************</span>
+;;;
 
-<span lang="ES"></span>
+;;; Funciones, espec ficamente para registrar errores/aciertos y ligar con
 
-<span lang="ES">;;;</span>
+;;; el modelo instruccional
 
-<span lang="ES">;;; Funciones, espec ficamente para registrar errores/aciertos y ligar con</span>
+;;;
 
-<span lang="ES">;;; el modelo instruccional</span>
+(deffunction registra-error (?numconcepto ?numlinea)
 
-<span lang="ES">;;;</span>
+   (incrementaexperiencia ?numconcepto 0 )
 
-<span lang="ES"></span>
+   (assert (concepto-asesorable ?numconcepto ?numlinea) )
 
-<span lang="ES">(deffunction registra-error (?numconcepto ?numlinea)</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (incrementaexperiencia ?numconcepto 0 )</span>
+(deffunction registra-acierto (?numconcepto)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (concepto-asesorable ?numconcepto ?numlinea) )</span>
+   (incrementaexperiencia ?numconcepto 1 )
 
-<span lang="ES">)</span>
+)
 
-<span lang="ES"></span>
+;;;******************************************************
 
-<span lang="ES">(deffunction registra-acierto (?numconcepto)</span>
+;;;* REGLA 1: Falta una directiva base de estructura del programa
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (incrementaexperiencia ?numconcepto 1 )</span>
+;;;******************************************************
 
-<span lang="ES">)</span>
+;;; Primero, reglas que permitan subir el n mero de aciertos cuando se
 
-<span lang="ES"></span>
+;;; define alguna directiva correctamente...
 
-<span lang="ES">;;;******************************************************</span>
+(defrule hay-directiva-model "Se define un modelo de memoria"
 
-<span lang="ES">;;;* REGLA 1: Falta una directiva base de estructura del programa</span>
+   (definida directiva modelo)
 
-<span lang="ES">;;;******************************************************</span>
+   =>
 
-<span lang="ES"></span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto
 
-<span lang="ES">;;; Primero, reglas que permitan subir el n mero de aciertos cuando se</span>
+   (registra-acierto 6)
 
-<span lang="ES">;;; define alguna directiva correctamente...</span>
+)
 
-<span lang="ES">(defrule hay-directiva-model "Se define un modelo de memoria"</span>
+(defrule hay-directiva-stack "Se define la pila"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva modelo)</span>
+   (definida directiva stack)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 6)</span>
+   (registra-acierto 7)
 
-<span lang="ES">)</span>
+)
 
-<span lang="ES"></span>
+(defrule hay-directiva-data "Se define el segmento de datos"
 
-<span lang="ES">(defrule hay-directiva-stack "Se define la pila"</span>
+   (definida directiva data)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva stack)</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto</span>
+   (registra-acierto 8)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 7)</span>
+)
 
-<span lang="ES">)</span>
+(defrule hay-directiva-code "Se define el segmento de c digo"
 
-<span lang="ES"></span>
+   (definida directiva code)
 
-<span lang="ES">(defrule hay-directiva-data "Se define el segmento de datos"</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva data)</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   (registra-acierto 9)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 8)</span>
+(defrule hay-directiva-end "Se define el final del c digo fuente"
 
-<span lang="ES">)</span>
+   (definida directiva end)
 
-<span lang="ES"></span>
+   =>
 
-<span lang="ES">(defrule hay-directiva-code "Se define el segmento de c digo"</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva code)</span>
+   (registra-acierto 10)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto</span>
+(defrule falta-directiva-model "Falta definir un modelo de memoria"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 9)</span>
+   (not (definida directiva modelo))
 
-<span lang="ES">)</span>
+   =>
 
-<span lang="ES"></span>
+   (assert (estado estructura-programa F))
 
-<span lang="ES">(defrule hay-directiva-end "Se define el final del c digo fuente"</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva end)</span>
+   (registra-error 6 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto</span>
+(defrule falta-directiva-stack "Falta reservar espacio para la pila"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 10)</span>
+   (not (definida directiva stack))
 
-<span lang="ES">)</span>
+   =>
 
-<span lang="ES"></span>
+   (assert (estado estructura-programa F))
 
-<span lang="ES">(defrule falta-directiva-model "Falta definir un modelo de memoria"</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva modelo))</span>
+   (registra-error 7 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (estado estructura-programa F))</span>
+(defrule falta-directiva-data "Falta definir el segmento donde ir n las variables"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo</span>
+   (not (definida directiva data))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 6 0) ;;; Ideal si se pudiera poner la  ltima l nea</span>
+   =>
 
-<span lang="ES">)</span>
+   (assert (estado estructura-programa F))
 
-<span lang="ES"></span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo
 
-<span lang="ES">(defrule falta-directiva-stack "Falta reservar espacio para la pila"</span>
+   (registra-error 8 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva stack))</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+(defrule falta-directiva-code "Falta definir el segmento de c digo"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (estado estructura-programa F))</span>
+   (not (definida directiva code))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 7 0) ;;; Ideal si se pudiera poner la  ltima l nea</span>
+   (assert (estado estructura-programa F))
 
-<span lang="ES">)</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo
 
-<span lang="ES"></span>
+   (registra-error 9 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
-<span lang="ES">(defrule falta-directiva-data "Falta definir el segmento donde ir n las variables"</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva data))</span>
+(defrule falta-directiva-end "Falta definir el final del c digo fuente"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   (not (definida directiva end))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (estado estructura-programa F))</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo</span>
+   (assert (estado estructura-programa F))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 8 0) ;;; Ideal si se pudiera poner la  ltima l nea</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo
 
-<span lang="ES">)</span>
+   (registra-error 10 0) ;;; Ideal si se pudiera poner la  ltima l nea
 
-<span lang="ES"></span>
+)
 
-<span lang="ES">(defrule falta-directiva-code "Falta definir el segmento de c digo"</span>
+(defrule sabe-estructurar-programa "El alumno ya cuenta con el esqueleto de estructura del programa"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva code))</span>
+   (not (estado estructura-programa ?))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (estado estructura-programa F))</span>
+   (assert (estado estructura-programa V))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo</span>
+   ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 9 0) ;;; Ideal si se pudiera poner la  ltima l nea</span>
+   (registra-acierto 4) ;;; Ideal si se pudiera poner la  ltima l nea
 
-<span lang="ES">)</span>
+)
 
-<span lang="ES"></span>
+;;;******************************************************
 
-<span lang="ES">(defrule falta-directiva-end "Falta definir el final del c digo fuente"</span>
+;;;* REGLA 5: No se cerr  un PROC
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva end))</span>
+;;;******************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+(defrule no-cerro-proc "Falta cerrar el procedimiento"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (estado estructura-programa F))</span>
+   (definida directiva proc ?nombre ?linea1)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo err neo</span>
+   (not (definida directiva endp ?nombre ?linea2))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 10 0) ;;; Ideal si se pudiera poner la  ltima l nea</span>
+   =>
 
-<span lang="ES">)</span>
+   (assert (falta-cerrar-procedimiento ?nombre))
 
-<span lang="ES"></span>
+   ;;; Concepto 3 = manejo de procedimientos, marcar un error
 
-<span lang="ES">(defrule sabe-estructurar-programa "El alumno ya cuenta con el esqueleto de estructura del programa"</span>
+   (registra-error 11 ?linea1)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (estado estructura-programa ?))</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+;;;******************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (estado estructura-programa V))</span>
+;;;* REGLA 6: Se cerr  un PROC que no se hab a abierto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 4 = manejo de la estructura del programa, manejo correcto</span>
+;;;******************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 4) ;;; Ideal si se pudiera poner la  ltima l nea</span>
+(defrule no-abrio-proc "Se cierra un procedimiento no definido"
 
-<span lang="ES">)</span>
+   (definida directiva endp ?nombre ?lin)
 
-<span lang="ES"></span>
+   (not (definida directiva proc ?nombre ?lin2))
 
-<span lang="ES">;;;******************************************************</span>
+   =>
 
-<span lang="ES">;;;* REGLA 5: No se cerr  un PROC</span>
+   (assert (falta-abrir-procedimiento ?nombre))
 
-<span lang="ES">;;;******************************************************</span>
+   ;;; Concepto 3 = manejo de procedimientos, marcar un error
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span></span>
+   (registra-error 12 ?lin )
 
-<span lang="ES">(defrule no-cerro-proc "Falta cerrar el procedimiento"</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva proc ?nombre ?linea1)</span>
+;;;******************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva endp ?nombre ?linea2))</span>
+;;;* REGLA 7: No se termin  apropiadamente un PROC con RET, JMP o INT 21h
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+;;;* servicio 4Ch
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (falta-cerrar-procedimiento ?nombre))</span>
+;;;******************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 3 = manejo de procedimientos, marcar un error</span>
+(defrule termino-bien-proc "No se termina apropiadamente el procedimiento"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 11 ?linea1)</span>
+   (definida directiva endp ?nombre ?lin)
 
-<span lang="ES">)</span>
+;;;   (accion-instruccion (verbo "existe") (instruccion "RET") (numlinea =(- ?lin 1) ))
 
-<span lang="ES"></span>
+   (accion-instruccion "existe" "RET" =(- ?lin 1) )
 
-<span lang="ES">;;;******************************************************</span>
+   =>
 
-<span lang="ES">;;;* REGLA 6: Se cerr  un PROC que no se hab a abierto</span>
+   (assert (termino-bien-procedimiento ?nombre))
 
-<span lang="ES">;;;******************************************************</span>
+   ;;; Concepto 3 = manejo de procedimientos, manejo correcto
 
-<span lang="ES"></span>
+   (registra-acierto 13 )
 
-<span lang="ES">(defrule no-abrio-proc "Se cierra un procedimiento no definido"</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva endp ?nombre ?lin)</span>
+(defrule termino-bien-proc-2 "No se termina apropiadamente el procedimiento"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (definida directiva proc ?nombre ?lin2))</span>
+   (definida directiva endp ?nombre ?lin)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+;;;   (accion-instruccion (verbo "existe") (instruccion "JMP") (numlinea =(- ?lin 1) ) )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (falta-abrir-procedimiento ?nombre))</span>
+   (accion-instruccion "existe" "JMP" =(- ?lin 1) )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 3 = manejo de procedimientos, marcar un error</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 12 ?lin )</span>
+   (assert (termino-bien-procedimiento ?nombre))
 
-<span lang="ES">)</span>
+   ;;; Concepto 3 = manejo de procedimientos, manejo correcto
 
-<span lang="ES"></span>
+   (registra-acierto 13 )
 
-<span lang="ES">;;;******************************************************</span>
+)
 
-<span lang="ES">;;;* REGLA 7: No se termin  apropiadamente un PROC con RET, JMP o INT 21h</span>
+(defrule termino-bien-proc-3 "No se termina apropiadamente el procedimiento"
 
-<span lang="ES">;;;* servicio 4Ch</span>
+   (definida directiva endp ?nombre ?lin)
 
-<span lang="ES">;;;******************************************************</span>
+   (not (termino-bien-procedimiento ?nombre))
 
-<span lang="ES"></span>
+;;;   (accion-instruccion (verbo "existe") (instruccion "INT")
 
-<span lang="ES">(defrule termino-bien-proc "No se termina apropiadamente el procedimiento"</span>
+;;;        (numlinea =(- ?lin 1) ) (parametro_numero "21H") )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva endp ?nombre ?lin)</span>
+   (accion-instruccion "existe" "INT" =(- ?lin 1) "21H" )
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">  </span> (accion-instruccion (verbo "existe") (instruccion "RET") (numlinea =(- ?lin 1) ))</span>
+   ;;; Checar que el servicio sea el 4Ch...
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "RET" =(- ?lin 1) )</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   (assert (termino-bien-procedimiento ?nombre))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (termino-bien-procedimiento ?nombre))</span>
+   ;;; Concepto 3 = manejo de procedimientos, manejo correcto
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 3 = manejo de procedimientos, manejo correcto</span>
+   (registra-acierto 13 )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 13 )</span>
+)
 
-<span lang="ES">)</span>
+(defrule no-termino-bien-proc "No se termina apropiadamente el procedimiento"
 
-<span lang="ES"></span>
+   (definida directiva proc ?nombre ?lin)
 
-<span lang="ES">(defrule termino-bien-proc-2 "No se termina apropiadamente el procedimiento"</span>
+   (not (termino-bien-procedimiento ?nombre))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva endp ?nombre ?lin)</span>
+   (definida directiva endp ?nombre ?lin2)
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">  </span> (accion-instruccion (verbo "existe") (instruccion "JMP") (numlinea =(- ?lin 1) ) )</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "JMP" =(- ?lin 1) )</span>
+   (assert (no-termino-bien-procedimiento ?nombre))
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   ;;; Concepto 3 = manejo de procedimientos, error com n
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (termino-bien-procedimiento ?nombre))</span>
+   (registra-error 13 ?lin2)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 3 = manejo de procedimientos, manejo correcto</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 13 )</span>
+(defrule checar "hay error de sintaxis?"
 
-<span lang="ES">)</span>
+   (error-sintaxis ?x)
 
-<span lang="ES"></span>
+   =>
 
-<span lang="ES">(defrule termino-bien-proc-3 "No se termina apropiadamente el procedimiento"</span>
+   (registra-error 5 ?x)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva endp ?nombre ?lin)</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (termino-bien-procedimiento ?nombre))</span>
+;;;***************************************************************
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">  </span> (accion-instruccion (verbo "existe") (instruccion "INT")</span>
+;;;* REGLA 64: Reglas de optimizaci n de instrucciones de Strings
 
-<span lang="ES">;;;<span style="mso-spacerun:yes">       </span> (numlinea =(- ?lin 1) ) (parametro_numero "21H") )</span>
+;;;***************************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "INT" =(- ?lin 1) "21H" )</span>
+;;;* Faltante: validar que la etiqueta del loop corresponda...
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Checar que el servicio sea el 4Ch...</span>
+;;;***************************************************************
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+(defrule se-puede-rep-1 "Puede usarse REP"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (termino-bien-procedimiento ?nombre))</span>
+   (accion-instruccion "existe" "LOOP" ?lin )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 3 = manejo de procedimientos, manejo correcto</span>
+   (accion-instruccion "existe" "STOS" =(- ?lin 1) )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-acierto 13 )</span>
+   =>
 
-<span lang="ES">)</span>
+   ;;; Concepto 14 - uso de REP para optimizar instr. Strings
 
-<span lang="ES"></span>
+   (registra-error 14 ?lin)
 
-<span lang="ES">(defrule no-termino-bien-proc "No se termina apropiadamente el procedimiento"</span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva proc ?nombre ?lin)</span>
+(defrule se-puede-rep-2 "Puede usarse REP"
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (not (termino-bien-procedimiento ?nombre))</span>
+   (accion-instruccion "existe" "LOOP" ?lin )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (definida directiva endp ?nombre ?lin2)</span>
+   (accion-instruccion "existe" "MOVS" =(- ?lin 1) )
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (assert (no-termino-bien-procedimiento ?nombre))</span>
+   ;;; Concepto 14 - uso de REP para optimizar instr. Strings
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 3 = manejo de procedimientos, error com n</span>
+   (registra-error 14 ?lin)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 13 ?lin2)</span>
+)
 
-<span lang="ES">)</span>
+(defrule memoria-memoria "hay error de memoria-memoria"
 
-<span lang="ES"></span>
+   (error-memoria ?x)
 
-<span lang="ES">(defrule checar "hay error de sintaxis?"</span>
+   =>
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (error-sintaxis ?x)</span>
+   (registra-error 15 ?x)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
+)
 
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 5 ?x)</span>
+(defrule se-puede-usar-string-1 "Puede usarse instruccion de string"
 
-<span lang="ES">)</span>
+   (accion-instruccion "usado-indice" ?lin ?indice )
 
-<span lang="ES"></span>
+   (accion-instruccion "avanza-indice" ?lin2 ?indice )
 
-<span lang="ES">;;;***************************************************************</span>
+   =>
 
-<span lang="ES">;;;* REGLA 64: Reglas de optimizaci n de instrucciones de Strings</span>
+   ( if ( < (abs (- ?lin ?lin2)) 5 ) then
 
-<span lang="ES">;;;***************************************************************</span>
+           ;;; Concepto 1 - manejo de instrucciones de strings
 
-<span lang="ES">;;;* Faltante: validar que la etiqueta del loop corresponda...</span>
+           (registra-error 1 ?lin)
 
-<span lang="ES">;;;***************************************************************</span>
+   )
 
-<span lang="ES"></span>
-
-<span lang="ES">(defrule se-puede-rep-1 "Puede usarse REP"</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "LOOP" ?lin )</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "STOS" =(- ?lin 1) )</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 14 - uso de REP para optimizar instr. Strings</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 14 ?lin)</span>
-
-<span lang="ES">)</span>
-
-<span lang="ES"></span>
-
-<span lang="ES">(defrule se-puede-rep-2 "Puede usarse REP"</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "LOOP" ?lin )</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "existe" "MOVS" =(- ?lin 1) )</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ;;; Concepto 14 - uso de REP para optimizar instr. Strings</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 14 ?lin)</span>
-
-<span lang="ES">)</span>
-
-<span lang="ES"></span>
-
-<span lang="ES">(defrule memoria-memoria "hay error de memoria-memoria"</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (error-memoria ?x)</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (registra-error 15 ?x)</span>
-
-<span lang="ES">)</span>
-
-<span lang="ES"></span>
-
-<span lang="ES">(defrule se-puede-usar-string-1 "Puede usarse instruccion de string"</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "usado-indice" ?lin ?indice )</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> (accion-instruccion "avanza-indice" ?lin2 ?indice )</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> =></span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> ( if ( < (abs (- ?lin ?lin2)) 5 ) then</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">          </span> ;;; Concepto 1 - manejo de instrucciones de strings</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">          </span> (registra-error 1 ?lin)</span>
-
-<span lang="ES"><span style="mso-spacerun:yes">  </span> )</span>
-
-<span lang="ES">)</span>
-
-</div>
-
-<span lang="ES"></span>
-
-</div>
-
-</o:smarttagtype></o:smarttagtype>
+)

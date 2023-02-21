@@ -1,0 +1,24 @@
+# **LISTA DE FIGURAS.**
+
+- Figura 1: Diagrama de contexto del proceso de aprendizaje de un lenguaje de programación	14
+- Figura 2: Modelo básico del aprendiz según Gagné	33
+- Figura 3: Fases y sucesos del aprendizaje según Gagné	34
+- Figura 4: Proceso de la enseñanza de lenguajes de programación	37
+- Figura 5: Modelo de dos roles (alumno/profesor)	38
+- Figura 6: Modelo de tres roles, transmisor - receptor - asesor.	40
+- Figura 7: Participantes que juegan los tres roles	41
+- Figura 8: Arquitectura de sistemas tutores inteligentes, según Kaplan	51
+- Figura 9: Arquitectura de sistemas tutores inteligentes, según Clancey	52
+- Figura 10: Relación entre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interface Hombre-Máquina	56
+- Figura 11: Arquitectura general de ANGEL	62
+- Figura 12: Arquitectura física de ANGEL	82
+- Figura 13: Arquitectura de la interface	90
+- Figura 14: Pantalla de la interface con el alumno	91
+- Figura 15: Pantalla de reportes en la interface con el profesor	92
+- Figura 16: Arquitectura del modelo del dominio	94
+- Figura 17: Ejemplo de implementación de una regla	97
+- Figura 18: Arquitectura del modelo del estudiante	100
+- Figura 19: Arquitectura del modelo instruccional	103
+- Figura 20: Planteamiento del problema para probar ANGEL	108
+- Figura 21: Asesoría no irruptiva al alumno	109
+- Figura 22: Nivel superior de asesoría solicitada por el alumno	109
