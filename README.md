@@ -6,5 +6,13 @@ It later evolved to a proper HTML web site, supporting Netscape 2.0 and the init
 
 The initial version in this repo is a backup from 2005; I stopped hosting the website around 2008, then got inspired by the [Some Assembly Required](https://github.com/hackclub/some-assembly-required) repo (thanks [Hugo Garcia](https://github.com/orgs/socialrewind/people/HugoGaMo) for the reference), to share it and modernize to make it more usable leveraging Github capabilities
 
+New entry points for GitHub navigation
+
+[Assembly language](Asm/Readme.md)
+
+[Resume](Resume/Resume2022.md)
+
+[Research](Investigacion/default.md)
+
 **Disclaimer**: This is a personal project, initiated before I had any association with Microsoft (other than being a user of some of their products) and before Github was created in 2007.
 Nothing in this project is related to work on any other entity except when I [taught](https://web.archive.org/web/19980425113543/http:/anubis.ccm.itesm.mx/htdocs/profesores.html) at [Tec CCM](https://tec.mx/en/ciudad-de-mexico-campus), and I am the only author of the content, which I shared freely except for an specific project within Tec CCM, where the content was repurposed in a separate intellectual property.
