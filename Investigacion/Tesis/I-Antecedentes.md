@@ -1,4 +1,4 @@
-## I-Antecedentes
+# I-Antecedentes
 
 ## 1.1 Panorama del capítulo
 
@@ -10,96 +10,13 @@ Dentro de la enseñanza de los lenguajes de programación, tenemos como objetivo
 
 Durante la experiencia del autor como instructor y profesor de diversos lenguajes de programación, se ha observado que se pueden clasificar dichos conocimientos y habilidades, en la forma siguiente:
 
+| Conocimientos del lenguaje | Habilidades |
+| --- | --- |
+| Léxico (palabras reservadas; funciones de librería; signos de puntuación y su uso como separadores o terminadores; constantes numéricas y alfanuméricas; forma de los identificadores o variables que puede definir el usuario). | Planteamiento y diseño de algoritmos para la solución de problemas. |
+| Sintaxis (orden correcto para utilizar las palabras del léxico). | Capacidad de detectar rápidamente los errores de lógica, es decir, en el planteamiento del algoritmo. |
+| Gramática (forma en la que se relacionan las unidades sintácticas, por ejemplo las instrucciones del lenguaje, para conseguir la ejecución de un proceso complejo). | Experiencia en los errores comunes propios del lenguaje, que permite prevenirlos además de detectarlos eficientemente. |
 
-<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .75pt;
- mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.75pt solid windowtext;
- mso-border-insidev:.75pt solid windowtext">
-
-<tbody>
-
-<tr style="mso-yfti-irow:0">
-
-<td width="318" valign="top" style="width:238.65pt;border:solid windowtext 1.0pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-**Conocimientos del lenguaje**
-
-</td>
-
-<td width="318" valign="top" style="width:238.65pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-**Habilidades**
-
-</td>
-
-</tr>
-
-<td width="318" valign="top" style="width:238.65pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Léxico (palabras reservadas; funciones de librería; signos de puntuación y su uso como separadores o terminadores; constantes numéricas y alfanuméricas; forma de los identificadores o variables que puede definir el usuario).
-
-</td>
-
-<td width="318" valign="top" style="width:238.65pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Planteamiento y diseño de algoritmos para la solución de problemas.
-
-</td>
-
-</tr>
-
-<td width="318" valign="top" style="width:238.65pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Sintaxis (orden correcto para utilizar las palabras del léxico).
-
-</td>
-
-<td width="318" valign="top" style="width:238.65pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Capacidad de detectar rápidamente los errores de lógica, es decir, en el planteamiento del algoritmo.
-
-</td>
-
-</tr>
-
-<tr style="mso-yfti-irow:3;mso-yfti-lastrow:yes">
-
-<td width="318" valign="top" style="width:238.65pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Gramática (forma en la que se relacionan las unidades sintácticas, por ejemplo las instrucciones del lenguaje, para conseguir la ejecución de un proceso complejo).
-
-</td>
-
-<td width="318" valign="top" style="width:238.65pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Experiencia en los errores comunes propios del lenguaje, que permite prevenirlos además de detectarlos eficientemente.
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-Tabla 1: Conocimientos y habilidades que se adquieren en la programación.
+#### Tabla 1: Conocimientos y habilidades que se adquieren en la programación.
 
 El proceso actual de enseñanza-aprendizaje se puede considerar como limitado, en ocasiones por la falta de habilidades del instructor, en ocasiones por la inadecuada preparación previa de los alumnos, por la ineficiencia en el proceso de transmisión de conocimientos, o por la ineficiencia en la retroalimentación, entre otras posibles razones.
 
@@ -129,11 +46,6 @@ Ahora bien, hay un nivel más alto de abstracción, donde se expresan ya no idea
 
 Siguiendo un enfoque sistémico, si deseamos mejorar la salida del proceso (por ejemplo, la eficacia y eficiencia del alumno al resolver problemas utilizando el lenguaje de programación), requerimos en primer lugar conseguir su calidad, controlando y estandarizando al proceso; reconocer las variaciones debidas a las entradas (distintos alumnos, con distintas experiencias académicas, habilidades adquiridas, y estilos de aprendizaje), y con esta información, modificar el proceso incrementalmente; lo cual puede lograrse por medio de ajustes a las variables que limitan la capacidad de cada uno de los subsistemas, así como a través de cambios completos en el proceso o sus subsistemas, probando nuevos enfoques sobre cómo conseguir el resultado deseado.
 
-<div style="mso-element:frame;mso-element-frame-width:463.3pt;mso-element-frame-height:
-330.8pt;mso-element-frame-hspace:7.05pt;mso-element-wrap:auto;mso-element-anchor-vertical:
-paragraph;mso-element-anchor-horizontal:page;mso-element-left:89.15pt;
-mso-element-top:1.1pt">
-
 <table cellspacing="0" cellpadding="0" hspace="0" vspace="0" width="627" height="441">
 
 <tbody>
@@ -146,16 +58,22 @@ mso-element-top:1.1pt">
 <div style="border:1.0pt solid windowtext;mso-border-alt:solid windowtext .75pt;
   padding:1.0pt; ; width:629; height:435">
 
+<span lang="ES"></span>
+
 <span style="mso-ignore:vglayout;position:absolute;z-index:1;left:219px;top:2276px;
-width:213px;height:165px">![](I-Antecedentes_files/image001.gif)<span style="mso-ignore:vglayout;position:
-absolute;z-index:2;left:px;top:2318px;width:158px;height:90px">![Text Box: Proceso de aprendizaje del lenguaje de programación
-](I-Antecedentes_files/image002.gif)<span style="mso-ignore:vglayout;position:
+width:213px;height:165px">![](I-Antecedentes_files/image001.gif)</span><span style="mso-ignore:vglayout;position:
+absolute;z-index:2;left:248px;top:2318px;width:158px;height:90px">![Text Box: Proceso de aprendizaje del lenguaje de programación
+](I-Antecedentes_files/image002.gif)</span><span style="mso-ignore:vglayout;position:
 absolute;z-index:3;left:46px;top:2166px;width:198px;height:92px">![Text Box: Alumno con las habilidades desarrolladas y los conocimientos apropiados
-](I-Antecedentes_files/image003.gif)<span style="mso-ignore:vglayout;position:
+](I-Antecedentes_files/image003.gif)</span><span style="mso-ignore:vglayout;position:
 absolute;z-index:4;left:440px;top:2439px;width:198px;height:131px">![Text Box: Alumno que no cuenta con los conocimientos y habilidades que le permitan utilizar eficazmente el lenguaje de programación
-](I-Antecedentes_files/image004.gif)<span style="mso-ignore:vglayout;position:
-absolute;z-index:5;left:430px;top:2343px;width:176px;height:105px">![](I-Antecedentes_files/image005.gif)<span style="mso-ignore:vglayout;position:
-absolute;z-index:6;left:123px;top:2251px;width:105px;height:99px">![](I-Antecedentes_files/image006.gif)
+](I-Antecedentes_files/image004.gif)</span><span style="mso-ignore:vglayout;position:
+absolute;z-index:5;left:430px;top:2343px;width:176px;height:105px">![](I-Antecedentes_files/image005.gif)</span><span style="mso-ignore:vglayout;position:
+absolute;z-index:6;left:123px;top:2251px;width:105px;height:99px">![](I-Antecedentes_files/image006.gif)</span>
+
+<span lang="ES"></span>
+
+<span lang="ES"></span>
 
 </div>
 
@@ -167,9 +85,7 @@ absolute;z-index:6;left:123px;top:2251px;width:105px;height:99px">![](I-Antecede
 
 </table>
 
-</div>
-
-Figura 1: Diagrama de contexto del proceso de aprendizaje de un lenguaje de programación
+##### Figura 1: Diagrama de contexto del proceso de aprendizaje de un lenguaje de programación
 
 De acuerdo a este enfoque sistémico, para conseguir el control de calidad de este proceso, requerimos una mejor compresión de lo que está ocurriendo en este proceso de aprendizaje; y necesitamos asegurarnos que los recursos utilizados sean los apropiados, y que el alumno cuente con ellos en el momento oportuno. En general, las limitantes para su aprendizaje pueden clasificarse en dos tipos:
 
@@ -195,74 +111,15 @@ Desde el punto de vista de algunos filósofos contemporáneos, tales como Focaul
 
 Para ayudar a la comparación, Dennis McCallum presenta en "_The_ _Death of Truth_" [E1] un ejemplo de cómo se ven cuatro conceptos básicos de la educación, desde las dos posiciones filosóficas, la "modernista" contra la "posmodernista".
 
-<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
- mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.5pt solid windowtext;
- mso-border-insidev:.5pt solid windowtext">
-
-<tbody>
-
-<tr style="mso-yfti-irow:0">
-
-<td width="636" valign="top" style="width:477.35pt;border:solid windowtext 1.0pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Conocimiento:
-
-**M:**Los educadores, idealmente, deben ser transmisores reconocidos de conocimiento no sesgado.
-
-**P:**Los educadores son facilitadores y copartícipes en la construcción del conocimiento; con un enfoque sesgado.
-
-</td>
-
-</tr>
-
-<td width="636" valign="top" style="width:477.35pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
-
-Cultura:
-
-**M:**Los estudiantes deben aprender sobre la cultura, pero ésta puede ser una barrera para el aprendizaje. Por tanto, los estudiantes de culturas diversas deben entrenarse en un lenguaje o medio de comunicación común, antes de que el profesor sea capaz de transmitirles conocimiento.
-
-**P:**La meta modernista de unificar la sociedad ha resultado en dominación y explotación, ya que esa unificación se basa en la cultura dominante; no solamente toda cultura tiene el mismo valor, sino que constituye una realidad igualmente importancia; los estudiantes que pertenecen a minorías deben contar con las herramientas para evitar ser absorbidos por la cultura dominante, occidental.
-
-</td>
-
-</tr>
-
-<td width="636" valign="top" style="width:477.35pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
-
-Valores:
-
-**M:**según los modernistas más conservadores, los educadores son autoridades legítimas en cuanto a valores, por lo tanto deben entrenar a los estudiantes en los valores universales; según modernistas 'liberales', la educación debe ser independiente de los valores. Los profesores ayudan a los estudiantes a aclarar sus valores, es decir, a decidir con qué valores se comprometerá cada estudiante como individuo. Los valores pueden y deben separarse de los hechos. Los valores más importantes son la racionalidad y el progreso.
-
-**P:**La educación debe ayudar a los estudiantes a construir valores diversos y útiles en lo personal, en el contexto de su cultura. Los valores son útiles solamente para <span class="GramE">una cultura dada, no verdaderos o correctos en ningún sentido universal. Ya que los profesores no pueden evitar enseñar bajo sus propios valores, es aceptable que promuevan abiertamente sus valores en el salón de clases. Entre los valores que es importante enseñar, se encuentran la búsqueda de la diversidad, la tolerancia, libertad, creatividad, emociones e intuición.
-
-</td>
-
-</tr>
-
-<tr style="mso-yfti-irow:3;mso-yfti-lastrow:yes">
-
-<td width="636" valign="top" style="width:477.35pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
-
-Naturaleza humana:
-
-**M:**Existe una personalidad estable e inherente al individuo, que puede conocerse objetivamente. En base a esto, los tests de inteligencia y otras pruebas ''objetivas'' similares, pueden ser usados para descubrir la inteligencia innata del estudiante. Al proporcionarles el dominio de una asignatura, el profesor promueve la autoestima de los alumnos. La educación ayuda a los individuos a descubrir sus identidades. Los individuos y la sociedad progresan al aprender y aplicar conocimiento objetivo.
-
-**P:**Los estudiantes no tienen una esencia innata. En su lugar, la personalidad es construida en un contexto social. Los educadores posmodernos consideran que la autoestima es una precondición para el aprendizaje. Consideran la educación como una terapia, la cual ayuda a los individuos a construir sus identidades, en lugar de descubrirlas. El progreso del individuo y de la sociedad ocurre cuando a las personas se les otorga la libertad para elegir y alcanzar sus propias metas.
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+| Conocimiento |  |
+| --- | --- |
+| **M:** Los educadores, idealmente, deben ser transmisores reconocidos de conocimiento no sesgado. | **P:** Los educadores son facilitadores y copartícipes en la construcción del conocimiento; con un enfoque sesgado. |
+| Cultura |  |
+| **M:** Los estudiantes deben aprender sobre la cultura, pero ésta puede ser una barrera para el aprendizaje. Por tanto, los estudiantes de culturas diversas deben entrenarse en un lenguaje o medio de comunicación común, antes de que el profesor sea capaz de transmitirles conocimiento. | **P:** La meta modernista de unificar la sociedad ha resultado en dominación y explotación, ya que esa unificación se basa en la cultura dominante; no solamente toda cultura tiene el mismo valor, sino que constituye una realidad igualmente importancia; los estudiantes que pertenecen a minorías deben contar con las herramientas para evitar ser absorbidos por la cultura dominante, occidental. |
+| Valores |  |
+| **M:** Según los modernistas más conservadores, los educadores son autoridades legítimas en cuanto a valores, por lo tanto deben entrenar a los estudiantes en los valores universales; según modernistas 'liberales', la educación debe ser independiente de los valores. Los profesores ayudan a los estudiantes a aclarar sus valores, es decir, a decidir con qué valores se comprometerá cada estudiante como individuo. Los valores pueden y deben separarse de los hechos. Los valores más importantes son la racionalidad y el progreso. | **P:** La educación debe ayudar a los estudiantes a construir valores diversos y útiles en lo personal, en el contexto de su cultura. Los valores son útiles solamente para una cultura dada, no verdaderos o correctos en ningún sentido universal. Ya que los profesores no pueden evitar enseñar bajo sus propios valores, es aceptable que promuevan abiertamente sus valores en el salón de clases. Entre los valores que es importante enseñar, se encuentran la búsqueda de la diversidad, la tolerancia, libertad, creatividad, emociones e intuición. |
+| Naturaleza humana |  |
+| **M:** Existe una personalidad estable e inherente al individuo, que puede conocerse objetivamente. En base a esto, los tests de inteligencia y otras pruebas ''objetivas'' similares, pueden ser usados para descubrir la inteligencia innata del estudiante. Al proporcionarles el dominio de una asignatura, el profesor promueve la autoestima de los alumnos. La educación ayuda a los individuos a descubrir sus identidades. Los individuos y la sociedad progresan al aprender y aplicar conocimiento objetivo. | **P:** Los estudiantes no tienen una esencia innata. En su lugar, la personalidad es construida en un contexto social. Los educadores posmodernos consideran que la autoestima es una precondición para el aprendizaje. Consideran la educación como una terapia, la cual ayuda a los individuos a construir sus identidades, en lugar de descubrirlas. El progreso del individuo y de la sociedad ocurre cuando a las personas se les otorga la libertad para elegir y alcanzar sus propias metas. |
 
 Muchas de las universidades más reconocidas del mundo, siguiendo la tendencia del pensamiento posmodernista, y el trabajo de pedagogos como Piaget, han iniciado un proceso de rediseño de su modelo educativo; un ejemplo de esto está dentro del ITESM [1]. En este último trabajo, se usa la terminología "tradicional" y "nuevo", en lugar de "modernista" y "posmodernista"; para propósitos de este análisis, se consideran enfoques equivalentes.
 
@@ -376,18 +233,18 @@ Para llegar a este objetivo, deberemos cumplir ciertos objetivos específicos:
 
 El presente trabajo pretende exponer cómo se han ido cumpliendo los objetivos indicados en la sección anterior. Para ello, se divide en 7 capítulos:
 
--El capítulo no. 1, "[Antecedentes](#i-antecedentes)", ha pretendido presentar el contexto de donde surge esta investigación, y sus objetivos, haciendo una recapitulación respecto a los planteados en la Propuesta de Tesis [[E2](propuesta.md)].
+- El capítulo no. 1, "Antecedentes", ha pretendido presentar el contexto de donde surge esta investigación, y sus objetivos, haciendo una recapitulación respecto a los planteados en la Propuesta de Tesis [E2](propuesta.md).
 
--El capítulo no. 2, "El proceso de enseñanza-aprendizaje de los lenguajes de programación", expone la situación actual sobre cómo es este proceso, especialmente revisando el subproceso de "asesoría" donde el profesor asiste y retroalimenta en forma personalizada al alumno.
+- El capítulo no. 2, "El proceso de enseñanza-aprendizaje de los lenguajes de programación", expone la situación actual sobre cómo es este proceso, especialmente revisando el subproceso de "asesoría" donde el profesor asiste y retroalimenta en forma personalizada al alumno.
 
- El capítulo no. 3, "Sistemas Tutoriales Inteligentes", hace una recapitulación sobre los avances en esta rama, justifica por qué el asesor objeto de este trabajo se sitúa dentro de los mismos, y presenta una introducción general al tema que proporcione un contexto para los siguientes capítulos.
+- El capítulo no. 3, "Sistemas Tutoriales Inteligentes", hace una recapitulación sobre los avances en esta rama, justifica por qué el asesor objeto de este trabajo se sitúa dentro de los mismos, y presenta una introducción general al tema que proporcione un contexto para los siguientes capítulos.
 
- El capítulo no. 4, "Modelado del problema", trata sobre el diseño de la arquitectura y selección de las herramientas de distintas disciplinas utilizadas para poder construir el asesor inteligente, así como el diseño de interfase y de pruebas para comprobar su funcionalidad.
+- El capítulo no. 4, "Modelado del problema", trata sobre el diseño de la arquitectura y selección de las herramientas de distintas disciplinas utilizadas para poder construir el asesor inteligente, así como el diseño de interfase y de pruebas para comprobar su funcionalidad.
 
- El capítulo no. 5, "programación del asesor inteligente", cubre la implementación computacional del asesor y los problemas encontrados en la misma, así como las soluciones correspondientes.
+- El capítulo no. 5, "programación del asesor inteligente", cubre la implementación computacional del asesor y los problemas encontrados en la misma, así como las soluciones correspondientes.
 
- El capítulo no. 6, "Pruebas", detalla la ejecución de las mismas, donde el asesor inteligente interactúa con alumnos reales y la medición del cambio en el desempeño generado por el asesor.
+- El capítulo no. 6, "Pruebas", detalla la ejecución de las mismas, donde el asesor inteligente interactúa con alumnos reales y la medición del cambio en el desempeño generado por el asesor.
 
- El capítulo no. 7, "Análisis y discusión de los resultados", revisa los resultados, presenta las conclusiones generales del trabajo, y ofrece información sobre las líneas de investigación y trabajo futuros.
+- El capítulo no. 7, "Análisis y discusión de los resultados", revisa los resultados, presenta las conclusiones generales del trabajo, y ofrece información sobre las líneas de investigación y trabajo futuros.
 
 Se incluyen como anexos, el detalle de las reglas planteadas, en los distintos dominios utilizados; información sobre el código fuente del asesor; y un glosario apropiado para facilitar la compresión de los términos técnicos utilizados a lo largo del trabajo.

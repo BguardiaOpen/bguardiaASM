@@ -1,4 +1,4 @@
-## Apéndice A: Glosario
+# Apéndice A: Glosario
 
 Se presenta esta serie de definiciones, para clarificar el sentido en el que se toman estos conceptos, para propósitos de este trabajo y evitar la ambigüedad producto de los distintas aplicaciones de dichos términos, ya que la semántica de los mismos suele cambiar de acuerdo al contexto.
 

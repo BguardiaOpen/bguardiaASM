@@ -1,6 +1,6 @@
-## Bibliografía
+# Bibliografía
 
-### Bibliografía utilizada
+## Bibliografía utilizada
 
 [1] ITESM, Vicerrectoría académica: "_Hacia un nuevo modelo del proceso de enseñanza-aprendizaje basado en la Misión del Tecnológico de Monterrey para el año 2005_".  
 Documento de trabajo, mayo de 1997.

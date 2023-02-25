@@ -1,4 +1,4 @@
-## Resumen
+# Resumen
 
 En este trabajo se presenta la arquitectura base ANGEL (Asesor iNteligente Genérico para la Enseñanza de Lenguajes de Programación), la cual permite implementar en forma flexible un asesor inteligente que asista al alumno; con la capacidad de adaptarse a distintos lenguajes de Programación, o distintos modelos de enseñanza.
 

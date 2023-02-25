@@ -1,29 +1,30 @@
 # CONTENIDO
-
   
-### [DEDICATORIA](Dedicatoria.md)
-> 
-### [RECONOCIMIENTOS](Reconocimientos.md)
-> 
-### [RESUMEN](resumen.md)
-> 
-### [LISTA DE FIGURAS](ListaFiguras.md)
-> 
-### [LISTA DE TABLAS](ListaTablas.md)
-> 
-### 1\. [ANTECEDENTES](I-Antecedentes.md)
-> 
+## [DEDICATORIA](Dedicatoria.md)
+
+## [RECONOCIMIENTOS](Reconocimientos.md)
+
+## [RESUMEN](resumen.md)
+
+## [LISTA DE FIGURAS](ListaFiguras.md)
+
+## [LISTA DE TABLAS](ListaTablas.md)
+
+## 1\. [ANTECEDENTES](I-Antecedentes.md)
+
 ### 1.1\. Panorama del Capítulo  
+
 1.2\. Limitantes en la enseñanza de lenguajes de programación  
 1.3\. Cambios en el modelo de enseñanza/aprendizaje  
 1.4\. La tendencia de utilizar la tecnología computacional en la enseñanza  
 1.5\. Asesores inteligentes  
 1.6\. Objetivos del trabajo
 1.7\. Organización del trabajo
-> 
+>
 ### 2. [EL PROCESO DE ENSEÑANZA - APRENDIZAJE DE UN LENGUAJE EN LAS MATERIAS DE PROGRAMACIÓN](II-Proceso.md)
-> 
+>
 #### 2.1\. Panorama del Capítulo  
+
 2.2\. Modelos de Enseñanza-Aprendizaje  
 2.2.1 Introducción  
 2.2.2 Teorías instruccionales  
@@ -32,10 +33,11 @@
 2.5\. Comparación de modelos instruccionales con la situación actual  
 2.6\. Selección de un modelo de referencia  
 2.7\. Conclusiones
-> 
+>
 ### 3\. [SISTEMAS TUTORES INTELIGENTES](III-STIs.md)
-> 
+>
 #### 3.1\. Panorama del capítulo  
+
 3.2\. Revisión histórica  
 3.2.1 SCHOLAR  
 3.2.2 West  
@@ -49,10 +51,11 @@
 3.6.2 Sistemas adaptativos: una clasificación  
 3.7\. Asesores inteligentes  
 3.8\. Conclusiones
- 
+
 ### 4\. [MODELADO DE LA ARQUITECTURA](IV-Modelado.md)
- 
+
 #### 4.1\. Panorama del capítulo  
+
 4.2\. Papel del asesor inteligente en el proceso de enseñanza - aprendizaje  
 4.3\. Adaptación del curso  
 4.4\. Diseño de la arquitectura  
@@ -62,10 +65,11 @@
 4.4.4 Diseño del modelo del estudiante  
 4.4.5 Diseño del modelo instruccional o pedagógico  
 4.5\. Conclusiones
- 
+
 ### 5\. [PROGRAMACIÓN DE ANGEL](V-Programar.md)
- 
+
 #### 5.1\. Panorama del Capítulo  
+
 5.2\. Arquitectura física general  
 5.3\. Selección de herramientas  
 5.3.1 Selección del lenguaje de programación  
@@ -91,30 +95,33 @@
 5.7.1 Construcción de funciones auxiliares y su uso desde reglas  
 5.7.2 Planteamiento de las reglas  
 5.8\. Conclusiones
- 
+
 ### 6\. [PRUEBAS](VI-Pruebas.md)
- 
+
 #### 6.1\. Panorama del capítulo  
+
 6.2\. Diseño de experimentos  
 6.3\. Pruebas preliminares realizadas con el asesor inteligente  
- 
+
 ### 7\. [CONCLUSIONES Y TRABAJO FUTURO](VII-Conclusion.md)
- 
+
 #### 7.1\. Resumen del trabajo  
+
 7.2\. Conclusiones generales del trabajo  
 7.3\. Continuación de este trabajo  
 7.4\. Líneas de investigación propuestas para trabajos futuros  
 7.5\. Contribución esperada
- 
+
 ### [BIBLIOGRAFÍA](Bibliografia.md)
- 
-#### Bibliografía utilizada  
-##### Bibliografía electrónica
- 
+
+## Bibliografía utilizada  
+
+### Bibliografía electrónica
+
 ### APÉNDICE A: [GLOSARIO](ApendiceA.md)
- 
+
 ### APÉNDICE B: [REGLAS PLANTEADAS PARA EL MODELO DEL DOMINIO](ApendiceB.md)
- 
+
 ### APÉNDICE C: [REGLAS PLANTEADAS PARA EL  MODELO PEDAGÓGICO](ApendiceC.md)
- 
+
 ### APÉNDICE D: [DESCRIPCIÓN DE ARCHIVOS USADOS EN ANGEL](ApendiceD.md)

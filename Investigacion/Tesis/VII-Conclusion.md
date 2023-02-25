@@ -4,7 +4,7 @@ Después de diseñar, implementar y probar en forma preliminar al asesor intelig
 
 ## 7.1.Resumen del trabajo
 
-En este trabajo se ha presentado la arquitectura base ANGEL (Asesor iNteligente Genérico para la Enseñanza de Lenguajes de Programación), la cual permite implementar en forma flexible un asesor inteligente que asista al alumno; con la capacidad de adaptarse a distintos lenguajes de programación, o distintos modelos de enseñanza.
+En este trabajo se ha presentado la arquitectura base ANGEL (Asesor Inteligente Genérico para la Enseñanza de Lenguajes de Programación), la cual permite implementar en forma flexible un asesor inteligente que asista al alumno; con la capacidad de adaptarse a distintos lenguajes de programación, o distintos modelos de enseñanza.
 
 Se justificó la necesidad de utilizar asesores inteligentes para reducir las limitantes a las que se enfrenta el profesor humano en una materia donde se aprende un lenguaje de programación, ya que no puede estar disponible en el tiempo o lugar oportuno, cuando el alumno realiza su práctica fuera del aula.
 
@@ -18,7 +18,7 @@ La implementación de ANGEL en forma computacional, basada en la arquitectura pr
 
 Se realizaron pruebas preliminares sobre la aplicación de ANGEL en el salón de clases, con resultados prometedores. Se mostró que las pruebas y afinación de ANGEL serán una actividad continua, como lo es la preparación de todo curso educativo.
 
-## 7.2.Conclusiones generales del trabajo.
+## 7.2.Conclusiones generales del trabajo
 
 El trabajo pretendía demostrar la tesis:
 
@@ -40,7 +40,7 @@ Los objetivos especificos planteados al inicio de este trabajo, incluyeron los s
 
 Búsqueda de un modelo pedagógico que permita modelar los procesos de asesoría, y selección del más apropiado para su aplicación en un asesor inteligente. En el capítulo 2 se describe ampliamente cómo se exploraron algunos de los modelos pedagógicos más conocidos, por qué podría utilizarse cualquiera de ellos, y cómo se escogió el de Gagné para respaldar este trabajo. Se propone que, para aplicar otros modelos, debe trabajar junto con pedagogos para perfeccionar una descripción formal del estudiante dentro del modelo instruccional, que es la principal limitante que se encontró para modelos como el de Ausubel y el de Bruner.
 
--  Se realizó la investigación sobre las herramientas de otras disciplinas (Psicología, Pedagogía) que pueden complementar los modelos teóricos y la aplicación del asesor. Tanto en el capítulo "Antecedentes" como en el capítulo 2, "El proceso de enseñanza - aprendizaje de un lenguaje en las materias de programación", se cubrieron distintos aspectos acerca de las tendencias de la educación y la modelación de los procesos de aprendizaje y evolución cognitiva; pero principalmente, las teorías instruccionales que fundamentan el comportamiento del asesor.
+- Se realizó la investigación sobre las herramientas de otras disciplinas (Psicología, Pedagogía) que pueden complementar los modelos teóricos y la aplicación del asesor. Tanto en el capítulo "Antecedentes" como en el capítulo 2, "El proceso de enseñanza - aprendizaje de un lenguaje en las materias de programación", se cubrieron distintos aspectos acerca de las tendencias de la educación y la modelación de los procesos de aprendizaje y evolución cognitiva; pero principalmente, las teorías instruccionales que fundamentan el comportamiento del asesor.
 
 - Diseño de la arquitectura requerida para el asesor automatizado. Se siguió la recomendación de arquitectura genérica de un sistema tutor inteligente, similar a las presentadas por Kaplan [11] y Clancey [15]. Posteriormente, en el capítulo 4, se detalló haciendo referencia a trabajos anteriores en el área, de los cuales se adaptaron diversas ideas para implementar el modelo del estudiante, el modelo del dominio, y el modelo instruccional, que son los componentes principales de un asesor inteligente, Además de la interface, que se diseñó específicamente para el problema siguiendo los principios del Diseño de Interfaces Hombre - Máquina [6].
 
@@ -64,7 +64,7 @@ Búsqueda de un modelo pedagógico que permita modelar los procesos de asesoría
 
 Se cumplieron los objetivos iniciales, de acuerdo a las restricciones de tiempo y recursos. Al iniciar el trabajo, parecía que el construir un asesor inteligente resultaría un trabajo, si no sencillo, menos complejo que lo que realmente es. Se descubrió que a pesar de los avances en las herramientas, aún no es un proceso suficientemente sencillo como para empezar a utilizar extensamente los asesores inteligentes [25]; sin embargo, la arquitectura base con la que se cuenta es susceptible de ser reutilizada para hacer un poco más sencillo este desarrollo; se considera que dentro de unos dos años, la arquitectura probablemente habrá evolucionado lo suficiente como para contar con un verdadero  '_shell_ ' de construcción de asesores inteligentes, no solamente para la enseñanza de lenguajes de programación sino inclusive para la enseñanza de otros dominios con características similar. Se descubrió también la necesidad de formar equipos de desarrollo que permitan la realización eficiente de asesores inteligentes, pues es difícil que una sola persona cuente con todos los talentos, que permitan cubrir todos los elementos del asesor inteligente, con el mismo nivel de profundidad.
 
-## 7.3. Continuación de este trabajo.
+## 7.3. Continuación de este trabajo
 
 Este trabajo no está concluido; se requiere continuarlo para llegar a contar con una implementación total de ANGEL como auxiliar del profesor humano.
 
@@ -88,7 +88,7 @@ Para implementar el prototipo de ANGEL, se tomaron algunas decisiones de diseño
 
 - Ajustar la implementación del diagnóstico, para que sea no monótono, evitando así el reproceso completo del razonamiento.
 
-## 7.4. Líneas de investigación propuestas para trabajos futuros.
+## 7.4. Líneas de investigación propuestas para trabajos futuros
 
 De este trabajo se puede derivar investigación en distintas líneas; algunas de las que se han considerado interesantes, se presentan a continuación.
 
@@ -121,4 +121,3 @@ Este trabajo no es el fin, sino el principio, de un desarrollo más amplio, en e
 Espero que los conceptos vertidos en esta tesis puedan interesar a otros profesores, en el desarrollo de sistemas tutores inteligentes, así como introducir la aplicación de modelos instruccionales combinados con tecnología computacional; para apoyar el proceso de mejora continua en la enseñanza - aprendizaje.
 
 Considero que durante los próximos años asistiremos al desarrollo de diversos trabajos en el campo de Ciencias Computacionales Aplicadas a la Educación, lo que permitirá hacer que la educación llegue a más personas, alrededor del mundo, disminuyendo y quizá hasta eliminando muchas de las barreras actuales, como pueden ser la discriminación, la distancia geográfica, y sus costos, al mismo tiempo que aumentar su nivel. Citando a un filósofo, "qué excelente" poca para vivir nos ha tocado!
-

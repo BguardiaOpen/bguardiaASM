@@ -1,4 +1,4 @@
-## Apéndice C: Reglas planteadas para el modelo pedagógico
+# Apéndice C: Reglas planteadas para el modelo pedagógico
 
 Las técnicas utilizadas en la asesoría, basadas en la experiencia del profesor y en las sugeridas por las técnicas de Microenseñanza [8] incluyen las siguientes:
 

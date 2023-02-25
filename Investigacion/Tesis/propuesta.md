@@ -15,18 +15,18 @@ Comité de tesis:
 
 **CONTENIDO**
 
-1. [ANTECEDENTES](I-Antecedentes.md)
-2. [PLANTEAMIENTO Y JUSTIFICACIÓN DEL PROBLEMA](#Planteamiento)
-3. [OBJETIVOS](#Objetivos)
-4. [TRABAJO PROPUESTO](#Trabajo)
-5. [BIBLOGRAFÍA](Bibliografia.md)
+1. [ANTECEDENTES](#1---antecedentes)
+2. [PLANTEAMIENTO Y JUSTIFICACIÓN DEL PROBLEMA](#2---planteamiento-y-justificación-del-problema)
+3. [OBJETIVOS](#3---objetivos)
+4. [TRABAJO PROPUESTO](#4---trabajo-propuesto)
+5. [BIBLOGRAFÍA](#5---biblografía)
 
-* [LISTA DE FIGURAS](ListaFiguras.md)
-* [LISTA DE TABLAS](ListaTablas.md)
+* [LISTA DE FIGURAS](#lista-de-figuras)
+* [LISTA DE TABLAS](#lista-de-tablas)
 
 ![](line1.gif)
 
-**1 - Antecedentes**
+### 1 - Antecedentes {#1---antecedentes}
 
 Dentro de la enseñanza de los lenguajes de programación, tenemos como objetivos generales el conseguir que los alumnos desarrollen sus habilidades, y adquieran los conocimientos necesarios, para desarrollar programas y sistemas computarizados que resuelvan problemas reales.
 
@@ -50,7 +50,7 @@ El proyecto ha obtenido el apoyo por parte del Departamento de Computación y lo
 
 ![](line1.gif)
 
-**2 - Planteamiento y JUSTIFICACIÓN del problema**
+### 2 - Planteamiento y JUSTIFICACIÓN del problema {#2---planteamiento-y-justificación-del-problema}
 
 **2.1 Planteamiento del problema.**
 
@@ -275,7 +275,7 @@ Se debe complementar la JUSTIFICACIÓN del interés en esta técnica, con alguna
 
 * Es fácil representar la idea mentalmente, en forma similar al caso de asesores humanos, como se puede ver en la [tabla 2](#Tabla2). Es decir, tenemos una representación muy directa de la realidad del problema que queremos resolver. Es sabido que en los problemas a resolver usando Inteligencia Artificial, es conveniente tener una representación cuyo mapeo a la realidad sea sencillo.
 
-_Tabla 2: Comparación entre los papeles en esquemas de enseñanza de programación teórico vs. en laboratorio, vs. apoyado en asesor inteligente._
+#### Tabla 2: Comparación entre los papeles en esquemas de enseñanza de programación teórico vs. en laboratorio, vs. apoyado en asesor inteligente.
 
 | Forma de Clase/Disponibilidad del Profesor | _Profesor disponible_ | _Profesor no disponible_ |
 |---|---|---|
@@ -592,7 +592,7 @@ Además de los sistemas anteriores, vale la pena mencionar al sistema Gracile \[
 
 ![](line1.gif)
 
-**3 - Objetivos**
+### 3 - Objetivos {#3---objetivos}
 
 Para este trabajo, se pretende demostrar la tesis:
 
@@ -619,7 +619,7 @@ Para llegar a este objetivo, deberemos cumplir ciertos objetivos específicos:
 
 ![](line1.gif)
 
-**4 - Trabajo propuesto**
+### 4 - Trabajo propuesto {#4---trabajo-propuesto}
 
 Para definir apropiadamente el trabajo que se propone realizar como tesis, hay que mencionar:
 
@@ -708,7 +708,7 @@ Como se vio en la sección de comparación de alternativas (2.4), la que se va a
 
 ![](line1.gif)
 
-**5 - BIBLOGRAFÍA**
+### 5 - BIBLOGRAFÍA {#5---biblografía}
 
 **5.1 Bibliografía utilizada**
 
@@ -917,20 +917,20 @@ Como se vio en la sección de comparación de alternativas (2.4), la que se va a
 
 ![](line1.gif)
 
-**Lista de tablas**
+### Lista de tablas {#lista-de-tablas}
 
-1. [Tabla 1: Sistemas que entran dentro de la clasificación presentada](#Tabla1)
+1. [Tabla 1: Sistemas que entran dentro de la clasificación presentada](I-Antecedentes.md#tabla-1-conocimientos-y-habilidades-que-se-adquieren-en-la-programación)
 
-2. [Tabla 2: Comparación entre los papeles en esquemas de enseñanza de programación teórico vs. en laboratorio, vs. apoyado en asesor inteligente](#Tabla2)
-3. [Tabla 3: Tabla de comparación entre alternativas](#Tabla3)
-4. [Tabla 4: Clasificación de Sistemas Adaptativos según Benyon-Murray](#Tabla4)
-5. [Tabla 5: Algunos agentes que se proponen para el modelado del proceso enseñanza-aprendizaje](#Tabla5)
+2. [Tabla 2: Comparación entre los papeles en esquemas de enseñanza de programación teórico vs. en laboratorio, vs. apoyado en asesor inteligente](propuesta.md#tabla-2-comparación-entre-los-papeles-en-esquemas-de-enseñanza-de-programación-teórico-vs-en-laboratorio-vs-apoyado-en-asesor-inteligente)
+3. [Tabla 3: Tabla de comparación entre alternativas](II-Proceso.md#tabla-3-procesos-que-gobiernan-el-aprendizaje-por-observación-tomada-de-araujo-13)
+4. [Tabla 4: Clasificación de Sistemas Adaptativos según Benyon-Murray](II-Proceso.md#tabla-4-algunos-agentes-que-se-proponen-para-el-modelado-del-proceso-enseñanza---aprendizaje)
+5. [Tabla 5: Algunos agentes que se proponen para el modelado del proceso enseñanza-aprendizaje](II-Proceso.md#tabla-5-similitud-y-diferencia-entre-las-teorías-instruccionales-y-el-proceso-observado-en-la-enseñanza-de-la-programación)
 
 **![](line1.gif)**
 
-**Lista de figuras**
+### Lista de figuras {#lista-de-figuras}
 
-1. [Figura 1: Relación entre las áreas de investigación sobre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interfase Hombre-Máquina.](#Figura1)
-2. [Figura 2: Arquitectura de Sistemas Adaptativos](#Figura2)
-3. [Figura 3: Arquitectura de Sistemas Tutores Inteligentes](#Figura3)
-4. [Figura 4: Roles existentes en el modelo de funciones en el proceso enseñanza-aprendizaje de la programación.](#Figura4)
+1. [Figura 1: Relación entre las áreas de investigación sobre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interfase Hombre-Máquina.](/bguardiaASM/Investigacion/Tesis/I-Antecedentes.md#figura-1-diagrama-de-contexto-del-proceso-de-aprendizaje-de-un-lenguaje-de-programación)
+2. [Figura 2: Arquitectura de Sistemas Adaptativos](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-2-modelo-básico-de-aprendizaje-y-memoria-en-un-enfoque-de-procesamiento-de-la-información-tomado-de-chadwick-13)
+3. [Figura 3: Arquitectura de Sistemas Tutores Inteligentes](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-3-fases-y-sucesos-del-aprendizaje-según-gagné-adaptada-de-araujo-13)
+4. [Figura 4: Roles existentes en el modelo de funciones en el proceso enseñanza-aprendizaje de la programación.](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-4-proceso-de-la-enseñanza-de-lenguajes-de-programación)

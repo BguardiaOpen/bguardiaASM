@@ -91,18 +91,18 @@ Color DB 1
 
 </div>
 
-Figura 20: Planteamiento del problema para probar ANGEL
+#### Figura 20: Planteamiento del problema para probar ANGEL
 
 Realizaron el ejercicio 17 alumnos: 9 de ellos contaron con el apoyo de ANGEL; y 8 no contaron con él. Adicionalmente, intentaron resolverlo otros 11 alumnos más, 5 con el apoyo de ANGEL y 6 sin él, pero de estos 11 alumnos no se recabó ninguna información, pues no entregaron el ejercicio ni dejaron historia de uso de ANGEL.
 
 De los 9 alumnos que utilizaron ANGEL, uno no generó código fuente; dos consiguieron dejar funcionando el programa; tres dejaron un programa sin errores importantes, sólo con uno o dos errores de lógica por el cual no se cumplía el objetivo ejercicio, los cuales cuando el profesor los corrigió funcionaron correctamente; y tres entregaron programas con una gran cantidad de errores.
 
 ![](VI-Pruebas_files/image001.gif)</td>
-Figura 21: Asesoría no irruptiva al alumno.
+#### Figura 21: Asesoría no irruptiva al alumno.
 
 ![](VI-Pruebas_files/image002.gif)  
 
-Figura 22: Nivel superior de asesoría solicitada por el alumno.
+#### Figura 22: Nivel superior de asesoría solicitada por el alumno.
 
 Un ejemplo de la asesoría recibida por los alumnos, se presenta en la figura 21; algunos de los alumnos, utilizando F1, invocaron un mayor nivel de ayuda, tal como el presentado en la figura 22.
 
@@ -1666,7 +1666,9 @@ Los resultados generales se muestran en la tabla 8.
 
 </table>
 
-_<a name="_Toc405006084"></a>_Tabla 8: resumen de resultados del experimento.
+_<a name="_Toc405006084"></a> 
+
+#### Tabla 8: resumen de resultados del experimento.
 
 
 

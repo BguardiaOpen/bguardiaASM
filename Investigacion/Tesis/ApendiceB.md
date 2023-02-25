@@ -1,4 +1,4 @@
-## Apéndice B: Reglas planteadas para el modelo del dominio
+# Apéndice B: Reglas planteadas para el modelo del dominio
 
 Existen dos tipos de "reglas" dentro del modelo del dominio: las gramaticales, y las del sistema experto de diagnóstico. Ambas están relacionadas y se presentan en este apéndice.
 
@@ -119,15 +119,13 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
    %SYMS %TABSIZE %TEXT .TFCOND TITLE %TITLE %TRUNC UDATASEG UFARDATA
 
-   <st1:place>UNION</st1:place> USES WARN .XALL .XCREF .XLIST
+   <st1:place > UNION</st1:place> USES WARN .XALL .XCREF .XLIST
 
    AT COMMON MEMORY PRIVATE VIRTUAL
 
    ALN ASS BRK ICG LCO OPI OPP OPS OVF PDC PRO PQK RES TPI
 
-   /* hasta aqu  fueron directivas, van las instrucciones propiamente
-
-      dichas */
+   /* hasta aqu  fueron directivas, van las instrucciones propiamente dichas */
 
    AAA AAD AAM AAS ADC ADD AND CALL CBW CLC CLD CLI CMC CMP CMPS CMPSB
 
@@ -1688,7 +1686,7 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
 ;;;******************************************************
 
-;;;* REGLA 5: No se cerr  un PROC
+;;;* REGLA 5: No se cerro  un PROC
 
 ;;;******************************************************
 

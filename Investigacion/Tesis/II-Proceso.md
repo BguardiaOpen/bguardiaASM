@@ -1,5 +1,4 @@
-
-## II - El proceso de enseñanza - aprendizaje de un lenguaje en las materias de programación
+# II - El proceso de enseñanza - aprendizaje de un lenguaje en las materias de programación
 
 ## Panorama del capítulo
 
@@ -65,127 +64,11 @@ Como salidas esperadas, la repetición del comportamiento aprendido y la autorre
 
 Los procesos que gobiernan el aprendizaje, según Bandura, se esquematizan en la tabla 3; a su teoría se le conoce como "aprendizaje por observación en un contexto social".
 
-Tabla 3: Procesos que gobiernan el aprendizaje por observación. Tomada de Araujo [13].
+#### Tabla 3: Procesos que gobiernan el aprendizaje por observación. Tomada de Araujo [13].
+| Procesos de Atención | Procesos de retención | Procesos de reproducción motriz | Procesos motivacionales |
+| --- | --- | --- | --- |
+| Estímulos modeladores<br>Nitidez<br>Valor afectivo<br>Complejidad<br>Prominencia<br>Valor funcional<br>Características del observador<br>Capacidades sensoriales<br>Nivel de estimulación<br>Campo perceptual<br>Historia de refuerzo | Codificación simbólica.<br>Organización cognitiva.<br>Entrenamiento simbólico.<br>Entrenamiento motor. | Aptitudes físicas.<br>Disponibilidad de respuestas.<br>Autoobservación de los comportamientos reproducidos.<br>Precisión de la retroalimentación. | Refuerzo externo.<br>Refuerzo vicario.<br>Autorrefuerzo. |
 
-<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
- mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.5pt solid windowtext;
- mso-border-insidev:.5pt solid windowtext">
-
-<tbody>
-
-<tr style="mso-yfti-irow:0">
-
-<td width="159" valign="top" style="width:119.3pt;border:solid windowtext 1.0pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Procesos de Atención
-
-</td>
-
-<td width="159" valign="top" style="width:119.3pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Procesos de retención
-
-</td>
-
-<td width="159" valign="top" style="width:119.3pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Procesos de reproducción motriz
-
-</td>
-
-<td width="159" valign="top" style="width:119.3pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Procesos motivacionales
-
-</td>
-
-</tr>
-
-<tr style="mso-yfti-irow:0;mso-yfti-lastrow:yes">
-
-<td width="159" valign="top" style="width:119.3pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
-
-Estímulos modeladores
-
-Nitidez
-
-Valor afectivo
-
-Complejidad
-
-Prominencia
-
-Valor funcional
-
-Características del observador
-
-Capacidades sensoriales
-
-Nivel de estimulación
-
-Campo perceptual
-
-Historia de refuerzo
-
-</td>
-
-<td width="159" valign="top" style="width:119.3pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Codificación simbólica.
-
-Organización cognitiva.
-
-Entrenamiento simbólico.
-
-Entrenamiento motor.
-
-</td>
-
-<td width="159" valign="top" style="width:119.3pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Aptitudes físicas.
-
-Disponibilidad de respuestas.
-
-Autoobservación de los comportamientos reproducidos.
-
-Precisión de la retroalimentación.
-
-</td>
-
-<td width="159" valign="top" style="width:119.3pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
-
-Refuerzo externo.
-
-Refuerzo vicario.
-
-Autorrefuerzo.
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
 
 #### Teoría de Piaget
 
@@ -255,7 +138,7 @@ Las estructuras existentes en el aprendiz humano, para Gagné son similares a la
 
 ![](II-Proceso_files/figura2_proceso.png)
 
-Figura 2: Modelo básico de aprendizaje y memoria en un enfoque de procesamiento de la información (tomado de Chadwick [13])
+##### Figura 2: Modelo básico de aprendizaje y memoria en un enfoque de procesamiento de la información (tomado de Chadwick [13])
 
 Sensores, por los cuales el aprendiz recibe los estímulos del ambiente.
 
@@ -289,7 +172,7 @@ El cambio en el comportamiento se puede medir en la fase de _desempeño_, donde 
 
 Finalmente, se cierra un ciclo de aprendizaje en la fase de _retroalimentación_, donde se hace un refuerzo al proceso. En esta fase es donde el profesor interviene fuertemente, dando retroalimentació , sea positiva (premiando y elogiando el buen desempeño) o crítica (seáalando las fallas en el aprendizaje).
 
-Figura 3: Fases y sucesos del aprendizaje según Gagné. Adaptada de Araujo [13].
+##### Figura 3: Fases y sucesos del aprendizaje según Gagné. Adaptada de Araujo [13].
 
 ![](II-Proceso_files/image005.gif)
 
@@ -331,7 +214,7 @@ En algunas ocasiones, especialmente en grupos grandes, el profesor "titular" cue
 
 ![](II-Proceso_files/image006.gif)
 
-Figura 4: Proceso de la enseñanza de lenguajes de programación
+#### Figura 4: Proceso de la enseñanza de lenguajes de programación
 
 ### 2.4. Roles dentro del proceso de enseñanza - aprendizaje
 
@@ -343,10 +226,10 @@ La generalidad de los modelos instruccionales, como hemos verificado, asumen que
 
 Se habla de "roles" y no "participantes", ya que puede haber múltiples individuos desempeñando cada uno de dichos roles; lo único que se puede decir del número de individuos, es que generalmente hay más alumnos que profesores; los arreglos más comunes dentro de un aula son "un profesor que imparte la asignatura a n alumnos", donde n suele estar en el rango de 5 a 300 alumnos, dependiendo del nivel escolar y la asignatura; y "dos profesores para n alumnos", donde dos profesores comparten el rol de profesor, generalmente por que el número de alumnos es alto.
 
-Según sea el modelo instruccional, es la forma en que se supone que interactúan Alumno y Profesor; por ejemplo, algunos modelos indican que el Profesor inicia la interacción, y el Alumno reacciona al Profesor; mientras que en otros, el rol iniciador es el Alumno y el Profesor actúa "reactivamente" [24<span class="GramE">][23]. Sin embargo, en general se considera que el Profesor transmite información y responde dudas del alumno, además de retroalimentar en forma de refuerzos; mientras que el alumno es un receptor activo (tiene un comportamiento observable) de la información, y plantea dudas o requiere asesoría. Todo esto se ejemplifica en la figura 5.
+Según sea el modelo instruccional, es la forma en que se supone que interactúan Alumno y Profesor; por ejemplo, algunos modelos indican que el Profesor inicia la interacción, y el Alumno reacciona al Profesor; mientras que en otros, el rol iniciador es el Alumno y el Profesor actúa "reactivamente" [24] [23]. Sin embargo, en general se considera que el Profesor transmite información y responde dudas del alumno, además de retroalimentar en forma de refuerzos; mientras que el alumno es un receptor activo (tiene un comportamiento observable) de la información, y plantea dudas o requiere asesoría. Todo esto se ejemplifica en la figura 5.
 
 ![](II-Proceso_files/image007.gif)  
-Figura 5: Modelo de dos roles (alumno - profesor).
+#### Figura 5: Modelo de dos roles (alumno - profesor).
 
 Tomando el proceso observado durante la experiencia del autor en la enseñanza de lenguajes de programación, en la propuesta de tesis [E2] se propuso la existencia de tres roles: el transmisor, el receptor, y el asesor.
 
@@ -358,104 +241,19 @@ Tomando el proceso observado durante la experiencia del autor en la enseñanza d
 
 Estos roles se resumen en la tabla 4, y en las figuras 6 y 7:
 
-Tabla 4: Algunos agentes que se proponen para el modelado del proceso enseñanza - aprendizaje.
+#### Tabla 4: Algunos agentes que se proponen para el modelado del proceso enseñanza - aprendizaje.
+| Meta principal | Nombre del agente |
+| --- | --- |
+| Transmitir el conocimiento del lenguaje de programación | _Transmisor_ |
+| Adquirir el conocimiento del lenguaje de programación | _Alumno_ |
+| Reconocer y corregir los errores del Alumno al realizar prácticas de programación | _Asesor_ |
 
-<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;mso-padding-alt:0in 3.5pt 0in 3.5pt">
-
-<tbody>
-
-<tr style="mso-yfti-irow:0">
-
-<td width="477" valign="top" style="width:357.9pt;border-top:solid windowtext 1.0pt;
-  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
-  padding:0in 3.5pt 0in 3.5pt">
-
-**Meta principal**
-
-</td>
-
-<td width="121" valign="top" style="width:91.1pt;border-top:solid windowtext 1.0pt;
-  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-right-alt:solid windowtext .75pt;
-  padding:0in 3.5pt 0in 3.5pt">
-
-**Nombre del agente**
-
-</td>
-
-</tr>
-
-<tr style="mso-yfti-irow:0">
-
-<td width="477" valign="top" style="width:357.9pt;border:solid windowtext 1.0pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Transmitir el conocimiento del lenguaje de programación
-
-</td>
-
-<td width="121" valign="top" style="width:91.1pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-**_Transmisor_**
-
-</td>
-
-</tr>
-
-<tr style="mso-yfti-irow:0">
-
-<td width="477" valign="top" style="width:357.9pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Adquirir el conocimiento del lenguaje de programación
-
-</td>
-
-<td width="121" valign="top" style="width:91.1pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-**_Alumno_**
-
-</td>
-
-</tr>
-
-<tr style="mso-yfti-irow:0;mso-yfti-lastrow:yes">
-
-<td width="477" valign="top" style="width:357.9pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .75pt;mso-border-alt:
-  solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-Reconocer y corregir los errores del Alumno al realizar prácticas de programación
-
-</td>
-
-<td width="121" valign="top" style="width:91.1pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .75pt;mso-border-left-alt:solid windowtext .75pt;
-  mso-border-alt:solid windowtext .75pt;padding:0in 3.5pt 0in 3.5pt">
-
-**_Asesor_**
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
 
 ¿Para qué sirven estos roles? ¿Por qué no simplemente basarse en el modelo de dos roles usado tradicionalmente?
 
 ![](II-Proceso_files/image008.gif)
 
-Figura 6: Modelo de tres roles (alumno - profesor - asesor).
+#### Figura 6: Modelo de tres roles (alumno - profesor - asesor).
 
 El modelo de dos roles esté basado en la observación de los participantes humanos que intervienen en el proceso; es claro que se les puede clasificar en "profesores" y "alumnos" según si su objetivo general es adquirir o transmitir el conocimiento. Sin embargo, se admite que existen diversos procesos ocurriendo dentro de cada una de las entidades; por ejemplo, un alumno humano ejecuta a veces el proceso "memorizar", en otras "analizar", en otras "sintetizar". Del mismo modo, el profesor en ocasiones ejecuta procesos como "ejemplificar", "definir", "preguntar", "responder dudas", "premiar" y "castigar". Desde un enfoque de Sistemas, sería posible dividir a cualquiera de ambos roles, "alumno" o "profesor", en múltiples subsistemas.
 
@@ -484,7 +282,7 @@ Explicándolo de otro modo:
 -No es el objetivo sustituir totalmente el rol del profesor; de ahí la división; puesto que las limitaciones existentes no afectan a otras de las actividades del mismo.
 
 ![](II-Proceso_files/image010.gif)_
-Figura 7: Participantes que juegan en el modelo de tres roles.
+##### Figura 7: Participantes que juegan en el modelo de tres roles.
 
 Al construir el asesor inteligente automatizado ANGEL, objeto de este trabajo, éste apoyará a un profesor humano en su enseñanza a alumnos humanos; de manera que los distintos roles serán ejecutados de la forma siguiente (Figura 7):
 
@@ -504,7 +302,7 @@ En esta sección, se busca encontrar la estrategia pedagógica que mejor se ajus
 
 Para ello, se presenta la tabla 5, en la cual se reconocen elementos de la teoría que son aplicados en la asignatura estudiada, así como aquellos que no corresponden con la impartición real de la misma, de manera que se determine qué teoría instruccional corresponde más con el estilo del profesor humano, y de esta manera se pueda usar el modelo seleccionado para modelar al estudiante y las estrategias de asesoría.
 
-Tabla 5: Similitud y diferencia entre las teorías instruccionales y el proceso observado en la enseñanza de la programación.
+#### Tabla 5: Similitud y diferencia entre las teorías instruccionales y el proceso observado en la enseñanza de la programación.
 
 <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
  mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.5pt solid windowtext;

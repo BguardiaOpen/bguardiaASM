@@ -1,4 +1,4 @@
-## Apéndice D: Descripción de archivos usados en ANGEL.
+# Apéndice D: Descripción de archivos usados en ANGEL.
 
 - Asesor.c: Programa principal del asesor ANGEL, en la interfase con el alumno, que inicializa al sistema de inferencia, la interfase, y llama a la edición de un archivo.
 
