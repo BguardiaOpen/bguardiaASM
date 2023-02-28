@@ -67,7 +67,7 @@ Los procesos que gobiernan el aprendizaje, según Bandura, se esquematizan en la
 #### Tabla 3: Procesos que gobiernan el aprendizaje por observación. Tomada de Araujo [13].
 | Procesos de Atención | Procesos de retención | Procesos de reproducción motriz | Procesos motivacionales |
 | --- | --- | --- | --- |
-| Estímulos modeladores<br>Nitidez<br>Valor afectivo<br>Complejidad<br>Prominencia<br>Valor funcional<br>Características del observador<br>Capacidades sensoriales<br>Nivel de estimulación<br>Campo perceptual<br>Historia de refuerzo | Codificación simbólica.<br>Organización cognitiva.<br>Entrenamiento simbólico.<br>Entrenamiento motor. | Aptitudes físicas.<br>Disponibilidad de respuestas.<br>Autoobservación de los comportamientos reproducidos.<br>Precisión de la retroalimentación. | Refuerzo externo.<br>Refuerzo vicario.<br>Autorrefuerzo. |
+| Estímulos<br>modeladores<br>Nitidez<br>Valor afectivo<br>Complejidad<br>Prominencia<br>Valor funcional<br>Características del observador<br>Capacidades sensoriales<br>Nivel de estimulación<br>Campo perceptual<br>Historia de refuerzo | Codificación simbólica.<br>Organización cognitiva.<br>Entrenamiento simbólico.<br>Entrenamiento motor. | Aptitudes físicas.<br>Disponibilidad de respuestas.<br>Autoobservación de los comportamientos reproducidos.<br>Precisión de la retroalimentación. | Refuerzo externo.<br>Refuerzo vicario.<br>Autorrefuerzo. |
 
 
 #### Teoría de Piaget

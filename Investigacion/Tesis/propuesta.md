@@ -930,7 +930,7 @@ Como se vio en la sección de comparación de alternativas (2.4), la que se va a
 
 ### Lista de figuras {#lista-de-figuras}
 
-1. [Figura 1: Relación entre las áreas de investigación sobre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interfase Hombre-Máquina.](/bguardiaASM/Investigacion/Tesis/I-Antecedentes.md#figura-1-diagrama-de-contexto-del-proceso-de-aprendizaje-de-un-lenguaje-de-programación)
-2. [Figura 2: Arquitectura de Sistemas Adaptativos](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-2-modelo-básico-de-aprendizaje-y-memoria-en-un-enfoque-de-procesamiento-de-la-información-tomado-de-chadwick-13)
-3. [Figura 3: Arquitectura de Sistemas Tutores Inteligentes](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-3-fases-y-sucesos-del-aprendizaje-según-gagné-adaptada-de-araujo-13)
-4. [Figura 4: Roles existentes en el modelo de funciones en el proceso enseñanza-aprendizaje de la programación.](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-4-proceso-de-la-enseñanza-de-lenguajes-de-programación)
+1. [Figura 1: Relación entre las áreas de investigación sobre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interfase Hombre-Máquina.](I-Antecedentes.md#figura-1-diagrama-de-contexto-del-proceso-de-aprendizaje-de-un-lenguaje-de-programación)
+2. [Figura 2: Arquitectura de Sistemas Adaptativos](II-Proceso.md#figura-2-modelo-básico-de-aprendizaje-y-memoria-en-un-enfoque-de-procesamiento-de-la-información-tomado-de-chadwick-13)
+3. [Figura 3: Arquitectura de Sistemas Tutores Inteligentes](II-Proceso.md#figura-3-fases-y-sucesos-del-aprendizaje-según-gagné-adaptada-de-araujo-13)
+4. [Figura 4: Roles existentes en el modelo de funciones en el proceso enseñanza-aprendizaje de la programación.](II-Proceso.md#figura-4-proceso-de-la-enseñanza-de-lenguajes-de-programación)
