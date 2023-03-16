@@ -2,13 +2,17 @@
 
 ## Summary
 
-I am an experienced software developer, who has worked on a wide variety of technologies and roles; a generalist, not a specialist, working broad first, then depth selectively. Software architecture design, particularly large scale services and databases. Multilingual programming, particularly .Net (C# and VB) and Java; strong areas include Microservices, Web and Mobile APIs, Distributed databases and TCP/IP. Microsoft Certified Master in SQL Server Database. Multi Cloud services on AWS, Azure and Google Cloud 
+I am an experienced software developer, who has worked on a wide variety of technologies and roles; a generalist, not a specialist, working broad first, then depth selectively. Software architecture design, particularly large scale services and databases. Multilingual programming, particularly .Net (C# and VB) and Java; strong areas include Distributed databases, Microservices, Web and Mobile APIs, and TCP/IP. 
+
+Multiple certifications, including Microsoft Certified Master in SQL Server Database.
+
+Experience building Multi Cloud services on AWS, Azure and Google Cloud 
 
 ## Work
 
 | Period | Title | Company | Office Location  | Skills  |
 |--------|-------|---------|---|---|
-| 2019 – CURRENT | PRINCIPAL SOFTWARE DEVELOPER | MICROSOFT CORP | BELLEVUE, WA | C#, Azure |
+| 2019 – CURRENT | PRINCIPAL SOFTWARE DEVELOPER | MICROSOFT CORP | REDMOND, WA | C#, Azure |
 | 2018 - 2019 | SENIOR SOFTWARE DEVELOPMENT MANAGER | AMAZON WEB SERVICES | SEATTLE, WA | React, AngularJs, Java and Amazon Web Services (CLI, SDK and Console)  |
 | 2016 – 2018 | TECH DIRECTOR | GLOBANT | MEXICO CITY | .Net Web API, Angular 2+, React, Google Script / Apps / Cloud, Node.js and Java |
 | 2015 - 2016 | SENIOR DEVELOPER | SOFTWARE NEXT DOOR | MEXICO CITY / SAN FRANCISCO | Visual Studio 2013, C#, WebAPI 2, .Net Framework 4.5, SQL Server 2008R2 - 2014, nHibernate, Simple.Data, nCache, nServiceBus, SSIS, Salesforce APEX, Java Spring, Twilio APIs, Microsoft Azure, Heroku and Selenium |
