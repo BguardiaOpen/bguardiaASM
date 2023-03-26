@@ -1,26 +1,26 @@
 # **LISTA DE FIGURAS.**
 
-- [Figura 1: Diagrama de contexto del proceso de aprendizaje de un lenguaje de programación 14](/bguardiaASM/Investigacion/Tesis/I-Antecedentes.md#figura-1-diagrama-de-contexto-del-proceso-de-aprendizaje-de-un-lenguaje-de-programación)
+- [Figura 1: Diagrama de contexto del proceso de aprendizaje de un lenguaje de programación 14](I-Antecedentes.md#figura-1-diagrama-de-contexto-del-proceso-de-aprendizaje-de-un-lenguaje-de-programación)
 
-- [Figura 2: Modelo básico del aprendiz según Gagné 33](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-2-modelo-básico-de-aprendizaje-y-memoria-en-un-enfoque-de-procesamiento-de-la-información-tomado-de-chadwick-13)
+- [Figura 2: Modelo básico del aprendiz según Gagné 33](II-Proceso.md#figura-2-modelo-básico-de-aprendizaje-y-memoria-en-un-enfoque-de-procesamiento-de-la-información-tomado-de-chadwick-13)
 
-- [Figura 3: Fases y sucesos del aprendizaje según Gagné 34](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-3-fases-y-sucesos-del-aprendizaje-según-gagné-adaptada-de-araujo-13)
+- [Figura 3: Fases y sucesos del aprendizaje según Gagné 34](II-Proceso.md#figura-3-fases-y-sucesos-del-aprendizaje-según-gagné-adaptada-de-araujo-13)
 
-- [Figura 4: Proceso de la enseñanza de lenguajes de programación 37](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-4-proceso-de-la-enseñanza-de-lenguajes-de-programación)
+- [Figura 4: Proceso de la enseñanza de lenguajes de programación 37](II-Proceso.md#figura-4-proceso-de-la-enseñanza-de-lenguajes-de-programación)
 
-- [Figura 5: Modelo de dos roles (alumno/profesor) 38](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-5-modelo-de-dos-roles-alumno---profesor)
+- [Figura 5: Modelo de dos roles (alumno/profesor) 38](II-Proceso.md#figura-5-modelo-de-dos-roles-alumno---profesor)
 
-- [Figura 6: Modelo de tres roles, transmisor - receptor - asesor. 40](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-6-modelo-de-tres-roles-alumno---profesor---asesor)
+- [Figura 6: Modelo de tres roles, transmisor - receptor - asesor. 40](II-Proceso.md#figura-6-modelo-de-tres-roles-alumno---profesor---asesor)
 
-- [Figura 7: Participantes que juegan los tres roles 41](/bguardiaASM/Investigacion/Tesis/II-Proceso.md#figura-7-participantes-que-juegan-en-el-modelo-de-tres-roles)
+- [Figura 7: Participantes que juegan los tres roles 41](II-Proceso.md#figura-7-participantes-que-juegan-en-el-modelo-de-tres-roles)
 
-- [Figura 8: Arquitectura de sistemas tutores inteligentes, según Kaplan 51](/bguardiaASM/Investigacion/Tesis/III-STIs.md#figura-8-arquitectura-de-sistemas-tutores-inteligentes-según-kaplan)
+- [Figura 8: Arquitectura de sistemas tutores inteligentes, según Kaplan 51](III-STIs.md#figura-8-arquitectura-de-sistemas-tutores-inteligentes-según-kaplan)
 
-- [Figura 9: Arquitectura de sistemas tutores inteligentes, según Clancey 52](/bguardiaASM/Investigacion/Tesis/III-STIs.md#figura-9-arquitectura-de-sistemas-tutores-inteligentes-según-clancey)
+- [Figura 9: Arquitectura de sistemas tutores inteligentes, según Clancey 52](III-STIs.md#figura-9-arquitectura-de-sistemas-tutores-inteligentes-según-clancey)
 
-- [Figura 10: Relación entre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interfase Hombre - Máquina 56](/bguardiaASM/Investigacion/Tesis/III-STIs.md#figura-10-relación-entre-las-áreas-de-investigación-sobre-sistemas-tutores-inteligentes-agentes-inteligentes-e-interace-hombre-máquina) 
+- [Figura 10: Relación entre Sistemas Tutores Inteligentes, Agentes Inteligentes e Interfase Hombre - Máquina 56](III-STIs.md#figura-10-relación-entre-las-áreas-de-investigación-sobre-sistemas-tutores-inteligentes-agentes-inteligentes-e-interace-hombre-máquina) 
 
-- [Figura 11: Arquitectura general de ANGEL 62](/bguardiaASM/Investigacion/Tesis/IV-Modelado.md#figura-11-arquitectura-general-de-angel)
+- [Figura 11: Arquitectura general de ANGEL 62](IV-Modelado.md#figura-11-arquitectura-general-de-angel)
 
 - [Figura 12: Arquitectura física de ANGEL 82](V-Programar.md#figura-12-arquitectura-física-de-angel)
 
