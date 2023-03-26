@@ -1,6 +1,6 @@
 # Programación de Angel
 
-## 5.1 Panorama del capítulo.
+## 5.1 Panorama del capítulo
 
 En los capítulos previos, se ha seguido la teoría que soporta el diseño del asesor inteligente ANGEL. En este capítulo, se describe la implementación concreta de las ideas, en un sistema computacional que cubra las características requeridas.
 
@@ -28,7 +28,9 @@ Siguiendo el principio del refinamiento sucesivo, en la figura 11 (siguiente pá
 
 Los módulos presentados en la figura 11 se describen a continuación, a grandes rasgos; y posteriormente en este capítulo se analizarán con mayor detalle.
 
-![](V-Programar_files/image002.gif)_Figura 12: Arquitectura física de ANGEL_
+![](V-Programar_files/image002.gif)
+
+#### Figura 12: Arquitectura física de ANGEL
 
 Dentro de la interface, se cuenta con tres elementos:
 
@@ -38,8 +40,6 @@ Dentro de la interface, se cuenta con tres elementos:
 >- El editor de conceptos es la única interface a implementar con el desarrollador, ya que las reglas, que se encuentran tanto en el modelo del dominio como en el instruccional, se editan utilizando un editor de texto convencional.
 >
 >- El editor de programa es la interface con el alumno; de hecho, es el sistema ANGEL en su percepción, que observa su comportamiento y lo retroalimenta.
- 
-
 
 En el modelo del dominio, se reconocen también tres elementos:
 
@@ -48,7 +48,6 @@ En el modelo del dominio, se reconocen también tres elementos:
 >- Las unidades de aprendizaje o conceptos, que se almacenan en un archivo con su información general.
 >
 >- Las reglas del dominio, que describen el uso correcto y errores comunes al usar el lenguaje, y relacionan la sintaxis con los conceptos.
-
 
 Se observan dos elementos en el modelo del estudiante:
 
@@ -88,461 +87,459 @@ La otra gran desventaja de Java es su elevado consumo de recursos; simplemente, 
 
 Se presenta la tabla 7, en la que se ordenan los lenguajes, de acuerdo a cada una de las características mencionadas. Se considera "1" al lenguaje que cuenta con la mejor situación respecto a dicha características; y "5" al que cubre en menor medida la características deseada. La columna "librerías" se refiere a la riqueza y estandarización de sus librerías de funciones; la columna "Internet" a su facilidad de integrarse con aplicaciones en Internet; la columna "Recursos", al uso de recursos, donde el óptimo es el que usa menos recursos; y la columna "Uso en IA", se refiere a la cantidad de trabajos y código de referencia que existe en el área de investigación de la Inteligencia Artificial.
 
+#### Tabla 7: Comparación de los lenguajes que podrían usarse en el desarrollo de ANGEL
 
+  <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+  mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.5pt solid windowtext;
+  mso-border-insidev:.5pt solid windowtext">
 
-_Tabla 7: Comparación de los lenguajes que podrían usarse en el desarrollo de ANGEL_
+  <tbody>
 
-<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
- mso-padding-alt:0in 3.5pt 0in 3.5pt;mso-border-insideh:.5pt solid windowtext;
- mso-border-insidev:.5pt solid windowtext">
+  <tr style="page-break-inside:avoid">
 
-<tbody>
+  <td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-<tr style="page-break-inside:avoid">
+  **Lenguaje**
 
-<td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Lenguaje**
+  <td width="104" valign="top" style="width:78.0pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Portabilidad**
 
-<td width="104" valign="top" style="width:78.0pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Portabilidad**
+  <td width="94" valign="top" style="width:70.85pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Desempeño**
 
-<td width="94" valign="top" style="width:70.85pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Desempeño**
+  <td width="76" valign="top" style="width:56.7pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Librerías**
 
-<td width="76" valign="top" style="width:56.7pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Librerías**
+  <td width="66" valign="top" style="width:49.6pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Internet**
 
-<td width="66" valign="top" style="width:49.6pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Internet**
+  <td width="76" valign="top" style="width:56.7pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Recursos**
 
-<td width="76" valign="top" style="width:56.7pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Recursos**
+  <td width="85" valign="top" style="width:63.8pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Uso en IA**
 
-<td width="85" valign="top" style="width:63.8pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Uso en IA**
+  <td width="57" valign="top" style="width:42.55pt;border:solid windowtext 1.0pt;
+    border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+    solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  **Total**
 
-<td width="57" valign="top" style="width:42.55pt;border:solid windowtext 1.0pt;
-  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
-  solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-**Total**
+  </tr>
 
-</td>
+  <tr style="page-break-inside:avoid">
 
-</tr>
+  <td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
+    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    padding:0in 3.5pt 0in 3.5pt">
 
-<tr style="page-break-inside:avoid">
+  LISP
 
-<td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-LISP
+  <td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  5
 
-<td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-5
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  2
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-2
+  <td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  1
 
-<td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-1
+  <td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  20
 
-<td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-20
+  </tr>
 
-</td>
+  <tr style="page-break-inside:avoid">
 
-</tr>
+  <td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
+    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    padding:0in 3.5pt 0in 3.5pt">
 
-<tr style="page-break-inside:avoid">
+  PROLOG
 
-<td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-PROLOG
+  <td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  5
 
-<td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-5
+  <td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  5
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-5
+  <td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  2
 
-<td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-2
+  <td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  24
 
-<td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-24
+  </tr>
 
-</td>
+  <tr style="page-break-inside:avoid">
 
-</tr>
+  <td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
+    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    padding:0in 3.5pt 0in 3.5pt">
 
-<tr style="page-break-inside:avoid">
+  C
 
-<td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-C
+  <td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  2
 
-<td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-2
+  <td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  1
 
-<td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-1
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  2
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-2
+  <td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  3
 
-<td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-3
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  1
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-1
+  <td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  3
 
-<td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-3
+  <td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  12
 
-<td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-12
+  </tr>
 
-</td>
+  <tr style="page-break-inside:avoid">
 
-</tr>
+  <td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
+    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    padding:0in 3.5pt 0in 3.5pt">
 
-<tr style="page-break-inside:avoid">
+  C++
 
-<td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-C++
+  <td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  3
 
-<td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-3
+  <td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  2
 
-<td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-2
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  3
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-3
+  <td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  2
 
-<td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-2
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  3
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-3
+  <td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  4
 
-<td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-4
+  <td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  17
 
-<td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-17
+  </tr>
 
-</td>
+  <tr style="mso-yfti-lastrow:yes;page-break-inside:avoid">
 
-</tr>
+  <td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
+    border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+    padding:0in 3.5pt 0in 3.5pt">
 
-<tr style="mso-yfti-lastrow:yes;page-break-inside:avoid">
+  Java
 
-<td width="80" valign="top" style="width:60.2pt;border:solid windowtext 1.0pt;
-  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-Java
+  <td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  1
 
-<td width="104" valign="top" style="width:78.0pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-1
+  <td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  3
 
-<td width="94" valign="top" style="width:70.85pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-3
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  1
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-1
+  <td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  1
 
-<td width="66" valign="top" style="width:49.6pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-1
+  <td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  5
 
-<td width="76" valign="top" style="width:56.7pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-5
+  <td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
+    border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  5
 
-<td width="85" valign="top" style="width:63.8pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-5
+  <td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
+    none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+    mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
 
-</td>
+  16
 
-<td width="57" valign="top" style="width:42.55pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 3.5pt 0in 3.5pt">
+  </td>
 
-16
+  </tr>
 
-</td>
+  </tbody>
 
-</tr>
-
-</tbody>
-
-</table>
+  </table>
 
 Se concluye que el lenguaje C es el que servirá mejor a los propósitos de este trabajo; resumiendo sus ventajas:
 
@@ -607,11 +604,11 @@ Y el experto instructor, que razona y deduce sobre el conocimiento instruccional
 
 Por ello, se emprendió una búsqueda sobre una herramienta que facilitara la integración de los componentes de un sistema experto dentro de ANGEL.
 
-#### 5.3.3.2. >Criterios de evaluación
+#### 5.3.3.2. Criterios de evaluación
 
 Se tomaron los criterios de portabilidad, flexibilidad y eficiencia, los cuales se "heredan" de los criterios generales para implementar el asesor; por estos criterios, se consideró conveniente la búsqueda de un shell de sistemas expertos que utilizara el lenguaje C, del cuál ya se habían visto las ventajas para conseguir cumplir los mismos criterios en los módulos anteriores; especialmente, para la construcción de los analizadores léxicos y sintácticos.
 
-Se localizaron algunos shells escritos en LISP, C++, Ada y otros lenguajes; pero muy pocos en C. En particular, del que se obtuvo una mayor cantidad de referencias escrito en C, fue del shell CLIPS, desarrollado por la división de desarrollo de software de la NASA en el centro Johnson; CLIPS está disponible en el repositorio de inteligencia artificial de la Universidad de Carnegie Mellon (_http://www.cmu.edu_), del cuál se obtuvo; también acompaña al libro de Giarratano y Riley sobre sistemas expertos. [30]
+Se localizaron algunos shells escritos en LISP, C++, Ada y otros lenguajes; pero muy pocos en C. En particular, del que se obtuvo una mayor cantidad de referencias escrito en C, fue del shell CLIPS, desarrollado por la división de desarrollo de software de la NASA en el centro Johnson; CLIPS está disponible en el repositorio de inteligencia artificial de la Universidad de Carnegie Mellon (_<http://www.cmu.edu>_), del cuál se obtuvo; también acompaña al libro de Giarratano y Riley sobre sistemas expertos. [30]
 
 CLIPS 6.0 (_C Language Integrated Production System_) es un sistema de producción tipo OPS; su motor de inferencia incluye mecanismos para el mantenimiento de la verdad, adición dinámica de reglas, y varias estrategias de resolución de conflictos, ajustables. Es fácil de insertar en otras aplicaciones, e incluye un lenguaje orientado a objetos (COOL), integrado directamente al motor de inferencia. [30]
 
@@ -657,15 +654,15 @@ En esta sección se examinó el conjunto de herramientas que se utilizan en el d
 
 ## 5.4. Implementación de la interface
 
-### 5.4.1Diagrama general de la interface
+### 5.4.1 Diagrama general de la interface
 
 Para facilitar la comprensión de esta sección, se presenta en la figura 13 un detalle de la arquitectura correspondiente a la interface de ANGEL.
 
 ![](V-Programar_files/image004.gif)
 
-Figura 13: Arquitectura de la interface de ANGEL
+#### Figura 13: Arquitectura de la interface de ANGEL
 
-### 5.4.2 Interface con el alumno: Editor/asesor.
+### 5.4.2 Interface con el alumno: Editor/asesor
 
 En el proceso normal de programación, se utiliza un editor de texto, el cuál es una herramienta que generalmente se encuentra disponible en el sistema operativo (EDIT en MS-DOS, el Bloc de Notas en Windows, _vi_ y _emacs_en UNIX). Algunos ambientes de desarrollo incluyen editores especializados para facilitar la tarea a los programadores; cabe mencionar al Visual Studio de Microsoft y a los IDEs integrados en los productos de Borland.
 
@@ -676,13 +673,13 @@ Por ello, se decidió implementar desde el principio un editor sencillo, con las
 ![](V-Programar_files/image005.gif)  
 La gran ventaja que proporciona este editor, es su integración completa con los otros módulos del sistema. En la figura 14, se muestra la interface que ofrece al alumno.
 
-Figura 14: Pantalla de la interface con el alumno
+##### Figura 14: Pantalla de la interface con el alumno
 
 El editor básico se implementó en 2 días, utilizando exclusivamente el lenguaje C; durante el desarrollo de los otros módulos, se le fue integrando mayor funcionalidad, se fue puliendo su interface, y se corrigieron algunos errores en su funcionamiento.
 
 El principal cambio en la interface ocurrió al integrar el modelo instruccional, cuando ANGEL empez a asesorar realmente. Este modelo requirió de implementar en el editor la capacidad de mostrar un mensaje en la línea de estado (inferior de la pantalla), que indica el concepto sobre el cuál el módulo instruccional desea llamar la atención del alumno.
 
-### 5.4.3 Interface con el profesor: Reportes sobre el modelo del estudiante.
+### 5.4.3 Interface con el profesor: Reportes sobre el modelo del estudiante
 
 Como se explica en la implementación del modelo del estudiante, en la sección 5.6, el perfil general del estudiante se almacena en el archivo "STUDENT.DAT"; los conceptos que ha manejado, se van registrando junto con los atributos correspondientes a cada concepto, en el archivo "XXXXXX.PRF", donde XXXXXX corresponde a la matrícula del estudiante.
 
@@ -691,13 +688,12 @@ El programa de Reportes (VIEWPRF), permite visualizar el perfil que se ha almace
 En la versión actual, el programa de reportes muestra para cada concepto, su nombre, la experiencia que tiene el estudiante actual con dicho concepto, la latencia del concepto, la calificación global, la tasa de aprendizaje y los niveles anteriores de aseosría. Estos campos se explicaron ya en el capítulo 4, al diseñar el modelo del estudiante.
 
 ![](V-Programar_files/image006.gif)  
-Figura 15: Pantalla de reportes en la interface con el profesor.
 
-
+#### Figura 15: Pantalla de reportes en la interface con el profesor.
 
 Este módulo se implementó sencillamente, en un tiempo sumamente corto, utilizando exclusivamente las librerías de manejo de archivos propias del lenguaje C.
 
-### 5.4. Interface con el desarrollador: catálogo de conceptos.
+### 5.4. Interface con el desarrollador: catálogo de conceptos
 
 Para relacionar el modelo del estudiante con el modelo del dominio, se creó el archivo "CONCEPT.DAT"; este archivo contiene información breve sobre los conceptos que deberán ser manejados, su descripción y las referencias para estudiar dicho concepto.
 
@@ -705,9 +701,9 @@ Al igual que la interface con el profesor, esta parte se implementó utilizando 
 
 La principal razón que motivó implementar esta interface en archivos separados, cuando pudieron haberse integrado como hechos persistentes en CLIPS, fue la limitación en el recurso memoria RAM. Ya se estaban experimentando algunos problemas de memoria, pues el ejecutable de ANGEL había crecido cerca de 450 Kb., y DOS está limitado a utilizar 640 Kb. para programas del usuario, aunque el límite práctico es aún menor. Por ello, se decidió que los conceptos a estudiar, así como el registro del comportamiento del estudiante, se manejaran en archivos. Esto nos proporciona como beneficio adicional, la mayor facilidad de modificar el conocimiento con el que cuenta ANGEL, utilizando las interfases construidas; sin embargo, esto causó también un costo relativamente notorio en el desempeño del asesor. Para propósitos del prototipo este factor no fue relevante, por lo que se continúo con esta línea.
 
-## 5.5. Implementación del modelo del dominio</a>
+## 5.5. Implementación del modelo del dominio
 
-### 5.5.1 Arquitectura del modelo del dominio.
+### 5.5.1 Arquitectura del modelo del dominio
 
 Al igual que se hizo en la interface, se presenta la arquitectura del modelo del dominio para facilitar la comprensión de esta sección, en la figura 16.
 
@@ -715,9 +711,9 @@ A continuación, se describe el proceso que se siguió para el desarrollo increm
 
 ![](V-Programar_files/image008.gif)
 
-Figura 16: Arquitectura física del modelo del dominio en ANGEL
+#### Figura 16: Arquitectura física del modelo del dominio en ANGEL
 
-### 5.5.2 Analizador léxico y sintáctico.
+### 5.5.2 Analizador léxico y sintáctico
 
 Para implementar el analizador léxico y sintáctico, inicialmente se construyó un prototipo que leía un archivo en Ensamblador e indicaba sus errores.
 
@@ -729,7 +725,7 @@ Se creó el analizador léxico sin usar una herramienta adicional, directamente 
 
 Una vez que se tuvo el prototipo, lo que requirió menos de un día de trabajo, se integró al editor; para esto, el analizador léxico recibió su entrada desde el texto capturado en el editor. En ese momento, la unidad de análisis era una línea de programa fuente, lo que más tarde causaría algunos problemas; sin embargo, rápidamente se obtuvo un editor con la capacidad de señalar errores de léxico y sintaxis. La gramática, en cambio, tuvo que ser corregida en diversas ocasiones, al ir descubriendo problemas al analizar programas más y más complejos.
 
-### 5.5.3 Planteamiento de las reglas del sistema experto.
+### 5.5.3 Planteamiento de las reglas del sistema experto
 
 Inicialmente, se orientó la necesidad del sistema experto al reconocer el proceso de diagnóstico del estado del estudiante [34]; específicamente, se tomó la posición de que el asesor usa su experiencia para reconocer los errores y concepciones erróneas en que suele caer el estudiante, se los muestra al mismo y sugiere como corregirlos; de esta manera, el progreso en el aprendizaje del estudiante asesorado se puede medir de acuerdo a su tasa de errores y a una clasificación de los errores que comete; idealmente, la tasa debe ir reduciéndose, y los errores que comete ir aumentando en cuanto al nivel de complejidad.
 
@@ -756,7 +752,7 @@ Para ilustrar la implementación propuesta, tómese el ejemplo de la regla grama
 <div style="border:solid windowtext 1.0pt;mso-border-alt:solid windowtext .5pt;
 padding:1.0pt 4.0pt 1.0pt 4.0pt">
 
-.model <modelo><span style="mso-tab-count:1"> => DirectivaModelo
+.model  => DirectivaModelo
 
 </div>
 
@@ -782,8 +778,6 @@ padding:1.0pt 4.0pt 1.0pt 4.0pt">
 ;;;* REGLA 1: Falta una directiva base de estructura del programa
 
 ;;;******************************************************
-
-
 
 ;;; Primero, reglas que permitan subir el número de aciertos cuando se
 
@@ -853,7 +847,7 @@ _._
 
 </div>
 
-Figura 17: Ejemplo de la implementación en CLIPS de la regla "Falta una directiva base de estructura del programa (.model, .stack, .data, .code)"
+#### Figura 17: Ejemplo de la implementación en CLIPS de la regla "Falta una directiva base de estructura del programa (.model, .stack, .data, .code)"
 
 Para evaluar la facilidad de integrar CLIPS con un sistema en C, se creó un programa principal que simulaba la generación de eventos relacionados a hechos, los cuales disparaban alguna regla sobre el comportamiento del estudiante.
 
@@ -913,7 +907,7 @@ Los datos sobre el conocimiento del estudiante sobre un concepto específico.
 
 ![](V-Programar_files/image010.gif)
 
-Figura 18: Arquitectura del modelo del estudiante en ANGEL
+#### Figura 18: Arquitectura del modelo del estudiante en ANGEL
 
 Por el momento, no se están guardando el detalle en cuanto a 'código' de los ejemplos específicos, pues esto requeriría un espacio de almacenamiento relativamente grande, y las estrategias de aseosría utilizadas hasta ahora no los requieren. Sin embargo, sí se está generando un archivo histórico ('ANGEL.HST') con la lista de todas las instancias en las que fue asesorado el estudiante, sobre qué concepto se le asesoró, y qué nivel de aseosría fue utilizado.
 
@@ -945,9 +939,9 @@ Se presenta el detalle de la arquitectura del modelo instruccional, para su refe
 
 ![](V-Programar_files/image012.gif)
 
-Figura 19: Arquitectura física del modelo instruccional de ANGEL
+#### Figura 19: Arquitectura física del modelo instruccional de ANGEL
 
-### 5.7.1 Construcción de funciones auxiliares y su uso desde reglas.
+### 5.7.1 Construcción de funciones auxiliares y su uso desde reglas
 
 Una vez superados algunos problemas iniciales para aprender el lenguaje con el que se estructuran las reglas, y para ligar el código objeto con otro programa, se pudieron ejecutar hechos y reglas en forma efectiva; de manera que se consideró prometedora la alternativa de implementación consistente en:
 

@@ -20,42 +20,11 @@ PRESENTA
 | Comité de tésis | Dr. Carlos Rodriguez Lucatero & M. en C. Enrique David Espinosa Carrillo
 
 
-
-<div align="left">
-
-<table border="0" cellpadding="2">
-
-<tbody>
-
-<tr>
-
-<td rowspan="3">Jurado:</td>
-
-<td>Dr. Carlos Rodríguez Lucatero</td>
-
-<td>Presidente</td>
-
-</tr>
-
-<tr>
-
-<td>M. en C. Enrique David Espinosa Carrillo</td>
-
-<td>Secretario</td>
-
-</tr>
-
-<tr>
-
-<td>Dr. Marc Boumedine Montaner</td>
-
-<td>Vocal</td>
-
-</tr>
-
-</tbody>
-
-</table>
+|  |       Jurado:                         |          |
+|---------|--------------------------------|----------|
+|         | Dr. Carlos Rodríguez Lucatero  | Presidente   |
+|         | M. en C. Enrique David Espinosa Carrillo | Secretario |
+|         | Dr. Marc Boumedine Montaner    | Vocal        |
 
 
 México, D.F., Noviembre de 1997.

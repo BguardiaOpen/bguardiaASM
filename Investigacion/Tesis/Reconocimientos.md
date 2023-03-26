@@ -1,4 +1,4 @@
-## Reconocimientos.
+# Reconocimientos
 
 El autor agradece al Instituto Tecnológico y de Estudios Superiores de Monterrey, Campus Ciudad de México; y especialmente a la División de Ingeniería y Arquitectura, así como al Departamento de Computación de la misma División, por el apoyo y beca otorgados para la realización de los estudios de Maestría.
 
@@ -13,6 +13,5 @@ A la Lic. Patricia Valdés, quien me apoyó con respecto a la documentación en 
 Al Dr. Marc Boumedine, por su guía y enseñanza respecto al campo de IA y al difícil proceso de preparar una tesis; por su apoyo total en la realización de este trabajo, y por la paciencia que tuvo para las numerosas revisiones que requirió este trabajo.
 
 Finalmente, a mi familia, a Oscar Salgado, Alfredo Vallejo y muy especialmente a Karla de la Torre, quienes me han apoyado, motivado e impulsado para conseguir alcanzar mis objetivos, además de contribuir con sus comentarios a este trabajo.
-
 
 B.G.R
