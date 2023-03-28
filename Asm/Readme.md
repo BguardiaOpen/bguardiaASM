@@ -26,4 +26,8 @@
 
 ## Sample projects
 
+[Cuadro de honor](honor.md)
 
+
+
+Regreso al [Inicio](../README.md)

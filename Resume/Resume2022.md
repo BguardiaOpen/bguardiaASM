@@ -12,6 +12,7 @@ Experience building Multi Cloud services on AWS, Azure and Google Cloud
 
 | Period | Title | Company | Office Location  | Skills  |
 |--------|-------|---------|---|---|
+| 2023 – CURRENT | ADJUNCT PROFESSOR | SEATTLE UNIVERSITY | SEATTLE, WA | Databases |
 | 2019 – CURRENT | PRINCIPAL SOFTWARE DEVELOPER | MICROSOFT CORP | REDMOND, WA | C#, Azure |
 | 2018 - 2019 | SENIOR SOFTWARE DEVELOPMENT MANAGER | AMAZON WEB SERVICES | SEATTLE, WA | React, AngularJs, Java and Amazon Web Services (CLI, SDK and Console)  |
 | 2016 – 2018 | TECH DIRECTOR | GLOBANT | MEXICO CITY | .Net Web API, Angular 2+, React, Google Script / Apps / Cloud, Node.js and Java |
@@ -35,3 +36,5 @@ Experience building Multi Cloud services on AWS, Azure and Google Cloud
 
 
 [LinkedIn](http://www.linkedin.com/in/bguardia)
+
+Back [home](../README.md)

@@ -1,5 +1,7 @@
 # PROPUESTA DE TESIS
 
+## Regreso a [Investigacion](../Research.md)
+
 **ASESORES INTELIGENTES PARA APOYAR EL PROCESO DE ENSEÑANZA DE LENGUAJES DE PROGRAMACIÓN**
 
 Aspirante: [Bruno Guardia Robles](mailto:bguardia@itesm.mx)
@@ -934,3 +936,4 @@ Como se vio en la sección de comparación de alternativas (2.4), la que se va a
 2. [Figura 2: Arquitectura de Sistemas Adaptativos](II-Proceso.md#figura-2-modelo-básico-de-aprendizaje-y-memoria-en-un-enfoque-de-procesamiento-de-la-información-tomado-de-chadwick-13)
 3. [Figura 3: Arquitectura de Sistemas Tutores Inteligentes](II-Proceso.md#figura-3-fases-y-sucesos-del-aprendizaje-según-gagné-adaptada-de-araujo-13)
 4. [Figura 4: Roles existentes en el modelo de funciones en el proceso enseñanza-aprendizaje de la programación.](II-Proceso.md#figura-4-proceso-de-la-enseñanza-de-lenguajes-de-programación)
+

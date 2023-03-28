@@ -8,11 +8,13 @@ The initial version in this repo is a backup from 2005; I stopped hosting the we
 
 New entry points for GitHub navigation
 
-[Assembly language](Asm/Readme.md)
+[Assembly language, mostly in Spanish](Asm/Readme.md)
 
 [Resume](Resume/Resume2022.md)
 
-[Research](Investigacion/default.md)
+[Research, in Spanish](Investigacion/default.md)
+
+[Research, English version WIP](Investigacion/research.md)
 
 **Disclaimer**: This is a personal project, initiated before I had any association with Microsoft (other than being a user of some of their products) and before Github was created in 2007.
 Nothing in this project is related to work on any other entity except when I [taught](https://web.archive.org/web/19980425113543/http:/anubis.ccm.itesm.mx/htdocs/profesores.html) at [Tec CCM](https://tec.mx/en/ciudad-de-mexico-campus), and I am the only author of the content, which I shared freely except for an specific project within Tec CCM, where the content was repurposed in a separate intellectual property.

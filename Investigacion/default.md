@@ -27,3 +27,7 @@ Artículos publicados
 ----------
 
 1.  [Soluciones Avanzadas](Soluciones.md), Octubre de 1997
+----------
+
+
+Regreso al [inicio](../README.md)
