@@ -12,8 +12,10 @@ Experience building Multi Cloud services on AWS, Azure and Google Cloud
 
 | Period | Title | Company | Office Location  | Skills  |
 |--------|-------|---------|---|---|
-| 2023 – CURRENT | ADJUNCT PROFESSOR | SEATTLE UNIVERSITY | SEATTLE, WA | Databases |
-| 2019 – CURRENT | PRINCIPAL SOFTWARE DEVELOPER | MICROSOFT CORP | REDMOND, WA | C#, Azure |
+| 2024 – CURRENT | FREELANCE DEVELOPER | VARIOUS COMPANIES | REMOTE | React, AngularJs, NextJs, .Net, Postgres, Hasura, Azure DevOps, GitHub, Docker, MongoDb |
+| 2024 – CURRENT | COACH | BRUNOGUARDIA.COM | SEATTLE, WA | Software engineering career coaching, interviewing |
+| 2023 – CURRENT | ADJUNCT PROFESSOR | SEATTLE UNIVERSITY | SEATTLE, WA | Databases, Testing |
+| 2019 – 2024 | PRINCIPAL SOFTWARE DEVELOPER | MICROSOFT CORP | REDMOND, WA | C#, Azure |
 | 2018 - 2019 | SENIOR SOFTWARE DEVELOPMENT MANAGER | AMAZON WEB SERVICES | SEATTLE, WA | React, AngularJs, Java and Amazon Web Services (CLI, SDK and Console)  |
 | 2016 – 2018 | TECH DIRECTOR | GLOBANT | MEXICO CITY | .Net Web API, Angular 2+, React, Google Script / Apps / Cloud, Node.js and Java |
 | 2015 - 2016 | SENIOR DEVELOPER | SOFTWARE NEXT DOOR | MEXICO CITY / SAN FRANCISCO | Visual Studio 2013, C#, WebAPI 2, .Net Framework 4.5, SQL Server 2008R2 - 2014, nHibernate, Simple.Data, nCache, nServiceBus, SSIS, Salesforce APEX, Java Spring, Twilio APIs, Microsoft Azure, Heroku and Selenium |

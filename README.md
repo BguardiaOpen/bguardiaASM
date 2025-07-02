@@ -10,7 +10,7 @@ New entry points for GitHub navigation
 
 [Assembly language, mostly in Spanish](Asm/Readme.md)
 
-[Resume](Resume/Resume2022.md)
+[Resume](Resume/Resume2025.md)
 
 [Research, in Spanish](Investigacion/default.md)
 

@@ -2,13 +2,13 @@
 
 This is the modern version of [my HTML home page in Spanish](home.aspx).
 
-Welcome to my web site, version 2022
+Welcome to my web site, version 2025
 
 This website is focused on sharing tech and computer systems information, with multiple references to classes I formerly taught.
 
 ## Menu
 
-* [Resume](Resume/Resume2022.md)
+* [Resume](Resume/Resume2025.md)
 * [Research](Investigacion/Research.md)
 * [Assembly Language programming](Asm/framev.htm)
 * [Internet development - Optional course](topicointernet/default.aspx)
